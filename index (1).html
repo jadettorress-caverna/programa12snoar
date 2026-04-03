@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Semanas no Ar — Portal Caverna Azul</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-height:100vh}
+.header{background:linear-gradient(160deg,#071a3e 0%,#05112b 60%);padding:2.5rem 1.5rem 2rem;border-bottom:1px solid rgba(180,130,80,0.2);text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:400px;background:radial-gradient(circle,rgba(180,130,80,0.07) 0%,transparent 70%);pointer-events:none}
+.logo-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#b48250,#8a5f35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#05112b}
+.logo-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250}
+.header-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.2}
+.header-title em{font-style:italic;color:#b48250}
+.header-sub{font-size:13px;color:rgba(240,235,232,0.45);letter-spacing:1px;margin-bottom:1.8rem}
+.progress-summary{display:inline-flex;align-items:center;gap:10px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.2);border-radius:20px;padding:8px 20px;font-size:12px;color:rgba(240,235,232,0.6)}
+.progress-dot{width:8px;height:8px;border-radius:50%;background:#b48250;flex-shrink:0}
+.weeks-section{padding:2rem 1.5rem 3rem;max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:1.5rem;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.15);border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.3s}
+.card:hover{border-color:rgba(180,130,80,0.5);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.card.locked{opacity:0.45;cursor:not-allowed}
+.card.locked:hover{transform:none;border-color:rgba(180,130,80,0.15);box-shadow:none}
+.card-photo{height:220px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0a1f4a,#071530)}
+.card-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.card-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.placeholder-inner{width:90px;height:90px;border-radius:50%;background:rgba(180,130,80,0.08);border:2px solid rgba(180,130,80,0.25);display:flex;align-items:center;justify-content:center;font-size:28px;color:rgba(180,130,80,0.4)}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(5,17,43,0.97) 100%)}
+.card-week-badge{position:absolute;bottom:14px;left:14px;display:flex;align-items:center;gap:6px;background:rgba(5,17,43,0.85);border:1px solid rgba(180,130,80,0.5);border-radius:20px;padding:5px 13px;font-size:10px;color:#b48250;letter-spacing:1.5px;text-transform:uppercase}
+.badge-icon{width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
+.badge-check{background:#b48250;color:#05112b;font-weight:700}
+.badge-lock{background:rgba(240,235,232,0.15)}
+.card-body{padding:1.1rem 1.2rem 1.4rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1px}
+.card-subtitle{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-bottom:9px}
+.card-desc{font-size:12px;color:rgba(240,235,232,0.4);line-height:1.55;margin-bottom:12px}
+.card-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(180,130,80,0.55);border-top:1px solid rgba(180,130,80,0.1);padding-top:10px}
+.week-detail{display:none;min-height:100vh;background:#05112b}
+.detail-header{background:linear-gradient(160deg,#071a3e,#05112b);padding:1.2rem 1.5rem;border-bottom:1px solid rgba(180,130,80,0.2);display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:10}
+.btn-back-detail{background:transparent;border:1px solid rgba(240,235,232,0.2);border-radius:8px;padding:8px 18px;color:rgba(240,235,232,0.6);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;white-space:nowrap}
+.btn-back-detail:hover{border-color:rgba(240,235,232,0.5);color:#f0ebe8}
+.detail-info{flex:1;min-width:0}
+.detail-week-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:2px}
+.detail-week-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0ebe8}
+.manifesto-wrapper{max-width:560px;margin:0 auto;padding:2rem 1.5rem}
+.pbar{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 2rem;max-width:360px}
+.pdot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(240,235,232,0.4);transition:all 0.3s;flex-shrink:0;background:#05112b}
+.pdot.active{border-color:#b48250;color:#b48250;background:rgba(180,130,80,0.1)}
+.pdot.done{border-color:#b48250;background:#b48250;color:#05112b;font-weight:600}
+.pline{flex:1;height:1px;background:rgba(180,130,80,0.2);max-width:34px}
+.pline.done{background:rgba(180,130,80,0.5)}
+.step-screen{display:none}
+.step-screen.active{display:block}
+.s-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
+.s-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.3}
+.s-desc{font-size:13px;color:rgba(240,235,232,0.5);margin-bottom:1.8rem;line-height:1.6}
+.f-group{margin-bottom:1.3rem}
+.f-label{font-size:11px;color:rgba(240,235,232,0.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block}
+.f-input,.f-textarea,.f-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;transition:border-color 0.2s}
+.f-input:focus,.f-textarea:focus,.f-select:focus{border-color:rgba(180,130,80,0.6);background:rgba(180,130,80,0.05)}
+.f-input::placeholder,.f-textarea::placeholder{color:rgba(240,235,232,0.2)}
+.f-textarea{min-height:88px;resize:vertical;line-height:1.6}
+.f-select{appearance:none;cursor:pointer}
+.f-select option{background:#071a3e;color:#f0ebe8}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insight{background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:8px;padding:14px 16px;margin-bottom:1.4rem}
+.insight p{font-size:13px;color:rgba(240,235,232,0.7);line-height:1.6;font-style:italic}
+.tag-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{padding:6px 14px;border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:12px;color:rgba(240,235,232,0.6);cursor:pointer;transition:all 0.2s;background:transparent;font-family:'DM Sans',sans-serif}
+.tag:hover{border-color:#b48250;color:#b48250}
+.tag.selected{background:rgba(180,130,80,0.15);border-color:#b48250;color:#b48250}
+.nav-btns{display:flex;gap:12px;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(180,130,80,0.15)}
+.btn-bk{padding:12px 22px;border:1px solid rgba(240,235,232,0.2);border-radius:8px;background:transparent;color:rgba(240,235,232,0.5);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
+.btn-nx{flex:1;padding:14px 22px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:8px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.m-card{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.m-header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(180,130,80,0.2)}
+.m-name{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f0ebe8;margin-bottom:0.3rem}
+.m-cause{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:#b48250}
+.canvas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.cc{background:rgba(5,17,43,0.92);padding:1.1rem}
+.cc.full{grid-column:1/-1}
+.cc-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:5px}
+.cc-ttl{font-family:'Playfair Display',serif;font-size:13px;color:rgba(240,235,232,0.45);margin-bottom:5px}
+.cc-val{font-size:12px;color:#f0ebe8;line-height:1.55;font-style:italic}
+.i-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.i-pill{padding:4px 12px;background:rgba(180,130,80,0.12);border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:11px;color:#b48250}
+.btn-gen{width:100%;padding:15px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:1rem}
+.manifesto-result{display:none}
+.coming-soon{max-width:400px;margin:5rem auto;text-align:center;padding:2rem}
+.cs-icon{width:70px;height:70px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:28px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.6rem}
+.cs-desc{font-size:13px;color:rgba(240,235,232,0.4);line-height:1.7}
+.footer{text-align:center;padding:2rem;border-top:1px solid rgba(180,130,80,0.1)}
+.footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.4)}
+</style>
+</head>
+<body>
+
+<div id="portalHome">
+  <div class="header">
+    <div class="logo-badge">
+      <div class="logo-icon">12s</div>
+      <span class="logo-text">Portal Caverna Azul</span>
+    </div>
+    <h1 class="header-title">Programa <em>12 Semanas</em> no Ar</h1>
+    <p class="header-sub">Programa Editorial Prático · Jade Torres</p>
+    <div class="progress-summary">
+      <div class="progress-dot"></div>
+      Sua jornada começa aqui, guerreira
+    </div>
+  </div>
+  <div class="weeks-section">
+    <span class="section-label">Sua jornada — 12 semanas</span>
+    <div class="grid" id="weeksGrid"></div>
+  </div>
+  <div class="footer"><p>Portal Caverna das Guerreiras · Jade Torres · 2025</p></div>
+</div>
+
+<div class="week-detail" id="weekDetail">
+  <div class="detail-header">
+    <button class="btn-back-detail" id="btnBackMain">← Voltar</button>
+    <div class="detail-info">
+      <div class="detail-week-num" id="detailWeekNum"></div>
+      <div class="detail-week-title" id="detailWeekTitle"></div>
+    </div>
+  </div>
+  <div id="weekContent"></div>
+</div>
+
+<script>
+var weeks = [
+  {n:1,title:"Manifesto Editorial",sub:"Fatia de Subnicho",desc:"Posicionamento — Sua mensagem é única e deve ser comunicada de forma única.",tag:"Posicionamento",locked:false,img:"fotos/semana1.jpg"},
+  {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:true,img:"fotos/semana2.jpg"},
+  {n:3,title:"Produtos do",sub:"Método",desc:"Defina os produtos que nascem do seu método com clareza e intenção.",tag:"Produtos",locked:true,img:"fotos/semana3.jpg"},
+  {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:true,img:"fotos/semana4.jpg"},
+  {n:5,title:"Designer de",sub:"Plataforma",desc:"Seus produtos ganham cores e formas para valorizar sua vitrine.",tag:"Design",locked:true,img:"fotos/semana5.jpg"},
+  {n:6,title:"Gravação do",sub:"Método",desc:"O que você criou começa a ganhar formato profissional.",tag:"Gravação",locked:true,img:"fotos/semana6.jpg"},
+  {n:7,title:"Edição",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:true,img:"fotos/semana7.jpg"},
+  {n:8,title:"Validação do",sub:"Método",desc:"Hora de testar, ajustar e fortalecer sua solução principal.",tag:"Validação",locked:true,img:"fotos/semana8.jpg"},
+  {n:9,title:"Perfil Pronto",sub:"BIO e Fixados",desc:"Sua marca pessoal mostrará causa, propósito e identidade no digital.",tag:"Instagram",locked:true,img:"fotos/semana9.jpg"},
+  {n:10,title:"Perfil Pronto",sub:"Destaques",desc:"Cada destaque conta uma parte da sua história e convida ao próximo passo.",tag:"Instagram",locked:true,img:"fotos/semana10.jpg"},
+  {n:11,title:"Perfil Pronto",sub:"Feed",desc:"Produção e distribuição — conteúdo inicia um movimento alcançando novos espaços.",tag:"Conteúdo",locked:true,img:"fotos/semana11.jpg"},
+  {n:12,title:"Projeto",sub:"no Ar",desc:"Coletiva Final — Você concluiu sua travessia. Seu projeto está pronto.",tag:"Conclusão",locked:true,img:"fotos/semana12.jpg"}
+];
+
+document.getElementById('btnBackMain').addEventListener('click', goHome);
+
+function buildGrid() {
+  var g = document.getElementById('weeksGrid');
+  weeks.forEach(function(w) {
+    var c = document.createElement('div');
+    c.className = 'card' + (w.locked ? ' locked' : '');
+    var photoHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner">✦</div></div>';
+    if (w.img) {
+      var img = document.createElement('img');
+      img.src = w.img;
+      img.alt = 'Semana ' + w.n;
+      img.addEventListener('error', function() {
+        this.parentElement.innerHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner">✦</div></div>';
+      });
+      photoHTML = img.outerHTML;
+    }
+    var badge = '<div class="card-week-badge"><div class="badge-icon ' + (w.locked ? 'badge-lock' : 'badge-check') + '">' + (w.locked ? '🔒' : '✓') + '</div>Semana ' + w.n + '</div>';
+    c.innerHTML = '<div class="card-photo">' + photoHTML + '<div class="card-overlay"></div>' + badge + '</div>' +
+      '<div class="card-body"><div class="card-title">' + w.title + '</div><div class="card-subtitle">' + w.sub + '</div><div class="card-desc">' + w.desc + '</div><div class="card-tag">' + w.tag + '</div></div>';
+    if (!w.locked) {
+      (function(wk) { c.addEventListener('click', function() { openWeek(wk.n); }); })(w);
+    }
+    g.appendChild(c);
+  });
+}
+
+function openWeek(n) {
+  document.getElementById('portalHome').style.display = 'none';
+  document.getElementById('weekDetail').style.display = 'block';
+  var w = weeks[n-1];
+  document.getElementById('detailWeekNum').textContent = 'Semana ' + n + ' · ' + w.tag;
+  document.getElementById('detailWeekTitle').textContent = w.title + ' — ' + w.sub;
+  var content = document.getElementById('weekContent');
+  if (n === 1) {
+    content.innerHTML = getManifestoHTML();
+    bindManifestoEvents();
+  } else {
+    content.innerHTML = '<div class="coming-soon"><div class="cs-icon">⚔</div><div class="cs-title">Em construção, guerreira</div><div class="cs-desc">Esta etapa está sendo preparada com todo cuidado. Em breve você terá acesso à interface completa da Semana ' + n + '.</div></div>';
+  }
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  document.getElementById('weekDetail').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function getManifestoHTML() {
+  return '<div class="manifesto-wrapper">' +
+    '<div class="pbar"><div class="pdot active" id="pd1">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4">4</div><div class="pline" id="pl4"></div><div class="pdot" id="pd5">5</div></div>' +
+    '<div class="step-screen active" id="ms1"><span class="s-label">Etapa 1 de 5</span><h2 class="s-title">Quem é você,<br>guerreira?</h2><p class="s-desc">Vamos começar pelo básico. Esses dados vão compor sua identidade editorial.</p><div class="f-group"><label class="f-label">Nome completo</label><input type="text" class="f-input" id="m-nome" placeholder="Seu nome como quer ser conhecida"></div><div class="f-row"><div class="f-group"><label class="f-label">Cidade</label><input type="text" class="f-input" id="m-cidade" placeholder="Onde você está"></div><div class="f-group"><label class="f-label">Estado</label><input type="text" class="f-input" id="m-estado" placeholder="UF"></div></div><div class="f-group"><label class="f-label">Formação principal</label><input type="text" class="f-input" id="m-formacao" placeholder="Ex: Nutricionista, Psicóloga..."></div><div class="f-group"><label class="f-label">Anos de atuação</label><select class="f-select" id="m-anos"><option value="">Selecione</option><option>Menos de 1 ano</option><option>1 a 3 anos</option><option>3 a 5 anos</option><option>5 a 10 anos</option><option>10 a 20 anos</option><option>Mais de 20 anos</option></select></div><div class="f-group"><label class="f-label">Outras formações relevantes</label><textarea class="f-textarea" id="m-outras" placeholder="Liste o que mais te orgulha ter aprendido..."></textarea></div><div class="nav-btns"><button class="btn-nx" id="s1n">Continuar</button></div></div>' +
+    '<div class="step-screen" id="ms2"><span class="s-label">Etapa 2 de 5</span><h2 class="s-title">Sua jornada<br>de vida</h2><p class="s-desc">É aqui que mora o seu manifesto. Responda com honestidade.</p><div class="insight"><p>"O manifesto editorial está escondido na sua história. Não na sua formação."</p></div><div class="f-group"><label class="f-label">Maior desafio que você superou</label><textarea class="f-textarea" id="m-desafio" placeholder="Pessoal, profissional, de saúde... O mais transformador."></textarea></div><div class="f-group"><label class="f-label">O que você faz com facilidade que as pessoas agradecem?</label><textarea class="f-textarea" id="m-dom" placeholder="Esse é provavelmente um dos seus maiores dons..."></textarea></div><div class="f-group"><label class="f-label">Em que situação as pessoas sempre te procuram?</label><textarea class="f-textarea" id="m-procuram" placeholder="Pense em amigos, família, colegas..."></textarea></div><div class="f-group"><label class="f-label">O que você viveu que te faz entender seu público?</label><textarea class="f-textarea" id="m-vivencia" placeholder="Uma dor que você também já teve. Isso é ouro."></textarea></div><div class="nav-btns"><button class="btn-bk" id="s2b">Voltar</button><button class="btn-nx" id="s2n">Continuar</button></div></div>' +
+    '<div class="step-screen" id="ms3"><span class="s-label">Etapa 3 de 5</span><h2 class="s-title">Sua pizza —<br>a fatia do subnicho</h2><p class="s-desc">Sua totalidade é a pizza inteira. O digital pede que você escolha uma fatia.</p><div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="m-area" placeholder="Ex: Saúde, Educação, Terapia..."></div><div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="m-nicho" placeholder="Ex: Nutrição, Psicologia, Educação parental..."></div><div class="f-group"><label class="f-label">Quem você tem tentado ajudar?</label><textarea class="f-textarea" id="m-publico" placeholder="Descreva a pessoa que você atende ou quer atender..."></textarea></div><div class="f-group"><label class="f-label">Qual é a maior dor do seu público?</label><textarea class="f-textarea" id="m-dor" placeholder="O que essa pessoa sente antes de te encontrar?"></textarea></div><div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="m-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div><div class="nav-btns"><button class="btn-bk" id="s3b">Voltar</button><button class="btn-nx" id="s3n">Continuar</button></div></div>' +
+    '<div class="step-screen" id="ms4"><span class="s-label">Etapa 4 de 5</span><h2 class="s-title">Sua causa<br>e propósito</h2><p class="s-desc">O coração do seu manifesto — o porquê de tudo isso.</p><div class="f-group"><label class="f-label">Por que você faz o que faz?</label><textarea class="f-textarea" id="m-porque" placeholder="O que te move quando está cansada e continua mesmo assim..."></textarea></div><div class="f-group"><label class="f-label">Sua maior crença sobre o seu tema</label><textarea class="f-textarea" id="m-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div><div class="f-group"><label class="f-label">Que impacto quer causar no mundo?</label><textarea class="f-textarea" id="m-impacto" placeholder="Pense grande. Que gerações você quer transformar?"></textarea></div><div class="f-group"><label class="f-label">Ingredientes de marca</label><div class="tag-group" id="m-tags"><button class="tag">Espiritualidade</button><button class="tag">Ciência</button><button class="tag">Feminino sagrado</button><button class="tag">Autoconhecimento</button><button class="tag">Maternidade</button><button class="tag">Liberdade</button><button class="tag">Cura emocional</button><button class="tag">Empoderamento</button><button class="tag">Família</button><button class="tag">Propósito</button><button class="tag">Fé</button><button class="tag">Resiliência</button></div></div><div class="f-group"><label class="f-label">Outros ingredientes</label><input type="text" class="f-input" id="m-outros-ing" placeholder="Separe por vírgula..."></div><div class="nav-btns"><button class="btn-bk" id="s4b">Voltar</button><button class="btn-nx" id="s4n">Continuar</button></div></div>' +
+    '<div class="step-screen" id="ms5"><span class="s-label">Etapa 5 de 5</span><h2 class="s-title">Sua frase<br>de manifesto</h2><p class="s-desc">A frase que será o norte de toda a sua comunicação.</p><div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." — Uma frase que só você poderia dizer.</p></div><div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="m-frase" placeholder="Escreva como se fosse um título de revista..."></div><div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="m-gritar" placeholder="Solte aqui sem filtro..."></textarea></div><div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="m-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div><div class="nav-btns"><button class="btn-bk" id="s5b">Voltar</button><button class="btn-nx" id="s5g">Gerar meu Manifesto ✦</button></div></div>' +
+    '<div class="manifesto-result" id="mResult"><span class="s-label">Seu manifesto editorial</span><h2 class="s-title" style="margin-bottom:1.5rem">Guerreira, <em style="font-style:italic;color:#b48250">aqui está</em><br>sua causa revelada</h2><div class="m-card"><div class="m-header"><div class="m-name" id="r-nome"></div><div class="m-cause" id="r-frase"></div></div><div class="canvas-grid"><div class="cc"><div class="cc-lbl">Quem sou eu</div><div class="cc-ttl">Identidade pessoal</div><div class="cc-val" id="r-id"></div></div><div class="cc"><div class="cc-lbl">O que eu faço</div><div class="cc-ttl">Identidade editorial</div><div class="cc-val" id="r-ed"></div></div><div class="cc"><div class="cc-lbl">Para quem eu faço</div><div class="cc-ttl">Público principal</div><div class="cc-val" id="r-pub"></div></div><div class="cc"><div class="cc-lbl">Como eu faço</div><div class="cc-ttl">Método</div><div class="cc-val" id="r-met"></div></div><div class="cc"><div class="cc-lbl">Para quê eu faço</div><div class="cc-ttl">Causa de manifesto</div><div class="cc-val" id="r-cau"></div></div><div class="cc"><div class="cc-lbl">Por que eu faço</div><div class="cc-ttl">Legado</div><div class="cc-val" id="r-leg"></div></div><div class="cc full"><div class="cc-lbl">Ingredientes de marca</div><div class="i-pills" id="r-ing"></div></div></div><div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div></div><button class="btn-gen" id="btnEnviar">Enviar manifesto para a Jade ✦</button><button class="btn-bk" id="btnEditar" style="width:100%;text-align:center;padding:12px;margin-top:0.5rem">← Editar respostas</button></div>' +
+    '</div>';
+}
+
+function bindManifestoEvents() {
+  document.getElementById('s1n').addEventListener('click', function(){ mGoTo(2); });
+  document.getElementById('s2b').addEventListener('click', function(){ mGoTo(1); });
+  document.getElementById('s2n').addEventListener('click', function(){ mGoTo(3); });
+  document.getElementById('s3b').addEventListener('click', function(){ mGoTo(2); });
+  document.getElementById('s3n').addEventListener('click', function(){ mGoTo(4); });
+  document.getElementById('s4b').addEventListener('click', function(){ mGoTo(3); });
+  document.getElementById('s4n').addEventListener('click', function(){ mGoTo(5); });
+  document.getElementById('s5b').addEventListener('click', function(){ mGoTo(4); });
+  document.getElementById('s5g').addEventListener('click', gerarManifesto);
+  document.getElementById('btnEnviar').addEventListener('click', function(){ alert('Manifesto salvo! Em breve esta função enviará para a Jade.'); });
+  document.getElementById('btnEditar').addEventListener('click', function(){ mGoTo(5); });
+  document.querySelectorAll('#m-tags .tag').forEach(function(t) {
+    t.addEventListener('click', function(){ this.classList.toggle('selected'); });
+  });
+}
+
+function mGoTo(s) {
+  var c = document.getElementById('weekContent');
+  for (var i = 1; i <= 5; i++) {
+    var el = c.querySelector('#ms' + i);
+    if (el) el.classList.remove('active');
+  }
+  var r = c.querySelector('#mResult');
+  if (r) r.style.display = 'none';
+  var sc = c.querySelector('#ms' + s);
+  if (sc) sc.classList.add('active');
+  for (var i = 1; i <= 5; i++) {
+    var d = c.querySelector('#pd' + i);
+    if (!d) continue;
+    if (i < s) { d.className = 'pdot done'; d.textContent = '✓'; }
+    else if (i === s) { d.className = 'pdot active'; d.textContent = i; }
+    else { d.className = 'pdot'; d.textContent = i; }
+  }
+  for (var j = 1; j <= 4; j++) {
+    var l = c.querySelector('#pl' + j);
+    if (l) l.className = j < s ? 'pline done' : 'pline';
+  }
+  window.scrollTo(0,0);
+}
+
+function gerarManifesto() {
+  var c = document.getElementById('weekContent');
+  function val(id){ var el=c.querySelector('#'+id); return el ? el.value||'' : ''; }
+  var nome = val('m-nome') || 'Guerreira';
+  var formacao = val('m-formacao');
+  var nicho = val('m-nicho');
+  var pub = val('m-publico');
+  var trans = val('m-trans');
+  var porque = val('m-porque');
+  var crenca = val('m-crenca');
+  var impacto = val('m-impacto');
+  var frase = val('m-frase') || val('m-gritar');
+  var legado = val('m-legado');
+  var anos = val('m-anos');
+  var tags = [];
+  c.querySelectorAll('#m-tags .tag.selected').forEach(function(t){ tags.push(t.textContent.trim()); });
+  var extras = val('m-outros-ing');
+  if (extras) extras.split(',').forEach(function(e){ var t=e.trim(); if(t) tags.push(t); });
+  function set(id, txt){ var el=c.querySelector('#'+id); if(el) el.textContent=txt; }
+  set('r-nome', nome);
+  set('r-frase', frase || '"Minha causa ainda está sendo revelada..."');
+  set('r-id', (formacao ? 'Sou '+nome+', '+formacao : nome) + (anos ? ' com '+anos+' de atuação.' : '.'));
+  set('r-ed', trans ? trans.substring(0,110)+(trans.length>110?'...':'') : 'A definir na oficina.');
+  set('r-pub', pub ? pub.substring(0,90)+(pub.length>90?'...':'') : 'A definir.');
+  set('r-met', nicho ? 'Através da minha metodologia em '+nicho+'.' : 'Método a ser nomeado.');
+  set('r-cau', crenca ? crenca.substring(0,110)+(crenca.length>110?'...':'') : porque.substring(0,110)+'...');
+  set('r-leg', legado ? legado.substring(0,90)+(legado.length>90?'...':'') : impacto.substring(0,90)+'...');
+  var pills = c.querySelector('#r-ing');
+  if (pills) {
+    pills.innerHTML = '';
+    tags.forEach(function(t){ var p=document.createElement('span'); p.className='i-pill'; p.textContent=t; pills.appendChild(p); });
+  }
+  for (var m=1; m<=5; m++){ var sc=c.querySelector('#ms'+m); if(sc) sc.classList.remove('active'); }
+  var r = c.querySelector('#mResult');
+  if (r) r.style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+buildGrid();
+</script>
+</body>
+</html>
