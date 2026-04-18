@@ -533,11 +533,18 @@ function s1Ms4back() { mGoTo(3); }
 function s1Ms4next() { s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
 function s1BtnEditar() { mGoTo(4); }
 function s1BtnImprimir() {
-  var canvas = document.getElementById('canvasManifesto');
+  var wc = document.getElementById('weekContent');
+  var canvas = wc && wc.querySelector('.s1-resultado');
   if (!canvas) { window.print(); return; }
+  var clone = canvas.cloneNode(true);
+  clone.style.display = 'block';
   var printArea = document.getElementById('printArea');
   if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.cssText='display:none'; document.body.appendChild(printArea); }
-  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div></div>' + canvas.outerHTML + '</div>';
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem">' +
+    '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '<div style="font-size:1.3rem;font-weight:700;margin-top:0.5rem">Manifesto Editorial</div>' +
+    '</div>' + clone.outerHTML + '</div>';
   printArea.style.display = 'block';
   window.print();
   printArea.style.display = 'none';
@@ -2202,8 +2209,9 @@ function bindManifestoEvents() {
     s1Save();
   });
 
-  // Bloco 1 - nome
-  c.querySelector('#btnNomeContinuar').addEventListener('click', function() {
+  // Bloco 1 - nome (botão gerenciado pelo onclick inline)
+  var _btnNome = c.querySelector('#btnNomeContinuar');
+  if (_btnNome) _btnNome.addEventListener('click', function() {
     var nome = c.querySelector('#s1-nome').value.trim();
     if (!nome) { alert('Escreve seu nome para continuar!'); return; }
     var label = c.querySelector('#s1-nome-label');
