@@ -332,7 +332,18 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .card-acoes-print{display:flex;gap:10px;margin-top:1.2rem}
 .btn-print-now{flex:1;padding:12px;background:#05112b;border:none;border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
 .btn-print-close{flex:1;padding:12px;background:transparent;border:1px solid #ccc;border-radius:8px;color:#888;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
-@media print{body>*:not(#printArea){display:none!important}#printArea{display:block!important;position:fixed;inset:0;background:white;z-index:99999;padding:2rem}.print-hide{display:none!important}}
+@media print{
+  body>*{display:none!important}
+  #printArea{display:block!important;position:fixed;inset:0;background:white;z-index:99999;padding:2rem}
+  .card-juramento-print.ativo{display:block!important;position:fixed!important;inset:0!important;background:white!important;padding:2rem!important;overflow:visible!important}
+  .card-juramento-print.ativo .card-juramento-inner{display:block!important;box-shadow:none!important;border-radius:0!important;max-width:100%!important}
+  .card-juramento-print.ativo .card-close,
+  .card-juramento-print.ativo .card-acoes-print{display:none!important}
+  .card-juramento-print.ativo .card-header-print,
+  .card-juramento-print.ativo .card-body-print,
+  .card-juramento-print.ativo .card-footer-print{display:block!important}
+  .print-hide{display:none!important}
+}
 
 /* MODAL CUSTOMIZADO */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.92);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
@@ -959,7 +970,7 @@ function s1BtnCaminhoB() {
   s1GoTo('caminhoB');
   setTimeout(function(){ s1GerarPromptLT(); }, 100);
   var c = document.getElementById('weekContent');
-  s1AtualizarBPrompt(c);
+  s1GerarPromptLT();
   s1Save();
 }
 function s1BtnVoltarCaminhos() { s1GoTo('r5'); }
@@ -1384,21 +1395,21 @@ function bindManifestoEvents() {
   });
 
   // CAMINHO A — navegação
-  c.querySelector('#ms1next').addEventListener('click', function() { mGoTo(2); s1Save(); });
-  c.querySelector('#ms2back').addEventListener('click', function() { mGoTo(1); });
-  c.querySelector('#ms2next').addEventListener('click', function() { mGoTo(3); s1Save(); });
-  c.querySelector('#ms3back').addEventListener('click', function() { mGoTo(2); });
-  c.querySelector('#ms3next').addEventListener('click', function() { mGoTo(4); s1Save(); });
-  c.querySelector('#ms4back').addEventListener('click', function() { mGoTo(3); });
-  c.querySelector('#ms4next').addEventListener('click', function() {
+  var _ms1n=c.querySelector('#ms1next'); if(_ms1n) _ms1n.addEventListener('click', function() { mGoTo(2); s1Save(); });
+  var _ms2b=c.querySelector('#ms2back'); if(_ms2b) _ms2b.addEventListener('click', function() { mGoTo(1); });
+  var _ms2n=c.querySelector('#ms2next'); if(_ms2n) _ms2n.addEventListener('click', function() { mGoTo(3); s1Save(); });
+  var _ms3b=c.querySelector('#ms3back'); if(_ms3b) _ms3b.addEventListener('click', function() { mGoTo(2); });
+  var _ms3n=c.querySelector('#ms3next'); if(_ms3n) _ms3n.addEventListener('click', function() { mGoTo(4); s1Save(); });
+  var _ms4b=c.querySelector('#ms4back'); if(_ms4b) _ms4b.addEventListener('click', function() { mGoTo(3); });
+  var _ms4n=c.querySelector('#ms4next'); if(_ms4n) _ms4n.addEventListener('click', function() {
     s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save();
   });
 
   // RESULTADO
-  c.querySelector('#btnImprimirCanvas').addEventListener('click', function() { window.print(); });
-  c.querySelector('#btnEnviarJade').addEventListener('click', function() { alert('Em breve esta função enviará seu Canvas para a Jade!'); });
-  c.querySelector('#btnIrS2').addEventListener('click', function() { goHome(); setTimeout(function() { openWeek(2); }, 300); });
-  c.querySelector('#btnRecomecar').addEventListener('click', function() {
+  var _bic=c.querySelector('#btnImprimirCanvas'); if(_bic) _bic.addEventListener('click', function() { window.print(); });
+  var _bej=c.querySelector('#btnEnviarJade'); if(_bej) _bej.addEventListener('click', function() { alert('Em breve esta função enviará seu Canvas para a Jade!'); });
+  var _bis2=c.querySelector('#btnIrS2'); if(_bis2) _bis2.addEventListener('click', function() { goHome(); setTimeout(function() { openWeek(2); }, 300); });
+  var _brec=c.querySelector('#btnRecomecar'); if(_brec) _brec.addEventListener('click', function() {
     if (confirm('Tem certeza que quer recomeçar? Todas as suas respostas serão apagadas.')) {
       s1ClearSaved();
       c.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
@@ -1445,8 +1456,8 @@ function bindManifestoEvents() {
     document.body.removeChild(ta); setTimeout(function() { btn.textContent = '⧉ Copiar prompt'; }, 2000);
   }
 
-  c.querySelector('#bback').addEventListener('click', function() { s1GoTo('r5'); });
-  c.querySelector('#bnext').addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
+  var _bb=c.querySelector('#bback'); if(_bb) _bb.addEventListener('click', function() { s1GoTo('r5'); });
+  var _bn=c.querySelector('#bnext'); if(_bn) _bn.addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
 
   // s1Load é chamado pelo modal ou automaticamente se não há progresso
 }
