@@ -428,7 +428,49 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
   <div id="weekContent"></div>
 </div>
 
-<script>function s1BtnNome() {
+<script>
+var S1_SCREENS = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'];
+
+function s1GoTo(id) {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el) el.style.display = 'none';
+  });
+  var target = c.querySelector('#'+id);
+  if (target) {
+    target.style.display = 'block';
+    target.style.opacity = '0';
+    target.style.transform = 'translateY(16px)';
+    setTimeout(function() {
+      target.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      target.style.opacity = '1';
+      target.style.transform = 'translateY(0)';
+    }, 30);
+  }
+  window.scrollTo(0,0);
+  setTimeout(s1AtualizarBtnSeguir, 50);
+}
+
+function s1TelaAtual() {
+  var c = document.getElementById('weekContent');
+  if (!c) return 'r1';
+  var current = 'r1';
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el && el.style.display !== 'none' && el.style.display !== '') current = sid;
+  });
+  return current;
+}
+
+var S1_PREV = {
+  'r2':'r1','r3':'r2','r4':'r3','r4b':'r4',
+  'r5':'r4b','caminhoA':'r5','caminhoB':'r5',
+  'r_checkpoint':'caminhoB','s1Resultado':'caminhoA'
+};
+
+function s1BtnNome() {
   var c = document.getElementById('weekContent');
   var nome = c.querySelector('#s1-nome').value.trim();
   if (!nome) { alert('Escreve seu nome para continuar!'); return; }
