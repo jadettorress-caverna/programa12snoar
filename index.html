@@ -991,7 +991,8 @@ function bindManifestoEvents() {
   var _bb=c.querySelector('#bback'); if(_bb) _bb.addEventListener('click', function() { s1GoTo('r5'); });
   var _bn=c.querySelector('#bnext'); if(_bn) _bn.addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
 
-  // s1Load é chamado pelo modal ou automaticamente se não há progresso
+  // Carregar dados salvos sempre
+  s1Load();
 }
 
 function mGoTo(s) {
