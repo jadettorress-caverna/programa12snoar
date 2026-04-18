@@ -428,7 +428,137 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
   <div id="weekContent"></div>
 </div>
 
-<script>
+<script>function s1ClearSaved() {
+  try { localStorage.removeItem('s1_caverna_data'); } catch(e) {}
+  try { sessionStorage.removeItem('s1_caverna_data'); } catch(e) {}
+}
+
+function s1GetSaved() {
+  var raw = null;
+  try { raw = localStorage.getItem('s1_caverna_data'); } catch(e) {}
+  if (!raw) { try { raw = sessionStorage.getItem('s1_caverna_data'); } catch(e) {} }
+  if (!raw) return null;
+  try { return JSON.parse(raw); } catch(e) { return null; }
+}
+
+function s1MontarJuramento() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var nomeEl = c.querySelector('#r4-nome-destaque');
+  if (nomeEl) nomeEl.textContent = nome;
+  var espada = c.querySelector('#s1-espada') ? c.querySelector('#s1-espada').value.trim() : '';
+  var jEl = c.querySelector('#s1-juramento-texto');
+  if (jEl) {
+    jEl.innerHTML =
+      '<p style="font-family:\'Playfair Display\',serif;font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic;margin-bottom:1.2rem">' +
+      '"Eu, <em style="color:#b48250">' + nome + '</em>, portando minha espada <em style="color:#b48250">' + (espada||'...') + '</em>, prometo que vou iniciar, persistir e concluir meu projeto. Que nos dias difíceis vou lembrar de onde vim. E que a guerreira que superou tudo isso é a mesma que vai transformar vidas."' +
+      '</p>' +
+      '<p style="font-family:\'Playfair Display\',serif;font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic">' +
+      '"Juro solenemente honrar os meus super-poderes. Nos dias mais claros e nas noites mais escuras. Cumprir com as minhas responsabilidades e fazer o possível e impossível para transformar a vida de cada vez mais pessoas."' +
+      '</p>';
+  }
+}
+
+function s1PreencherResultado() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var nome = (c.querySelector('#s1-nome') && c.querySelector('#s1-nome').value.trim()) || '—';
+  var espada = (c.querySelector('#s1-espada') && c.querySelector('#s1-espada').value.trim()) || '—';
+  var area = (c.querySelector('#s1-area') && c.querySelector('#s1-area').value.trim()) || '—';
+  var nicho = (c.querySelector('#s1-nicho') && c.querySelector('#s1-nicho').value.trim()) || '—';
+  var fatia = (c.querySelector('#s1-fatia') && c.querySelector('#s1-fatia').value.trim()) || '—';
+  var publico = (c.querySelector('#s1-publico') && c.querySelector('#s1-publico').value.trim()) || '—';
+  var trans = (c.querySelector('#s1-trans') && c.querySelector('#s1-trans').value.trim()) || '—';
+  var causa = (c.querySelector('#s1-causa') && c.querySelector('#s1-causa').value.trim()) || '—';
+  var legado = (c.querySelector('#s1-legado') && c.querySelector('#s1-legado').value.trim()) || '—';
+  var manifesto = (c.querySelector('#s1-frase') && c.querySelector('#s1-frase').value.trim()) || '—';
+  // Preencher canvas
+  var fields = {
+    'res-nome': nome, 'res-espada': espada, 'res-area': area,
+    'res-nicho': nicho, 'res-fatia': fatia, 'res-publico': publico,
+    'res-trans': trans, 'res-causa': causa, 'res-legado': legado,
+    'res-manifesto': manifesto
+  };
+  Object.keys(fields).forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) el.textContent = fields[id];
+  });
+}
+
+
+function s1BtnR2back() { s1GoTo('r1'); }
+function s1BtnR2next() {
+  var c = document.getElementById('weekContent');
+  if (!c.querySelector('#s1-momento').value.trim()) { alert('Conta seu momento para continuar!'); return; }
+  s1GoTo('r3'); s1Save();
+}
+function s1BtnR3back() { s1GoTo('r2'); }
+function s1BtnR3next() {
+  var c = document.getElementById('weekContent');
+  if (!c.querySelector('#s1-espada').value.trim()) { alert('Dê um nome para sua espada!'); return; }
+  s1MontarJuramento(); s1GoTo('r4'); s1Save();
+}
+function s1BtnJuro() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome').value.trim() || 'Guerreira';
+  var r4bNome = c.querySelector('#r4b-nome');
+  if (r4bNome) r4bNome.textContent = nome;
+  s1GoTo('r4b'); s1Save();
+}
+function s1BtnCaminhoA() { s1GoTo('caminhoA'); s1Save(); }
+function s1BtnCaminhoB() {
+  s1GoTo('caminhoB');
+  setTimeout(function(){ s1GerarPromptLT(); }, 100);
+  s1Save();
+}
+function s1BtnIrCaminhos() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var t = c.querySelector('#r5-titulo');
+  if (t) t.textContent = nome + ', você já tem clareza sobre seu assunto principal no digital?';
+  s1GoTo('r5'); s1Save();
+}
+function s1BtnCheckpointOk() { s1GoTo('caminhoA'); s1Save(); }
+function s1BtnCheckpointVoltar() { s1GoTo('caminhoB'); }
+function s1VoltarCaminhos() { s1GoTo('r5'); }
+function s1BtnBback() { s1GoTo('r5'); }
+function s1BtnBnext() { s1GoTo('r_checkpoint'); s1Save(); }
+function s1Ms1next() { mGoTo(2); s1Save(); }
+function s1Ms2back() { mGoTo(1); }
+function s1Ms2next() { mGoTo(3); s1Save(); }
+function s1Ms3back() { mGoTo(2); }
+function s1Ms3next() { mGoTo(4); s1Save(); }
+function s1Ms4back() { mGoTo(3); }
+function s1Ms4next() { s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
+function s1BtnEditar() { mGoTo(4); }
+function s1BtnImprimir() {
+  var canvas = document.getElementById('canvasManifesto');
+  if (!canvas) { window.print(); return; }
+  var printArea = document.getElementById('printArea');
+  if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.cssText='display:none'; document.body.appendChild(printArea); }
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div></div>' + canvas.outerHTML + '</div>';
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+function s1BtnEnviar() { alert('Em breve esta função enviará seu Canvas para a Jade!'); }
+function s1BtnIrS2() { goHome(); setTimeout(function(){ openWeek(2); }, 300); }
+function s1BtnRecomecar() {
+  s1Modal({
+    icone: '↺', titulo: 'Recomeçar do início?',
+    texto: 'Todas as suas respostas serão apagadas.',
+    confirmar: 'Sim, recomeçar', cancelar: 'Cancelar',
+    onConfirmar: function() {
+      s1ClearSaved();
+      var c = document.getElementById('weekContent');
+      if (c) c.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
+      s1GoTo('r1');
+    }
+  });
+}
+
+
 var S1_SCREENS = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'];
 
 function s1GoTo(id) {
