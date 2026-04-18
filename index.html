@@ -428,7 +428,17 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
   <div id="weekContent"></div>
 </div>
 
-<script>
+<script>function s1BtnNome() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome').value.trim();
+  if (!nome) { alert('Escreve seu nome para continuar!'); return; }
+  var label = c.querySelector('#s1-nome-label');
+  if (label) label.textContent = 'Bem-vinda, ' + nome + '! ✦';
+  var s = c.querySelector('#r2-saudacao');
+  if (s) s.textContent = nome + ', bem-vinda à sua jornada';
+  s1GoTo('r2'); s1Save();
+}
+
 var weeks = [
   {n:1,title:"Manifesto Editorial",sub:"Fatia de Subnicho",desc:"Posicionamento - Sua mensagem é única e deve ser comunicada de forma única.",tag:"Posicionamento",locked:false,img:"fotos/semana1.jpg"},
   {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:false,img:"fotos/semana2.jpg"},
