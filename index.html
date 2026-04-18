@@ -1,1 +1,3064 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Semanas no Ar — Portal Caverna Azul</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-height:100vh}
 
+/* HEADER */
+.header{background:linear-gradient(160deg,#071a3e 0%,#05112b 60%);padding:2.5rem 1.5rem 2rem;border-bottom:1px solid rgba(180,130,80,0.2);text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:500px;height:400px;background:radial-gradient(circle,rgba(180,130,80,0.07) 0%,transparent 70%);pointer-events:none}
+.logo-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#b48250,#8a5f35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#05112b}
+.logo-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250}
+.header-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.2}
+.header-title em{font-style:italic;color:#b48250}
+.header-sub{font-size:13px;color:rgba(240,235,232,0.45);letter-spacing:1px;margin-bottom:1.8rem}
+.progress-summary{display:inline-flex;align-items:center;gap:10px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.2);border-radius:20px;padding:8px 20px;font-size:12px;color:rgba(240,235,232,0.6)}
+.progress-dot{width:8px;height:8px;border-radius:50%;background:#b48250;flex-shrink:0}
+
+/* GRID */
+.weeks-section{padding:2rem 1.5rem 3rem;max-width:1200px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:1.5rem;display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+
+/* CARD */
+.card{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.15);border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.3s}
+.card:hover{border-color:rgba(180,130,80,0.5);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.card.locked{opacity:0.45;cursor:not-allowed}
+.card.locked:hover{transform:none;border-color:rgba(180,130,80,0.15);box-shadow:none}
+.card-photo{height:220px;position:relative;overflow:hidden;background:linear-gradient(160deg,#0a1f4a,#071530)}
+.card-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.card-photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.placeholder-inner{width:90px;height:90px;border-radius:50%;background:rgba(180,130,80,0.08);border:2px solid rgba(180,130,80,0.25);display:flex;align-items:center;justify-content:center;font-size:28px;color:rgba(180,130,80,0.4)}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 35%,rgba(5,17,43,0.97) 100%)}
+.card-week-badge{position:absolute;bottom:14px;left:14px;display:flex;align-items:center;gap:6px;background:rgba(5,17,43,0.85);border:1px solid rgba(180,130,80,0.5);border-radius:20px;padding:5px 13px;font-size:10px;color:#b48250;letter-spacing:1.5px;text-transform:uppercase}
+.badge-icon{width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
+.badge-check{background:#b48250;color:#05112b;font-weight:700}
+.badge-lock{background:rgba(240,235,232,0.15)}
+.card-body{padding:1.1rem 1.2rem 1.4rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1px}
+.card-subtitle{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-bottom:9px}
+.card-desc{font-size:12px;color:rgba(240,235,232,0.4);line-height:1.55;margin-bottom:12px}
+.card-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(180,130,80,0.55);border-top:1px solid rgba(180,130,80,0.1);padding-top:10px}
+
+/* WEEK DETAIL */
+.week-detail{display:none;min-height:100vh;background:#05112b}
+.detail-header{background:linear-gradient(160deg,#071a3e,#05112b);padding:1rem 1.2rem;border-bottom:1px solid rgba(180,130,80,0.2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.btn-back-detail{background:transparent;border:1px solid rgba(240,235,232,0.15);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:rgba(240,235,232,0.6);font-size:16px;cursor:pointer;transition:all 0.2s;padding:0;flex-shrink:0}
+.btn-back-detail:hover{border-color:rgba(180,130,80,0.5);color:#b48250;background:rgba(180,130,80,0.08)}
+.detail-info{text-align:center;min-width:0;flex:1}
+.detail-week-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:2px}
+.detail-week-title{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0ebe8}
+
+/* RITUAL DE INICIAÇÃO */
+.ritual-wrapper{max-width:960px;margin:0 auto;padding:2rem 2rem}
+.ritual-screen{display:none}
+.ritual-screen.active{display:block}
+
+.ritual-boas-vindas{text-align:center;padding:2rem 0 1rem}
+.ritual-boas-vindas .caverna-icon{font-size:40px;margin-bottom:1rem;display:block}
+.ritual-boas-vindas h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f0ebe8;margin-bottom:0.5rem;line-height:1.3}
+.ritual-boas-vindas h2 em{font-style:italic;color:#b48250}
+.ritual-boas-vindas p{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.7;margin-bottom:2rem}
+
+.ritual-field{margin-bottom:1.5rem}
+.ritual-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:8px;display:block}
+.ritual-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none}
+.ritual-input:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.04)}
+.ritual-input::placeholder{color:rgba(240,235,232,0.2)}
+.ritual-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;resize:vertical;min-height:110px;line-height:1.7}
+.ritual-textarea:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.04)}
+.ritual-textarea::placeholder{color:rgba(240,235,232,0.2)}
+
+.ritual-hint{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.7;margin-bottom:1rem;font-style:italic}
+
+.btn-espada{width:100%;padding:16px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;margin-top:0.5rem}
+.btn-espada:hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(180,130,80,0.3)}
+
+.espada-confirmacao{background:linear-gradient(135deg,rgba(180,130,80,0.12),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.4);border-radius:14px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
+.espada-confirmacao-icon{font-size:36px;margin-bottom:0.8rem;display:block}
+.espada-confirmacao-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;line-height:1.6}
+.espada-confirmacao-text em{color:#b48250;font-style:italic}
+.espada-nome-destaque{font-family:'Playfair Display',serif;font-size:1.4rem;color:#b48250;font-weight:700;display:block;margin:0.5rem 0}
+
+.oracao-box{background:linear-gradient(160deg,#071a3e,#05112b);border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:2rem;text-align:center;margin-bottom:1.5rem}
+.oracao-titulo{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.3rem}
+.oracao-subtitulo{font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:rgba(180,130,80,0.6);margin-bottom:1.2rem}
+.oracao-texto{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;line-height:1.8;font-style:italic}
+.oracao-divider{width:40px;height:1px;background:rgba(180,130,80,0.3);margin:1.2rem auto}
+
+.promessa-box{background:rgba(5,17,43,0.8);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:10px;padding:1.3rem 1.5rem;margin-bottom:1.5rem}
+.promessa-texto{font-family:'Playfair Display',serif;font-size:0.95rem;color:#f0ebe8;line-height:1.9;font-style:italic}
+.promessa-texto em{color:#b48250;font-style:normal;font-weight:600}
+
+.direcionar-section{margin-top:2rem}
+.direcionar-pergunta{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;text-align:center;margin-bottom:0.5rem;line-height:1.4}
+.direcionar-hint{font-size:13px;color:rgba(240,235,232,0.4);text-align:center;margin-bottom:1.5rem}
+.direcionar-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-caminho{padding:16px 12px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all 0.2s;text-align:center;line-height:1.4}
+.btn-caminho-a{background:linear-gradient(135deg,#b48250,#8a5f35);border:none;color:#05112b;font-weight:500}
+.btn-caminho-b{background:transparent;border:1px solid rgba(180,130,80,0.4);color:#b48250}
+.btn-caminho:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.2)}
+.btn-caminho-titulo{font-weight:600;display:block;margin-bottom:4px}
+.btn-caminho-desc{font-size:12px;opacity:0.8;display:block}
+.manifesto-wrapper{max-width:960px;margin:0 auto;padding:2rem 2rem}
+.pbar{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 2rem;max-width:360px}
+.pdot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(240,235,232,0.4);transition:all 0.3s;flex-shrink:0;background:#05112b}
+.pdot.active{border-color:#b48250;color:#b48250;background:rgba(180,130,80,0.1)}
+.pdot.done{border-color:#b48250;background:#b48250;color:#05112b;font-weight:600}
+.pline{flex:1;height:1px;background:rgba(180,130,80,0.2);max-width:34px}
+.pline.done{background:rgba(180,130,80,0.5)}
+.step-screen{display:none}
+.step-screen.active{display:block}
+.s-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
+.s-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.3}
+.s-desc{font-size:15px;color:rgba(240,235,232,0.75);margin-bottom:1.8rem;line-height:1.6}
+.f-group{margin-bottom:1.3rem}
+.f-label{font-size:11px;color:rgba(240,235,232,0.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block}
+.f-input,.f-textarea,.f-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;transition:border-color 0.2s}
+.f-input:focus,.f-textarea:focus,.f-select:focus{border-color:rgba(180,130,80,0.6);background:rgba(180,130,80,0.05)}
+.f-input::placeholder,.f-textarea::placeholder{color:rgba(240,235,232,0.2)}
+.f-textarea{min-height:88px;resize:vertical;line-height:1.6}
+.f-select{appearance:none;cursor:pointer}
+.f-select option{background:#071a3e;color:#f0ebe8}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.insight{background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:8px;padding:14px 16px;margin-bottom:1.4rem}
+.insight p{font-size:13px;color:rgba(240,235,232,0.7);line-height:1.6;font-style:italic}
+.tag-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{padding:6px 14px;border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:12px;color:rgba(240,235,232,0.6);cursor:pointer;transition:all 0.2s;background:transparent;font-family:'DM Sans',sans-serif}
+.tag:hover{border-color:#b48250;color:#b48250}
+.tag.selected{background:rgba(180,130,80,0.15);border-color:#b48250;color:#b48250}
+.nav-btns{display:flex;gap:12px;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(180,130,80,0.15)}
+.btn-bk{padding:12px 22px;border:1px solid rgba(240,235,232,0.2);border-radius:8px;background:transparent;color:rgba(240,235,232,0.5);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
+.btn-nx{flex:1;padding:14px 22px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:8px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+.m-card{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+.m-header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(180,130,80,0.2)}
+.m-name{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f0ebe8;margin-bottom:0.3rem}
+.m-cause{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:#b48250}
+.canvas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
+.cc{background:rgba(5,17,43,0.92);padding:1.1rem}
+.cc.full{grid-column:1/-1}
+.cc-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:5px}
+.cc-ttl{font-family:'Playfair Display',serif;font-size:13px;color:rgba(240,235,232,0.45);margin-bottom:5px}
+.cc-val{font-size:12px;color:#f0ebe8;line-height:1.55;font-style:italic}
+.i-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.i-pill{padding:4px 12px;background:rgba(180,130,80,0.12);border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:11px;color:#b48250}
+.btn-gen{width:100%;padding:15px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:1rem}
+.manifesto-result{display:none}
+
+/* SEMANA 2 */
+.s2-page{max-width:700px;margin:0 auto;padding:0 1.5rem 3rem}
+.s2-content{padding-top:1rem}
+
+/* Cabeçalho Manifesto */
+.manifesto-header{background:linear-gradient(135deg,rgba(7,26,62,0.98),rgba(5,17,43,0.98));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:0.9rem 1.5rem;margin:1.5rem 0 2rem;position:sticky;top:65px;z-index:40;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(5,17,43,0.8);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mh-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;white-space:nowrap;flex-shrink:0}
+.mh-frase-input{flex:1;min-width:180px;background:transparent;border:none;border-bottom:1px solid rgba(180,130,80,0.3);border-radius:0;padding:4px 0;font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:#f0ebe8;outline:none}
+.mh-frase-input:focus{border-bottom-color:#b48250}
+.mh-frase-input::placeholder{color:rgba(240,235,232,0.25);font-style:italic}
+
+/* Seções S2 */
+.s2-section{margin-bottom:2rem;scroll-margin-top:180px}
+.s2-section-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#f0ebe8;margin-bottom:0.3rem}
+.s2-section-hint{font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:1rem;line-height:1.5}
+.s2-divider{border:none;border-top:1px solid rgba(180,130,80,0.15);margin:2rem 0}
+
+/* Campos S2 */
+.s2-field{margin-bottom:1.2rem}
+.s2-field-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(240,235,232,0.6);margin-bottom:4px;display:block}
+.s2-field-hint{font-size:12px;color:rgba(180,130,80,0.7);margin-bottom:6px;font-style:italic}
+.s2-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;resize:vertical;min-height:100px;line-height:1.6}
+.s2-textarea:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.03)}
+.s2-textarea::placeholder{color:rgba(240,235,232,0.18)}
+
+/* Etapa box */
+.etapa-box{background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:12px;padding:1.2rem;margin-bottom:1rem}
+.etapa-box-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
+.etapa-box-hint{font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:1rem;font-style:italic;line-height:1.5}
+
+/* Passos dinâmicos */
+.passos-container{display:flex;flex-direction:column;gap:8px;margin-bottom:0.8rem}
+.passo-row{display:flex;align-items:center;gap:8px}
+.passo-num{width:26px;height:26px;border-radius:50%;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:#b48250;flex-shrink:0;font-weight:600}
+.passo-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:#f0ebe8;outline:none}
+.passo-input:focus{border-color:rgba(180,130,80,0.5)}
+.passo-input::placeholder{color:rgba(240,235,232,0.18)}
+.passo-del{background:none;border:none;color:rgba(240,235,232,0.25);cursor:pointer;font-size:16px;padding:4px;line-height:1}
+.passo-del:hover{color:rgba(240,235,232,0.6)}
+.btn-add-passo{display:flex;align-items:center;gap:6px;background:transparent;border:1px dashed rgba(180,130,80,0.3);border-radius:8px;padding:8px 14px;color:rgba(180,130,80,0.7);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s;margin-top:4px}
+.btn-add-passo:hover{border-color:#b48250;color:#b48250}
+.aviso-menos-mais{background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:8px;padding:10px 14px;font-size:12px;color:#b48250;font-style:italic;margin-top:8px;display:none}
+
+/* Prompt GPT */
+.prompt-box{background:rgba(5,17,43,0.8);border:1px solid rgba(180,130,80,0.25);border-radius:12px;padding:1.3rem;margin-bottom:1rem}
+.prompt-box-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:0.8rem}
+.prompt-text{font-size:12px;color:rgba(240,235,232,0.6);line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.btn-copy-prompt{display:flex;align-items:center;gap:6px;margin-top:0.8rem;background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:8px 16px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s}
+.btn-copy-prompt:hover{background:rgba(180,130,80,0.1)}
+
+/* Canvas S2 */
+.canvas-s2{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem}
+.canvas-s2-header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(180,130,80,0.2)}
+.canvas-s2-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8}
+.canvas-s2-cause{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-top:4px}
+.canvas-s2-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden}
+.cs2c{background:rgba(5,17,43,0.92);padding:1rem}
+.cs2c.full{grid-column:1/-1}
+.cs2c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
+.cs2c-ttl{font-family:'Playfair Display',serif;font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:5px}
+.cs2c-val{font-size:12px;color:#f0ebe8;line-height:1.5;font-style:italic;min-height:20px}
+
+/* Pilares grid no método visual */
+.mv-pilares-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:0.5rem}
+.mv-pilar-card{background:rgba(180,130,80,0.07);border:1px solid rgba(180,130,80,0.25);border-radius:12px;padding:1rem 1.1rem}
+.mv-pilar-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:6px}
+.mv-pilar-text{font-size:13px;color:#f0ebe8;line-height:1.5;font-style:italic}
+.mv-pilar-empty{color:rgba(240,235,232,0.25)}
+.metodo-visual{background:linear-gradient(160deg,#071a3e,#05112b);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem;display:none}
+.mv-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;text-align:center;margin-bottom:0.3rem}
+.mv-subtitle{font-size:12px;color:rgba(240,235,232,0.4);text-align:center;margin-bottom:1.5rem}
+.mv-objetivo{background:rgba(180,130,80,0.1);border:1px solid rgba(180,130,80,0.3);border-radius:10px;padding:1rem;margin-bottom:1.2rem;text-align:center}
+.mv-objetivo-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:6px}
+.mv-objetivo-text{font-size:13px;color:#f0ebe8;font-style:italic;line-height:1.5}
+.mv-etapas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.2rem}
+.mv-etapa{background:rgba(255,255,255,0.03);border:1px solid rgba(180,130,80,0.15);border-radius:10px;padding:0.9rem}
+.mv-etapa-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
+.mv-etapa-title{font-family:'Playfair Display',serif;font-size:13px;color:#f0ebe8;margin-bottom:8px}
+.mv-passo{font-size:11px;color:rgba(240,235,232,0.5);padding:4px 0;border-bottom:1px solid rgba(180,130,80,0.08);line-height:1.4}
+.mv-passo:last-child{border-bottom:none}
+.mv-passo-num{color:#b48250;font-weight:600;margin-right:4px}
+
+/* Botões download */
+.download-area{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.2rem}
+.btn-download{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.2s;font-weight:500}
+.btn-dl-primary{background:linear-gradient(135deg,#b48250,#8a5f35);border:none;color:#05112b}
+.btn-dl-secondary{background:transparent;border:1px solid rgba(180,130,80,0.4);color:#b48250}
+.btn-dl-secondary:hover{background:rgba(180,130,80,0.08)}
+
+/* Botão ver método */
+.btn-ver-metodo{width:100%;padding:14px;background:linear-gradient(135deg,rgba(180,130,80,0.15),rgba(180,130,80,0.05));border:1px solid rgba(180,130,80,0.4);border-radius:10px;color:#b48250;font-family:'Playfair Display',serif;font-size:15px;cursor:pointer;margin:1.5rem 0 0.5rem;transition:all 0.2s}
+.btn-ver-metodo:hover{background:rgba(180,130,80,0.15)}
+
+/* Coming soon */
+.coming-soon{max-width:400px;margin:5rem auto;text-align:center;padding:2rem}
+.cs-icon{width:70px;height:70px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:28px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.6rem}
+.cs-desc{font-size:13px;color:rgba(240,235,232,0.4);line-height:1.7}
+
+.footer{text-align:center;padding:2rem;border-top:1px solid rgba(180,130,80,0.1)}
+.footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.4)}
+
+
+/* LAYOUT RESPONSIVO - 2 COLUNAS EM TELAS GRANDES */
+.ritual-ritual-zone{max-width:640px;margin:0 auto}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-2col .f-group{margin-bottom:0}
+.form-full{grid-column:1/-1}
+
+@media(max-width:860px){
+  .form-2col{grid-template-columns:1fr}
+  .form-full{grid-column:1}
+}
+@media(max-width:600px){
+  .mv-etapas{grid-template-columns:1fr}
+  .mh-form-grid{grid-template-columns:1fr}
+  .canvas-s2-grid{grid-template-columns:1fr}
+  .cs2c.full{grid-column:1}
+  .ritual-wrapper{padding:1.5rem 1rem}
+  .manifesto-wrapper{padding:1.5rem 1rem}
+  .direcionar-btns{grid-template-columns:1fr}
+}
+
+
+/* RESULTADO FINAL S1 */
+.s1-resultado{max-width:960px;margin:0 auto;padding:2rem 2rem}
+
+.s1-res-header{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:2rem}
+.s1-res-card{background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.2rem 1.5rem;text-align:center}
+.s1-res-card-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:8px;display:block}
+.s1-res-card-value{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;font-style:italic;line-height:1.4}
+.s1-res-card-icon{font-size:24px;display:block;margin-bottom:6px}
+
+.s1-proxima{background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(5,17,43,0.5));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;text-align:center;margin-top:1.5rem}
+.s1-proxima-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
+.s1-proxima-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;margin-bottom:0.5rem}
+.s1-proxima-desc{font-size:13px;color:rgba(240,235,232,0.5);line-height:1.6;margin-bottom:1.2rem}
+.btn-proxima{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-proxima:hover{opacity:0.9;transform:translateY(-2px)}
+
+.btn-recomecar{background:transparent;border:none;color:rgba(240,235,232,0.3);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;text-decoration:underline;margin-top:1rem;display:block;text-align:center;width:100%}
+.btn-recomecar:hover{color:rgba(240,235,232,0.6)}
+
+.s1-actions{display:flex;gap:12px;margin-top:1.2rem;flex-wrap:wrap}
+.btn-imprimir{flex:1;min-width:140px;padding:12px;background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:10px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.2s;text-align:center}
+.btn-imprimir:hover{background:rgba(180,130,80,0.08)}
+
+@media(max-width:700px){
+  .s1-res-header{grid-template-columns:1fr}
+  .s1-actions{flex-direction:column}
+}
+
+/* TELA COMPARTILHAR */
+.compartilhar-wrapper{max-width:640px;margin:0 auto;text-align:center;padding:1rem 0}
+.compartilhar-titulo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;line-height:1.4;margin-bottom:1.2rem}
+.compartilhar-titulo em{color:#b48250;font-style:italic}
+.compartilhar-texto{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.8;margin-bottom:1.5rem;text-align:left}
+.compartilhar-acoes{display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem}
+.btn-compartilhar-print{width:100%;padding:16px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s}
+.btn-compartilhar-print:hover{opacity:0.9;transform:translateY(-2px)}
+.btn-compartilhar-continuar{width:100%;padding:14px;background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:10px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:15px;cursor:pointer;transition:all 0.2s}
+.btn-compartilhar-continuar:hover{background:rgba(180,130,80,0.08)}
+
+/* CARD IMPRESSÃO */
+.card-juramento-print{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.95);z-index:9999;overflow-y:auto;padding:2rem;align-items:flex-start;justify-content:center}
+.card-juramento-print.ativo{display:flex}
+.card-juramento-inner{background:#fff;border-radius:16px;max-width:580px;width:100%;padding:2.5rem;position:relative;margin:auto}
+.card-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#888;line-height:1}
+.card-header-print{text-align:center;border-bottom:2px solid #b48250;padding-bottom:1.2rem;margin-bottom:1.2rem}
+.card-logo-print{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem}
+.card-nome-print{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#05112b;margin-bottom:0.3rem}
+.card-espada-print{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250}
+.card-oracao-titulo-print{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.3rem}
+.card-oracao-sub-print{font-family:'Playfair Display',serif;font-size:12px;font-style:italic;color:#888;margin-bottom:0.8rem}
+.card-oracao-divider-print{width:40px;height:1px;background:#b48250;margin:0.8rem auto}
+.card-promessa-print{font-family:'Playfair Display',serif;font-size:0.9rem;color:#333;line-height:1.8;font-style:italic;border-left:3px solid #b48250;padding-left:1rem;text-align:left;margin-bottom:1.2rem}
+.card-oracao-texto-print{font-family:'Playfair Display',serif;font-size:0.95rem;color:#05112b;line-height:1.8;font-style:italic;margin-bottom:1.2rem;text-align:center}
+.card-footer-print{text-align:center;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;border-top:1px solid #eee;padding-top:1rem}
+.card-acoes-print{display:flex;gap:10px;margin-top:1.2rem}
+.btn-print-now{flex:1;padding:12px;background:#05112b;border:none;border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
+.btn-print-close{flex:1;padding:12px;background:transparent;border:1px solid #ccc;border-radius:8px;color:#888;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
+@media print{body>*:not(#printArea){display:none!important}#printArea{display:block!important;position:fixed;inset:0;background:white;z-index:99999;padding:2rem}.print-hide{display:none!important}}
+
+/* MODAL CUSTOMIZADO */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.92);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
+.modal-overlay.ativo{display:flex}
+.modal-box{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.4);border-radius:18px;padding:2rem 2rem 1.5rem;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.modal-icon{font-size:32px;margin-bottom:0.8rem;display:block}
+.modal-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0ebe8;margin-bottom:0.5rem;font-weight:700}
+.modal-texto{font-size:14px;color:rgba(240,235,232,0.7);line-height:1.6;margin-bottom:1.5rem}
+.modal-btns{display:flex;gap:10px}
+.modal-btn-confirmar{flex:1;padding:13px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.modal-btn-confirmar:hover{opacity:0.9;transform:translateY(-1px)}
+.modal-btn-cancelar{flex:1;padding:13px;background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:10px;color:rgba(240,235,232,0.6);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all 0.2s}
+.modal-btn-cancelar:hover{border-color:rgba(180,130,80,0.6);color:#f0ebe8}
+
+/* BOTÃO SALVAR */
+.btn-salvar{position:fixed;bottom:24px;right:24px;z-index:999;padding:10px 20px;background:rgba(5,17,43,0.95);border:1px solid rgba(180,130,80,0.5);border-radius:30px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.3s;display:none;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.btn-salvar.visivel{display:flex}
+.btn-salvar.salvo{background:rgba(180,130,80,0.2);color:#f0ebe8;border-color:rgba(180,130,80,0.8)}
+@media(max-width:600px){.btn-salvar{bottom:16px;right:16px;padding:8px 16px;font-size:12px}}
+
+/* NAVEGAÇÃO ← → NO HEADER */
+.detail-header{display:flex;align-items:center;gap:0;padding:1rem 1.5rem;border-bottom:1px solid rgba(180,130,80,0.15);background:linear-gradient(160deg,#071a3e,#05112b);position:sticky;top:0;z-index:100}
+.nav-header-btns{display:flex;gap:6px;margin-left:auto}
+.btn-nav-header{padding:7px 14px;background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.2s}
+.btn-nav-header:hover{background:rgba(180,130,80,0.1);border-color:rgba(180,130,80,0.6)}
+.btn-nav-header:disabled{opacity:0.3;cursor:not-allowed}
+
+/* LINHA DO TEMPO */
+.bloco-linha-tempo{background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem}
+.bloco-lt-header{font-size:13px;font-weight:600;color:#b48250;letter-spacing:1px;margin-bottom:0.2rem}
+.bloco-lt-sub{font-size:12px;color:rgba(240,235,232,0.45);font-style:italic;margin-bottom:1rem}
+
+/* MODAL VITÓRIA */
+.modal-vitoria{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.95);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
+.modal-vitoria.ativo{display:flex}
+.modal-vitoria-box{background:linear-gradient(160deg,#0a1f4a,#05112b);border:2px solid rgba(180,130,80,0.6);border-radius:20px;padding:2.5rem 2rem;max-width:440px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(180,130,80,0.15),0 0 0 1px rgba(180,130,80,0.1)}
+.vitoria-icon{font-size:56px;display:block;margin-bottom:1rem;animation:vitoriaPulse 1s ease-in-out infinite alternate}
+@keyframes vitoriaPulse{from{transform:scale(1)}to{transform:scale(1.1)}}
+.vitoria-selo{display:inline-flex;align-items:center;gap:6px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:1rem}
+.vitoria-titulo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#f0ebe8;line-height:1.3;margin-bottom:0.5rem;font-weight:700}
+.vitoria-titulo em{color:#b48250;font-style:italic}
+.vitoria-semana{font-size:13px;color:rgba(240,235,232,0.5);margin-bottom:1.2rem;letter-spacing:1px}
+.vitoria-frase{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(240,235,232,0.75);line-height:1.7;font-style:italic;margin-bottom:1.8rem;padding:0 0.5rem}
+.vitoria-btn{width:100%;padding:14px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.vitoria-btn:hover{opacity:0.9;transform:translateY(-1px)}
+.vitoria-colecao{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.vitoria-badge{background:rgba(180,130,80,0.12);border:1px solid rgba(180,130,80,0.3);border-radius:10px;padding:6px 12px;font-size:11px;color:#b48250;display:flex;align-items:center;gap:5px}
+.vitoria-badge.conquistada{background:rgba(180,130,80,0.2);border-color:rgba(180,130,80,0.6);color:#f0ebe8}
+</style>
+</head>
+<body>
+
+<div id="portalHome">
+  <div class="header">
+    <div class="logo-badge">
+      <div class="logo-icon">12s</div>
+      <span class="logo-text">Portal Caverna Azul</span>
+    </div>
+    <h1 class="header-title">Programa <em>12 Semanas</em> no Ar</h1>
+    <p class="header-sub">Programa Editorial Prático · Jade Torres</p>
+    <div class="progress-summary">
+      <div class="progress-dot"></div>
+      Sua jornada começa aqui, guerreira
+    </div>
+  </div>
+  <div class="weeks-section">
+    <span class="section-label">Sua jornada — 12 semanas</span>
+    <div class="grid" id="weeksGrid"></div>
+  </div>
+  <div class="footer"><p>Portal Caverna das Guerreiras · Jade Torres · 2025</p></div>
+</div>
+
+<div class="week-detail" id="weekDetail">
+  <div class="detail-header">
+    <button class="btn-back-detail" id="btnBackMain">←</button>
+    <div class="detail-info">
+      <div class="detail-week-num" id="detailWeekNum"></div>
+      <div class="detail-week-title" id="detailWeekTitle"></div>
+    </div>
+    <button class="btn-back-detail" id="btnSeguirMain" style="visibility:hidden" onclick="s1NavSeguir()">→</button>
+  </div>
+  <div id="weekContent"></div>
+</div>
+
+<script>
+var weeks = [
+  {n:1,title:"Manifesto Editorial",sub:"Fatia de Subnicho",desc:"Posicionamento - Sua mensagem é única e deve ser comunicada de forma única.",tag:"Posicionamento",locked:false,img:"fotos/semana1.jpg"},
+  {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:false,img:"fotos/semana2.jpg"},
+  {n:3,title:"Produtos do",sub:"Método",desc:"Defina os produtos que nascem do seu método com clareza e intenção.",tag:"Produtos",locked:true,img:"fotos/semana3.jpg"},
+  {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:true,img:"fotos/semana4.jpg"},
+  {n:5,title:"Designer de",sub:"Plataforma",desc:"Seus produtos ganham cores e formas para valorizar sua vitrine.",tag:"Design",locked:true,img:"fotos/semana5.jpg"},
+  {n:6,title:"Gravação do",sub:"Método",desc:"O que você criou começa a ganhar formato profissional.",tag:"Gravação",locked:true,img:"fotos/semana6.jpg"},
+  {n:7,title:"Edição",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:true,img:"fotos/semana7.jpg"},
+  {n:8,title:"Validação do",sub:"Método",desc:"Hora de testar, ajustar e fortalecer sua solução principal.",tag:"Validação",locked:true,img:"fotos/semana8.jpg"},
+  {n:9,title:"Perfil Pronto",sub:"BIO e Fixados",desc:"Sua marca pessoal mostrará causa, propósito e identidade no digital.",tag:"Instagram",locked:true,img:"fotos/semana9.jpg"},
+  {n:10,title:"Perfil Pronto",sub:"Destaques",desc:"Cada destaque conta uma parte da sua história e convida ao próximo passo.",tag:"Instagram",locked:true,img:"fotos/semana10.jpg"},
+  {n:11,title:"Perfil Pronto",sub:"Feed",desc:"Produção e distribuição - conteúdo inicia um movimento alcançando novos espaços.",tag:"Conteúdo",locked:true,img:"fotos/semana11.jpg"},
+  {n:12,title:"Projeto",sub:"no Ar",desc:"Coletiva Final - Você concluiu sua travessia. Seu projeto está pronto.",tag:"Conclusão",locked:true,img:"fotos/semana12.jpg"}
+];
+
+document.getElementById('btnBackMain').addEventListener('click', goHome);
+
+function buildGrid() {
+  var g = document.getElementById('weeksGrid');
+  weeks.forEach(function(w) {
+    var c = document.createElement('div');
+    c.className = 'card' + (w.locked ? ' locked' : '');
+    var photoHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner">✦</div></div>';
+    if (w.img) {
+      var img = document.createElement('img');
+      img.src = w.img;
+      img.alt = 'Semana ' + w.n;
+      img.addEventListener('error', function() {
+        this.parentElement.innerHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner">✦</div></div>';
+      });
+      photoHTML = img.outerHTML;
+    }
+    var badge = '<div class="card-week-badge"><div class="badge-icon ' + (w.locked ? 'badge-lock' : 'badge-check') + '">' + (w.locked ? '🔒' : '✓') + '</div>Semana ' + w.n + '</div>';
+    c.innerHTML = '<div class="card-photo">' + photoHTML + '<div class="card-overlay"></div>' + badge + '</div>' +
+      '<div class="card-body"><div class="card-title">' + w.title + '</div><div class="card-subtitle">' + w.sub + '</div><div class="card-desc">' + w.desc + '</div><div class="card-tag">' + w.tag + '</div></div>';
+    if (!w.locked) {
+      (function(wk) { c.addEventListener('click', function() { openWeek(wk.n); }); })(w);
+    }
+    g.appendChild(c);
+  });
+}
+
+function openWeek(n) {
+  document.getElementById('portalHome').style.display = 'none';
+  document.getElementById('weekDetail').style.display = 'block';
+  var w = weeks[n-1];
+  document.getElementById('detailWeekNum').textContent = 'Semana ' + n + ' · ' + w.tag;
+  document.getElementById('detailWeekTitle').textContent = w.title + ' - ' + w.sub;
+  var content = document.getElementById('weekContent');
+  if (n === 1) {
+    var tpl = document.getElementById('tplS1');
+    content.innerHTML = tpl ? tpl.innerHTML : '';
+    ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'].forEach(function(sid){
+      var el = content.querySelector('#'+sid);
+      if(el) el.style.display = 'none';
+    });
+    setTimeout(function(){
+      bindManifestoEvents();
+      // Verificar se há etapa em andamento
+      try {
+        var raw1='{}';try{raw1=localStorage.getItem('s1_caverna_data')||sessionStorage.getItem('s1_caverna_data')||'{}';}catch(e){}
+        var data = JSON.parse(raw1);
+        var hasProgress = data['s1-nome'] && data['s1-nome'].trim().length > 0;
+        var isDone = data['s1-current'] === 's1Resultado';
+        if (hasProgress && !isDone) {
+          s1Modal({
+            icone: '⚔',
+            titulo: 'Você tem uma etapa em andamento.',
+            texto: 'Deseja continuar de onde parou ou recomeçar do início?',
+            confirmar: 'Continuar',
+            cancelar: 'Recomeçar',
+            onConfirmar: function() {
+              s1Load(); // Carregar dados salvos ao confirmar
+            },
+            onCancelar: function() {
+              s1ClearSaved();
+              var wc = document.getElementById('weekContent');
+              if (wc) wc.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
+              ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'].forEach(function(sid){
+                var el = wc && wc.querySelector('#'+sid);
+                if (el) el.style.display = 'none';
+              });
+              var r1 = wc && wc.querySelector('#r1');
+              if (r1) r1.style.display = 'block';
+            }
+          });
+        } else if (hasProgress && isDone) {
+          s1Load(); // Se já terminou, carregar direto
+        }
+      } catch(e) {}
+    }, 50);
+  } else if (n === 2) {
+    content.innerHTML = getS2HTML();
+    bindS2Events();
+  } else {
+    content.innerHTML = '<div class="coming-soon"><div class="cs-icon">⚔</div><div class="cs-title">Em construção, guerreira</div><div class="cs-desc">Esta etapa está sendo preparada com todo cuidado. Em breve você terá acesso à interface completa da Semana ' + n + '.</div></div>';
+  }
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  var weekContent = document.getElementById('weekContent');
+  var s1Active = weekContent && weekContent.querySelector('#r1');
+  if (!s1Active) {
+    // Não está na S1 — sair direto
+    document.getElementById('weekDetail').style.display = 'none';
+    document.getElementById('portalHome').style.display = 'block';
+    s1MostrarBtnSalvar(false);
+    window.scrollTo(0,0);
+    return;
+  }
+
+  // Está na S1 — verificar tela atual
+  var atual = s1TelaAtual();
+
+  // Se estiver na tela 1, perguntar se quer sair
+  if (atual === 'r1') {
+    s1Modal({
+      icone: '🗡',
+      titulo: 'Deseja sair da Semana 1?',
+      texto: 'Você pode voltar quando quiser e continuar de onde parou.',
+      confirmar: 'Sair',
+      cancelar: 'Ficar aqui',
+      onConfirmar: function() {
+        document.getElementById('weekDetail').style.display = 'none';
+        document.getElementById('portalHome').style.display = 'block';
+        s1MostrarBtnSalvar(false);
+        window.scrollTo(0,0);
+      }
+    });
+    return;
+  }
+
+  // Se não estiver na tela 1 — voltar para tela anterior
+  var prev = S1_PREV[atual];
+  if (prev) {
+    s1Save();
+    s1GoTo(prev);
+    // Restaurar juramento se voltar para r4
+    if (prev === 'r4') s1MontarJuramento();
+  }
+}
+
+/* SEMANA 1 - RITUAL + MANIFESTO */
+
+var S1_KEY = 's1_caverna_data';
+var S1_SCREENS = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'];
+
+function s1Save() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var data = {};
+  // Salvar todos os campos
+  var ids = ['s1-nome','s1-momento','s1-espada','s1-area','s1-nicho','s1-fatia',
+    's1-publico','s1-trans','s1-dons','s1-habilidades','s1-experiencias',
+    's1-crenca','s1-causa','s1-frase','s1-gritar','s1-legado',
+    'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
+    'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
+    'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
+  ids.forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) data[id] = el.value;
+  });
+  // Salvar tela atual — percorrer e achar qual está visível
+  var current = 'r1';
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el && el.style.display !== 'none' && el.style.display !== '') current = sid;
+  });
+  data['s1-current'] = current;
+  var json = JSON.stringify(data);
+  var saved = false;
+  try { localStorage.setItem(S1_KEY, json); saved = true; } catch(e) {}
+  if (!saved) { try { sessionStorage.setItem(S1_KEY, json); } catch(e) {} }
+}
+
+function s1GetSaved() {
+  var raw = null;
+  try { raw = localStorage.getItem(S1_KEY); } catch(e) {}
+  if (!raw) { try { raw = sessionStorage.getItem(S1_KEY); } catch(e) {} }
+  if (!raw) return null;
+  try { return JSON.parse(raw); } catch(e) { return null; }
+}
+
+function s1ClearSaved() {
+  try { localStorage.removeItem(S1_KEY); } catch(e) {}
+  try { sessionStorage.removeItem(S1_KEY); } catch(e) {}
+}
+
+function s1Load() {
+  var data = s1GetSaved();
+  if (!data) return;
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  // Preencher campos
+  var ids = ['s1-nome','s1-momento','s1-espada','s1-area','s1-nicho','s1-fatia',
+    's1-publico','s1-trans','s1-dons','s1-habilidades','s1-experiencias',
+    's1-crenca','s1-causa','s1-frase','s1-gritar','s1-legado',
+    'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
+    'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
+    'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
+  ids.forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el && data[id] !== undefined) el.value = data[id];
+  });
+
+  // Atualizar label do nome
+  var nomeEl = c.querySelector('#s1-nome');
+  if (nomeEl && nomeEl.value.trim()) {
+    var label = c.querySelector('#s1-nome-label');
+    if (label) label.textContent = 'Bem-vinda de volta, ' + nomeEl.value.trim() + '! ✦';
+  }
+
+  // Ir para tela salva
+  var current = data['s1-current'] || 'r1';
+  s1GoTo(current);
+
+  // Restaurar juramento se necessário
+  if (['r4','r4b','r5','caminhoA','caminhoB','s1Resultado'].indexOf(current) > -1) {
+    s1MontarJuramento();
+    var r4bNome = c.querySelector('#r4b-nome');
+    if (r4bNome && nomeEl) r4bNome.textContent = nomeEl.value.trim();
+  }
+
+  // Restaurar canvas se terminou
+  if (current === 's1Resultado') s1PreencherResultado();
+}
+
+function s1GoTo(id) {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el) el.style.display = 'none';
+  });
+  // Para caminhoA, também esconder steps
+  var ca = c.querySelector('#caminhoA');
+  if (ca && id !== 'caminhoA') ca.style.display = 'none';
+
+  var target = c.querySelector('#'+id);
+  if (target) {
+    target.style.display = 'block';
+    target.style.opacity = '0';
+    target.style.transform = 'translateY(16px)';
+    setTimeout(function() {
+      target.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      target.style.opacity = '1';
+      target.style.transform = 'translateY(0)';
+    }, 30);
+  }
+  window.scrollTo(0,0);
+  setTimeout(s1AtualizarBtnSeguir, 50);
+}
+
+function s1MontarJuramento() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var nomeEl = c.querySelector('#r4-nome-destaque');
+  if (nomeEl) nomeEl.textContent = nome;
+  var espada = c.querySelector('#s1-espada') ? c.querySelector('#s1-espada').value.trim() : '';
+  var jEl = c.querySelector('#s1-juramento-texto');
+  if (jEl) {
+    jEl.innerHTML =
+      '<p style="font-family:\'Playfair Display\',serif;font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic;margin-bottom:1.2rem">' +
+      '"Eu, <em style="color:#b48250">' + nome + '</em>, portando minha espada <em style="color:#b48250">' + (espada||'...') + '</em>, prometo que vou iniciar, persistir e concluir meu projeto. Que nos dias difíceis vou lembrar de onde vim. E que a guerreira que superou tudo isso é a mesma que vai transformar vidas."' +
+      '</p>' +
+      '<p style="font-family:\'Playfair Display\',serif;font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic">' +
+      '"Juro solenemente honrar os meus super-poderes. Nos dias mais claros e nas noites mais escuras. Cumprir com as minhas responsabilidades e fazer o possível e impossível para transformar a vida de cada vez mais pessoas."' +
+      '</p>';
+  }
+}
+
+function s1PreencherResultado() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  function val(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : ''; }
+  var nome = val('s1-nome') || 'Guerreira';
+  var espada = val('s1-espada') || '—';
+  var frase = val('s1-frase') || val('s1-gritar') || 'Minha causa ainda está sendo revelada...';
+  var fatia = val('s1-fatia') || val('s1-nicho');
+  var pub = val('s1-publico');
+  var trans = val('s1-trans');
+  var dons = val('s1-dons');
+  var crenca = val('s1-crenca');
+  var causa = val('s1-causa');
+  var legado = val('s1-legado');
+  var nicho = val('s1-nicho');
+
+  function set(id, txt) { var el = c.querySelector('#'+id); if (el) el.textContent = txt; }
+  set('res-espada', espada);
+  set('res-nome', nome);
+  set('res-frase', frase);
+  set('r-nome', nome);
+  set('r-frase', frase);
+  set('r-id', nome + (fatia ? ' — ' + fatia : ''));
+  set('r-ed', trans ? trans.substring(0,120)+(trans.length>120?'...':'') : 'A definir.');
+  set('r-pub', pub ? pub.substring(0,100)+(pub.length>100?'...':'') : 'A definir.');
+  set('r-met', nicho ? 'Através da minha metodologia em '+nicho+'.' : 'Método a ser nomeado.');
+  set('r-cau', causa ? causa.substring(0,120)+(causa.length>120?'...':'') : crenca ? crenca.substring(0,120)+'...' : 'A definir.');
+  set('r-leg', legado ? legado.substring(0,100)+(legado.length>100?'...':'') : '—');
+
+  var pills = c.querySelector('#r-ing');
+  if (pills) {
+    pills.innerHTML = '';
+    var ings = [];
+    if (dons) ings.push(dons.substring(0,40));
+    if (causa) ings.push(causa.substring(0,40));
+    ings.forEach(function(t) {
+      var p = document.createElement('span'); p.className = 'i-pill'; p.textContent = t; pills.appendChild(p);
+    });
+  }
+}
+
+function rGoTo(id) {}
+
+function getManifestoHTML() {
+  return '<div class="ritual-wrapper">' +
+
+  // TELA 1 — NOME
+  '<div id="r1" style="max-width:620px;margin:0 auto">' +
+    '<div class="ritual-boas-vindas">' +
+      '<span class="caverna-icon">⚔</span>' +
+      '<h2>Bem-vinda à<br><em>Caverna das Guerreiras</em></h2>' +
+      '<p>Este é um espaço sagrado onde seu propósito vai se transformar em uma missão capaz de impactar milhares de vidas. Antes de começar sua jornada, se apresente à Caverna.</p>' +
+    '</div>' +
+    '<div class="ritual-field">' +
+      '<label class="ritual-label" id="s1-nome-label">Qual é o seu nome, guerreira?</label>' +
+      '<input class="ritual-input" id="s1-nome" placeholder="Escreva seu nome aqui...">' +
+    '</div>' +
+    '<button class="btn-espada" id="btnR1next" onclick="s1BtnNome()">Entrar na Caverna →</button>' +
+  '</div>' +
+
+  // TELA 2 — MOMENTO DA ESPADA
+  '<div id="r2" style="display:none;max-width:620px;margin:0 auto">' +
+    '<span class="s-label" id="r2-saudacao"></span>' +
+    '<h2 class="s-title">Hora de vestir<br>a <em style="color:#b48250;font-style:italic">armadura</em></h2>' +
+    '<p class="ritual-hint" style="margin:0.8rem 0 1.2rem">Antes de começar, quero te convidar para um momento que vai fortalecer a construção do seu projeto digital. Lembra de uma situação da sua vida onde você tirou a coroa de princesa e se tornou guerreira para enfrentar sua maior batalha. Pode ter sido uma separação, uma doença, uma perda, um recomeço... Escreve aqui. Ninguém vai ler além de você.</p>' +
+    '<div class="ritual-field">' +
+      '<label class="ritual-label">Meu momento guerreira</label>' +
+      '<textarea class="ritual-textarea" id="s1-momento" placeholder="Exemplo: A coisa mais difícil que eu superei foi..."></textarea>' +
+    '</div>' +
+    '<div class="nav-btns"><button class="btn-bk" id="btnR2back" onclick="s1BtnR2back()">← Voltar</button><button class="btn-nx" id="btnR2next" onclick="s1BtnR2next()">Seguir →</button></div>' +
+  '</div>' +
+
+  // TELA 3 — NOMEAR ESPADA
+  '<div id="r3" style="display:none;max-width:620px;margin:0 auto">' +
+    '<h2 class="s-title">Dê um nome<br>para sua <em style="color:#b48250;font-style:italic">espada</em></h2>' +
+    '<p class="ritual-hint" style="margin:0.8rem 0 1.2rem">Essa espada representa tudo que você superou e a força que você carrega. Ela é sua. Só você sabe qual palavra carrega esse peso.</p>' +
+    '<div class="ritual-field">' +
+      '<label class="ritual-label">O nome da sua espada</label>' +
+      '<input class="ritual-input" id="s1-espada" placeholder="Uma palavra, um nome, uma frase curta...">' +
+    '</div>' +
+    '<div class="nav-btns"><button class="btn-bk" id="btnR3back" onclick="s1BtnR3back()">← Voltar</button><button class="btn-espada" id="btnR3next" style="flex:1" onclick="s1BtnR3next()">⚔ Eu pego minha espada</button></div>' +
+  '</div>' +
+
+  // TELA 4 — JURAMENTO FUNDIDO
+  '<div id="r4" style="display:none;max-width:620px;margin:0 auto">' +
+    '<div style="text-align:center;margin-bottom:1.8rem">' +
+      '<p style="font-family:\'Playfair Display\',serif;font-size:1.15rem;color:#f0ebe8;line-height:1.7;font-style:italic">A força que te trouxe até aqui é a mesma<br>que vai construir o seu projeto.<br><br>Hoje você faz uma <em style="color:#b48250;font-style:normal;font-weight:600">promessa</em> para você mesma.</p>' +
+    '</div>' +
+    '<div class="oracao-box" style="text-align:left">' +
+      '<div style="text-align:center">' +
+        '<div class="oracao-titulo">Oração da Guerreira</div>' +
+        '<div class="oracao-subtitulo">forjada no calor da batalha</div>' +
+        '<div class="oracao-divider"></div>' +
+      '</div>' +
+      '<div id="s1-juramento-texto"></div>' +
+    '</div>' +
+    '<button class="btn-espada" id="btnR4juro" style="margin-top:1.2rem" onclick="s1BtnJuro()">⚔ Eu juro</button>' +
+  '</div>' +
+
+  // TELA 5 — DIRECIONAMENTO
+  '<div id="r5" style="display:none;max-width:620px;margin:0 auto">' +
+    '<h2 class="direcionar-pergunta" id="r5-titulo"></h2>' +
+    '<p class="direcionar-hint">Escolha o caminho certo para você agora.</p>' +
+    '<div class="direcionar-btns">' +
+      '<button class="btn-caminho btn-caminho-b" id="btnCaminhoB" onclick="s1BtnCaminhoB()"><span class="btn-caminho-titulo">✦ Linha do Tempo</span><span class="btn-caminho-desc">Quero investigar minha história e encontrar meu assunto principal para assumir meu lugar de fala</span></button>' +
+      '<button class="btn-caminho btn-caminho-a" id="btnCaminhoA" onclick="s1BtnCaminhoA()"><span class="btn-caminho-titulo">✓ Sprint de Decisões</span><span class="btn-caminho-desc">Tenho clareza do meu nicho e quero começar já organizando meu posicionamento e fatia de subnicho.</span></button>' +
+    '</div>' +
+  '</div>' +
+
+  // CAMINHO A
+  '<div id="caminhoA" style="display:none">' +
+    '<div style="max-width:960px;margin:0 auto">' +
+      '<div class="pbar"><div class="pdot active" id="pd1">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4">4</div></div>' +
+      '<div class="step-screen active" id="ms1">' +
+        '<span class="s-label">Etapa 1 de 4 · A Pizza</span>' +
+        '<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>' +
+        '<p class="s-desc">Preencha os campos abaixo para organizar suas informações de posicionamento.<br><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Assistir a aula de Sprint da Fatia no módulo de Manifesto.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>' +
+          '<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>' +
+          '<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>' +
+          '<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms2">' +
+        '<span class="s-label">Etapa 2 de 4 · Ingredientes</span>' +
+        '<h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>' +
+        '<p class="s-desc">O que compõe a sua essência única.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>' +
+          '<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms3">' +
+        '<span class="s-label">Etapa 3 de 4 · Sprint</span>' +
+        '<h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>' +
+        '<p class="s-desc">Consolide sua fatia em respostas rápidas e precisas.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" rows="2" style="min-height:70px" placeholder="Que material ou fundamento você usa?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" rows="2" style="min-height:70px" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans" rows="2" style="min-height:70px" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>' +
+          '<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms4">' +
+        '<span class="s-label">Etapa 4 de 4 · Manifesto</span>' +
+        '<h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>' +
+        '<p class="s-desc">A frase que será o norte de toda a sua comunicação.</p>' +
+        '<div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." — Uma frase que só você poderia dizer.</p></div>' +
+        '<div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>' +
+        '<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+
+  // CAMINHO B
+  '<div id="caminhoB" style="display:none">' +
+    '<div style="max-width:960px;margin:0 auto">' +
+      '<span class="s-label">Caminho B · Descoberta</span>' +
+      '<h2 class="s-title" style="margin-bottom:1rem">Sua jornada<br><em style="color:#b48250;font-style:italic">interna</em></h2>' +
+      '<p class="s-desc">Vamos investigar sua história para encontrar seu assunto principal. Responda com calma e sinceridade.</p>' +
+      '<div class="form-2col">' +
+        '<div class="f-group form-full"><label class="f-label">O que você sabe fazer que poderia ensinar?</label><textarea class="f-textarea" id="b-sabe" placeholder="Não precisa estar na sua formação..."></textarea></div>' +
+        '<div class="f-group form-full"><label class="f-label">Suas experiências profissionais</label><textarea class="f-textarea" id="b-experiencias" placeholder="Ex: 2010-2015 trabalhei com..."></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Quem você tem tentado ajudar?</label><textarea class="f-textarea" id="b-ajudar" placeholder="Que tipo de pessoa ou público?"></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Resultado que essa pessoa alcança</label><textarea class="f-textarea" id="b-resultado" placeholder="O que muda na vida dela?"></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Como você entrega</label><textarea class="f-textarea" id="b-entrega" placeholder="Presencialmente, online..."></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Seus dons naturais</label><input type="text" class="f-input" id="b-dons" placeholder="Sou paciente, tenho facilidade para ouvir..."></div>' +
+        '<div class="f-group"><label class="f-label">Suas habilidades</label><input type="text" class="f-input" id="b-habilidades" placeholder="Habilidade em desenvolver atividades..."></div>' +
+        '<div class="f-group"><label class="f-label">Sua causa ou crença</label><textarea class="f-textarea" id="b-causa" placeholder="Acredito que..."></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Impacto que quer causar</label><textarea class="f-textarea" id="b-impacto" placeholder="Que transformação quer ver no mundo?"></textarea></div>' +
+      '</div>' +
+      '<div class="prompt-box" style="margin-top:1.2rem">' +
+        '<div class="prompt-box-title">✦ Prompt gerado — Copie e leve ao ChatGPT</div>' +
+        '<div class="prompt-text" id="bPromptText">Preencha os campos acima para gerar seu prompt.</div>' +
+        '<button class="btn-copy-prompt" id="btnCopyBPrompt">⧉ Copiar prompt</button>' +
+      '</div>' +
+      '<div class="f-group" style="margin-top:1.2rem"><label class="f-label">Cole aqui o resumo do ChatGPT</label><span class="s2-field-hint" style="display:block;margin-bottom:6px">Cole e continue para a Pizza.</span><textarea class="f-textarea" id="b-resumo" rows="5" placeholder="Cole aqui o resumo do ChatGPT..."></textarea></div>' +
+      '<div class="nav-btns"><button class="btn-bk" id="bback" onclick="s1BtnBback()">← Voltar</button><button class="btn-nx" id="bnext" onclick="s1BtnBnext()">Seguir →</button></div>' +
+    '</div>' +
+  '</div>' +
+
+  // RESULTADO FINAL
+  '<div id="s1Resultado" style="display:none">' +
+    '<div class="s1-resultado">' +
+      '<span class="s-label" style="text-align:center;display:block;margin-bottom:1rem">✦ Seu Manifesto Editorial</span>' +
+      '<div class="s1-res-header">' +
+        '<div class="s1-res-card"><span class="s1-res-card-icon">⚔</span><span class="s1-res-card-label">Sua espada</span><div class="s1-res-card-value" id="res-espada">—</div></div>' +
+        '<div class="s1-res-card"><span class="s1-res-card-icon">✦</span><span class="s1-res-card-label">Guerreira</span><div class="s1-res-card-value" id="res-nome">—</div></div>' +
+        '<div class="s1-res-card"><span class="s1-res-card-icon">🗡</span><span class="s1-res-card-label">Manifesto</span><div class="s1-res-card-value" id="res-frase">—</div></div>' +
+      '</div>' +
+      '<div class="canvas-s2">' +
+        '<div class="canvas-s2-header"><div class="canvas-s2-name" id="r-nome"></div><div class="canvas-s2-cause" id="r-frase"></div></div>' +
+        '<div class="canvas-s2-grid">' +
+          '<div class="cs2c"><div class="cs2c-lbl">Quem sou eu</div><div class="cs2c-ttl">Identidade Pessoal</div><div class="cs2c-val" id="r-id"></div></div>' +
+          '<div class="cs2c"><div class="cs2c-lbl">O que eu faço</div><div class="cs2c-ttl">Identidade Editorial</div><div class="cs2c-val" id="r-ed"></div></div>' +
+          '<div class="cs2c"><div class="cs2c-lbl">Para quem eu faço</div><div class="cs2c-ttl">Público Principal</div><div class="cs2c-val" id="r-pub"></div></div>' +
+          '<div class="cs2c"><div class="cs2c-lbl">Como eu faço</div><div class="cs2c-ttl">Método e Produtos</div><div class="cs2c-val" id="r-met"></div></div>' +
+          '<div class="cs2c"><div class="cs2c-lbl">Para quê eu faço</div><div class="cs2c-ttl">Causa de Manifesto</div><div class="cs2c-val" id="r-cau"></div></div>' +
+          '<div class="cs2c"><div class="cs2c-lbl">Por que eu faço</div><div class="cs2c-ttl">Legado do Manifesto</div><div class="cs2c-val" id="r-leg"></div></div>' +
+          '<div class="cs2c full"><div class="cs2c-lbl">Ingredientes de marca</div><div class="i-pills" id="r-ing"></div></div>' +
+        '</div>' +
+        '<div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>' +
+      '</div>' +
+      '<div class="s1-actions">' +
+        '<button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>' +
+        '<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Semana 1 como concluída</button>' +
+      '</div>' +
+      '<div class="s1-proxima">' +
+        '<span class="s1-proxima-label">Próxima Batalha</span>' +
+        '<div class="s1-proxima-title">Semana 2 — Método Autoral</div>' +
+        '<div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>' +
+        '<button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>' +
+      '</div>' +
+      '<button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>' +
+    '</div>' +
+  '</div>' +
+
+  '</div>';
+}
+
+function s1BtnNome() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome').value.trim();
+  if (!nome) { alert('Escreve seu nome para continuar!'); return; }
+  var label = c.querySelector('#s1-nome-label');
+  if (label) label.textContent = 'Bem-vinda, ' + nome + '! ✦';
+  var s = c.querySelector('#r2-saudacao');
+  if (s) s.textContent = nome + ', bem-vinda à sua jornada';
+  s1GoTo('r2'); s1Save();
+}
+function s1BtnR2back() { s1GoTo('r1'); }
+function s1BtnR2next() {
+  var c = document.getElementById('weekContent');
+  if (!c.querySelector('#s1-momento').value.trim()) { alert('Conta seu momento para continuar!'); return; }
+  s1GoTo('r3'); s1Save();
+}
+function s1BtnR3back() { s1GoTo('r2'); }
+function s1BtnR3next() {
+  var c = document.getElementById('weekContent');
+  if (!c.querySelector('#s1-espada').value.trim()) { alert('Dê um nome para sua espada!'); return; }
+  s1MontarJuramento(); s1GoTo('r4'); s1Save();
+}
+function s1BtnJuro() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome').value.trim() || 'Guerreira';
+  var r4bNome = c.querySelector('#r4b-nome');
+  if (r4bNome) r4bNome.textContent = nome;
+  s1GoTo('r4b'); s1Save();
+}
+function s1BtnCaminhoA() { s1GoTo('caminhoA'); s1Save(); }
+function s1BtnCaminhoB() {
+  s1GoTo('caminhoB');
+  setTimeout(function(){ s1GerarPromptLT(); }, 100);
+  var c = document.getElementById('weekContent');
+  s1AtualizarBPrompt(c);
+  s1Save();
+}
+function s1BtnVoltarCaminhos() { s1GoTo('r5'); }
+function s1BtnBback() { s1GoTo('r5'); }
+function s1BtnCheckpointOk() { s1GoTo('caminhoA'); s1Save(); }
+function s1BtnCheckpointVoltar() { s1GoTo('caminhoB'); }
+function s1BtnBnext() { s1GoTo('r_checkpoint'); s1Save(); }
+
+function s1Modal(opcoes) {
+  // opcoes: { icone, titulo, texto, confirmar, cancelar, onConfirmar, onCancelar }
+  var overlay = document.getElementById('modalCaverna');
+  document.getElementById('modalIcon').textContent = opcoes.icone || '⚔';
+  document.getElementById('modalTitulo').textContent = opcoes.titulo || '';
+  document.getElementById('modalTexto').textContent = opcoes.texto || '';
+  document.getElementById('modalBtnConfirmar').textContent = opcoes.confirmar || 'Confirmar';
+  document.getElementById('modalBtnCancelar').textContent = opcoes.cancelar || 'Cancelar';
+  overlay.classList.add('ativo');
+  document.getElementById('modalBtnConfirmar').onclick = function() {
+    overlay.classList.remove('ativo');
+    if (opcoes.onConfirmar) opcoes.onConfirmar();
+  };
+  document.getElementById('modalBtnCancelar').onclick = function() {
+    overlay.classList.remove('ativo');
+    if (opcoes.onCancelar) opcoes.onCancelar();
+  };
+}
+
+
+// Mapa de telas anteriores para navegação com botão Voltar
+var S1_PREV = {
+  'r2': 'r1',
+  'r3': 'r2',
+  'r4': 'r3',
+  'r4b': 'r4',
+  'r5': 'r4b',
+  'caminhoA': 'r5',
+  'caminhoB': 'r5',
+  's1Resultado': 'caminhoA'
+};
+
+function s1TelaAtual() {
+  var c = document.getElementById('weekContent');
+  if (!c) return 'r1';
+  var current = 'r1';
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el && el.style.display !== 'none' && el.style.display !== '') current = sid;
+  });
+  return current;
+}
+
+function s1MostrarBtnSalvar(mostrar) {
+  var btn = document.getElementById('btnSalvarFixo');
+  if (btn) {
+    if (mostrar) btn.classList.add('visivel');
+    else btn.classList.remove('visivel');
+  }
+}
+
+function s1BtnSalvar() {
+  s1Save();
+  var btn = document.getElementById('btnSalvarFixo');
+  if (btn) {
+    var textoOriginal = btn.innerHTML;
+    btn.innerHTML = '✓ Salvo!';
+    btn.classList.add('salvo');
+    setTimeout(function() {
+      btn.innerHTML = textoOriginal;
+      btn.classList.remove('salvo');
+    }, 2000);
+  }
+}
+
+function s1NavHeader(dir) {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  if (idx === -1) return;
+  var next = idx + dir;
+  if (next < 0 || next >= ordem.length) return;
+  s1Save();
+  var target = ordem[next];
+  s1GoTo(target);
+  if (['r4','r4b','r5','caminhoA','s1Resultado'].indexOf(target) > -1) s1MontarJuramento();
+  if (target === 's1Resultado') s1PreencherResultado();
+  s1AtualizarNavHeader();
+}
+
+function s1AtualizarNavHeader() {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  var prev = document.getElementById('btnHeaderPrev');
+  var next = document.getElementById('btnHeaderNext');
+  var nav = document.getElementById('headerNavBtns');
+  if (nav) nav.style.display = 'flex';
+  if (prev) prev.disabled = idx <= 0;
+  if (next) next.disabled = idx >= ordem.length - 1;
+}
+
+function s1BtnR4back(){ s1GoTo('r3'); }
+function s1NavSeguir() {
+  var c = document.getElementById('weekContent');
+  // Se estiver no caminhoA, navegar entre as etapas ms1-ms4
+  var ca = c && c.querySelector('#caminhoA');
+  if (ca && ca.style.display !== 'none') {
+    for (var i = 1; i <= 4; i++) {
+      var ms = ca.querySelector('#ms'+i);
+      if (ms && ms.classList.contains('active')) {
+        if (i < 4) { mGoTo(i+1); s1Save(); }
+        else { s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
+        s1AtualizarBtnSeguir();
+        return;
+      }
+    }
+    return;
+  }
+  // Navegação normal entre telas do ritual
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  if (idx === -1 || idx >= ordem.length - 1) return;
+  s1Save();
+  var target = ordem[idx + 1];
+  s1GoTo(target);
+  if (['r4','r4b','r5'].indexOf(target) > -1) s1MontarJuramento();
+  if (target === 's1Resultado') s1PreencherResultado();
+  s1AtualizarBtnSeguir();
+}
+
+function s1AtualizarBtnSeguir() {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  var btn = document.getElementById('btnSeguirMain');
+  if (!btn) return;
+  // Mostrar só se há tela seguinte E se já passou do ritual básico
+  if (idx > 0 && idx < ordem.length - 1) {
+    btn.style.visibility = 'visible';
+  } else {
+    btn.style.visibility = 'hidden';
+  }
+}
+
+function s1GerarPromptLT() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  function ltval(id) {
+    var el = c.querySelector('#'+id);
+    return el && el.value.trim() ? el.value.trim() : null;
+  }
+  function bloco(titulo, perguntas) {
+    var linhas = '';
+    perguntas.forEach(function(p) {
+      var v = ltval(p[1]);
+      if (v) linhas += p[0] + '\n' + v + '\n\n';
+    });
+    return linhas ? '\u{1F4CD} ' + titulo + '\n' + linhas : '';
+  }
+
+  var b1 = bloco('ORIGEM E CONTEXTO', [
+    ['1. Onde nasceu e cresceu?','lt1'],
+    ['2. Ambiente em casa na infancia:','lt2'],
+    ['3. Como se sentia dos 0 aos 10 anos:','lt3'],
+    ['4. Papel na familia:','lt4']
+  ]);
+  var b2 = bloco('ADOLESCENCIA E RUPTURAS', [
+    ['5. Como foi a adolescencia:','lt5'],
+    ['6. Episodio marcante:','lt6'],
+    ['7. O que carregava sozinha:','lt7'],
+    ['8. O que aprendeu sozinha:','lt8'],
+    ['9. O que parou de pedir ajuda:','lt9']
+  ]);
+  var b3 = bloco('ESCOLHAS PROFISSIONAIS', [
+    ['10. Como escolheu a primeira profissao:','lt10'],
+    ['11. O que influenciou essa escolha:','lt11'],
+    ['12. Onde mais se destacou:','lt12'],
+    ['13. Onde se frustrou:','lt13'],
+    ['14. O que fazia bem mas nao reconhecida:','lt14']
+  ]);
+  var b4 = bloco('COMPETENCIAS', [
+    ['15. Que problemas as pessoas trazem:','lt15'],
+    ['16. Em que e vista como referencia:','lt16'],
+    ['17. O que resolve com facilidade:','lt17'],
+    ['18. Observada por 10 anos seria boa em:','lt18']
+  ]);
+  var b5 = bloco('PRESENTE E INCOMODO', [
+    ['19. Com o que trabalha hoje:','lt19'],
+    ['20. O que mais cansa:','lt20'],
+    ['21. O que ainda a mantem onde esta:','lt21'],
+    ['22. O que esta sendo desperdicado:','lt22'],
+    ['23. Daqui 5 anos sem mudar:','lt23']
+  ]);
+  var b6 = bloco('SIGNIFICADO E LEGADO', [
+    ['24. Que tipo de mulher pode ajudar:','lt24'],
+    ['25. Dor que entende por experiencia:','lt25'],
+    ['26. Transformacao que quer facilitar:','lt26'],
+    ['27. Sua historia serve para:','lt27']
+  ]);
+
+  if (!b1 && !b2 && !b3 && !b4 && !b5 && !b6) {
+    var elp = c.querySelector('#bPromptText');
+    if (elp) {
+      var sep = '\n' + '='.repeat(40) + '\n';
+      elp.textContent = 'Ola, ChatGPT!\n\n' +
+        'Quero que voce se comporte como um expert em descoberta de proposito na carreira. ' +
+        'Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar.\n' +
+        sep + 'MINHA LINHA DO TEMPO' + sep + '\n' +
+        '[ Preencha os campos acima — o prompt sera gerado automaticamente aqui ]\n' +
+        sep + 'O QUE PRECISO QUE VOCE FACA' + sep + '\n' +
+        '1. PROPOSITO: Com base na minha historia, qual seria meu proposito no digital?\n\n' +
+        '2. ASSUNTO PRINCIPAL: Qual seria meu assunto principal?\n\n' +
+        '3. SPRINT SUGERIDO: Me ajude a responder o Sprint da Fatia com sugestoes baseadas na minha historia.\n\n' +
+        '4. FRASE DE MANIFESTO: Uma frase poderosa que so eu poderia dizer.';
+    }
+    return;
+  }
+
+  var sep = '\n' + '='.repeat(40) + '\n';
+  var prompt = 'Ola, ChatGPT!' + '\n\n' +
+    'Quero que voce se comporte como um expert em descoberta de proposito na carreira, com especialidade em psicologia avancada e neuromarketing. ' +
+    'Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar da Caverna das Guerreiras.' + '\n\n' +
+    'Respondi um questionario de linha do tempo com minhas experiencias de vida. ' +
+    'Analise tudo com atencao e me ajude a encontrar meu proposito e meu assunto principal no digital.' + '\n' +
+    sep +
+    'MINHA LINHA DO TEMPO' +
+    sep + '\n';
+
+  if (b1) prompt += b1;
+  if (b2) prompt += b2;
+  if (b3) prompt += b3;
+  if (b4) prompt += b4;
+  if (b5) prompt += b5;
+  if (b6) prompt += b6;
+
+  prompt += sep +
+    'O QUE PRECISO QUE VOCE FACA' +
+    sep + '\n' +
+    '1. PROPOSITO: Com base na minha historia, qual seria meu proposito no digital?\n\n' +
+    '2. ASSUNTO PRINCIPAL: Qual seria meu assunto principal — aquele que une minha historia, meus dons e o publico que posso impactar?\n\n' +
+    '3. SPRINT SUGERIDO: Me ajude a responder o Sprint da Fatia com sugestoes baseadas na minha historia:\n' +
+    '   - Problema principal que resolvo\n' +
+    '   - Prova social (quem ja transformei e como)\n' +
+    '   - Ferramenta principal que uso\n' +
+    '   - Perfil do meu publico principal\n' +
+    '   - Principal transformacao que entrego\n' +
+    '   - Como entrego e em quais produtos\n' +
+    '   - Tempo medio para o resultado\n\n' +
+    '4. FRASE DE MANIFESTO: Uma frase poderosa que so eu poderia dizer.\n\n' +
+    'Importante: as sugestoes sao para me inspirar. Vou usar minhas proprias palavras para preencher o sistema.';
+
+  var el = c.querySelector('#bPromptText');
+  if (el) el.textContent = prompt;
+}
+
+
+function s1CopyBPrompt() {
+  var c = document.getElementById('weekContent');
+  var txt = c.querySelector('#bPromptText') ? c.querySelector('#bPromptText').textContent : '';
+  var btn = c.querySelector('#btnCopyBPrompt');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function(){ btn.textContent='✓ Copiado!'; setTimeout(function(){ btn.textContent='⧉ Copiar prompt'; },2000); }).catch(function(){ fbcopyLT(txt,btn); });
+  } else { fbcopyLT(txt,btn); }
+}
+function fbcopyLT(txt,btn){ var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');btn.textContent='✓ Copiado!';}catch(e){btn.textContent='✗ Tente manualmente';}document.body.removeChild(ta);setTimeout(function(){btn.textContent='⧉ Copiar prompt';},2000); }
+
+function s1BtnIrCaminhos() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var t = c.querySelector('#r5-titulo');
+  if (t) t.textContent = nome + ', você já tem clareza sobre seu assunto principal no digital?';
+  s1GoTo('r5'); s1Save();
+}
+function s1AbrirCardJuramento() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var espada = c.querySelector('#s1-espada') ? c.querySelector('#s1-espada').value.trim() : '—';
+  var nomeEl = document.getElementById('card-nome-print');
+  var espadaEl = document.getElementById('card-espada-print');
+  var promEl = document.getElementById('card-promessa-print');
+  if (nomeEl) nomeEl.textContent = nome;
+  if (espadaEl) espadaEl.textContent = espada;
+  if (promEl) promEl.innerHTML = '"Eu, <strong>' + nome + '</strong>, portando minha espada <strong>' + espada + '</strong>, prometo que vou iniciar, persistir e concluir meu projeto. Que nos dias difíceis vou lembrar de onde vim. E que a guerreira que superou tudo isso é a mesma que vai transformar vidas."';
+  var card = document.getElementById('cardJuramentoPrint');
+  if (card) card.classList.add('ativo');
+}
+function s1FecharCardJuramento() {
+  var card = document.getElementById('cardJuramentoPrint');
+  if (card) card.classList.remove('ativo');
+}
+function s1Ms1next(){ mGoTo(2); s1Save(); }
+function s1Ms2back(){ mGoTo(1); }
+function s1Ms2next(){ mGoTo(3); s1Save(); }
+function s1Ms3back(){ mGoTo(2); }
+function s1Ms3next(){ mGoTo(4); s1Save(); }
+function s1Ms4back(){ mGoTo(3); }
+function s1Ms4next(){ s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
+function s1BtnEditar(){ mGoTo(4); }
+function s1BtnImprimir() {
+  var canvas = document.getElementById('canvasManifesto');
+  if (!canvas) { window.print(); return; }
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto">' +
+    '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '</div>' + canvas.outerHTML + '</div>';
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+function s1MarcarConcluida() {
+  var c = document.getElementById('weekContent');
+  var nome = c && c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+
+  // Salvar conquista no localStorage
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['semana1'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+
+  // Mostrar modal de vitória
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
+
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
+
+  // Mostrar coleção de conquistas
+  var colecaoEl = document.getElementById('vitoria-colecao');
+  if (colecaoEl) {
+    var semanas = [
+      {n:1, nome:'Manifesto'},
+      {n:2, nome:'Método'},
+      {n:3, nome:'Produtos'},
+      {n:4, nome:'Metodologia'},
+      {n:5, nome:'Plataforma'},
+      {n:6, nome:'Gravação'},
+      {n:7, nome:'Edição'},
+      {n:8, nome:'Validação'},
+      {n:9, nome:'Perfil Bio'},
+      {n:10, nome:'Destaques'},
+      {n:11, nome:'Feed'},
+      {n:12, nome:'No Ar!'}
+    ];
+    colecaoEl.innerHTML = '';
+    semanas.forEach(function(s) {
+      var conquistada = conquistas['semana'+s.n];
+      var badge = document.createElement('div');
+      badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
+      colecaoEl.appendChild(badge);
+    });
+  }
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
+
+  // Atualizar card no portal
+  s1AtualizarCardPortal();
+}
+
+function s1FecharVitoria() {
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.remove('ativo');
+}
+
+function s1AtualizarCardPortal() {
+  // Marcar visualmente card da semana 1 como concluída no portal
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  var card = document.querySelector('.card[data-week="1"]');
+  if (card && conquistas['semana1']) {
+    card.style.borderColor = 'rgba(180,130,80,0.6)';
+    card.style.boxShadow = '0 0 20px rgba(180,130,80,0.15)';
+  }
+}
+
+function s1BtnEnviar(){ alert('Em breve esta função enviará seu Canvas para a Jade!'); }
+function s1BtnIrS2(){ goHome(); setTimeout(function(){ openWeek(2); }, 300); }
+function s1BtnRecomecar(){
+  s1Modal({
+    icone: '↺',
+    titulo: 'Recomeçar do início?',
+    texto: 'Todas as suas respostas serão apagadas.',
+    confirmar: 'Sim, recomeçar',
+    cancelar: 'Cancelar',
+    onConfirmar: function() {
+      s1ClearSaved();
+      var c = document.getElementById('weekContent');
+      if(c) c.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
+      var label = c && c.querySelector('#s1-nome-label');
+      if(label) label.textContent = 'Qual é o seu nome, guerreira?';
+      s1GoTo('r1');
+    }
+  });
+}
+function s1VoltarCaminhos(){ s1GoTo('r5'); }
+function s1Bback(){ s1GoTo('r5'); }
+function s1Bnext(){ s1GoTo('caminhoA'); s1Save(); }
+function bindManifestoEvents() {
+  var c = document.getElementById('weekContent');
+  s1MostrarBtnSalvar(true);
+  s1AtualizarNavHeader();
+
+  // Auto-save via event delegation — captura todos os campos mesmo os ocultos
+  c.addEventListener('input', function(e) {
+    var id = e.target.id || '';
+    // Campos da linha do tempo — atualizar prompt
+    if (/^lt\d+$/.test(id)) { s1GerarPromptLT(); }
+    // Salvar sempre
+    s1Save();
+  });
+
+  // CAMINHO A — navegação
+  c.querySelector('#ms1next').addEventListener('click', function() { mGoTo(2); s1Save(); });
+  c.querySelector('#ms2back').addEventListener('click', function() { mGoTo(1); });
+  c.querySelector('#ms2next').addEventListener('click', function() { mGoTo(3); s1Save(); });
+  c.querySelector('#ms3back').addEventListener('click', function() { mGoTo(2); });
+  c.querySelector('#ms3next').addEventListener('click', function() { mGoTo(4); s1Save(); });
+  c.querySelector('#ms4back').addEventListener('click', function() { mGoTo(3); });
+  c.querySelector('#ms4next').addEventListener('click', function() {
+    s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save();
+  });
+
+  // RESULTADO
+  c.querySelector('#btnImprimirCanvas').addEventListener('click', function() { window.print(); });
+  c.querySelector('#btnEnviarJade').addEventListener('click', function() { alert('Em breve esta função enviará seu Canvas para a Jade!'); });
+  c.querySelector('#btnIrS2').addEventListener('click', function() { goHome(); setTimeout(function() { openWeek(2); }, 300); });
+  c.querySelector('#btnRecomecar').addEventListener('click', function() {
+    if (confirm('Tem certeza que quer recomeçar? Todas as suas respostas serão apagadas.')) {
+      s1ClearSaved();
+      c.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
+      var label = c.querySelector('#s1-nome-label');
+      if (label) label.textContent = 'Qual é o seu nome, guerreira?';
+      s1GoTo('r1');
+    }
+  });
+
+  // CAMINHO B
+  function atualizarBPrompt() {
+    function bval(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : ''; }
+    var prompt = 'Olá chat, quero que você se comporte como um expert em descoberta de propósito na carreira, com especialidade em psicologia avançada e neuromarketing. Estou sendo mentorada pela Jade Torres e quero encontrar meu assunto principal no digital.\n\nO que sei fazer e poderia ensinar:\n' + (bval('b-sabe')||'—') + '\n\nExperiências profissionais:\n' + (bval('b-experiencias')||'—') + '\n\nQuem tento ajudar:\n' + (bval('b-ajudar')||'—') + '\n\nResultado que entrego:\n' + (bval('b-resultado')||'—') + '\n\nComo entrego:\n' + (bval('b-entrega')||'—') + '\n\nSobre mim:\n- Dons: ' + (bval('b-dons')||'—') + '\n- Habilidades: ' + (bval('b-habilidades')||'—') + '\n- Causa: ' + (bval('b-causa')||'—') + '\n- Impacto: ' + (bval('b-impacto')||'—') + '\n\nMe entregue:\n1. Resumo do meu assunto principal\n2. Fatia de subnicho sugerida\n3. Ingredientes de marca\n4. Frase de manifesto';
+    var el = c.querySelector('#bPromptText');
+    if (el) el.textContent = prompt;
+  }
+
+  // Linha do tempo — atualizar prompt ao digitar
+  for (var i = 1; i <= 27; i++) {
+    (function(n) {
+      var el = c.querySelector('#lt'+n);
+      if (el) el.addEventListener('input', function(){ s1GerarPromptLT(); s1Save(); });
+    })(i);
+  }
+  // IDs antigos do caminho B (fallback)
+  ['b-sabe','b-experiencias','b-ajudar','b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto'].forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) el.addEventListener('input', function() { atualizarBPrompt(); s1Save(); });
+  });
+
+  var bcopy = c.querySelector('#btnCopyBPrompt');
+  if (bcopy) bcopy.addEventListener('click', function() {
+    var txt = c.querySelector('#bPromptText').textContent;
+    var btn = this;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function() { btn.textContent = '✓ Copiado!'; setTimeout(function() { btn.textContent = '⧉ Copiar prompt'; }, 2000); }).catch(function() { fbcopy(txt, btn); });
+    } else { fbcopy(txt, btn); }
+  });
+
+  function fbcopy(txt, btn) {
+    var ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); btn.textContent = '✓ Copiado!'; } catch(e) { btn.textContent = '✗ Tente manualmente'; }
+    document.body.removeChild(ta); setTimeout(function() { btn.textContent = '⧉ Copiar prompt'; }, 2000);
+  }
+
+  c.querySelector('#bback').addEventListener('click', function() { s1GoTo('r5'); });
+  c.querySelector('#bnext').addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
+
+  // s1Load é chamado pelo modal ou automaticamente se não há progresso
+}
+
+function mGoTo(s) {
+  var c = document.getElementById('weekContent');
+  var ca = c.querySelector('#caminhoA');
+  if (!ca) return;
+  for (var i = 1; i <= 4; i++) { var el = ca.querySelector('#ms'+i); if (el) el.classList.remove('active'); }
+  var sc = ca.querySelector('#ms'+s); if (sc) sc.classList.add('active');
+  for (var i = 1; i <= 4; i++) {
+    var d = ca.querySelector('#pd'+i); if (!d) continue;
+    if (i < s) { d.className = 'pdot done'; d.textContent = '✓'; }
+    else if (i === s) { d.className = 'pdot active'; d.textContent = i; }
+    else { d.className = 'pdot'; d.textContent = i; }
+  }
+  for (var j = 1; j <= 3; j++) { var l = ca.querySelector('#pl'+j); if (l) l.className = j < s ? 'pline done' : 'pline'; }
+  window.scrollTo(0,0);
+}
+
+function gerarManifesto() {
+  var c = document.getElementById('weekContent');
+  s1PreencherResultado();
+  s1GoTo('s1Resultado');
+  s1Save();
+}
+
+
+
+function getS2HTML() {
+  return '<div class="s2-page">' +
+  '<div id="s2p1">' +
+
+  // CABEÇALHO MANIFESTO
+  '<div class="manifesto-header" id="mh-box">' +
+    '<div class="mh-title">✦ Seu Manifesto - lembre de onde você veio</div>' +
+    '<input class="mh-frase-input" id="mhi-frase" placeholder="Ex: Eu não faço divórcio! · A coragem de ser feliz aos 40+">' +
+  '</div>' +
+
+  // BOAS VINDAS
+  '<div style="padding:2rem 0 0.5rem">' +
+    '<span class="s-label">Semana 2 · Construção</span>' +
+    '<h2 class="s-title">Método <em style="font-style:italic;color:#b48250">Autoral</em></h2>' +
+    '<p class="s-desc">Guerreira, se você chegou até aqui é porque você já tem o seu Manifesto nas mãos. Você já sabe quem você é, qual é a sua causa e para quem você entrega. Agora é hora de transformar tudo isso em um caminho - um passo a passo que só você poderia criar. Esse é o seu método autoral. Vamos começar.</p>' +
+  '</div>' +
+
+  '<hr class="s2-divider">' +
+
+  // CAMPO 1 - OBJETIVO
+  '<div class="s2-section">' +
+    '<h3 class="s2-section-title">Qual é o objetivo do seu método?</h3>' +
+    '<div class="s2-field">' +
+      '<span class="s2-field-hint">Antes de qualquer coisa, me diz: qual é a grande transformação que o seu método vai entregar? Não precisa ser perfeito. Escreve do jeito que tá pulsando no seu coração.</span>' +
+      '<textarea class="s2-textarea" id="s2-objetivo" placeholder="O objetivo do meu método é entregar..." rows="4"></textarea>' +
+    '</div>' +
+  '</div>' +
+
+  '<hr class="s2-divider">' +
+
+  // CAMPO 2 - O QUÊ
+  '<div class="s2-section">' +
+    '<h3 class="s2-section-title">O QUÊ você vai ensinar?</h3>' +
+    '<div class="s2-field">' +
+      '<span class="s2-field-hint">Agora descarrega tudo. O que você sabe? O que você quer ensinar? Não se preocupa com ordem, nem com perfeição. Isso aqui é o seu brainstorm - quanto mais você jogar para fora, melhor.</span>' +
+      '<textarea class="s2-textarea" id="s2-que" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. " rows="8"></textarea>' +
+    '</div>' +
+  '</div>' +
+
+  '<hr class="s2-divider">' +
+
+  // CAMPO 3 - O COMO (3 etapas)
+  '<div class="s2-section">' +
+    '<h3 class="s2-section-title">O COMO - as etapas do seu método</h3>' +
+    '<p class="s2-section-hint">Agora você vai aprofundar cada etapa da jornada que você vai conduzir sua aluna. São 3 momentos: antes, durante e depois do seu método.</p>' +
+
+    // Etapa 1
+    '<div class="etapa-box">' +
+      '<div class="etapa-box-title">⬡ Etapa 1 - Preparação para o Método</div>' +
+      '<div class="etapa-box-hint">O que essa pessoa precisa saber ou fazer antes de entrar no seu método? O que ela precisa entender, acreditar ou se preparar para poder receber o que você vai ensinar?</div>' +
+      '<textarea class="s2-textarea" id="s2-etapa1" placeholder="Antes de começar o método, minha aluna precisa..." rows="4"></textarea>' +
+    '</div>' +
+
+    // Etapa 2 - passos dinâmicos
+    '<div class="etapa-box">' +
+      '<div class="etapa-box-title">⬡ Etapa 2 - O Passo a Passo do Método</div>' +
+      '<div class="etapa-box-hint">Esse é o coração do seu método. Quais são os passos que você vai guiar essa pessoa? Exemplo: Primeiro ela faz isso, depois aquilo...</div>' +
+      '<div class="passos-container" id="passosContainer"></div>' +
+      '<div class="aviso-menos-mais" id="avisoMenos">✦ Lembra guerreira, menos é mais! Mas se o seu método precisar de mais passos, pode continuar...</div>' +
+      '<button class="btn-add-passo" id="btnAddPasso">+ adicionar passo</button>' +
+    '</div>' +
+
+    // Etapa 3
+    '<div class="etapa-box">' +
+      '<div class="etapa-box-title">⬡ Etapa 3 - Pós Método</div>' +
+      '<div class="etapa-box-hint">O que acontece depois? O que essa pessoa precisa saber ou fazer para que a transformação continue reverberando na vida dela depois que o método terminar?</div>' +
+      '<textarea class="s2-textarea" id="s2-etapa3" placeholder="Depois de concluir o método, minha aluna vai..." rows="4"></textarea>' +
+    '</div>' +
+  '</div>' +
+
+  '<hr class="s2-divider">' +
+
+  // PILARES - PROMPT GPT
+  '<div class="s2-section">' +
+    '<h3 class="s2-section-title">Pilares do seu Método</h3>' +
+    '<p class="s2-section-hint">Com tudo que você escreveu acima, o ChatGPT vai organizar os grandes pilares do seu método. Copie o prompt, leve ao ChatGPT e cole cada pilar abaixo.</p>' +
+    '<div class="prompt-box">' +
+      '<div class="prompt-box-title">✦ Prompt @1 - Copie e leve ao ChatGPT</div>' +
+      '<div class="prompt-text" id="promptText">Preencha os campos acima para gerar seu prompt personalizado.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyPrompt">⧉ Copiar prompt</button>' +
+    '</div>' +
+    '<div style="margin-top:1.5rem">' +
+      '<label class="s2-field-label">Cole aqui os pilares que o ChatGPT gerou</label>' +
+      '<span class="s2-field-hint" style="display:block;margin-bottom:10px">Cole cada pilar no campo correspondente. Adicione ou remova conforme o ChatGPT indicar.</span>' +
+      '<div class="passos-container" id="pilaresContainer"></div>' +
+      '<div class="aviso-menos-mais" id="avisoPilares">✦ Lembra guerreira, menos é mais! Mas se o seu método precisar de mais pilares, pode continuar...</div>' +
+      '<button class="btn-add-passo" id="btnAddPilar">+ adicionar pilar</button>' +
+    '</div>' +
+  '</div>' +
+
+  // BOTÃO VER MÉTODO
+  // BOTÃO IR PARA PÁGINA 2
+  '<div style="margin-top:2rem;text-align:center"><button class="btn-espada" id="btnVerMetodo">✦ Ver meu Método pronto →</button></div>' +
+  '</div>' + // fecha s2p1
+
+  // PÁGINA 2 — MÉTODO PRONTO
+  '<div id="s2p2" style="display:none">' +
+    '<div style="text-align:center;padding:1.5rem 0 1rem">' +
+      '<span class="s-label">✦ Seu Método Autoral</span>' +
+      '<h2 class="s-title" style="margin-bottom:0.3rem">Guerreira, aqui está<br><em style="color:#b48250;font-style:italic">seu método pronto</em></h2>' +
+      '<p class="s-desc">Este é o método que só você poderia criar. Guarde, imprima e use como base para tudo que vem a seguir.</p>' +
+    '</div>' +
+    '<div class="metodo-visual" id="metodoVisual">' +
+      '<div class="mv-title" id="mv-titulo">Método Autoral</div>' +
+      '<div class="mv-subtitle">Os pilares da sua jornada de transformação</div>' +
+      '<div class="mv-objetivo"><div class="mv-objetivo-label">✦ Manifesto</div><div class="mv-objetivo-text" id="mv-manifesto">—</div></div>' +
+      '<div style="margin-top:1.2rem" id="mv-pilares-grid"></div>' +
+    '</div>' +
+    '<div class="s1-actions" style="margin-top:1.2rem">' +
+      '<button class="btn-imprimir" id="btnPrintMetodo" onclick="s2ImprimirMetodo()">⬇ Imprimir Método</button>' +
+      '<button class="btn-bk" style="flex:1;padding:12px;text-align:center" id="btnVoltarS2p1" onclick="s2VoltarP1()">← Editar método</button>' +
+    '</div>' +
+    '<div style="margin-top:1rem">' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Semana 2 como concluída</button>' +
+    '</div>' +
+    '<div class="s1-proxima" style="margin-top:1.2rem">' +
+      '<span class="s1-proxima-label">Próxima Batalha</span>' +
+      '<div class="s1-proxima-title">Semana 3 — Produtos do Método</div>' +
+      '<div class="s1-proxima-desc">Guerreira, seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos. Sua próxima batalha te espera.</div>' +
+      '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">⚔ Partir para os Produtos →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '</div>';
+}
+
+function s2VoltarP1() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var p1 = c.querySelector('#s2p1'); if(p1) p1.style.display = 'block';
+  var p2 = c.querySelector('#s2p2'); if(p2) p2.style.display = 'none';
+  window.scrollTo(0,0);
+}
+function s2ImprimirMetodo() {
+  var c = document.getElementById('weekContent');
+  var mv = c && c.querySelector('#metodoVisual');
+  if (!mv) { window.print(); return; }
+  var printArea = document.getElementById('printArea');
+  if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.cssText='display:none'; document.body.appendChild(printArea); }
+  var clone = mv.cloneNode(true); clone.style.display='block';
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:1.5rem;font-weight:700">Meu Método Autoral</div></div>' + clone.outerHTML + '</div>';
+  printArea.style.display='block'; window.print(); printArea.style.display='none';
+}
+function s2ConcluirSemana() {
+  var c = document.getElementById('weekContent');
+  var nomeEl = c && c.querySelector('#s1-nome');
+  var nome = nomeEl ? nomeEl.value.trim() : 'Guerreira';
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['semana2'] = { data: new Date().toLocaleDateString('pt-BR') };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  var nomeVit = document.getElementById('vitoria-nome'); if(nomeVit) nomeVit.textContent = nome;
+  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '✦ Semana 2 — Método Autoral · Concluída';
+  var frVit = document.getElementById('vitoria-frase'); if(frVit) frVit.textContent = '"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."';
+  var colVit = document.getElementById('vitoria-colecao');
+  if (colVit) {
+    var semanas = [{n:1,nome:'Manifesto'},{n:2,nome:'Método'},{n:3,nome:'Produtos'},{n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Gravação'},{n:7,nome:'Edição'},{n:8,nome:'Validação'},{n:9,nome:'Perfil Bio'},{n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}];
+    colVit.innerHTML = '';
+    semanas.forEach(function(s) {
+      var conquistada = conquistas['semana'+s.n];
+      var badge = document.createElement('div'); badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
+      colVit.appendChild(badge);
+    });
+  }
+  var modal = document.getElementById('modalVitoria'); if(modal) modal.classList.add('ativo');
+}
+function s2IrS3() { goHome(); }
+function bindS2Events() {
+  var c = document.getElementById('weekContent');
+
+  // Cabeçalho - atualiza prompt quando frase muda
+  var fraseEl = c.querySelector('#mhi-frase');
+  if (fraseEl) fraseEl.addEventListener('input', atualizarPrompt);
+
+  // Passos dinâmicos
+  var passosContainer = c.querySelector('#passosContainer');
+  var btnAdd = c.querySelector('#btnAddPasso');
+  var aviso = c.querySelector('#avisoMenos');
+
+  function addPasso(val) {
+    var total = passosContainer.querySelectorAll('.passo-row').length;
+    if (total >= 12) return;
+    var num = total + 1;
+    var row = document.createElement('div');
+    row.className = 'passo-row';
+    row.innerHTML = '<div class="passo-num">' + num + '</div>' +
+      '<input class="passo-input" placeholder="Passo ' + num + ' - descreva o que sua aluna vai fazer..." value="' + (val||'') + '">' +
+      '<button class="passo-del" title="Remover">×</button>';
+    row.querySelector('.passo-del').addEventListener('click', function() {
+      row.remove();
+      renumerar();
+      verificarPassos();
+    });
+    row.querySelector('.passo-input').addEventListener('input', atualizarPrompt);
+    passosContainer.appendChild(row);
+    verificarPassos();
+    atualizarPrompt();
+  }
+
+  function renumerar() {
+    var rows = passosContainer.querySelectorAll('.passo-row');
+    rows.forEach(function(r, i) { r.querySelector('.passo-num').textContent = i + 1; });
+  }
+
+  function verificarPassos() {
+    var total = passosContainer.querySelectorAll('.passo-row').length;
+    aviso.style.display = total >= 8 ? 'block' : 'none';
+    btnAdd.style.display = total >= 12 ? 'none' : 'flex';
+  }
+
+  // Iniciar com 3 passos
+  addPasso(''); addPasso(''); addPasso('');
+
+  btnAdd.addEventListener('click', function() { addPasso(''); });
+
+  // Atualizar prompt quando campos mudam
+  ['s2-objetivo','s2-que','s2-etapa1','s2-etapa3'].forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) el.addEventListener('input', atualizarPrompt);
+  });
+  ['mhi-nome','mhi-fatia','mhi-publico','mhi-trans','mhi-causa'].forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) el.addEventListener('input', atualizarPrompt);
+  });
+
+  function getPassos() {
+    var passos = [];
+    passosContainer.querySelectorAll('.passo-input').forEach(function(inp, i) {
+      var v = inp.value.trim();
+      if (v) passos.push('- ' + v);
+    });
+    return passos.join('\n') || '- (preencha os passos acima)';
+  }
+
+  function atualizarPrompt() {
+    var frase = (c.querySelector('#mhi-frase') && c.querySelector('#mhi-frase').value.trim()) || 'escreva aqui sua frase de manifesto';
+    var objetivo = (c.querySelector('#s2-objetivo') && c.querySelector('#s2-objetivo').value.trim()) || 'escreva aqui o objetivo do seu método';
+    var passos = getPassos();
+
+    var prompt = 'Olá chat, estou sendo mentorada pela Jade Torres que é especialista em comunicação autoral e idealizadora de um programa que ensina mulheres com mais de 30 anos a transformarem seu conhecimento em métodos e produtos na internet.\n\n' +
+      'Estou desenvolvendo meu Método Autoral e preciso da sua ajuda para organizar os pilares.\n\n' +
+      'Meu Manifesto Editorial é:\n"' + frase + '"\n\n' +
+      'Objetivo do meu método:\n' + objetivo + '\n\n' +
+      'Minha primeira ideia de passo a passo:\n' + passos + '\n\n' +
+      'Minha tarefa é:\n' +
+      '1. Listar um resumo do passo a passo do meu método em pilares (Pilar 1, Pilar 2, Pilar 3...)\n' +
+      '2. Me sinaliza quantos pilares meu método deve ter conforme o brainstorm acima.\n' +
+      '3. Para cada pilar, descreve em uma frase o que minha aluna vai conquistar.\n\n' +
+      '';
+
+    var el = c.querySelector('#promptText');
+    if (el) el.textContent = prompt;
+  }
+
+  atualizarPrompt();
+
+  // Copiar prompt
+  c.querySelector('#btnCopyPrompt').addEventListener('click', function() {
+    var txt = c.querySelector('#promptText').textContent;
+    var btn = c.querySelector('#btnCopyPrompt');
+    // Tenta clipboard API primeiro, fallback para execCommand
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function() {
+        btn.textContent = '✓ Copiado!';
+        setTimeout(function(){ btn.textContent = '⧉ Copiar prompt'; }, 2000);
+      }).catch(function() { copiarFallback(txt, btn); });
+    } else {
+      copiarFallback(txt, btn);
+    }
+  });
+
+  function copiarFallback(txt, btn) {
+    var ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    ta.style.top = '0';
+    ta.style.left = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      document.execCommand('copy');
+      btn.textContent = '✓ Copiado!';
+    } catch(e) {
+      btn.textContent = '✗ Selecione manualmente';
+    }
+    document.body.removeChild(ta);
+    setTimeout(function(){ btn.textContent = '⧉ Copiar prompt'; }, 2000);
+  }
+
+  // Pilares dinâmicos
+  var pilaresContainer = c.querySelector('#pilaresContainer');
+  var btnAddPilar = c.querySelector('#btnAddPilar');
+  var avisoPilares = c.querySelector('#avisoPilares');
+
+  function addPilar(val) {
+    var total = pilaresContainer.querySelectorAll('.passo-row').length;
+    if (total >= 12) return;
+    var num = total + 1;
+    var row = document.createElement('div');
+    row.className = 'passo-row';
+    row.innerHTML = '<div class="passo-num">' + num + '</div>' +
+      '<input class="passo-input" placeholder="Pilar ' + num + ' - cole aqui o pilar do ChatGPT..." value="' + (val||'') + '">' +
+      '<button class="passo-del" title="Remover">×</button>';
+    row.querySelector('.passo-del').addEventListener('click', function() {
+      row.remove();
+      renumerarPilares();
+      verificarPilares();
+    });
+    pilaresContainer.appendChild(row);
+    verificarPilares();
+  }
+
+  function renumerarPilares() {
+    pilaresContainer.querySelectorAll('.passo-row').forEach(function(r, i) {
+      r.querySelector('.passo-num').textContent = i + 1;
+    });
+  }
+
+  function verificarPilares() {
+    var total = pilaresContainer.querySelectorAll('.passo-row').length;
+    avisoPilares.style.display = total >= 8 ? 'block' : 'none';
+    btnAddPilar.style.display = total >= 12 ? 'none' : 'flex';
+  }
+
+  addPilar(''); addPilar(''); addPilar('');
+  btnAddPilar.addEventListener('click', function() { addPilar(''); });
+
+  // Ver método - baseado nos pilares
+  var btnVerMetodo = c.querySelector('#btnVerMetodo');
+  if (btnVerMetodo) btnVerMetodo.addEventListener('click', function() {
+    var frase = (c.querySelector('#mhi-frase') && c.querySelector('#mhi-frase').value.trim()) || '—';
+    c.querySelector('#mv-manifesto').textContent = frase;
+    var passos = [];
+    c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+    var pilares = [];
+    c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+    var grid = c.querySelector('#mv-pilares-grid');
+    if (grid) {
+      grid.innerHTML = '';
+      var itens = pilares.length > 0 ? pilares : passos;
+      itens.forEach(function(nome, i) {
+        var card = document.createElement('div'); card.className = 'mv-pilar-card';
+        card.innerHTML = '<div class="mv-pilar-num">' + (i+1) + '</div><div class="mv-pilar-nome">' + nome + '</div>';
+        grid.appendChild(card);
+      });
+    }
+    var p1 = c.querySelector('#s2p1');
+    var p2 = c.querySelector('#s2p2');
+    if (p1) p1.style.display = 'none';
+    if (p2) p2.style.display = 'block';
+    window.scrollTo(0,0);
+  });
+  // Imprimir método
+  c.querySelector('#btnPrintMetodo').addEventListener('click', function() {
+    var mv = c.querySelector('#metodoVisual');
+    if (!mv) { window.print(); return; }
+    var printArea = document.getElementById('printArea');
+    if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.cssText='display:none;position:fixed;inset:0;background:white;z-index:99999;overflow:auto;padding:2rem'; document.body.appendChild(printArea); }
+    var clone = mv.cloneNode(true);
+    clone.style.display = 'block';
+    printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:1.5rem;font-weight:700">Meu Método Autoral</div></div>' + clone.outerHTML + '</div>';
+    printArea.style.display = 'block';
+    window.print();
+    printArea.style.display = 'none';
+  });
+}
+
+/* SEMANA 1 - RITUAL + MANIFESTO */
+
+var S1_KEY = 's1_caverna_data';
+
+function s1Save() {
+  var data = {};
+  var ids = ['s1-nome','s1-momento','s1-espada','s1-area','s1-nicho','s1-fatia','s1-publico','s1-trans','s1-dons','s1-habilidades','s1-experiencias','s1-crenca','s1-causa','s1-frase','s1-gritar','s1-legado','sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans','sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar','b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  ids.forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) data[id] = el.value;
+  });
+  var blocos = ['blocoMomento','blocoEspada','blocoJuramento','blocoCaminhos','caminhoA','caminhoB'];
+  blocos.forEach(function(id) {
+    var el = document.getElementById(id);
+    data['show_'+id] = el && el.style.display !== 'none' ? '1' : '0';
+  });
+  var saved = false;
+  try { localStorage.setItem(S1_KEY, JSON.stringify(data)); saved = true; } catch(e) {}
+  if (!saved) {
+    try { sessionStorage.setItem(S1_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+}
+
+function s1Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var raw;
+  try { raw = localStorage.getItem(S1_KEY); } catch(e) {}
+  if (!raw) { try { raw = sessionStorage.getItem(S1_KEY); } catch(e) { return; } }
+  if (!raw) return;
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw); } catch(e) { return; }
+
+  // Preencher campos
+  Object.keys(data).forEach(function(id) {
+    if (id.indexOf('show_') === 0) return;
+    var el = c.querySelector('#'+id);
+    if (el && data[id]) el.value = data[id];
+  });
+
+  // Restaurar nome label
+  var nomeEl = c.querySelector('#s1-nome');
+  if (nomeEl && nomeEl.value.trim()) {
+    var label = c.querySelector('#s1-nome-label');
+    if (label) label.textContent = 'Bem-vinda de volta, ' + nomeEl.value.trim() + '! ✦';
+  }
+
+  // Restaurar blocos visíveis
+  var blocos = ['blocoMomento','blocoEspada','blocoJuramento','blocoCaminhos','caminhoA','caminhoB'];
+  blocos.forEach(function(id) {
+    if (data['show_'+id] === '1') {
+      var el = document.getElementById(id);
+      if (el) el.style.display = 'block';
+    }
+  });
+
+  // Restaurar confirmação e promessa se espada preenchida
+  var espadaEl = c.querySelector('#s1-espada');
+  if (espadaEl && espadaEl.value.trim()) {
+    s1MostrarConfirmacao(true);
+  }
+}
+
+function s1DesbloquearBloco(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = 'block';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  setTimeout(function() {
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 50);
+}
+
+function s1MostrarConfirmacao(silencioso) {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var espada = c.querySelector('#s1-espada') ? c.querySelector('#s1-espada').value.trim() : '';
+  var conf = c.querySelector('#s1-confirmacao');
+  if (conf) conf.innerHTML = '<span style="font-size:28px;display:block;margin-bottom:0.6rem">⚔</span>' + nome + ', sua espada <em style="color:#b48250">' + espada + '</em> está nas suas mãos.<br><span style="font-family:\'Playfair Display\',serif;font-size:1.3rem;color:#b48250;display:block;margin:0.5rem 0">⚔ ' + espada + '</span>Você está pronta.';
+  var prom = c.querySelector('#s1-promessa');
+  if (prom) prom.innerHTML = '<p style="font-family:\'Playfair Display\',serif;font-size:0.95rem;color:#f0ebe8;line-height:1.9;font-style:italic">A força que te trouxe até aqui é a mesma que vai construir o seu projeto.<br><br>Hoje você faz uma <strong style="color:#b48250;font-style:normal">promessa</strong> para você mesma.<br><br>"Eu, ' + nome + ', portando minha espada <em style="color:#b48250">' + espada + '</em>, prometo que vou iniciar, persistir e concluir meu projeto. Que nos dias difíceis vou lembrar de onde vim. E que a guerreira que superou tudo isso é a mesma que vai transformar vidas."</p>';
+  var jb = document.getElementById('blocoJuramento');
+  if (jb) jb.style.display = 'block';
+  if (!silencioso) {
+    setTimeout(function() {
+      if (jb) jb.scrollIntoView({behavior:'smooth',block:'start'});
+    }, 300);
+  }
+}
+
+function rGoTo(id) {}
+
+function getManifestoHTML() {
+  return '<div class="ritual-wrapper" id="s1wrapper">' +
+
+  '<div class="ritual-screen active" id="blocoNome">' +
+    '<div class="ritual-boas-vindas">' +
+      '<span class="caverna-icon">⚔</span>' +
+      '<h2>Bem-vinda à<br><em>Caverna das Guerreiras</em></h2>' +
+      '<p>Este é um espaço sagrado onde seu propósito vai se transformar em uma missão capaz de impactar milhares de vidas. Antes de começar sua jornada, se apresente à Caverna.</p>' +
+    '</div>' +
+    '<div class="ritual-field">' +
+      '<label class="ritual-label" id="s1-nome-label">Qual é o seu nome, guerreira?</label>' +
+      '<input class="ritual-input" id="s1-nome" placeholder="Escreva seu nome aqui...">' +
+    '</div>' +
+    '<button class="btn-espada" id="btnNomeContinuar">Entrar na Caverna →</button>' +
+  '</div>' +
+
+  '<div id="blocoMomento" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<h2 class="s-title">Hora de vestir<br>a <em style="color:#b48250;font-style:italic">armadura</em></h2>' +
+      '<p class="ritual-hint" style="margin:0.8rem 0 1rem">Antes de começar, quero te convidar para um momento que vai fortalecer a construção do seu projeto digital. Lembra de uma situação da sua vida onde você tirou a coroa de princesa e se tornou guerreira para enfrentar sua maior batalha. Pode ter sido uma separação, uma doença, uma perda, um recomeço... Escreve aqui. Ninguém vai ler além de você.</p>' +
+      '<div class="ritual-field">' +
+        '<label class="ritual-label">Meu momento guerreira</label>' +
+        '<textarea class="ritual-textarea" id="s1-momento" placeholder="Exemplo: A coisa mais difícil que eu superei foi..."></textarea>' +
+      '</div>' +
+      '<button class="btn-espada" id="btnMomentoContinuar">Continuar →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div id="blocoEspada" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<h2 class="s-title">Dê um nome<br>para sua <em style="color:#b48250;font-style:italic">espada</em></h2>' +
+      '<p class="ritual-hint" style="margin:0.8rem 0 1rem">Essa espada representa tudo que você superou e a força que você carrega. Ela é sua. Só você sabe qual palavra carrega esse peso.</p>' +
+      '<div class="ritual-field">' +
+        '<label class="ritual-label">O nome da sua espada</label>' +
+        '<input class="ritual-input" id="s1-espada" placeholder="Uma palavra, um nome, uma frase curta...">' +
+      '</div>' +
+      '<button class="btn-espada" id="btnEspadaConfirmar">⚔ Eu pego minha espada</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div id="blocoJuramento" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<div class="espada-confirmacao" id="s1-confirmacao"></div>' +
+      '<details style="margin-bottom:1.2rem">' +
+        '<summary style="cursor:pointer;list-style:none;background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:12px;padding:1rem 1.3rem;font-family:Playfair Display,serif;font-size:1rem;color:#f0ebe8;display:flex;align-items:center;justify-content:space-between">Oração da Guerreira <span style="color:#b48250;font-size:18px">✦</span></summary>' +
+        '<div class="oracao-box" style="margin-top:8px">' +
+          '<div class="oracao-titulo">Oração da Guerreira</div>' +
+          '<div class="oracao-subtitulo">forjada no calor da batalha</div>' +
+          '<div class="oracao-divider"></div>' +
+          '<div class="oracao-texto">"Juro solenemente honrar os meus super-poderes. Nos dias mais claros e nas noites mais escuras. Cumprir com as minhas responsabilidades e fazer o possível e impossível para transformar a vida de cada vez mais pessoas."</div>' +
+        '</div>' +
+      '</details>' +
+      '<div class="promessa-box" id="s1-promessa"></div>' +
+      '<button class="btn-espada" id="btnJuro" style="margin-top:1rem">⚔ Eu juro</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div id="blocoCaminhos" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<h2 class="direcionar-pergunta" id="r5-titulo"></h2>' +
+      '<p class="direcionar-hint">Escolha o caminho certo para você agora.</p>' +
+      '<div class="direcionar-btns">' +
+        '<button class="btn-caminho btn-caminho-a" id="btnCaminhoA" onclick="s1BtnCaminhoA()"><span class="btn-caminho-titulo">✓ Sprint de Decisões</span><span class="btn-caminho-desc">Tenho clareza do meu nicho e quero começar já organizando meu posicionamento e fatia de subnicho.</span></button>' +
+        '<button class="btn-caminho btn-caminho-b" id="btnCaminhoB" onclick="s1BtnCaminhoB()"><span class="btn-caminho-titulo">✦ Linha do Tempo</span><span class="btn-caminho-desc">Quero investigar minha história e encontrar meu assunto principal para assumir meu lugar de fala</span></button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+
+  '<div id="caminhoA" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<div class="pbar"><div class="pdot active" id="pd1">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4">4</div></div>' +
+      '<div class="step-screen active" id="ms1">' +
+        '<span class="s-label">Etapa 1 de 4 · A Pizza</span>' +
+        '<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>' +
+        '<p class="s-desc">Preencha os campos abaixo para organizar suas informações de posicionamento.<br><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Assistir a aula de Sprint da Fatia no módulo de Manifesto.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>' +
+          '<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia, Educação parental..."></div>' +
+          '<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>' +
+          '<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms2">' +
+        '<span class="s-label">Etapa 2 de 4 · Ingredientes</span>' +
+        '<h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>' +
+        '<p class="s-desc">O que compõe a sua essência única.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>' +
+          '<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms3">' +
+        '<span class="s-label">Etapa 3 de 4 · Sprint</span>' +
+        '<h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>' +
+        '<p class="s-desc">Consolide sua fatia em respostas rápidas e precisas.</p>' +
+        '<div class="form-2col">' +
+          '<div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" rows="2" style="min-height:70px" placeholder="Que material ou fundamento você usa?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" rows="2" style="min-height:70px" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans" rows="2" style="min-height:70px" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>' +
+          '<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>' +
+        '</div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms4">' +
+        '<span class="s-label">Etapa 4 de 4 · Manifesto</span>' +
+        '<h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>' +
+        '<p class="s-desc">A frase que será o norte de toda a sua comunicação.</p>' +
+        '<div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." - Uma frase que só você poderia dizer.</p></div>' +
+        '<div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>' +
+        '<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>' +
+        '<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>' +
+        '<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next">Gerar Canvas ✦</button></div>' +
+      '</div>' +
+      '<div class="step-screen" id="ms5">' +
+        '<span class="s-label">Canvas de Manifesto</span>' +
+        '<h2 class="s-title" style="margin-bottom:0.4rem">Guerreira, <em style="font-style:italic;color:#b48250">aqui está</em><br>sua causa revelada</h2>' +
+        '<p style="font-size:13px;color:rgba(240,235,232,0.45);margin-bottom:1.5rem;line-height:1.6">Este é o seu Canvas de Manifesto. Guarde, imprima e leve para onde você for.</p>' +
+        '<div class="canvas-s2" id="canvasManifesto">' +
+          '<div class="canvas-s2-header"><div class="canvas-s2-name" id="r-nome"></div><div class="canvas-s2-cause" id="r-frase"></div></div>' +
+          '<div class="canvas-s2-grid">' +
+            '<div class="cs2c"><div class="cs2c-lbl">Quem sou eu</div><div class="cs2c-ttl">Identidade Pessoal</div><div class="cs2c-val" id="r-id"></div></div>' +
+            '<div class="cs2c"><div class="cs2c-lbl">O que eu faço</div><div class="cs2c-ttl">Identidade Editorial</div><div class="cs2c-val" id="r-ed"></div></div>' +
+            '<div class="cs2c"><div class="cs2c-lbl">Para quem eu faço</div><div class="cs2c-ttl">Público Principal</div><div class="cs2c-val" id="r-pub"></div></div>' +
+            '<div class="cs2c"><div class="cs2c-lbl">Como eu faço</div><div class="cs2c-ttl">Método e Produtos</div><div class="cs2c-val" id="r-met"></div></div>' +
+            '<div class="cs2c"><div class="cs2c-lbl">Para quê eu faço</div><div class="cs2c-ttl">Causa de Manifesto</div><div class="cs2c-val" id="r-cau"></div></div>' +
+            '<div class="cs2c"><div class="cs2c-lbl">Por que eu faço</div><div class="cs2c-ttl">Legado do Manifesto</div><div class="cs2c-val" id="r-leg"></div></div>' +
+            '<div class="cs2c full"><div class="cs2c-lbl">Ingredientes de marca</div><div class="i-pills" id="r-ing"></div></div>' +
+          '</div>' +
+          '<div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>' +
+        '</div>' +
+        '<div class="download-area">' +
+          '<button class="btn-download btn-dl-primary" id="btnEnviar">✦ Enviar para a Jade</button>' +
+          '<button class="btn-download btn-dl-secondary" id="btnPrintCanvas1">⬇ Imprimir Canvas</button>' +
+        '</div>' +
+        '<button class="btn-bk" id="btnEditar" onclick="s1BtnEditar()" style="width:100%;text-align:center;padding:12px;margin-top:1rem">← Editar respostas</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+
+  '<div id="caminhoB" style="display:none;margin-top:2rem">' +
+    '<div style="border-top:1px solid rgba(180,130,80,0.2);padding-top:2rem">' +
+      '<span class="s-label">Caminho B · Descoberta</span>' +
+      '<h2 class="s-title" style="margin-bottom:1rem">Sua jornada<br><em style="color:#b48250;font-style:italic">interna</em></h2>' +
+      '<p class="s-desc">Vamos investigar sua história para encontrar seu assunto principal. Responda com calma e sinceridade.</p>' +
+      '<div class="f-group"><label class="f-label">O que você sabe fazer que poderia ensinar?</label><textarea class="f-textarea" id="b-sabe" placeholder="Não precisa estar na sua formação..."></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Suas experiências profissionais</label><textarea class="f-textarea" id="b-experiencias" placeholder="Ex: 2010-2015 trabalhei com..."></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Quem você tem tentado ajudar no digital?</label><textarea class="f-textarea" id="b-ajudar" placeholder="Que tipo de pessoa ou público?"></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Que resultado essa pessoa alcança com você?</label><textarea class="f-textarea" id="b-resultado" placeholder="O que muda na vida dela?"></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Como você entrega esse resultado?</label><textarea class="f-textarea" id="b-entrega" placeholder="Presencialmente, online..."></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Seus dons naturais</label><input type="text" class="f-input" id="b-dons" placeholder="Sou paciente, tenho facilidade para ouvir..."></div>' +
+      '<div class="f-group"><label class="f-label">Suas habilidades</label><input type="text" class="f-input" id="b-habilidades" placeholder="Habilidade em desenvolver atividades práticas..."></div>' +
+      '<div class="f-group"><label class="f-label">Sua causa ou crença principal</label><textarea class="f-textarea" id="b-causa" placeholder="Acredito que..."></textarea></div>' +
+      '<div class="f-group"><label class="f-label">Impacto que quer causar</label><textarea class="f-textarea" id="b-impacto" placeholder="Que transformação quer ver no mundo?"></textarea></div>' +
+      '<div class="prompt-box" style="margin-top:1.2rem">' +
+        '<div class="prompt-box-title">✦ Prompt gerado - Copie e leve ao ChatGPT</div>' +
+        '<div class="prompt-text" id="bPromptText">Preencha os campos acima para gerar seu prompt.</div>' +
+        '<button class="btn-copy-prompt" id="btnCopyBPrompt">⧉ Copiar prompt</button>' +
+      '</div>' +
+      '<div class="f-group" style="margin-top:1.2rem"><label class="f-label">Cole aqui o resumo do ChatGPT</label><span class="s2-field-hint" style="display:block;margin-bottom:6px">Cole e continue para a Pizza.</span><textarea class="f-textarea" id="b-resumo" rows="6" placeholder="Cole aqui o resumo do ChatGPT..."></textarea></div>' +
+      '<div class="nav-btns"><button class="btn-bk" id="bback" onclick="s1BtnBback()">← Voltar para os caminhos</button><button class="btn-nx" id="bnext" onclick="s1BtnBnext()">Seguir →</button></div>' +
+    '</div>' +
+  '</div>' +
+
+  '</div>';
+}
+
+function s1Modal(opcoes) {
+  // opcoes: { icone, titulo, texto, confirmar, cancelar, onConfirmar, onCancelar }
+  var overlay = document.getElementById('modalCaverna');
+  document.getElementById('modalIcon').textContent = opcoes.icone || '⚔';
+  document.getElementById('modalTitulo').textContent = opcoes.titulo || '';
+  document.getElementById('modalTexto').textContent = opcoes.texto || '';
+  document.getElementById('modalBtnConfirmar').textContent = opcoes.confirmar || 'Confirmar';
+  document.getElementById('modalBtnCancelar').textContent = opcoes.cancelar || 'Cancelar';
+  overlay.classList.add('ativo');
+  document.getElementById('modalBtnConfirmar').onclick = function() {
+    overlay.classList.remove('ativo');
+    if (opcoes.onConfirmar) opcoes.onConfirmar();
+  };
+  document.getElementById('modalBtnCancelar').onclick = function() {
+    overlay.classList.remove('ativo');
+    if (opcoes.onCancelar) opcoes.onCancelar();
+  };
+}
+
+
+// Mapa de telas anteriores para navegação com botão Voltar
+var S1_PREV = {
+  'r2': 'r1',
+  'r3': 'r2',
+  'r4': 'r3',
+  'r4b': 'r4',
+  'r5': 'r4b',
+  'caminhoA': 'r5',
+  'caminhoB': 'r5',
+  's1Resultado': 'caminhoA'
+};
+
+function s1TelaAtual() {
+  var c = document.getElementById('weekContent');
+  if (!c) return 'r1';
+  var current = 'r1';
+  S1_SCREENS.forEach(function(sid) {
+    var el = c.querySelector('#'+sid);
+    if (el && el.style.display !== 'none' && el.style.display !== '') current = sid;
+  });
+  return current;
+}
+
+function s1MostrarBtnSalvar(mostrar) {
+  var btn = document.getElementById('btnSalvarFixo');
+  if (btn) {
+    if (mostrar) btn.classList.add('visivel');
+    else btn.classList.remove('visivel');
+  }
+}
+
+function s1BtnSalvar() {
+  s1Save();
+  var btn = document.getElementById('btnSalvarFixo');
+  if (btn) {
+    var textoOriginal = btn.innerHTML;
+    btn.innerHTML = '✓ Salvo!';
+    btn.classList.add('salvo');
+    setTimeout(function() {
+      btn.innerHTML = textoOriginal;
+      btn.classList.remove('salvo');
+    }, 2000);
+  }
+}
+
+function s1NavHeader(dir) {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  if (idx === -1) return;
+  var next = idx + dir;
+  if (next < 0 || next >= ordem.length) return;
+  s1Save();
+  var target = ordem[next];
+  s1GoTo(target);
+  if (['r4','r4b','r5','caminhoA','s1Resultado'].indexOf(target) > -1) s1MontarJuramento();
+  if (target === 's1Resultado') s1PreencherResultado();
+  s1AtualizarNavHeader();
+}
+
+function s1AtualizarNavHeader() {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  var prev = document.getElementById('btnHeaderPrev');
+  var next = document.getElementById('btnHeaderNext');
+  var nav = document.getElementById('headerNavBtns');
+  if (nav) nav.style.display = 'flex';
+  if (prev) prev.disabled = idx <= 0;
+  if (next) next.disabled = idx >= ordem.length - 1;
+}
+
+function s1BtnR4back(){ s1GoTo('r3'); }
+function s1NavSeguir() {
+  var c = document.getElementById('weekContent');
+  // Se estiver no caminhoA, navegar entre as etapas ms1-ms4
+  var ca = c && c.querySelector('#caminhoA');
+  if (ca && ca.style.display !== 'none') {
+    for (var i = 1; i <= 4; i++) {
+      var ms = ca.querySelector('#ms'+i);
+      if (ms && ms.classList.contains('active')) {
+        if (i < 4) { mGoTo(i+1); s1Save(); }
+        else { s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
+        s1AtualizarBtnSeguir();
+        return;
+      }
+    }
+    return;
+  }
+  // Navegação normal entre telas do ritual
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  if (idx === -1 || idx >= ordem.length - 1) return;
+  s1Save();
+  var target = ordem[idx + 1];
+  s1GoTo(target);
+  if (['r4','r4b','r5'].indexOf(target) > -1) s1MontarJuramento();
+  if (target === 's1Resultado') s1PreencherResultado();
+  s1AtualizarBtnSeguir();
+}
+
+function s1AtualizarBtnSeguir() {
+  var ordem = ['r1','r2','r3','r4','r4b','r5','caminhoA','s1Resultado'];
+  var atual = s1TelaAtual();
+  var idx = ordem.indexOf(atual);
+  var btn = document.getElementById('btnSeguirMain');
+  if (!btn) return;
+  // Mostrar só se há tela seguinte E se já passou do ritual básico
+  if (idx > 0 && idx < ordem.length - 1) {
+    btn.style.visibility = 'visible';
+  } else {
+    btn.style.visibility = 'hidden';
+  }
+}
+
+function s1GerarPromptLT() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  function ltval(id) { var el = c.querySelector('#'+id); return el && el.value.trim() ? el.value.trim() : '—'; }
+  var prompt = 'Olá ChatGPT! Quero que você se comporte como um expert em descoberta de propósito na carreira, com especialidade em psicologia avançada e neuromarketing. Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar e preciso encontrar meu assunto principal no digital.\n\nRespondi um questionário de linha do tempo com minhas experiências de vida. Por favor, analise tudo e me ajude a preencher o Sprint da Fatia de Subnicho com sugestões baseadas na minha história real.\n\n' +
+    '== BLOCO 1 — ORIGEM E CONTEXTO ==\n' +
+    '1. Onde nasceu e cresceu: ' + ltval('lt1') + '\n' +
+    '2. Ambiente em casa: ' + ltval('lt2') + '\n' +
+    '3. Como se sentia na infância: ' + ltval('lt3') + '\n' +
+    '4. Papel na família: ' + ltval('lt4') + '\n\n' +
+    '== BLOCO 2 — ADOLESCÊNCIA E RUPTURAS ==\n' +
+    '5. Adolescência: ' + ltval('lt5') + '\n' +
+    '6. Episódio marcante: ' + ltval('lt6') + '\n' +
+    '7. Dava conta sozinha: ' + ltval('lt7') + '\n' +
+    '8. Aprendeu sozinha: ' + ltval('lt8') + '\n' +
+    '9. Parou de pedir ajuda: ' + ltval('lt9') + '\n\n' +
+    '== BLOCO 3 — ESCOLHAS PROFISSIONAIS ==\n' +
+    '10. Primeira profissão: ' + ltval('lt10') + '\n' +
+    '11. Influência da escolha: ' + ltval('lt11') + '\n' +
+    '12. Onde se destacou: ' + ltval('lt12') + '\n' +
+    '13. Onde se frustrou: ' + ltval('lt13') + '\n' +
+    '14. Fazia bem mas não reconhecida: ' + ltval('lt14') + '\n\n' +
+    '== BLOCO 4 — COMPETÊNCIAS ==\n' +
+    '15. Problemas que trazem pra você: ' + ltval('lt15') + '\n' +
+    '16. Vista como referência em: ' + ltval('lt16') + '\n' +
+    '17. Resolve com facilidade: ' + ltval('lt17') + '\n' +
+    '18. Observada por 10 anos: ' + ltval('lt18') + '\n\n' +
+    '== BLOCO 5 — PRESENTE ==\n' +
+    '19. Trabalha hoje com: ' + ltval('lt19') + '\n' +
+    '20. O que cansa: ' + ltval('lt20') + '\n' +
+    '21. O que te mantém: ' + ltval('lt21') + '\n' +
+    '22. O que está sendo desperdiçado: ' + ltval('lt22') + '\n' +
+    '23. Daqui 5 anos sem mudar: ' + ltval('lt23') + '\n\n' +
+    '== BLOCO 6 — LEGADO ==\n' +
+    '24. Quem pode ajudar: ' + ltval('lt24') + '\n' +
+    '25. Dor que entende por experiência: ' + ltval('lt25') + '\n' +
+    '26. Transformação que quer facilitar: ' + ltval('lt26') + '\n' +
+    '27. Sua história serve para: ' + ltval('lt27') + '\n\n' +
+    '== O QUE PRECISO ==\n' +
+    'Com base em tudo isso, me dê SUGESTÕES para eu preencher o Sprint da Fatia de Subnicho com minhas próprias palavras:\n' +
+    '1. Problema principal que resolvo\n' +
+    '2. Prova social (quem já transformei)\n' +
+    '3. Ferramenta principal que uso\n' +
+    '4. Perfil do meu público principal\n' +
+    '5. Principal transformação que entrego\n' +
+    '6. Como entrego e em quais produtos\n' +
+    '7. Tempo médio para o resultado\n\n' +
+    'Me indique também qual seria meu assunto principal no digital e por quê.';
+  var el = c.querySelector('#bPromptText');
+  if (el) el.textContent = prompt;
+}
+
+function s1CopyBPrompt() {
+  var c = document.getElementById('weekContent');
+  var txt = c.querySelector('#bPromptText') ? c.querySelector('#bPromptText').textContent : '';
+  var btn = c.querySelector('#btnCopyBPrompt');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(function(){ btn.textContent='✓ Copiado!'; setTimeout(function(){ btn.textContent='⧉ Copiar prompt'; },2000); }).catch(function(){ fbcopyLT(txt,btn); });
+  } else { fbcopyLT(txt,btn); }
+}
+function fbcopyLT(txt,btn){ var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');btn.textContent='✓ Copiado!';}catch(e){btn.textContent='✗ Tente manualmente';}document.body.removeChild(ta);setTimeout(function(){btn.textContent='⧉ Copiar prompt';},2000); }
+
+function s1BtnIrCaminhos() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var t = c.querySelector('#r5-titulo');
+  if (t) t.textContent = nome + ', você já tem clareza sobre seu assunto principal no digital?';
+  s1GoTo('r5'); s1Save();
+}
+function s1AbrirCardJuramento() {
+  var c = document.getElementById('weekContent');
+  var nome = c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var espada = c.querySelector('#s1-espada') ? c.querySelector('#s1-espada').value.trim() : '—';
+  var nomeEl = document.getElementById('card-nome-print');
+  var espadaEl = document.getElementById('card-espada-print');
+  var promEl = document.getElementById('card-promessa-print');
+  if (nomeEl) nomeEl.textContent = nome;
+  if (espadaEl) espadaEl.textContent = espada;
+  if (promEl) promEl.innerHTML = '"Eu, <strong>' + nome + '</strong>, portando minha espada <strong>' + espada + '</strong>, prometo que vou iniciar, persistir e concluir meu projeto. Que nos dias difíceis vou lembrar de onde vim. E que a guerreira que superou tudo isso é a mesma que vai transformar vidas."';
+  var card = document.getElementById('cardJuramentoPrint');
+  if (card) card.classList.add('ativo');
+}
+function s1FecharCardJuramento() {
+  var card = document.getElementById('cardJuramentoPrint');
+  if (card) card.classList.remove('ativo');
+}
+function s1Ms1next(){ mGoTo(2); s1Save(); }
+function s1Ms2back(){ mGoTo(1); }
+function s1Ms2next(){ mGoTo(3); s1Save(); }
+function s1Ms3back(){ mGoTo(2); }
+function s1Ms3next(){ mGoTo(4); s1Save(); }
+function s1Ms4back(){ mGoTo(3); }
+function s1Ms4next(){ s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
+function s1BtnEditar(){ mGoTo(4); }
+function s1BtnImprimir() {
+  var canvas = document.getElementById('canvasManifesto');
+  if (!canvas) { window.print(); return; }
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto">' +
+    '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '</div>' + canvas.outerHTML + '</div>';
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+function s1MarcarConcluida() {
+  var c = document.getElementById('weekContent');
+  var nome = c && c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+
+  // Salvar conquista no localStorage
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['semana1'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+
+  // Mostrar modal de vitória
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
+
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
+
+  // Mostrar coleção de conquistas
+  var colecaoEl = document.getElementById('vitoria-colecao');
+  if (colecaoEl) {
+    var semanas = [
+      {n:1, nome:'Manifesto'},
+      {n:2, nome:'Método'},
+      {n:3, nome:'Produtos'},
+      {n:4, nome:'Metodologia'},
+      {n:5, nome:'Plataforma'},
+      {n:6, nome:'Gravação'},
+      {n:7, nome:'Edição'},
+      {n:8, nome:'Validação'},
+      {n:9, nome:'Perfil Bio'},
+      {n:10, nome:'Destaques'},
+      {n:11, nome:'Feed'},
+      {n:12, nome:'No Ar!'}
+    ];
+    colecaoEl.innerHTML = '';
+    semanas.forEach(function(s) {
+      var conquistada = conquistas['semana'+s.n];
+      var badge = document.createElement('div');
+      badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
+      colecaoEl.appendChild(badge);
+    });
+  }
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
+
+  // Atualizar card no portal
+  s1AtualizarCardPortal();
+}
+
+function s1FecharVitoria() {
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.remove('ativo');
+}
+
+function s1AtualizarCardPortal() {
+  // Marcar visualmente card da semana 1 como concluída no portal
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  var card = document.querySelector('.card[data-week="1"]');
+  if (card && conquistas['semana1']) {
+    card.style.borderColor = 'rgba(180,130,80,0.6)';
+    card.style.boxShadow = '0 0 20px rgba(180,130,80,0.15)';
+  }
+}
+
+function s1BtnEnviar(){ alert('Em breve esta função enviará seu Canvas para a Jade!'); }
+function s1BtnIrS2(){ goHome(); setTimeout(function(){ openWeek(2); }, 300); }
+function s1BtnRecomecar(){
+  s1Modal({
+    icone: '↺',
+    titulo: 'Recomeçar do início?',
+    texto: 'Todas as suas respostas serão apagadas.',
+    confirmar: 'Sim, recomeçar',
+    cancelar: 'Cancelar',
+    onConfirmar: function() {
+      s1ClearSaved();
+      var c = document.getElementById('weekContent');
+      if(c) c.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
+      var label = c && c.querySelector('#s1-nome-label');
+      if(label) label.textContent = 'Qual é o seu nome, guerreira?';
+      s1GoTo('r1');
+    }
+  });
+}
+function s1VoltarCaminhos(){ s1GoTo('r5'); }
+function s1Bback(){ s1GoTo('r5'); }
+function s1Bnext(){ s1GoTo('caminhoA'); s1Save(); }
+function bindManifestoEvents() {
+  var c = document.getElementById('weekContent');
+  s1MostrarBtnSalvar(true);
+  s1AtualizarNavHeader();
+
+  // Auto-save via event delegation — captura todos os campos mesmo os ocultos
+  c.addEventListener('input', function(e) {
+    var id = e.target.id || '';
+    // Campos da linha do tempo — atualizar prompt
+    if (/^lt\d+$/.test(id)) { s1GerarPromptLT(); }
+    // Salvar sempre
+    s1Save();
+  });
+
+  // Bloco 1 - nome
+  c.querySelector('#btnNomeContinuar').addEventListener('click', function() {
+    var nome = c.querySelector('#s1-nome').value.trim();
+    if (!nome) { alert('Escreve seu nome para continuar!'); return; }
+    var label = c.querySelector('#s1-nome-label');
+    if (label) label.textContent = 'Bem-vinda, ' + nome + '! ✦';
+    s1DesbloquearBloco('blocoMomento');
+    s1Save();
+    setTimeout(function(){ document.getElementById('blocoMomento').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  });
+
+  // Bloco 2 - momento
+  c.querySelector('#btnMomentoContinuar').addEventListener('click', function() {
+    var v = c.querySelector('#s1-momento').value.trim();
+    if (!v) { alert('Conta seu momento para continuar!'); return; }
+    s1DesbloquearBloco('blocoEspada');
+    s1Save();
+    setTimeout(function(){ document.getElementById('blocoEspada').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  });
+
+  // Bloco 3 - espada
+  c.querySelector('#btnEspadaConfirmar').addEventListener('click', function() {
+    var v = c.querySelector('#s1-espada').value.trim();
+    if (!v) { alert('Dê um nome para sua espada!'); return; }
+    s1MostrarConfirmacao(false);
+    s1Save();
+  });
+
+  // Bloco 4 - juramento
+  c.querySelector('#btnJuro').addEventListener('click', function() {
+    var nome = c.querySelector('#s1-nome').value.trim() || 'Guerreira';
+    var t = c.querySelector('#r5-titulo');
+    if (t) t.textContent = nome + ', você já tem clareza sobre seu assunto principal no digital?';
+    s1DesbloquearBloco('blocoCaminhos');
+    s1Save();
+    setTimeout(function(){ document.getElementById('blocoCaminhos').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  });
+
+  // Bloco 5 - caminhos
+  c.querySelector('#btnCaminhoA').addEventListener('click', function() {
+    c.querySelector('#caminhoB').style.display = 'none';
+    s1DesbloquearBloco('caminhoA');
+    s1Save();
+    setTimeout(function(){ document.getElementById('caminhoA').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  });
+
+  c.querySelector('#btnCaminhoB').addEventListener('click', function() {
+    c.querySelector('#caminhoA').style.display = 'none';
+    s1DesbloquearBloco('caminhoB');
+    atualizarBPrompt();
+    s1Save();
+    setTimeout(function(){ document.getElementById('caminhoB').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
+  });
+
+  // Caminho A - navegação
+  c.querySelector('#ms1next').addEventListener('click', function(){ mGoTo(2); s1Save(); });
+  c.querySelector('#ms2back').addEventListener('click', function(){ mGoTo(1); });
+  c.querySelector('#ms2next').addEventListener('click', function(){ mGoTo(3); s1Save(); });
+  c.querySelector('#ms3back').addEventListener('click', function(){ mGoTo(2); });
+  c.querySelector('#ms3next').addEventListener('click', function(){ mGoTo(4); s1Save(); });
+  c.querySelector('#ms4back').addEventListener('click', function(){ mGoTo(3); });
+  c.querySelector('#ms4next').addEventListener('click', gerarManifesto);
+  c.querySelector('#btnEnviar').addEventListener('click', function(){ alert('Canvas salvo! Em breve esta função enviará para a Jade.'); });
+  c.querySelector('#btnEditar').addEventListener('click', function(){ mGoTo(4); });
+  // Botão Ver Método — navegar para página 2
+  var btnVerMetodo = c.querySelector('#btnVerMetodo');
+  if (btnVerMetodo) btnVerMetodo.addEventListener('click', function() {
+    var frase = (c.querySelector('#mhi-frase') && c.querySelector('#mhi-frase').value.trim()) || '—';
+    c.querySelector('#mv-manifesto').textContent = frase;
+    var passos = [];
+    c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+    var pilares = [];
+    c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+    var grid = c.querySelector('#mv-pilares-grid');
+    if (grid) {
+      grid.innerHTML = '';
+      var itens = pilares.length > 0 ? pilares : passos;
+      itens.forEach(function(nome, i) {
+        var card = document.createElement('div'); card.className = 'mv-pilar-card';
+        card.innerHTML = '<div class="mv-pilar-num">' + (i+1) + '</div><div class="mv-pilar-nome">' + nome + '</div>';
+        grid.appendChild(card);
+      });
+    }
+    c.querySelector('#s2p1') && (c.querySelector('#s2p1').style.display = 'none');
+    c.querySelector('#s2p2') && (c.querySelector('#s2p2').style.display = 'block');
+    window.scrollTo(0,0);
+  });
+
+  // Botão Voltar para página 1
+  var btnVoltarS2p1 = c.querySelector('#btnVoltarS2p1');
+  if (btnVoltarS2p1) btnVoltarS2p1.addEventListener('click', function() {
+    c.querySelector('#s2p2').style.display = 'none';
+    c.querySelector('#s2p1').style.display = 'block';
+    window.scrollTo(0,0);
+  });
+
+  // Botão Imprimir Método
+  var btnPrintMetodo = c.querySelector('#btnPrintMetodo');
+  if (btnPrintMetodo) btnPrintMetodo.addEventListener('click', function() {
+    var mv = c.querySelector('#metodoVisual');
+    if (!mv) { window.print(); return; }
+    var printArea = document.getElementById('printArea');
+    if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.display='none'; document.body.appendChild(printArea); }
+    var clone = mv.cloneNode(true);
+    clone.style.display = 'block';
+    printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:1.5rem;font-weight:700">Meu Método Autoral</div></div>' + clone.outerHTML + '</div>';
+    printArea.style.display = 'block';
+    window.print();
+    printArea.style.display = 'none';
+  });
+
+  // Botão Concluir S2
+  var btnConcluirS2 = c.querySelector('#btnConcluirS2');
+  if (btnConcluirS2) btnConcluirS2.addEventListener('click', function() {
+    var conquistas = {};
+    try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+    conquistas['semana2'] = { data: new Date().toLocaleDateString('pt-BR') };
+    try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+    try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+    var c2 = document.getElementById('weekContent');
+    var nomeS1 = c2 && c2.querySelector('#s1-nome') ? c2.querySelector('#s1-nome').value.trim() : '';
+    var nomeVit = document.getElementById('vitoria-nome');
+    if (nomeVit) nomeVit.textContent = nomeS1 || 'Guerreira';
+    var semVit = document.getElementById('vitoria-semana');
+    if (semVit) semVit.textContent = '✦ Semana 2 — Método Autoral · Concluída';
+    var frVit = document.getElementById('vitoria-frase');
+    if (frVit) frVit.textContent = '"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."';
+    var colVit = document.getElementById('vitoria-colecao');
+    if (colVit) {
+      var semanas = [{n:1,nome:'Manifesto'},{n:2,nome:'Método'},{n:3,nome:'Produtos'},{n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Gravação'},{n:7,nome:'Edição'},{n:8,nome:'Validação'},{n:9,nome:'Perfil Bio'},{n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}];
+      colVit.innerHTML = '';
+      semanas.forEach(function(s) {
+        var conquistada = conquistas['semana'+s.n];
+        var badge = document.createElement('div');
+        badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+        badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
+        colVit.appendChild(badge);
+      });
+    }
+    var modal = document.getElementById('modalVitoria');
+    if (modal) modal.classList.add('ativo');
+  });
+
+  // Botão Ir S3
+  var btnIrS3 = c.querySelector('#btnIrS3');
+  if (btnIrS3) btnIrS3.addEventListener('click', function(){ goHome(); });
+
+  // Caminho B - prompt
+  function atualizarBPrompt() {
+    function bval(id){ var el=c.querySelector('#'+id); return el ? el.value.trim() : ''; }
+    var prompt = 'Olá chat, quero que você se comporte como um expert em descoberta de propósito na carreira, com especialidade em psicologia avançada e neuromarketing. Estou sendo mentorada pela Jade Torres e quero encontrar meu assunto principal no digital.\n\nO que sei fazer e poderia ensinar:\n' + (bval('b-sabe')||'—') + '\n\nExperiências profissionais:\n' + (bval('b-experiencias')||'—') + '\n\nQuem tento ajudar no digital:\n' + (bval('b-ajudar')||'—') + '\n\nResultado que entrego:\n' + (bval('b-resultado')||'—') + '\n\nComo entrego:\n' + (bval('b-entrega')||'—') + '\n\nSobre mim:\n- Dons: ' + (bval('b-dons')||'—') + '\n- Habilidades: ' + (bval('b-habilidades')||'—') + '\n- Causa: ' + (bval('b-causa')||'—') + '\n- Impacto: ' + (bval('b-impacto')||'—') + '\n\nMe entregue:\n1. Resumo do meu assunto principal\n2. Fatia de subnicho sugerida\n3. Ingredientes de marca\n4. Frase de manifesto';
+    var el = c.querySelector('#bPromptText');
+    if (el) el.textContent = prompt;
+  }
+
+  var bids = ['b-sabe','b-experiencias','b-ajudar','b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto'];
+  bids.forEach(function(id) {
+    var el = c.querySelector('#'+id);
+    if (el) el.addEventListener('input', function(){ atualizarBPrompt(); s1Save(); });
+  });
+
+  var bcopyBtn = c.querySelector('#btnCopyBPrompt');
+  if (bcopyBtn) bcopyBtn.addEventListener('click', function() {
+    var txt = c.querySelector('#bPromptText').textContent;
+    var btn = this;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function(){ btn.textContent='✓ Copiado!'; setTimeout(function(){ btn.textContent='⧉ Copiar prompt'; },2000); }).catch(function(){ fbCopy(txt,btn); });
+    } else { fbCopy(txt,btn); }
+  });
+
+  function fbCopy(txt,btn){ var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');btn.textContent='✓ Copiado!';}catch(e){btn.textContent='✗ Tente manualmente';}document.body.removeChild(ta);setTimeout(function(){btn.textContent='⧉ Copiar prompt';},2000); }
+
+  c.querySelector('#bback').addEventListener('click', function(){
+    c.querySelector('#caminhoB').style.display='none';
+    document.getElementById('blocoCaminhos').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  c.querySelector('#bnext').addEventListener('click', function(){
+    c.querySelector('#caminhoB').style.display='none';
+    s1DesbloquearBloco('caminhoA');
+    s1Save();
+    setTimeout(function(){ document.getElementById('caminhoA').scrollIntoView({behavior:'smooth',block:'start'}); },400);
+  });
+
+  // Carregar dados salvos
+  s1Load();
+}
+
+function mGoTo(s) {
+  var c = document.getElementById('weekContent');
+  var ca = c.querySelector('#caminhoA');
+  if (!ca) return;
+  for (var i = 1; i <= 5; i++) { var el = ca.querySelector('#ms'+i); if(el) el.classList.remove('active'); }
+  var sc = ca.querySelector('#ms'+s); if(sc) sc.classList.add('active');
+  for (var i = 1; i <= 5; i++) {
+    var d = ca.querySelector('#pd'+i); if(!d) continue;
+    if(i<s){d.className='pdot done';d.textContent='✓';}
+    else if(i===s){d.className='pdot active';d.textContent=i;}
+    else{d.className='pdot';d.textContent=i;}
+  }
+  for (var j=1;j<=4;j++){var l=ca.querySelector('#pl'+j);if(l)l.className=j<s?'pline done':'pline';}
+  window.scrollTo(0,0);
+}
+
+function gerarManifesto() {
+  var c = document.getElementById('weekContent');
+  function val(id){var el=c.querySelector('#'+id);return el?el.value||'':''; }
+  var nome = val('s1-nome') || 'Guerreira';
+  var fatia = val('s1-fatia') || val('s1-nicho');
+  var pub = val('s1-publico');
+  var trans = val('s1-trans');
+  var dons = val('s1-dons');
+  var causa = val('s1-causa');
+  var crenca = val('s1-crenca');
+  var frase = val('s1-frase') || val('s1-gritar');
+  var legado = val('s1-legado');
+  var nicho = val('s1-nicho');
+  function set(id,txt){var el=c.querySelector('#'+id);if(el)el.textContent=txt;}
+  set('r-nome', nome);
+  set('r-frase', frase || "Minha causa ainda está sendo revelada...");
+  set('r-id', nome + (fatia ? ' - ' + fatia : ''));
+  set('r-ed', trans ? trans.substring(0,110)+(trans.length>110?'...':'') : 'A definir.');
+  set('r-pub', pub ? pub.substring(0,90)+(pub.length>90?'...':'') : 'A definir.');
+  set('r-met', nicho ? 'Através da minha metodologia em '+nicho+'.' : 'Método a ser nomeado.');
+  set("r-cau", causa ? causa.substring(0,110)+(causa.length>110?"...":"") : crenca.substring(0,110)+"...");
+  set('r-leg', legado ? legado.substring(0,90)+(legado.length>90?'...':'') : '—');
+  var pills = c.querySelector('#r-ing');
+  if (pills) {
+    pills.innerHTML = '';
+    if (dons) { var p=document.createElement('span');p.className='i-pill';p.textContent=dons.substring(0,40);pills.appendChild(p); }
+    if (causa) { var p2=document.createElement('span');p2.className='i-pill';p2.textContent=causa.substring(0,40);pills.appendChild(p2); }
+  }
+  mGoTo(5);
+  s1Save();
+}
+
+
+
+
+buildGrid();
+</script>
+
+<!-- TEMPLATE S1 -->
+<div id="tplS1" style="display:none">
+<div class="ritual-wrapper">
+<div id="r1" style="max-width:620px;margin:0 auto">
+<div class="ritual-boas-vindas">
+<span class="caverna-icon">⚔</span>
+<h2>Bem-vinda à<br><em>Caverna das Guerreiras</em></h2>
+<p>Este é um espaço sagrado onde seu propósito vai se transformar em uma missão capaz de impactar milhares de vidas. Antes de começar sua jornada, se apresente à Caverna.</p>
+</div>
+<div class="ritual-field">
+<label class="ritual-label" id="s1-nome-label">Qual é o seu nome, guerreira?</label>
+<input class="ritual-input" id="s1-nome" placeholder="Escreva seu nome aqui...">
+</div>
+<button class="btn-espada" id="btnR1next" onclick="s1BtnNome()">Entrar na Caverna →</button>
+</div>
+<div id="r2" style="display:none;max-width:620px;margin:0 auto">
+<span class="s-label" id="r2-saudacao"></span>
+<h2 class="s-title">Hora de vestir<br>a <em style="color:#b48250;font-style:italic">armadura</em></h2>
+<p class="ritual-hint" style="margin:0.8rem 0 1.2rem">Antes de começar, quero te convidar para um momento que vai fortalecer a construção do seu projeto digital. Lembra de uma situação da sua vida onde você tirou a coroa de princesa e se tornou guerreira para enfrentar sua maior batalha. Pode ter sido uma separação, uma doença, uma perda, um recomeço... Escreve aqui. Ninguém vai ler além de você.</p>
+<div class="ritual-field">
+<label class="ritual-label">Meu momento guerreira</label>
+<textarea class="ritual-textarea" id="s1-momento" placeholder="Exemplo: A coisa mais difícil que eu superei foi..."></textarea>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="btnR2back" onclick="s1BtnR2back()">← Voltar</button><button class="btn-nx" id="btnR2next" onclick="s1BtnR2next()">Seguir →</button></div>
+</div>
+<div id="r3" style="display:none;max-width:620px;margin:0 auto">
+<h2 class="s-title">Dê um nome<br>para sua <em style="color:#b48250;font-style:italic">espada</em></h2>
+<p class="ritual-hint" style="margin:0.8rem 0 1.2rem">Essa espada representa tudo que você superou e a força que você carrega. Ela é sua. Só você sabe qual palavra carrega esse peso.</p>
+<div class="ritual-field">
+<label class="ritual-label">O nome da sua espada</label>
+<input class="ritual-input" id="s1-espada" placeholder="Uma palavra, um nome, uma frase curta...">
+</div>
+<div class="nav-btns"><button class="btn-bk" id="btnR3back" onclick="s1BtnR3back()">← Voltar</button><button class="btn-espada" id="btnR3next" style="flex:1" onclick="s1BtnR3next()">⚔ Eu pego minha espada</button></div>
+</div>
+<div id="r4" style="display:none;max-width:620px;margin:0 auto">
+<div style="text-align:center;margin-bottom:1.5rem">
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(240,235,232,0.75);line-height:1.4;font-style:italic;margin-bottom:0.2rem">Parabéns pela sua força,</p>
+<p id="r4-nome-destaque" style="font-family:'Playfair Display',serif;font-size:1.6rem;color:#b48250;font-weight:700;margin-bottom:0.6rem"></p>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;line-height:1.5;font-style:italic;margin-bottom:0.8rem">A força que te trouxe até aqui é a mesma que vai construir o seu projeto.</p>
+<p style="font-family:'Playfair Display',serif;font-size:1rem;color:rgba(240,235,232,0.75);line-height:1.5;font-style:italic">Hoje você faz uma <em style="color:#b48250;font-style:normal;font-weight:600">promessa</em> para você mesma.</p>
+</div>
+<div class="oracao-box" style="text-align:left">
+<div style="text-align:center">
+<div class="oracao-titulo">Oração da Guerreira</div>
+<div class="oracao-subtitulo">forjada no calor da batalha</div>
+<div class="oracao-divider"></div>
+</div>
+<div id="s1-juramento-texto"></div>
+</div>
+<button class="btn-espada" id="btnR4juro" style="margin-top:1.2rem" onclick="s1BtnJuro()">⚔ Eu juro</button>
+</div>
+<div id="r4b" style="display:none;max-width:640px;margin:0 auto">
+  <div class="compartilhar-wrapper">
+    <p style="font-size:40px;margin-bottom:1rem">⚔</p>
+    <h2 class="compartilhar-titulo">Agora sim você está pronta,<br><em id="r4b-nome"></em></h2>
+    <div class="compartilhar-texto">
+      <p style="margin-bottom:1rem">Eu acredito muito que quando nos comprometemos publicamente geramos uma energia poderosa — existe uma plateia esperando o seu protagonismo.</p>
+      <p style="margin-bottom:1rem">Então, clica no botão abaixo, imprime seu juramento e compartilha com quem realmente torce por você — inclusive comigo, que criei esse movimento para todas as mulheres que acreditam na força da sua espada interior, como você.</p>
+      <p>Coloca no grupo de alunas, posta nos Stories e me marca <strong style="color:#b48250">@jadeettorress</strong> — assim eu já te sinto no movimento. 🔥</p>
+    </div>
+    <div class="compartilhar-acoes">
+      <button class="btn-compartilhar-print" onclick="s1AbrirCardJuramento()">⚔ Imprimir meu Juramento</button>
+      <button class="btn-compartilhar-continuar" onclick="s1BtnIrCaminhos()">Estou pronta para começar →</button>
+    </div>
+  </div>
+</div>
+
+<div id="r5" style="display:none;max-width:680px;margin:0 auto">
+<div style="text-align:center;margin-bottom:2rem">
+  <span class="s-label">Avante, Guerreira!</span>
+  <h2 class="s-title" style="margin-bottom:1rem">Agora sim você está preparada para iniciar<br>uma das batalhas mais incríveis da sua vida.</h2>
+  <div style="background:linear-gradient(135deg,rgba(180,130,80,0.12),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.4);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem">
+    <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#b48250;font-weight:700;line-height:1.7;letter-spacing:0.5px">TRANSFORMAR SUA HISTÓRIA, EXPERIÊNCIA, CONHECIMENTO, DONS E HABILIDADES... EM UM MÉTODO AUTORAL QUE MUDA VIDAS E IMPACTA GERAÇÕES.</p>
+  </div>
+  <p style="font-size:15px;color:rgba(240,235,232,0.75);line-height:1.7">Observe cada uma dessas opções e escolha a que mais se encaixa com seu momento no digital.</p>
+</div>
+<div class="direcionar-btns">
+<button class="btn-caminho btn-caminho-b" id="btnCaminhoB" onclick="s1BtnCaminhoB()"><span class="btn-caminho-titulo">✦ Linha do Tempo</span><span class="btn-caminho-desc">Quero investigar minha história e encontrar meu assunto principal para assumir meu lugar de fala</span></button>
+<button class="btn-caminho btn-caminho-a" id="btnCaminhoA" onclick="s1BtnCaminhoA()"><span class="btn-caminho-titulo">✓ Sprint de Decisões</span><span class="btn-caminho-desc">Tenho clareza do meu nicho e quero começar já organizando meu posicionamento e fatia de subnicho.</span></button>
+</div>
+</div>
+<div id="caminhoA" style="display:none">
+<div style="max-width:960px;margin:0 auto">
+<div class="pbar"><div class="pdot active" id="pd1">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4">4</div></div>
+<div class="step-screen active" id="ms1">
+<span class="s-label">Etapa 1 de 4 · A Pizza</span>
+<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>
+<p class="s-desc">Preencha os campos abaixo para organizar suas informações de posicionamento.<br><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Assistir a aula de Sprint da Fatia no módulo de Manifesto.</p>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>
+<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>
+<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>
+<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
+<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
+</div>
+<div class="step-screen" id="ms2">
+<span class="s-label">Etapa 2 de 4 · Ingredientes</span>
+<h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>
+<p class="s-desc">O que compõe a sua essência única.</p>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
+<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>
+<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>
+<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
+<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
+</div>
+<div class="step-screen" id="ms3">
+<span class="s-label">Etapa 3 de 4 · Sprint</span>
+<h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>
+<p class="s-desc">Consolide sua fatia em respostas rápidas e precisas.</p>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>
+<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
+<div class="f-group"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" rows="2" style="min-height:70px" placeholder="Que material ou fundamento você usa?"></textarea></div>
+<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" rows="2" style="min-height:70px" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
+<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans" rows="2" style="min-height:70px" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
+<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>
+<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
+</div>
+<div class="step-screen" id="ms4">
+<span class="s-label">Etapa 4 de 4 · Manifesto</span>
+<h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>
+<p class="s-desc">A frase que será o norte de toda a sua comunicação.</p>
+<div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." — Uma frase que só você poderia dizer.</p></div>
+<div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
+<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>
+<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
+<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
+</div>
+</div>
+</div>
+<div id="caminhoB" style="display:none">
+<div style="max-width:780px;margin:0 auto">
+  <span class="s-label">Linha do Tempo · Sua jornada interna</span>
+  <h2 class="s-title" style="margin-bottom:0.5rem">Sua história é<br><em style="color:#b48250;font-style:italic">sua maior riqueza</em></h2>
+  <p class="s-desc">Responda com calma e sinceridade. Não existem respostas certas ou erradas. Você não precisa caprichar — precisa ser verdadeira.</p>
+
+  <!-- BLOCO 1 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 1 — Origem e Contexto</div>
+    <div class="bloco-lt-sub">Quem você precisou ser para sobreviver</div>
+    <div class="f-group"><label class="f-label">1. Onde você nasceu e cresceu?</label><textarea class="f-textarea" id="lt1" rows="2" style="min-height:60px" placeholder="Cidade, estado, ambiente..."></textarea></div>
+    <div class="f-group"><label class="f-label">2. Como você descreveria o ambiente da sua casa quando criança?</label><textarea class="f-textarea" id="lt2" rows="2" style="min-height:60px" placeholder="Tranquilo, agitado, amoroso, difícil..."></textarea></div>
+    <div class="f-group"><label class="f-label">3. Dos 0 aos 10 anos, você se sentia mais... (segura, responsável, invisível, cobrada, livre)</label><textarea class="f-textarea" id="lt3" rows="2" style="min-height:60px" placeholder="Explique como se sentia..."></textarea></div>
+    <div class="f-group"><label class="f-label">4. Ainda criança, você sentia que precisava assumir algum papel específico na família?</label><textarea class="f-textarea" id="lt4" rows="2" style="min-height:60px" placeholder="Cuidar de alguém, ser forte, resolver conflitos..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 2 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 2 — Adolescência e Rupturas</div>
+    <div class="bloco-lt-sub">Quando você percebeu que precisava se virar</div>
+    <div class="f-group"><label class="f-label">5. Como foi sua adolescência (dos 11 aos 18 anos)?</label><textarea class="f-textarea" id="lt5" rows="2" style="min-height:60px" placeholder="Marcada por quê? Liberdade, cobrança, descobertas..."></textarea></div>
+    <div class="f-group"><label class="f-label">6. Houve algum episódio marcante nessa fase que mudou a forma como você via a vida?</label><textarea class="f-textarea" id="lt6" rows="2" style="min-height:60px" placeholder="Um momento que te transformou..."></textarea></div>
+    <div class="f-group"><label class="f-label">7. Você sentia que precisava dar conta de algo sozinha nessa época? O quê?</label><textarea class="f-textarea" id="lt7" rows="2" style="min-height:60px" placeholder="O que você carregava sozinha..."></textarea></div>
+    <div class="f-group"><label class="f-label">8. O que você aprendeu a fazer sozinha nessa fase da vida?</label><textarea class="f-textarea" id="lt8" rows="2" style="min-height:60px" placeholder="Habilidades que você desenvolveu por necessidade..."></textarea></div>
+    <div class="f-group"><label class="f-label">9. O que você parou de pedir ajuda nessa época, e nunca mais voltou a pedir?</label><textarea class="f-textarea" id="lt9" rows="2" style="min-height:60px" placeholder="Uma vulnerabilidade que você fechou..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 3 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 3 — Escolhas Profissionais</div>
+    <div class="bloco-lt-sub">Como você tentou se encaixar no mundo</div>
+    <div class="f-group"><label class="f-label">10. Como você escolheu sua primeira profissão ou caminho profissional?</label><textarea class="f-textarea" id="lt10" rows="2" style="min-height:60px" placeholder="O que te levou até essa escolha..."></textarea></div>
+    <div class="f-group"><label class="f-label">11. Essa escolha foi mais influenciada por: desejo pessoal, família, segurança, acaso?</label><textarea class="f-textarea" id="lt11" rows="2" style="min-height:60px" placeholder="Seja honesta sobre o que motivou..."></textarea></div>
+    <div class="f-group"><label class="f-label">12. Em quais trabalhos ou experiências você mais se destacou?</label><textarea class="f-textarea" id="lt12" rows="2" style="min-height:60px" placeholder="Onde você brilhou sem perceber..."></textarea></div>
+    <div class="f-group"><label class="f-label">13. Em quais experiências você mais se frustrou ou sentiu que não cabia?</label><textarea class="f-textarea" id="lt13" rows="2" style="min-height:60px" placeholder="Onde você se sentiu fora do lugar..."></textarea></div>
+    <div class="f-group"><label class="f-label">14. O que você fazia bem, mas nunca foi reconhecida como algo realmente valioso?</label><textarea class="f-textarea" id="lt14" rows="2" style="min-height:60px" placeholder="Um talento que você minimizou..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 4 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 4 — Experiências que Viraram Competência</div>
+    <div class="bloco-lt-sub">Onde você virou especialista sem perceber</div>
+    <div class="f-group"><label class="f-label">15. Que tipo de problema as pessoas costumam trazer para você?</label><textarea class="f-textarea" id="lt15" rows="2" style="min-height:60px" placeholder="O que as pessoas pedem sua ajuda ou opinião..."></textarea></div>
+    <div class="f-group"><label class="f-label">16. Em quais situações você costuma ser vista como a referência?</label><textarea class="f-textarea" id="lt16" rows="2" style="min-height:60px" placeholder="Quando as pessoas te procuram como exemplo..."></textarea></div>
+    <div class="f-group"><label class="f-label">17. O que você resolve com facilidade, mas tende a achar que todo mundo sabe fazer?</label><textarea class="f-textarea" id="lt17" rows="2" style="min-height:60px" placeholder="Um dom que você banaliza..."></textarea></div>
+    <div class="f-group"><label class="f-label">18. Se alguém tivesse te observado em silêncio por 10 anos, pelo que diria que você é muito boa?</label><textarea class="f-textarea" id="lt18" rows="2" style="min-height:60px" placeholder="O que fica evidente em você para quem te observa..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 5 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 5 — Presente e Incômodo</div>
+    <div class="bloco-lt-sub">Onde está o atrito atual</div>
+    <div class="f-group"><label class="f-label">19. Com o que você trabalha hoje?</label><textarea class="f-textarea" id="lt19" rows="2" style="min-height:60px" placeholder="Sua ocupação atual..."></textarea></div>
+    <div class="f-group"><label class="f-label">20. O que no seu trabalho atual mais te cansa ou pesa?</label><textarea class="f-textarea" id="lt20" rows="2" style="min-height:60px" placeholder="O que drena sua energia..."></textarea></div>
+    <div class="f-group"><label class="f-label">21. O que ainda te mantém nesse lugar hoje?</label><textarea class="f-textarea" id="lt21" rows="2" style="min-height:60px" placeholder="O que te segura onde está..."></textarea></div>
+    <div class="f-group"><label class="f-label">22. O que você sente que está sendo desperdiçado em você atualmente?</label><textarea class="f-textarea" id="lt22" rows="2" style="min-height:60px" placeholder="Um potencial que não está sendo usado..."></textarea></div>
+    <div class="f-group"><label class="f-label">23. Se você continuasse exatamente como está por mais 5 anos, o que te doeria admitir?</label><textarea class="f-textarea" id="lt23" rows="2" style="min-height:60px" placeholder="A verdade que você evita pensar..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 6 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 6 — Significado e Legado</div>
+    <div class="bloco-lt-sub">Onde nasce o seu assunto principal</div>
+    <div class="f-group"><label class="f-label">24. Que tipo de mulher você sente que pode ajudar hoje?</label><textarea class="f-textarea" id="lt24" rows="2" style="min-height:60px" placeholder="Quem é essa mulher que você quer transformar..."></textarea></div>
+    <div class="f-group"><label class="f-label">25. Que dor você entende profundamente por experiência, não por estudo?</label><textarea class="f-textarea" id="lt25" rows="2" style="min-height:60px" placeholder="Uma dor que você viveu na pele..."></textarea></div>
+    <div class="f-group"><label class="f-label">26. Que transformação você gostaria de facilitar na vida de outras pessoas?</label><textarea class="f-textarea" id="lt26" rows="2" style="min-height:60px" placeholder="O que você quer ver acontecer nas vidas que toca..."></textarea></div>
+    <div class="f-group"><label class="f-label">27. Se a sua história pudesse servir para evitar que alguém passe pelo que você passou, sobre o que essa história seria?</label><textarea class="f-textarea" id="lt27" rows="2" style="min-height:60px" placeholder="A essência do que você tem a ensinar..."></textarea></div>
+  </div>
+
+  <!-- PROMPT GERADO -->
+  <div class="prompt-box" style="margin-top:1.5rem">
+    <div class="prompt-box-title">✦ Prompt gerado — Copie e leve ao ChatGPT</div>
+    <div class="prompt-text" id="bPromptText">Preencha os campos acima para gerar seu prompt personalizado.</div>
+    <button class="btn-copy-prompt" id="btnCopyBPrompt" onclick="s1CopyBPrompt()">⧉ Copiar prompt</button>
+  </div>
+
+
+
+  <div class="nav-btns" style="margin-top:1.5rem">
+    <button class="btn-bk" id="bback" onclick="s1BtnBback()">← Voltar</button>
+    <button class="btn-nx" id="bnext" onclick="s1BtnBnext()">Seguir →</button>
+  </div>
+</div>
+</div>
+
+<div id="r_checkpoint" style="display:none;max-width:620px;margin:0 auto">
+  <div style="text-align:center;padding:2rem 0">
+    <span style="font-size:48px;display:block;margin-bottom:1.2rem">⚔</span>
+    <span class="s-label">Checkpoint</span>
+    <h2 class="s-title" style="margin-bottom:1rem">Sua Linha do Tempo<br><em style="color:#b48250;font-style:italic">está completa!</em></h2>
+    <p style="font-size:15px;color:rgba(240,235,232,0.75);line-height:1.8;margin-bottom:2rem">Você acabou de mapear sua história, suas competências e seu propósito.<br><br>Antes de avançar, certifique-se de que está segura com o que preencheu e com as sugestões que recebeu do ChatGPT.<br><br>Se precisar de ajuda para interpretar sua história ou tiver dúvidas sobre sua escolha, fale com a Jade ou com a equipe pelo suporte antes de continuar.</p>
+    <div style="background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.03));border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.5rem;margin-bottom:2rem;text-align:left">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:1rem">O que vem a seguir</div>
+      <div style="display:flex;flex-direction:column;gap:0.8rem">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
+          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Você vai posicionar sua <strong style="color:#f0ebe8">fatia de subnicho</strong> — a área específica onde vai se tornar referência</p>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
+          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Vai mapear seus <strong style="color:#f0ebe8">ingredientes de marca</strong> — os elementos únicos que compõem sua essência</p>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
+          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Vai responder o <strong style="color:#f0ebe8">Sprint da Fatia</strong> com suas próprias palavras e gerar seu Canvas de Manifesto</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <button class="btn-espada" onclick="s1BtnCheckpointOk()">⚔ Estou pronta — Seguir para o Sprint de Decisões →</button>
+      <button class="btn-bk" style="width:100%;padding:13px;text-align:center" onclick="s1BtnCheckpointVoltar()">← Revisar minhas respostas</button>
+    </div>
+  </div>
+</div>
+
+<div id="s1Resultado" style="display:none">
+<div class="s1-resultado">
+<span class="s-label" style="text-align:center;display:block;margin-bottom:1rem">✦ Seu Manifesto Editorial</span>
+<div class="s1-res-header">
+<div class="s1-res-card"><span class="s1-res-card-icon">⚔</span><span class="s1-res-card-label">Sua espada</span><div class="s1-res-card-value" id="res-espada">—</div></div>
+<div class="s1-res-card"><span class="s1-res-card-icon">✦</span><span class="s1-res-card-label">Guerreira</span><div class="s1-res-card-value" id="res-nome">—</div></div>
+<div class="s1-res-card"><span class="s1-res-card-icon">🗡</span><span class="s1-res-card-label">Manifesto</span><div class="s1-res-card-value" id="res-frase">—</div></div>
+</div>
+<div class="canvas-s2">
+<div class="canvas-s2-header"><div class="canvas-s2-name" id="r-nome"></div><div class="canvas-s2-cause" id="r-frase"></div></div>
+<div class="canvas-s2-grid">
+<div class="cs2c"><div class="cs2c-lbl">Quem sou eu</div><div class="cs2c-ttl">Identidade Pessoal</div><div class="cs2c-val" id="r-id"></div></div>
+<div class="cs2c"><div class="cs2c-lbl">O que eu faço</div><div class="cs2c-ttl">Identidade Editorial</div><div class="cs2c-val" id="r-ed"></div></div>
+<div class="cs2c"><div class="cs2c-lbl">Para quem eu faço</div><div class="cs2c-ttl">Público Principal</div><div class="cs2c-val" id="r-pub"></div></div>
+<div class="cs2c"><div class="cs2c-lbl">Como eu faço</div><div class="cs2c-ttl">Método e Produtos</div><div class="cs2c-val" id="r-met"></div></div>
+<div class="cs2c"><div class="cs2c-lbl">Para quê eu faço</div><div class="cs2c-ttl">Causa de Manifesto</div><div class="cs2c-val" id="r-cau"></div></div>
+<div class="cs2c"><div class="cs2c-lbl">Por que eu faço</div><div class="cs2c-ttl">Legado do Manifesto</div><div class="cs2c-val" id="r-leg"></div></div>
+<div class="cs2c full"><div class="cs2c-lbl">Ingredientes de marca</div><div class="i-pills" id="r-ing"></div></div>
+</div>
+<div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>
+</div>
+<div class="s1-actions">
+<button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>
+<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Semana 1 como concluída</button>
+</div>
+<div class="s1-proxima">
+<span class="s1-proxima-label">Próxima Batalha</span>
+<div class="s1-proxima-title">Semana 2 — Método Autoral</div>
+<div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>
+<button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>
+</div>
+<button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>
+</div>
+</div>
+</div>
+}
+</div>
+
+
+<!-- MODAL CUSTOMIZADO -->
+
+<!-- BOTÃO SALVAR FIXO -->
+<button class="btn-salvar" id="btnSalvarFixo" onclick="s1BtnSalvar()">⚔ Salvar progresso</button>
+
+<!-- MODAL VITÓRIA -->
+<div class="modal-vitoria" id="modalVitoria">
+  <div class="modal-vitoria-box">
+    <span class="vitoria-icon">🏆</span>
+    <div class="vitoria-selo">✦ Conquista desbloqueada</div>
+    <h2 class="modal-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, <em id="vitoria-nome" style="color:#b48250;font-style:italic"></em>!</h2>
+    <div class="vitoria-semana" id="vitoria-semana"></div>
+    <div class="vitoria-frase" id="vitoria-frase"></div>
+    <div class="vitoria-colecao" id="vitoria-colecao"></div>
+    <button class="vitoria-btn" onclick="s1FecharVitoria()">⚔ Seguir para a próxima batalha</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalCaverna">
+  <div class="modal-box">
+    <span class="modal-icon" id="modalIcon">⚔</span>
+    <div class="modal-titulo" id="modalTitulo"></div>
+    <div class="modal-texto" id="modalTexto"></div>
+    <div class="modal-btns">
+      <button class="modal-btn-confirmar" id="modalBtnConfirmar"></button>
+      <button class="modal-btn-cancelar" id="modalBtnCancelar"></button>
+    </div>
+  </div>
+</div>
+
+<div class="card-juramento-print" id="cardJuramentoPrint">
+  <div class="card-juramento-inner">
+    <button class="card-close" onclick="s1FecharCardJuramento()">×</button>
+    <div class="card-header-print">
+      <div class="card-logo-print">Portal Caverna das Guerreiras · Jade Torres</div>
+      <div class="card-nome-print" id="card-nome-print">—</div>
+      <div class="card-espada-print">⚔ Espada: <span id="card-espada-print">—</span></div>
+    </div>
+    <div class="card-body-print" style="text-align:center">
+      <div class="card-oracao-titulo-print">Oração da Guerreira</div>
+      <div class="card-oracao-sub-print">forjada no calor da batalha</div>
+      <div class="card-oracao-divider-print"></div>
+      <div class="card-promessa-print" id="card-promessa-print"></div>
+      <div class="card-oracao-texto-print">"Juro solenemente honrar os meus super-poderes. Nos dias mais claros e nas noites mais escuras. Cumprir com as minhas responsabilidades e fazer o possível e impossível para transformar a vida de cada vez mais pessoas."</div>
+      <div class="card-footer-print">@jadeettorress · Caverna das Guerreiras · 2025</div>
+    </div>
+    <div class="card-acoes-print">
+      <button class="btn-print-now" onclick="window.print()">🖨 Imprimir / Salvar PDF</button>
+      <button class="btn-print-close" onclick="s1FecharCardJuramento()">Fechar</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
