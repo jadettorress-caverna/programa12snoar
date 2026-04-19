@@ -1467,7 +1467,7 @@ function bindS2Events() {
   atualizarPrompt();
 
   // Copiar prompt
-  c.querySelector('#btnCopyPrompt').addEventListener('click', function() {
+  var _btn_btnCopyPrompt=c.querySelector('#btnCopyPrompt'); if(_btn_btnCopyPrompt) _btn_btnCopyPrompt.addEventListener('click', function() {
     var txt = c.querySelector('#promptText').textContent;
     var btn = c.querySelector('#btnCopyPrompt');
     // Tenta clipboard API primeiro, fallback para execCommand
@@ -1565,7 +1565,7 @@ function bindS2Events() {
     window.scrollTo(0,0);
   });
   // Imprimir método
-  c.querySelector('#btnPrintMetodo').addEventListener('click', function() {
+  var _btn_btnPrintMetodo=c.querySelector('#btnPrintMetodo'); if(_btn_btnPrintMetodo) _btn_btnPrintMetodo.addEventListener('click', function() {
     var mv = c.querySelector('#metodoVisual');
     if (!mv) { window.print(); return; }
     var printArea = document.getElementById('printArea');
@@ -2221,7 +2221,7 @@ function bindManifestoEvents() {
   });
 
   // Bloco 2 - momento
-  c.querySelector('#btnMomentoContinuar').addEventListener('click', function() {
+  var _btn_btnMomentoContinuar=c.querySelector('#btnMomentoContinuar'); if(_btn_btnMomentoContinuar) _btn_btnMomentoContinuar.addEventListener('click', function() {
     var v = c.querySelector('#s1-momento').value.trim();
     if (!v) { alert('Conta seu momento para continuar!'); return; }
     s1DesbloquearBloco('blocoEspada');
@@ -2230,7 +2230,7 @@ function bindManifestoEvents() {
   });
 
   // Bloco 3 - espada
-  c.querySelector('#btnEspadaConfirmar').addEventListener('click', function() {
+  var _btn_btnEspadaConfirmar=c.querySelector('#btnEspadaConfirmar'); if(_btn_btnEspadaConfirmar) _btn_btnEspadaConfirmar.addEventListener('click', function() {
     var v = c.querySelector('#s1-espada').value.trim();
     if (!v) { alert('Dê um nome para sua espada!'); return; }
     s1MostrarConfirmacao(false);
@@ -2238,7 +2238,7 @@ function bindManifestoEvents() {
   });
 
   // Bloco 4 - juramento
-  c.querySelector('#btnJuro').addEventListener('click', function() {
+  var _btn_btnJuro=c.querySelector('#btnJuro'); if(_btn_btnJuro) _btn_btnJuro.addEventListener('click', function() {
     var nome = c.querySelector('#s1-nome').value.trim() || 'Guerreira';
     var t = c.querySelector('#r5-titulo');
     if (t) t.textContent = nome + ', você já tem clareza sobre seu assunto principal no digital?';
@@ -2248,14 +2248,14 @@ function bindManifestoEvents() {
   });
 
   // Bloco 5 - caminhos
-  c.querySelector('#btnCaminhoA').addEventListener('click', function() {
+  var _btn_btnCaminhoA=c.querySelector('#btnCaminhoA'); if(_btn_btnCaminhoA) _btn_btnCaminhoA.addEventListener('click', function() {
     c.querySelector('#caminhoB').style.display = 'none';
     s1DesbloquearBloco('caminhoA');
     s1Save();
     setTimeout(function(){ document.getElementById('caminhoA').scrollIntoView({behavior:'smooth',block:'start'}); }, 400);
   });
 
-  c.querySelector('#btnCaminhoB').addEventListener('click', function() {
+  var _btn_btnCaminhoB=c.querySelector('#btnCaminhoB'); if(_btn_btnCaminhoB) _btn_btnCaminhoB.addEventListener('click', function() {
     c.querySelector('#caminhoA').style.display = 'none';
     s1DesbloquearBloco('caminhoB');
     atualizarBPrompt();
@@ -2264,15 +2264,15 @@ function bindManifestoEvents() {
   });
 
   // Caminho A - navegação
-  c.querySelector('#ms1next').addEventListener('click', function(){ mGoTo(2); s1Save(); });
-  c.querySelector('#ms2back').addEventListener('click', function(){ mGoTo(1); });
-  c.querySelector('#ms2next').addEventListener('click', function(){ mGoTo(3); s1Save(); });
-  c.querySelector('#ms3back').addEventListener('click', function(){ mGoTo(2); });
-  c.querySelector('#ms3next').addEventListener('click', function(){ mGoTo(4); s1Save(); });
-  c.querySelector('#ms4back').addEventListener('click', function(){ mGoTo(3); });
-  c.querySelector('#ms4next').addEventListener('click', gerarManifesto);
-  c.querySelector('#btnEnviar').addEventListener('click', function(){ alert('Canvas salvo! Em breve esta função enviará para a Jade.'); });
-  c.querySelector('#btnEditar').addEventListener('click', function(){ mGoTo(4); });
+  var _btn_ms1next=c.querySelector('#ms1next'); if(_btn_ms1next) _btn_ms1next.addEventListener('click', function(){ mGoTo(2); s1Save(); });
+  var _btn_ms2back=c.querySelector('#ms2back'); if(_btn_ms2back) _btn_ms2back.addEventListener('click', function(){ mGoTo(1); });
+  var _btn_ms2next=c.querySelector('#ms2next'); if(_btn_ms2next) _btn_ms2next.addEventListener('click', function(){ mGoTo(3); s1Save(); });
+  var _btn_ms3back=c.querySelector('#ms3back'); if(_btn_ms3back) _btn_ms3back.addEventListener('click', function(){ mGoTo(2); });
+  var _btn_ms3next=c.querySelector('#ms3next'); if(_btn_ms3next) _btn_ms3next.addEventListener('click', function(){ mGoTo(4); s1Save(); });
+  var _btn_ms4back=c.querySelector('#ms4back'); if(_btn_ms4back) _btn_ms4back.addEventListener('click', function(){ mGoTo(3); });
+  var _btn_ms4next=c.querySelector('#ms4next'); if(_btn_ms4next) _btn_ms4next.addEventListener('click', gerarManifesto);
+  var _btn_btnEnviar=c.querySelector('#btnEnviar'); if(_btn_btnEnviar) _btn_btnEnviar.addEventListener('click', function(){ alert('Canvas salvo! Em breve esta função enviará para a Jade.'); });
+  var _btn_btnEditar=c.querySelector('#btnEditar'); if(_btn_btnEditar) _btn_btnEditar.addEventListener('click', function(){ mGoTo(4); });
   // Botão Ver Método — navegar para página 2
   var btnVerMetodo = c.querySelector('#btnVerMetodo');
   if (btnVerMetodo) btnVerMetodo.addEventListener('click', function() {
@@ -2381,11 +2381,11 @@ function bindManifestoEvents() {
 
   function fbCopy(txt,btn){ var ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0;top:0;left:0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');btn.textContent='✓ Copiado!';}catch(e){btn.textContent='✗ Tente manualmente';}document.body.removeChild(ta);setTimeout(function(){btn.textContent='⧉ Copiar prompt';},2000); }
 
-  c.querySelector('#bback').addEventListener('click', function(){
+  var _btn_bback=c.querySelector('#bback'); if(_btn_bback) _btn_bback.addEventListener('click', function(){
     c.querySelector('#caminhoB').style.display='none';
     document.getElementById('blocoCaminhos').scrollIntoView({behavior:'smooth',block:'start'});
   });
-  c.querySelector('#bnext').addEventListener('click', function(){
+  var _btn_bnext=c.querySelector('#bnext'); if(_btn_bnext) _btn_bnext.addEventListener('click', function(){
     c.querySelector('#caminhoB').style.display='none';
     s1DesbloquearBloco('caminhoA');
     s1Save();
