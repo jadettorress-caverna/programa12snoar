@@ -489,7 +489,8 @@ function openWeek(n) {
       bindManifestoEvents();
       // Verificar se há progresso salvo
       var saved = s1GetSaved();
-      if (!saved || !saved['s1-nome'] || !saved['s1-nome'].trim()) return;
+      console.log('openWeek: saved=', saved);
+      if (!saved || !saved['s1-nome'] || !saved['s1-nome'].trim()) { console.log('openWeek: sem progresso salvo'); return; }
       // Tem nome salvo — mostrar modal sempre
       s1Modal({
         icone: '⚔',
@@ -543,27 +544,28 @@ function s1Save() {
     var el = c.querySelector('#'+id);
     if (el) data[id] = el.value;
   });
-  // Salvar tela atual — pegar a última tela visível (não-none)
+  // Salvar tela atual — pegar a última tela não-escondida explicitamente
   var current = 'r1';
   S1_SCREENS.forEach(function(sid) {
     var el = c.querySelector('#'+sid);
-    if (el && el.style.display !== 'none' && el.style.display !== '' && el.offsetParent !== null) {
+    if (el && el.style.display !== 'none' && el.style.display !== '') {
       current = sid;
     }
   });
   data['s1-current'] = current;
   var json = JSON.stringify(data);
   var saved = false;
-  try { localStorage.setItem(S1_KEY, json); saved = true; } catch(e) {}
-  if (!saved) { try { sessionStorage.setItem(S1_KEY, json); } catch(e) {} }
+  try { localStorage.setItem(S1_KEY, json); saved = true; } catch(e) { console.error('s1Save localStorage erro:', e); }
+  if (!saved) { try { sessionStorage.setItem(S1_KEY, json); } catch(e) { console.error('s1Save sessionStorage erro:', e); } }
+  console.log('s1Save OK — nome:', data['s1-nome'], 'current:', data['s1-current'], 'saved:', saved);
 }
 
 function s1GetSaved() {
   var raw = null;
   try { raw = localStorage.getItem(S1_KEY); } catch(e) {}
   if (!raw) { try { raw = sessionStorage.getItem(S1_KEY); } catch(e) {} }
-  if (!raw) return null;
-  try { return JSON.parse(raw); } catch(e) { return null; }
+  if (!raw) { console.log('s1GetSaved: nada salvo'); return null; }
+  try { var d = JSON.parse(raw); console.log('s1GetSaved OK — nome:', d['s1-nome']); return d; } catch(e) { return null; }
 }
 
 function s1ClearSaved() {
@@ -1358,6 +1360,15 @@ function bindManifestoEvents() {
     if (/^lt\d+$/.test(id)) { s1GerarPromptLT(); }
     // Salvar sempre
     s1Save();
+    // Garantia extra: salvar nome diretamente se for o campo nome
+    if (id === 's1-nome') {
+      try {
+        var nomeVal = e.target.value || '';
+        var existing = s1GetSaved() || {};
+        existing['s1-nome'] = nomeVal;
+        localStorage.setItem(S1_KEY, JSON.stringify(existing));
+      } catch(ex) {}
+    }
   });
 
   // CAMINHO A — navegação
@@ -2451,6 +2462,15 @@ function bindManifestoEvents() {
     if (/^lt\d+$/.test(id)) { s1GerarPromptLT(); }
     // Salvar sempre
     s1Save();
+    // Garantia extra: salvar nome diretamente se for o campo nome
+    if (id === 's1-nome') {
+      try {
+        var nomeVal = e.target.value || '';
+        var existing = s1GetSaved() || {};
+        existing['s1-nome'] = nomeVal;
+        localStorage.setItem(S1_KEY, JSON.stringify(existing));
+      } catch(ex) {}
+    }
   });
 
   // Bloco 1 - nome
