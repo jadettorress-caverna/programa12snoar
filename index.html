@@ -1241,7 +1241,11 @@ function s1Ms4back(){ mGoTo(3); }
 function s1Ms4next(){ s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
 function s1BtnEditar(){ mGoTo(4); }
 function s1BtnImprimir() {
-  var canvas = document.getElementById('canvasManifesto');
+  var wc = document.getElementById('weekContent');
+  // Tentar canvasManifesto primeiro, depois s1-resultado
+  var canvas = (wc && wc.querySelector('#canvasManifesto')) ||
+               (wc && wc.querySelector('.canvas-s2')) ||
+               (wc && wc.querySelector('.s1-resultado'));
   if (!canvas) { window.print(); return; }
   var printArea = document.getElementById('printArea');
   if (!printArea) {
@@ -1250,9 +1254,10 @@ function s1BtnImprimir() {
     printArea.style.display = 'none';
     document.body.appendChild(printArea);
   }
-  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto">' +
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem">' +
     '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
     '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '<div style="font-size:1.3rem;font-weight:700;margin-top:0.5rem">Manifesto Editorial</div>' +
     '</div>' + canvas.outerHTML + '</div>';
   printArea.style.display = 'block';
   window.print();
@@ -1306,7 +1311,10 @@ function s1MarcarConcluida() {
     });
   }
 
-  var modal = document.getElementById('modalVitoria');
+  // Atualizar nome no modal próprio
+  var nomeModalS1 = document.getElementById('modalVitoriaS1-nome');
+  if (nomeModalS1) nomeModalS1.textContent = nome;
+  var modal = document.getElementById('modalVitoriaS1');
   if (modal) modal.classList.add('ativo');
 
   // Atualizar card no portal
@@ -1356,6 +1364,15 @@ function bindManifestoEvents() {
   if (!c) { console.error('bindManifestoEvents: weekContent não encontrado!'); return; }
   s1MostrarBtnSalvar(true);
   s1AtualizarNavHeader();
+
+  // Delegação de cliques — captura botões de telas ocultas (s1Resultado etc)
+  c.addEventListener('click', function(e) {
+    var id = e.target.id || '';
+    if (id === 'btnImprimirCanvas') { s1BtnImprimir(); return; }
+    if (id === 'btnEnviarJade') { s1MarcarConcluida(); return; }
+    if (id === 'btnIrS2') { s1BtnIrS2(); return; }
+    if (id === 'btnRecomecar') { s1BtnRecomecar(); return; }
+  });
 
   // Auto-save via event delegation — captura todos os campos mesmo os ocultos
   c.addEventListener('input', function(e) {
@@ -1634,11 +1651,24 @@ function s2ConcluirSemana() {
       colVit.appendChild(badge);
     });
   }
-  var modal = document.getElementById('modalVitoria'); if(modal) modal.classList.add('ativo');
+  // Atualizar nome no modal próprio
+  var nomeModalS2 = document.getElementById('modalVitoriaS2-nome');
+  if (nomeModalS2) nomeModalS2.textContent = nome;
+  var modal = document.getElementById('modalVitoriaS2');
+  if (modal) modal.classList.add('ativo');
 }
 function s2IrS3() { goHome(); }
 function bindS2Events() {
   var c = document.getElementById('weekContent');
+
+  // Delegação — captura botões da página 2 (que começa display:none)
+  c.addEventListener('click', function(e) {
+    var id = e.target.id || '';
+    if (id === 'btnConcluirS2') { s2ConcluirSemana(); return; }
+    if (id === 'btnPrintMetodo') { s2ImprimirMetodo(); return; }
+    if (id === 'btnVoltarS2p1') { s2VoltarP1(); return; }
+    if (id === 'btnIrS3') { s2IrS3(); return; }
+  });
 
   // Cabeçalho - atualiza prompt quando frase muda
   var fraseEl = c.querySelector('#mhi-frase');
@@ -1825,7 +1855,7 @@ function bindS2Events() {
     window.scrollTo(0,0);
   });
   // Imprimir método
-  c.querySelector('#btnPrintMetodo').addEventListener('click', function() {
+  var _btnPM=c.querySelector('#btnPrintMetodo'); if(_btnPM) _btnPM.addEventListener('click', function() {
     var mv = c.querySelector('#metodoVisual');
     if (!mv) { window.print(); return; }
     var printArea = document.getElementById('printArea');
@@ -2344,7 +2374,11 @@ function s1Ms4back(){ mGoTo(3); }
 function s1Ms4next(){ s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
 function s1BtnEditar(){ mGoTo(4); }
 function s1BtnImprimir() {
-  var canvas = document.getElementById('canvasManifesto');
+  var wc = document.getElementById('weekContent');
+  // Tentar canvasManifesto primeiro, depois s1-resultado
+  var canvas = (wc && wc.querySelector('#canvasManifesto')) ||
+               (wc && wc.querySelector('.canvas-s2')) ||
+               (wc && wc.querySelector('.s1-resultado'));
   if (!canvas) { window.print(); return; }
   var printArea = document.getElementById('printArea');
   if (!printArea) {
@@ -2353,9 +2387,10 @@ function s1BtnImprimir() {
     printArea.style.display = 'none';
     document.body.appendChild(printArea);
   }
-  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto">' +
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem">' +
     '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
     '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '<div style="font-size:1.3rem;font-weight:700;margin-top:0.5rem">Manifesto Editorial</div>' +
     '</div>' + canvas.outerHTML + '</div>';
   printArea.style.display = 'block';
   window.print();
@@ -2409,7 +2444,10 @@ function s1MarcarConcluida() {
     });
   }
 
-  var modal = document.getElementById('modalVitoria');
+  // Atualizar nome no modal próprio
+  var nomeModalS1 = document.getElementById('modalVitoriaS1-nome');
+  if (nomeModalS1) nomeModalS1.textContent = nome;
+  var modal = document.getElementById('modalVitoriaS1');
   if (modal) modal.classList.add('ativo');
 
   // Atualizar card no portal
@@ -2459,6 +2497,15 @@ function bindManifestoEvents() {
   if (!c) { console.error('bindManifestoEvents: weekContent não encontrado!'); return; }
   s1MostrarBtnSalvar(true);
   s1AtualizarNavHeader();
+
+  // Delegação de cliques — captura botões de telas ocultas (s1Resultado etc)
+  c.addEventListener('click', function(e) {
+    var id = e.target.id || '';
+    if (id === 'btnImprimirCanvas') { s1BtnImprimir(); return; }
+    if (id === 'btnEnviarJade') { s1MarcarConcluida(); return; }
+    if (id === 'btnIrS2') { s1BtnIrS2(); return; }
+    if (id === 'btnRecomecar') { s1BtnRecomecar(); return; }
+  });
 
   // Auto-save via event delegation — captura todos os campos mesmo os ocultos
   c.addEventListener('input', function(e) {
@@ -2591,35 +2638,8 @@ function bindManifestoEvents() {
 
   // Botão Concluir S2
   var btnConcluirS2 = c.querySelector('#btnConcluirS2');
-  if (btnConcluirS2) btnConcluirS2.addEventListener('click', function() {
-    var conquistas = {};
-    try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
-    conquistas['semana2'] = { data: new Date().toLocaleDateString('pt-BR') };
-    try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
-    try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
-    var c2 = document.getElementById('weekContent');
-    var nomeS1 = c2 && c2.querySelector('#s1-nome') ? c2.querySelector('#s1-nome').value.trim() : '';
-    var nomeVit = document.getElementById('vitoria-nome');
-    if (nomeVit) nomeVit.textContent = nomeS1 || 'Guerreira';
-    var semVit = document.getElementById('vitoria-semana');
-    if (semVit) semVit.textContent = '✦ Semana 2 — Método Autoral · Concluída';
-    var frVit = document.getElementById('vitoria-frase');
-    if (frVit) frVit.textContent = '"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."';
-    var colVit = document.getElementById('vitoria-colecao');
-    if (colVit) {
-      var semanas = [{n:1,nome:'Manifesto'},{n:2,nome:'Método'},{n:3,nome:'Produtos'},{n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Gravação'},{n:7,nome:'Edição'},{n:8,nome:'Validação'},{n:9,nome:'Perfil Bio'},{n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}];
-      colVit.innerHTML = '';
-      semanas.forEach(function(s) {
-        var conquistada = conquistas['semana'+s.n];
-        var badge = document.createElement('div');
-        badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
-        badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
-        colVit.appendChild(badge);
-      });
-    }
-    var modal = document.getElementById('modalVitoria');
-    if (modal) modal.classList.add('ativo');
-  });
+  if (btnConcluirS2) btnConcluirS2.addEventListener('click', function() { s2ConcluirSemana(); });
+
 
   // Botão Ir S3
   var btnIrS3 = c.querySelector('#btnIrS3');
@@ -2717,26 +2737,43 @@ function gerarManifesto() {
 
 
 function s3ConcluirSemana() {
+  // Salvar conquista
   var conquistas = {};
-  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
   conquistas['semana3'] = { data: new Date().toLocaleDateString('pt-BR') };
   try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
-  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
-  var nomeVit = document.getElementById('vitoria-nome'); if(nomeVit) nomeVit.textContent = 'Guerreira';
-  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '\u2726 Semana 3 \u2014 Produtos do M\u00e9todo \u00b7 Conclu\u00edda';
-  var frVit = document.getElementById('vitoria-frase'); if(frVit) frVit.textContent = '"Voc\u00ea acaba de construir a vis\u00e3o empresarial do seu neg\u00f3cio. Seus produtos existem \u2014 agora \u00e9 hora de lev\u00e1-los ao mundo."';
+
+  // Usar o mesmo sistema de vitória das outras semanas
+  var semanas = [
+    {n:1,nome:'Manifesto'},{n:2,nome:'Método'},{n:3,nome:'Produtos'},
+    {n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Gravação'},
+    {n:7,nome:'Edição'},{n:8,nome:'Validação'},{n:9,nome:'Perfil Bio'},
+    {n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}
+  ];
+
+  var nomeVit = document.getElementById('vitoria-nome');
+  if (nomeVit) nomeVit.textContent = 'Guerreira';
+
+  var semVit = document.getElementById('vitoria-semana');
+  if (semVit) semVit.textContent = '✦ Semana 3 — Produtos do Método · Concluída';
+
+  var frVit = document.getElementById('vitoria-frase');
+  if (frVit) frVit.textContent = '"Você acaba de construir a visão empresarial do seu negócio. Seus produtos existem — agora é hora de levá-los ao mundo."';
+
   var colVit = document.getElementById('vitoria-colecao');
   if (colVit) {
-    var semanas = [{n:1,nome:'Manifesto'},{n:2,nome:'M\u00e9todo'},{n:3,nome:'Produtos'},{n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Grava\u00e7\u00e3o'},{n:7,nome:'Edi\u00e7\u00e3o'},{n:8,nome:'Valida\u00e7\u00e3o'},{n:9,nome:'Perfil Bio'},{n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}];
     colVit.innerHTML = '';
     semanas.forEach(function(s) {
       var conquistada = conquistas['semana'+s.n];
-      var badge = document.createElement('div'); badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
-      badge.innerHTML = (conquistada ? '\u2726 ' : '\u25cb ') + 'S' + s.n + ' ' + s.nome;
+      var badge = document.createElement('div');
+      badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
       colVit.appendChild(badge);
     });
   }
-  var modal = document.getElementById('modalVitoria'); if(modal) modal.classList.add('ativo');
+
+  var modal = document.getElementById('modalVitoriaS3');
+  if (modal) modal.classList.add('ativo');
 }
 
 function s3IrS4() { goHome(); }
@@ -2953,7 +2990,7 @@ function getS3HTML() {
     '</div>' +
     '<div id="s3-produtos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:2rem"></div>' +
     '<div style="display:flex;flex-direction:column;gap:12px;margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s3ConcluirSemana()">\u2726 Marcar Semana 3 como conclu\u00edda</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnConcluirS3" style="width:100%;padding:14px" onclick="s3ConcluirSemana()">\u2726 Marcar Semana 3 como conclu\u00edda</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Pr\u00f3xima Batalha</span>' +
@@ -2963,26 +3000,74 @@ function getS3HTML() {
     '</div>' +
   '</div>' +
 
-  '<div id="s3-modal-produto" style="display:none;position:fixed;inset:0;background:rgba(5,17,43,0.97);z-index:9000;overflow-y:auto;padding:1.5rem">' +
-    '<div style="max-width:680px;margin:0 auto;padding-bottom:3rem">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:rgba(5,17,43,0.97);padding:1rem 0;border-bottom:1px solid rgba(180,130,80,0.2)">' +
-        '<h3 class="s-title" id="s3-modal-titulo" style="margin:0;font-size:1.3rem"></h3>' +
-        '<button onclick="s3FecharModal()" style="background:transparent;border:1px solid rgba(240,235,232,0.2);border-radius:50%;width:36px;height:36px;color:rgba(240,235,232,0.6);font-size:18px;cursor:pointer;flex-shrink:0">\u00d7</button>' +
-      '</div>' +
-      '<div id="s3-modal-conteudo" style="padding-top:1rem"></div>' +
-      '<div style="display:flex;gap:12px;margin-top:2rem">' +
-        '<button class="btn-imprimir" onclick="s3ImprimirAtual()" style="flex:1">\u2b07 Imprimir Produto</button>' +
-        '<button class="btn-espada" onclick="s3FecharModal()" style="flex:1">\u2726 Salvar e Voltar</button>' +
-      '</div>' +
+  '<div class="modal-vitoria" id="modalVitoriaS3">' +
+  '<div class="modal-vitoria-box">' +
+    '<span class="vitoria-icon">🏆</span>' +
+    '<div class="vitoria-selo">✦ Conquista desbloqueada</div>' +
+    '<h2 class="modal-titulo" style="font-family:Playfair Display,serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, Guerreira!</h2>' +
+    '<div class="vitoria-semana">✦ Semana 3 — Produtos do Método · Concluída</div>' +
+    '<div class="vitoria-frase">"Você acaba de construir a visão empresarial do seu negócio. Seus produtos existem — agora é hora de levá-los ao mundo."</div>' +
+    '<div class="vitoria-colecao">' +
+      '<div class="vitoria-badge conquistada">✦ S1 Manifesto</div>' +
+      '<div class="vitoria-badge conquistada">✦ S2 Método</div>' +
+      '<div class="vitoria-badge conquistada">✦ S3 Produtos</div>' +
+      '<div class="vitoria-badge">○ S4 Metodologia</div>' +
+      '<div class="vitoria-badge">○ S5 Plataforma</div>' +
+      '<div class="vitoria-badge">○ S6 Gravação</div>' +
+      '<div class="vitoria-badge">○ S7 Edição</div>' +
+      '<div class="vitoria-badge">○ S8 Validação</div>' +
+      '<div class="vitoria-badge">○ S9 Perfil Bio</div>' +
+      '<div class="vitoria-badge">○ S10 Destaques</div>' +
+      '<div class="vitoria-badge">○ S11 Feed</div>' +
+      '<div class="vitoria-badge">○ S12 No Ar!</div>' +
     '</div>' +
+    '<button class="vitoria-btn" onclick="document.getElementById(\'modalVitoriaS3\').classList.remove(\'ativo\')">⚔ Seguir para a próxima batalha</button>' +
   '</div>' +
-
-  '</div>';
+'</div>' +
+'</div>';
 }
 
 function bindS3Events() {
   var c = document.getElementById('weekContent');
   if (!c) return;
+
+  // Delegação de eventos — apenas IDs diretos do target
+  c.addEventListener('click', function(e) {
+    var id = e.target.id || '';
+    if (id === 'btnConcluirS3') { s3ConcluirSemana(); return; }
+  });
+
+  // Criar modal fora do weekContent para evitar conflitos
+  var modalExistente = document.getElementById('s3-modal-produto');
+  if (!modalExistente) {
+    var modal = document.createElement('div');
+    modal.id = 's3-modal-produto';
+    modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(5,17,43,0.97);z-index:9000;overflow-y:auto;padding:1.5rem';
+    modal.innerHTML = '<div style="max-width:680px;margin:0 auto;padding-bottom:3rem">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:rgba(5,17,43,0.97);padding:1rem 0;border-bottom:1px solid rgba(180,130,80,0.2)">' +
+        '<h3 class="s-title" id="s3-modal-titulo" style="margin:0;font-size:1.3rem"></h3>' +
+        '<button onclick="s3FecharModal()" style="background:transparent;border:1px solid rgba(240,235,232,0.2);border-radius:50%;width:36px;height:36px;color:rgba(240,235,232,0.6);font-size:18px;cursor:pointer;flex-shrink:0">×</button>' +
+      '</div>' +
+      '<div id="s3-modal-conteudo" style="padding-top:1rem"></div>' +
+      '<div style="display:flex;gap:12px;margin-top:2rem">' +
+        '<button class="btn-imprimir" onclick="s3ImprimirAtual()" style="flex:1">⬇ Imprimir Produto</button>' +
+        '<button class="btn-espada" onclick="s3FecharModal()" style="flex:1">✦ Salvar e Voltar</button>' +
+      '</div>' +
+    '</div>';
+    // Delegação de cliques dentro do modal
+    modal.addEventListener('click', function(e) {
+      var id = e.target.id || '';
+      var onclick = e.target.getAttribute('onclick') || '';
+      if (onclick.indexOf('s3ImprimirAtual') > -1) { s3ImprimirAtual(); return; }
+      if (onclick.indexOf('s3FecharModal') > -1) { s3FecharModal(); return; }
+    });
+    document.body.appendChild(modal);
+  }
+
+  // Botão conclusão
+  var btnConcluirS3 = c.querySelector('#btnConcluirS3');
+  if (btnConcluirS3) btnConcluirS3.addEventListener('click', function() { s3ConcluirSemana(); });
+
   var btnAvancar = c.querySelector('#btnS3Avancar');
   if (btnAvancar) btnAvancar.addEventListener('click', function() {
     var movimento = c.querySelector('#s3-movimento') ? c.querySelector('#s3-movimento').value.trim() : '';
@@ -2992,6 +3077,11 @@ function bindS3Events() {
     c.querySelector('#s3p1').style.display = 'none';
     c.querySelector('#s3p2').style.display = 'block';
     s3BuildGrid(c);
+    // Vincular botão conclusão agora que p2 está visível
+    var btnC = c.querySelector('#btnConcluirS3');
+    if (btnC) btnC.addEventListener('click', function() { s3ConcluirSemana(); });
+    var btnS4 = c.querySelector('[onclick="s3IrS4()"]');
+    if (btnS4) btnS4.addEventListener('click', function() { s3IrS4(); });
     window.scrollTo(0,0);
   });
 }
@@ -3319,6 +3409,56 @@ buildGrid();
 <button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>
 </div>
 </div>
+</div>
+
+<div class="modal-vitoria" id="modalVitoriaS1">
+  <div class="modal-vitoria-box">
+    <span class="vitoria-icon">🏆</span>
+    <div class="vitoria-selo">✦ Conquista desbloqueada</div>
+    <h2 class="modal-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, <em id="modalVitoriaS1-nome" style="color:#b48250;font-style:italic"></em>!</h2>
+    <div class="vitoria-semana">✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída</div>
+    <div class="vitoria-frase">"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."</div>
+    <div class="vitoria-colecao">
+      <div class="vitoria-badge conquistada">✦ S1 Manifesto</div>
+      <div class="vitoria-badge">○ S2 Método</div>
+      <div class="vitoria-badge">○ S3 Produtos</div>
+      <div class="vitoria-badge">○ S4 Metodologia</div>
+      <div class="vitoria-badge">○ S5 Plataforma</div>
+      <div class="vitoria-badge">○ S6 Gravação</div>
+      <div class="vitoria-badge">○ S7 Edição</div>
+      <div class="vitoria-badge">○ S8 Validação</div>
+      <div class="vitoria-badge">○ S9 Perfil Bio</div>
+      <div class="vitoria-badge">○ S10 Destaques</div>
+      <div class="vitoria-badge">○ S11 Feed</div>
+      <div class="vitoria-badge">○ S12 No Ar!</div>
+    </div>
+    <button class="vitoria-btn" onclick="document.getElementById('modalVitoriaS1').classList.remove('ativo')">⚔ Seguir para a próxima batalha</button>
+  </div>
+</div>
+
+<div class="modal-vitoria" id="modalVitoriaS2">
+  <div class="modal-vitoria-box">
+    <span class="vitoria-icon">🏆</span>
+    <div class="vitoria-selo">✦ Conquista desbloqueada</div>
+    <h2 class="modal-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, <em id="modalVitoriaS2-nome" style="color:#b48250;font-style:italic"></em>!</h2>
+    <div class="vitoria-semana">✦ Semana 2 — Método Autoral · Concluída</div>
+    <div class="vitoria-frase">"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."</div>
+    <div class="vitoria-colecao">
+      <div class="vitoria-badge conquistada">✦ S1 Manifesto</div>
+      <div class="vitoria-badge conquistada">✦ S2 Método</div>
+      <div class="vitoria-badge">○ S3 Produtos</div>
+      <div class="vitoria-badge">○ S4 Metodologia</div>
+      <div class="vitoria-badge">○ S5 Plataforma</div>
+      <div class="vitoria-badge">○ S6 Gravação</div>
+      <div class="vitoria-badge">○ S7 Edição</div>
+      <div class="vitoria-badge">○ S8 Validação</div>
+      <div class="vitoria-badge">○ S9 Perfil Bio</div>
+      <div class="vitoria-badge">○ S10 Destaques</div>
+      <div class="vitoria-badge">○ S11 Feed</div>
+      <div class="vitoria-badge">○ S12 No Ar!</div>
+    </div>
+    <button class="vitoria-btn" onclick="document.getElementById('modalVitoriaS2').classList.remove('ativo')">⚔ Seguir para a próxima batalha</button>
+  </div>
 </div>
 
 
