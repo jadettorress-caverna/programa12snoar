@@ -423,7 +423,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
       <div class="detail-week-num" id="detailWeekNum"></div>
       <div class="detail-week-title" id="detailWeekTitle"></div>
     </div>
-    <button class="btn-back-detail" id="btnSeguirMain" style="visibility:hidden" onclick="s1NavSeguir()">→</button>
+
   </div>
   <div id="weekContent"></div>
 </div>
@@ -676,38 +676,38 @@ function openWeek(n) {
     });
     setTimeout(function(){
       bindManifestoEvents();
-      // Verificar se há etapa em andamento
-      try {
-        var raw1='{}';try{raw1=localStorage.getItem('s1_caverna_data')||sessionStorage.getItem('s1_caverna_data')||'{}';}catch(e){}
-        var data = JSON.parse(raw1);
-        var hasProgress = data['s1-nome'] && data['s1-nome'].trim().length > 0;
-        var isDone = data['s1-current'] === 's1Resultado';
-        if (hasProgress && !isDone) {
-          s1Modal({
-            icone: '⚔',
-            titulo: 'Você tem uma etapa em andamento.',
-            texto: 'Deseja continuar de onde parou ou recomeçar do início?',
-            confirmar: 'Continuar',
-            cancelar: 'Recomeçar',
-            onConfirmar: function() {
-              s1Load(); // Carregar dados salvos ao confirmar
-            },
-            onCancelar: function() {
-              s1ClearSaved();
-              var wc = document.getElementById('weekContent');
-              if (wc) wc.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
-              ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'].forEach(function(sid){
-                var el = wc && wc.querySelector('#'+sid);
-                if (el) el.style.display = 'none';
-              });
-              var r1 = wc && wc.querySelector('#r1');
-              if (r1) r1.style.display = 'block';
-            }
+      // Verificar se há progresso salvo
+      var saved = s1GetSaved();
+      if (!saved || !saved['s1-nome'] || !saved['s1-nome'].trim()) {
+        // Sem progresso — mostrar tela 1 normalmente
+        return;
+      }
+      var isDone = saved['s1-current'] === 's1Resultado';
+      if (isDone) {
+        // Já terminou — carregar direto no resultado
+        s1Load();
+        return;
+      }
+      // Tem progresso — perguntar se quer continuar
+      s1Modal({
+        icone: '⚔',
+        titulo: 'Você tem uma etapa em andamento.',
+        texto: 'Deseja continuar de onde parou ou recomeçar do início?',
+        confirmar: 'Continuar',
+        cancelar: 'Recomeçar',
+        onConfirmar: function() { s1Load(); },
+        onCancelar: function() {
+          s1ClearSaved();
+          var wc = document.getElementById('weekContent');
+          if (wc) wc.querySelectorAll('input, textarea').forEach(function(el){ el.value=''; });
+          ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'].forEach(function(sid){
+            var el = wc && wc.querySelector('#'+sid);
+            if (el) el.style.display = 'none';
           });
-        } else if (hasProgress && isDone) {
-          s1Load(); // Se já terminou, carregar direto
+          var r1 = wc && wc.querySelector('#r1');
+          if (r1) r1.style.display = 'block';
         }
-      } catch(e) {}
+      });
     }, 50);
   } else if (n === 2) {
     content.innerHTML = getS2HTML();
@@ -1180,8 +1180,7 @@ function bindManifestoEvents() {
   var _bb=c.querySelector('#bback'); if(_bb) _bb.addEventListener('click', function() { s1GoTo('r5'); });
   var _bn=c.querySelector('#bnext'); if(_bn) _bn.addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
 
-  // Carregar dados salvos sempre
-  s1Load();
+  // s1Load é chamado pelo openWeek após bindManifestoEvents
 }
 
 function mGoTo(s) {
@@ -1774,7 +1773,7 @@ function getManifestoHTML() {
           '<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>' +
           '<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>' +
         '</div>' +
-        '<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>' +
+        '<div class="nav-btns"><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>' +
       '</div>' +
       '<div class="step-screen" id="ms3">' +
         '<span class="s-label">Etapa 3 de 4 · Sprint</span>' +
@@ -1789,7 +1788,7 @@ function getManifestoHTML() {
           '<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>' +
           '<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>' +
         '</div>' +
-        '<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>' +
+        '<div class="nav-btns"><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>' +
       '</div>' +
       '<div class="step-screen" id="ms4">' +
         '<span class="s-label">Etapa 4 de 4 · Manifesto</span>' +
@@ -2474,7 +2473,7 @@ buildGrid();
 <label class="ritual-label">Meu momento guerreira</label>
 <textarea class="ritual-textarea" id="s1-momento" placeholder="Exemplo: A coisa mais difícil que eu superei foi..."></textarea>
 </div>
-<div class="nav-btns"><button class="btn-bk" id="btnR2back" onclick="s1BtnR2back()">← Voltar</button><button class="btn-nx" id="btnR2next" onclick="s1BtnR2next()">Seguir →</button></div>
+<div class="nav-btns"><button class="btn-nx" id="btnR2next" onclick="s1BtnR2next()">Seguir →</button></div>
 </div>
 <div id="r3" style="display:none;max-width:620px;margin:0 auto">
 <h2 class="s-title">Dê um nome<br>para sua <em style="color:#b48250;font-style:italic">espada</em></h2>
@@ -2483,7 +2482,7 @@ buildGrid();
 <label class="ritual-label">O nome da sua espada</label>
 <input class="ritual-input" id="s1-espada" placeholder="Uma palavra, um nome, uma frase curta...">
 </div>
-<div class="nav-btns"><button class="btn-bk" id="btnR3back" onclick="s1BtnR3back()">← Voltar</button><button class="btn-espada" id="btnR3next" style="flex:1" onclick="s1BtnR3next()">⚔ Eu pego minha espada</button></div>
+<div class="nav-btns"><button class="btn-espada" id="btnR3next" style="width:100%" onclick="s1BtnR3next()">⚔ Eu pego minha espada</button></div>
 </div>
 <div id="r4" style="display:none;max-width:620px;margin:0 auto">
 <div style="text-align:center;margin-bottom:1.5rem">
@@ -2546,7 +2545,7 @@ buildGrid();
 <div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
 <div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
 </div>
-<div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
+<div class="nav-btns"><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms2">
 <span class="s-label">Etapa 2 de 4 · Ingredientes</span>
@@ -2559,7 +2558,7 @@ buildGrid();
 <div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
 <div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
 </div>
-<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
+<div class="nav-btns"><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms3">
 <span class="s-label">Etapa 3 de 4 · Sprint</span>
@@ -2574,7 +2573,7 @@ buildGrid();
 <div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>
 <div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
 </div>
-<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
+<div class="nav-btns"><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms4">
 <span class="s-label">Etapa 4 de 4 · Manifesto</span>
@@ -2584,7 +2583,7 @@ buildGrid();
 <div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
 <div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>
 <div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
-<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
+<div class="nav-btns"><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
 </div>
 </div>
 </div>
