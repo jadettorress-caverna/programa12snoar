@@ -433,7 +433,7 @@ var weeks = [
   {n:1,title:"Manifesto Editorial",sub:"Fatia de Subnicho",desc:"Posicionamento - Sua mensagem é única e deve ser comunicada de forma única.",tag:"Posicionamento",locked:false,img:"fotos/semana1.jpg"},
   {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:false,img:"fotos/semana2.jpg"},
   {n:3,title:"Produtos do",sub:"Método",desc:"Defina os produtos que nascem do seu método com clareza e intenção.",tag:"Produtos",locked:false,img:"fotos/semana3.jpg"},
-  {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:true,img:"fotos/semana4.jpg"},
+  {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:false,img:"fotos/semana4.jpg"},
   {n:5,title:"Designer de",sub:"Plataforma",desc:"Seus produtos ganham cores e formas para valorizar sua vitrine.",tag:"Design",locked:true,img:"fotos/semana5.jpg"},
   {n:6,title:"Gravação do",sub:"Método",desc:"O que você criou começa a ganhar formato profissional.",tag:"Gravação",locked:true,img:"fotos/semana6.jpg"},
   {n:7,title:"Edição",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:true,img:"fotos/semana7.jpg"},
@@ -512,6 +512,9 @@ function openWeek(n) {
   } else if (n === 3) {
     content.innerHTML = getS3HTML();
     bindS3Events();
+  } else if (n === 4) {
+    content.innerHTML = getS4HTML();
+    bindS4Events();
   } else {
     content.innerHTML = '<div class="coming-soon"><div class="cs-icon">⚔</div><div class="cs-title">Em construção, guerreira</div><div class="cs-desc">Esta etapa está sendo preparada com todo cuidado. Em breve você terá acesso à interface completa da Semana ' + n + '.</div></div>';
   }
@@ -3117,6 +3120,186 @@ function s3BuildGrid(c) {
     card.addEventListener('click', function(){ s3AbrirProduto(p.tipo, p.subtipo, p.icone, p.titulo); });
     grid.appendChild(card);
   });
+}
+
+
+function getS4HTML() {
+  var pontos = [
+    { id:'p1', icone:'🎬', titulo:'Boas-vindas / Onboarding', exemplo:'Ex: Vídeo gravado enviado via WhatsApp logo após a confirmação do pagamento.' },
+    { id:'p2', icone:'💬', titulo:'Grupo Individual no WhatsApp', exemplo:'Ex: Acesso premium direto comigo para dúvidas e suporte durante todo o processo.' },
+    { id:'p3', icone:'🎓', titulo:'Método Gravado', exemplo:'Ex: 12 Semanas no Ar — acesso completo à plataforma com todas as etapas gravadas.' },
+    { id:'p4', icone:'📎', titulo:'Ferramentas Principais', exemplo:'Ex: PDFs, links, materiais de apoio que direcionam cada etapa do método.' },
+    { id:'p5', icone:'⚔', titulo:'Encontros em Grupo', exemplo:'Ex: Campos de Batalha — encontros semanais ou quinzenais online para avançar juntas.' },
+    { id:'p6', icone:'✨', titulo:'Encontro Individual para Evolução do Processo', exemplo:'Ex: Oficina individual para destravar pontos específicos e acelerar o progresso.' },
+    { id:'p7', icone:'📣', titulo:'Grupo de Avisos Fechado', exemplo:'Ex: Links dos encontros, novidades e materiais surpresa para alunas ativas.' },
+    { id:'p8', icone:'🏆', titulo:'Encontro de Conclusão do Método', exemplo:'Ex: Oficina final para celebrar a conclusão e direcionar os próximos passos.' }
+  ];
+
+  var pontosHTML = '';
+  pontos.forEach(function(p, i) {
+    pontosHTML +=
+      '<div style="background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1rem">' +
+        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:1.2rem">' +
+          '<span style="font-size:28px">' + p.icone + '</span>' +
+          '<div>' +
+            '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:2px">Ponto ' + (i+1) + ' de entrega</div>' +
+            '<div style="font-family:Playfair Display,serif;font-size:1.05rem;color:#f0ebe8">' + p.titulo + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="f-group">' +
+          '<label class="f-label">Nome do ponto de entrega</label>' +
+          '<input type="text" class="f-input s4-nome" id="s4-' + p.id + '-nome" placeholder="' + p.titulo + '">' +
+        '</div>' +
+        '<div class="f-group" style="margin-top:0.8rem">' +
+          '<label class="f-label">Período de acesso</label>' +
+          '<input type="text" class="f-input" id="s4-' + p.id + '-periodo" placeholder="Ex: Durante os 3 meses de mentoria, Vitalício, 12 meses...">' +
+        '</div>' +
+        '<div class="f-group" style="margin-top:0.8rem">' +
+          '<label class="f-label">Orientação para sua aluna</label>' +
+          '<span class="s2-field-hint" style="display:block;margin-bottom:6px">' + p.exemplo + '</span>' +
+          '<textarea class="f-textarea" id="s4-' + p.id + '-desc" placeholder="Descreva como sua aluna vai receber e usar este ponto de entrega..." rows="3"></textarea>' +
+        '</div>' +
+      '</div>';
+  });
+
+  return '<div class="s2-page" id="s4wrap">' +
+
+    // PÁGINA 1 — TEXTO
+    '<div id="s4p1">' +
+      '<div style="padding:2rem 0 0.5rem">' +
+        '<span class="s-label">Semana 4 · Metodologia</span>' +
+        '<h2 class="s-title">Entrega<br><em style="font-style:italic;color:#b48250">Escalável</em></h2>' +
+      '</div>' +
+      '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
+        '<p style="font-family:Playfair Display,serif;font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic">' +
+          '"Guerreira, você já tem seu método e seus produtos. Agora é hora de definir como você vai entregar tudo isso sem abrir mão do seu tempo e da sua vida.' +
+          '<br><br>' +
+          'A maioria das experts começa vendendo sessão por sessão, hora por hora; e logo percebe que o tempo acaba antes do mês. Eu quero te mostrar um caminho diferente.' +
+          '<br><br>' +
+          'Aqui você vai mapear os pontos de entrega da sua mentoria; cada momento em que sua aluna recebe sua transformação, seu método e sua presença. Alguns desses pontos são automáticos, outros são ao vivo, outros são bônus. Juntos, eles formam uma experiência completa sem te prender 24 horas por dia.' +
+          '<br><br>' +
+          'Personalize cada ponto com o seu nome, seu período de acesso e a orientação que sua aluna vai receber. Essa é a sua metodologia de entrega; e ela só poderia ser sua."' +
+        '</p>' +
+      '</div>' +
+      '<div style="text-align:center;margin-top:1rem">' +
+        '<button class="btn-espada" id="btnS4Avancar">Avante — Quero mapear minha entrega →</button>' +
+      '</div>' +
+    '</div>' +
+
+    // PÁGINA 2 — PONTOS DE ENTREGA
+    '<div id="s4p2" style="display:none">' +
+      '<div style="padding:1.5rem 0 0.5rem">' +
+        '<span class="s-label">✦ Seus Pontos de Entrega</span>' +
+        '<h2 class="s-title" style="margin-bottom:0.3rem">Sua metodologia<br><em style="color:#b48250;font-style:italic">de entrega</em></h2>' +
+        '<p class="s-desc">Personalize cada ponto com o seu nome, período de acesso e orientação para sua aluna.</p>' +
+      '</div>' +
+      '<div id="s4-pontos">' + pontosHTML + '</div>' +
+
+    '<div style="display:flex;gap:12px;margin-top:2rem">' +
+      '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1">⬇ Imprimir Metodologia</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnConcluirS4" style="flex:1;padding:14px">✦ Marcar Semana 4 como concluída</button>' +
+    '</div>' +
+
+    '<div class="s1-proxima" style="margin-top:1.2rem">' +
+      '<span class="s1-proxima-label">Próxima Batalha</span>' +
+      '<div class="s1-proxima-title">Semana 5 — Designer de Plataforma</div>' +
+      '<div class="s1-proxima-desc">Guerreira, sua metodologia está mapeada. Agora é hora de dar forma e cor à sua vitrine.</div>' +
+      '<button class="btn-proxima" id="btnIrS5">⚔ Partir para a Semana 5 →</button>' +
+    '</div>' +
+
+    // Modal vitória S4
+    '<div class="modal-vitoria" id="modalVitoriaS4">' +
+      '<div class="modal-vitoria-box">' +
+        '<span class="vitoria-icon">🏆</span>' +
+        '<div class="vitoria-selo">✦ Conquista desbloqueada</div>' +
+        '<h2 class="modal-titulo" style="font-family:Playfair Display,serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, Guerreira!</h2>' +
+        '<div class="vitoria-semana">✦ Semana 4 — Metodologia · Entrega Escalável · Concluída</div>' +
+        '<div class="vitoria-frase">"Você acaba de construir a sua entrega escalável. Agora sua aluna sabe exatamente o que vai receber; e você sabe exatamente o que vai entregar; sem perder seu tempo, sua energia ou sua vida."</div>' +
+        '<div class="vitoria-colecao">' +
+          '<div class="vitoria-badge conquistada">✦ S1 Manifesto</div>' +
+          '<div class="vitoria-badge conquistada">✦ S2 Método</div>' +
+          '<div class="vitoria-badge conquistada">✦ S3 Produtos</div>' +
+          '<div class="vitoria-badge conquistada">✦ S4 Metodologia</div>' +
+          '<div class="vitoria-badge">○ S5 Plataforma</div>' +
+          '<div class="vitoria-badge">○ S6 Gravação</div>' +
+          '<div class="vitoria-badge">○ S7 Edição</div>' +
+          '<div class="vitoria-badge">○ S8 Validação</div>' +
+          '<div class="vitoria-badge">○ S9 Perfil Bio</div>' +
+          '<div class="vitoria-badge">○ S10 Destaques</div>' +
+          '<div class="vitoria-badge">○ S11 Feed</div>' +
+          '<div class="vitoria-badge">○ S12 No Ar!</div>' +
+        '</div>' +
+        '<button class="vitoria-btn" onclick="document.getElementById(\'modalVitoriaS4\').classList.remove(\'ativo\')">⚔ Seguir para a próxima batalha</button>' +
+      '</div>' +
+    '</div>' +
+
+  '</div>';
+}
+
+function bindS4Events() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  c.addEventListener('click', function(e) {
+    var id = e.target.id || '';
+    if (id === 'btnS4Avancar') {
+      var p1 = c.querySelector('#s4p1');
+      var p2 = c.querySelector('#s4p2');
+      if (p1) p1.style.display = 'none';
+      if (p2) p2.style.display = 'block';
+      window.scrollTo(0,0);
+      return;
+    }
+    if (id === 'btnConcluirS4') { s4ConcluirSemana(); return; }
+    if (id === 'btnImprimirS4') { s4Imprimir(); return; }
+    if (id === 'btnIrS5') { goHome(); return; }
+  });
+}
+
+function s4ConcluirSemana() {
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['semana4'] = { data: new Date().toLocaleDateString('pt-BR') };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  var modal = document.getElementById('modalVitoriaS4');
+  if (modal) modal.classList.add('ativo');
+}
+
+function s4Imprimir() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var pontos = [
+    { id:'p1', titulo:'Boas-vindas / Onboarding' },
+    { id:'p2', titulo:'Grupo Individual no WhatsApp' },
+    { id:'p3', titulo:'Método Gravado' },
+    { id:'p4', titulo:'Ferramentas Principais' },
+    { id:'p5', titulo:'Encontros em Grupo' },
+    { id:'p6', titulo:'Encontro Individual para Evolução' },
+    { id:'p7', titulo:'Grupo de Avisos Fechado' },
+    { id:'p8', titulo:'Encontro de Conclusão do Método' }
+  ];
+  var html = '<div style="padding:1rem">';
+  pontos.forEach(function(p, i) {
+    var nome = c.querySelector('#s4-' + p.id + '-nome');
+    var periodo = c.querySelector('#s4-' + p.id + '-periodo');
+    var desc = c.querySelector('#s4-' + p.id + '-desc');
+    html += '<div style="margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #eee">';
+    html += '<h3 style="font-size:1rem;margin-bottom:0.5rem;color:#05112b">' + (i+1) + '. ' + (nome && nome.value ? nome.value : p.titulo) + '</h3>';
+    if (periodo && periodo.value) html += '<p style="font-size:12px;color:#b48250;margin-bottom:0.4rem">⏱ ' + periodo.value + '</p>';
+    if (desc && desc.value) html += '<p style="font-size:13px;color:#333;line-height:1.6">' + desc.value + '</p>';
+    html += '</div>';
+  });
+  html += '</div>';
+  var printArea = document.getElementById('printArea');
+  if (!printArea) { printArea = document.createElement('div'); printArea.id='printArea'; printArea.style.cssText='display:none'; document.body.appendChild(printArea); }
+  printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem">' +
+    '<div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">Portal Caverna das Guerreiras · Jade Torres</div>' +
+    '<div style="font-size:1.4rem;font-weight:700;margin-top:0.5rem">Metodologia de Entrega Escalável</div>' +
+    '</div>' + html + '</div>';
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
 }
 
 
