@@ -1350,6 +1350,7 @@ function s1Bback(){ s1GoTo('r5'); }
 function s1Bnext(){ s1GoTo('caminhoA'); s1Save(); }
 function bindManifestoEvents() {
   var c = document.getElementById('weekContent');
+  if (!c) { console.error('bindManifestoEvents: weekContent não encontrado!'); return; }
   s1MostrarBtnSalvar(true);
   s1AtualizarNavHeader();
 
@@ -2452,6 +2453,7 @@ function s1Bback(){ s1GoTo('r5'); }
 function s1Bnext(){ s1GoTo('caminhoA'); s1Save(); }
 function bindManifestoEvents() {
   var c = document.getElementById('weekContent');
+  if (!c) { console.error('bindManifestoEvents: weekContent não encontrado!'); return; }
   s1MostrarBtnSalvar(true);
   s1AtualizarNavHeader();
 
@@ -3000,8 +3002,6 @@ buildGrid();
 <button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>
 </div>
 </div>
-</div>
-}
 </div>
 
 
