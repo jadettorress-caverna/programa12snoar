@@ -531,6 +531,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 <div class="week-detail" id="weekDetail">
   <div class="detail-header">
     <button class="btn-back-detail" id="btnBackMain">←</button>
+    <button id="btnTelaInicial" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Tela Inicial</button>
     <div class="detail-info">
       <div class="detail-week-num" id="detailWeekNum"></div>
       <div class="detail-week-title" id="detailWeekTitle"></div>
@@ -556,7 +557,7 @@ var weeks = [
   {n:12,title:"Meu Projeto",sub:"Digital",desc:"Você chegou. Hora de celebrar, colher seu depoimento e imaginar os próximos passos.",tag:"Conclusão",locked:false}
 ];
 
-document.getElementById('btnBackMain').addEventListener('click', goHome);
+document.getElementById('btnBackMain').addEventListener('click', function(){ s1BtnVoltarTela(); });
 
 function buildGrid() {
   var g = document.getElementById('weeksGrid');
@@ -1366,6 +1367,27 @@ function getS12HTML() {
   '</div>';
 }
 /* ===================== FIM ETAPAS 8 E 12 ===================== */
+
+function s1BtnVoltarTela() {
+  // Detecta qual etapa está aberta pelo weekDetail
+  var detail = document.getElementById('weekDetail');
+  if (!detail || detail.style.display === 'none') { goHome(); return; }
+  
+  // Tenta voltar tela anterior da S1
+  var c = document.getElementById('weekContent');
+  if (!c) { goHome(); return; }
+  
+  var atual = s1TelaAtual ? s1TelaAtual() : null;
+  if (atual && S1_PREV && S1_PREV[atual]) {
+    s1GoTo(S1_PREV[atual]);
+    s1Save();
+  } else if (atual === 'r1' || !atual) {
+    // Já está na primeira tela — vai para home
+    goHome();
+  } else {
+    goHome();
+  }
+}
 
 function goHome() {
   // Forçar save síncrono antes de qualquer coisa
