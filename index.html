@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12 Semanas no Ar — Portal Caverna Azul</title>
+<title>Meu Projeto Digital — Portal Caverna Azul</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -47,7 +47,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .card-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(180,130,80,0.55);border-top:1px solid rgba(180,130,80,0.1);padding-top:10px}
 
 /* WEEK DETAIL */
-.week-detail{display:none;min-height:100vh;background:#05112b}
+.week-detail{display:none;min-height:100vh;background:#f2ede8}
 .detail-header{background:linear-gradient(160deg,#071a3e,#05112b);padding:1rem 1.2rem;border-bottom:1px solid rgba(180,130,80,0.2);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .btn-back-detail{background:transparent;border:1px solid rgba(240,235,232,0.15);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:rgba(240,235,232,0.6);font-size:16px;cursor:pointer;transition:all 0.2s;padding:0;flex-shrink:0}
 .btn-back-detail:hover{border-color:rgba(180,130,80,0.5);color:#b48250;background:rgba(180,130,80,0.08)}
@@ -62,43 +62,43 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 .ritual-boas-vindas{text-align:center;padding:2rem 0 1rem}
 .ritual-boas-vindas .caverna-icon{font-size:40px;margin-bottom:1rem;display:block}
-.ritual-boas-vindas h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f0ebe8;margin-bottom:0.5rem;line-height:1.3}
+.ritual-boas-vindas h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#05112b;margin-bottom:0.5rem;line-height:1.3}
 .ritual-boas-vindas h2 em{font-style:italic;color:#b48250}
-.ritual-boas-vindas p{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.7;margin-bottom:2rem}
+.ritual-boas-vindas p{font-size:15px;color:rgba(5,17,43,0.7);line-height:1.7;margin-bottom:2rem}
 
 .ritual-field{margin-bottom:1.5rem}
 .ritual-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:8px;display:block}
-.ritual-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none}
-.ritual-input:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.04)}
-.ritual-input::placeholder{color:rgba(240,235,232,0.2)}
-.ritual-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;resize:vertical;min-height:110px;line-height:1.7}
-.ritual-textarea:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.04)}
-.ritual-textarea::placeholder{color:rgba(240,235,232,0.2)}
+.ritual-input{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1a1a2e;outline:none}
+.ritual-input:focus{border-color:#b48250;background:#ede8da;box-shadow:0 0 0 3px rgba(180,130,80,0.1)}
+.ritual-input::placeholder{color:rgba(26,26,46,0.35)}
+.ritual-textarea{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1a1a2e;outline:none;resize:vertical;min-height:110px;line-height:1.7}
+.ritual-textarea:focus{border-color:#b48250;background:#ede8da;box-shadow:0 0 0 3px rgba(180,130,80,0.1)}
+.ritual-textarea::placeholder{color:rgba(26,26,46,0.35)}
 
-.ritual-hint{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.7;margin-bottom:1rem;font-style:italic}
+.ritual-hint{font-size:15px;color:rgba(5,17,43,0.65);line-height:1.7;margin-bottom:1rem;font-style:italic}
 
 .btn-espada{width:100%;padding:16px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s;margin-top:0.5rem}
 .btn-espada:hover{opacity:0.9;transform:translateY(-2px);box-shadow:0 8px 24px rgba(180,130,80,0.3)}
 
 .espada-confirmacao{background:linear-gradient(135deg,rgba(180,130,80,0.12),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.4);border-radius:14px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
 .espada-confirmacao-icon{font-size:36px;margin-bottom:0.8rem;display:block}
-.espada-confirmacao-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;line-height:1.6}
+.espada-confirmacao-text{font-family:'Playfair Display',serif;font-size:1.1rem;color:#05112b;line-height:1.6}
 .espada-confirmacao-text em{color:#b48250;font-style:italic}
 .espada-nome-destaque{font-family:'Playfair Display',serif;font-size:1.4rem;color:#b48250;font-weight:700;display:block;margin:0.5rem 0}
 
 .oracao-box{background:linear-gradient(160deg,#071a3e,#05112b);border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:2rem;text-align:center;margin-bottom:1.5rem}
 .oracao-titulo{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.3rem}
 .oracao-subtitulo{font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:rgba(180,130,80,0.6);margin-bottom:1.2rem}
-.oracao-texto{font-family:'DM Sans',sans-serif;font-size:0.95rem;color:rgba(240,235,232,0.85);line-height:1.95;font-style:italic;font-weight:300;letter-spacing:0.3px}
+.oracao-texto{font-family:'DM Sans',sans-serif;font-size:0.95rem;color:rgba(5,17,43,0.8);line-height:1.95;font-style:italic;font-weight:300;letter-spacing:0.3px}
 .oracao-divider{width:40px;height:1px;background:rgba(180,130,80,0.3);margin:1.2rem auto}
 
 .promessa-box{background:rgba(5,17,43,0.8);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:10px;padding:1.3rem 1.5rem;margin-bottom:1.5rem}
-.promessa-texto{font-family:'Playfair Display',serif;font-size:0.95rem;color:#f0ebe8;line-height:1.9;font-style:italic}
+.promessa-texto{font-family:'Playfair Display',serif;font-size:0.95rem;color:#05112b;line-height:1.9;font-style:italic}
 .promessa-texto em{color:#b48250;font-style:normal;font-weight:600}
 
 .direcionar-section{margin-top:2rem}
-.direcionar-pergunta{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;text-align:center;margin-bottom:0.5rem;line-height:1.4}
-.direcionar-hint{font-size:13px;color:rgba(240,235,232,0.4);text-align:center;margin-bottom:1.5rem}
+.direcionar-pergunta{font-family:'Playfair Display',serif;font-size:1.3rem;color:#05112b;text-align:center;margin-bottom:0.5rem;line-height:1.4}
+.direcionar-hint{font-size:13px;color:rgba(5,17,43,0.45);text-align:center;margin-bottom:1.5rem}
 .direcionar-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .btn-caminho{padding:16px 12px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all 0.2s;text-align:center;line-height:1.4}
 .btn-caminho-a{background:linear-gradient(135deg,#b48250,#8a5f35);border:none;color:#05112b;font-weight:500}
@@ -115,20 +115,20 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .pline.done{background:rgba(180,130,80,0.5)}
 .step-screen{display:none}
 .step-screen.active{display:block}
-.s-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
-.s-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.3}
-.s-desc{font-size:15px;color:rgba(240,235,232,0.75);margin-bottom:1.8rem;line-height:1.6}
+.s-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.5rem;display:block}
+.s-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:#05112b;margin-bottom:0.4rem;line-height:1.3}
+.s-desc{font-size:15px;color:rgba(5,17,43,0.7);margin-bottom:1.8rem;line-height:1.6}
 .f-group{margin-bottom:1.3rem}
-.f-label{font-size:11px;color:rgba(240,235,232,0.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block}
-.f-input,.f-textarea,.f-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;transition:border-color 0.2s}
-.f-input:focus,.f-textarea:focus,.f-select:focus{border-color:rgba(180,130,80,0.6);background:rgba(180,130,80,0.05)}
-.f-input::placeholder,.f-textarea::placeholder{color:rgba(240,235,232,0.2)}
+.f-label{font-size:11px;color:rgba(5,17,43,0.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;display:block}
+.f-input,.f-textarea,.f-select{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1a1a2e;outline:none;transition:border-color 0.2s}
+.f-input:focus,.f-textarea:focus,.f-select:focus{border-color:#b48250;background:#ede8da;box-shadow:0 0 0 3px rgba(180,130,80,0.1)}
+.f-input::placeholder,.f-textarea::placeholder{color:rgba(26,26,46,0.35)}
 .f-textarea{min-height:88px;resize:vertical;line-height:1.6}
 .f-select{appearance:none;cursor:pointer}
 .f-select option{background:#071a3e;color:#f0ebe8}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.insight{background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:8px;padding:14px 16px;margin-bottom:1.4rem}
-.insight p{font-size:13px;color:rgba(240,235,232,0.7);line-height:1.6;font-style:italic}
+.insight{background:rgba(5,17,43,0.06);border:1px solid rgba(180,130,80,0.2);border-left:3px solid #b48250;border-radius:8px;padding:14px 16px;margin-bottom:1.4rem}
+.insight p{font-size:13px;color:rgba(5,17,43,0.65);line-height:1.6;font-style:italic}
 .tag-group{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .tag{padding:6px 14px;border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:12px;color:rgba(240,235,232,0.6);cursor:pointer;transition:all 0.2s;background:transparent;font-family:'DM Sans',sans-serif}
 .tag:hover{border-color:#b48250;color:#b48250}
@@ -138,14 +138,14 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .btn-nx{flex:1;padding:14px 22px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:8px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
 .m-card{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
 .m-header{text-align:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(180,130,80,0.2)}
-.m-name{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f0ebe8;margin-bottom:0.3rem}
+.m-name{font-family:'Playfair Display',serif;font-size:1.8rem;color:#05112b;margin-bottom:0.3rem}
 .m-cause{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:#b48250}
 .canvas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden;margin-bottom:1.5rem}
 .cc{background:rgba(5,17,43,0.92);padding:1.1rem}
 .cc.full{grid-column:1/-1}
 .cc-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:5px}
-.cc-ttl{font-family:'Playfair Display',serif;font-size:13px;color:rgba(240,235,232,0.45);margin-bottom:5px}
-.cc-val{font-size:12px;color:#f0ebe8;line-height:1.55;font-style:italic}
+.cc-ttl{font-family:'Playfair Display',serif;font-size:13px;color:rgba(5,17,43,0.45);margin-bottom:5px}
+.cc-val{font-size:12px;color:#05112b;line-height:1.55;font-style:italic}
 .i-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .i-pill{padding:4px 12px;background:rgba(180,130,80,0.12);border:1px solid rgba(180,130,80,0.3);border-radius:20px;font-size:11px;color:#b48250}
 .btn-gen{width:100%;padding:15px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;margin-bottom:1rem}
@@ -164,22 +164,22 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 /* Seções S2 */
 .s2-section{margin-bottom:2rem;scroll-margin-top:180px}
-.s2-section-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#f0ebe8;margin-bottom:0.3rem}
-.s2-section-hint{font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:1rem;line-height:1.5}
+.s2-section-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#05112b;margin-bottom:0.3rem}
+.s2-section-hint{font-size:12px;color:rgba(5,17,43,0.55);margin-bottom:1rem;line-height:1.5}
 .s2-divider{border:none;border-top:1px solid rgba(180,130,80,0.15);margin:2rem 0}
 
 /* Campos S2 */
 .s2-field{margin-bottom:1.2rem}
-.s2-field-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(240,235,232,0.6);margin-bottom:4px;display:block}
+.s2-field-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(5,17,43,0.6);margin-bottom:4px;display:block}
 .s2-field-hint{font-size:12px;color:rgba(180,130,80,0.7);margin-bottom:6px;font-style:italic}
-.s2-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#f0ebe8;outline:none;resize:vertical;min-height:100px;line-height:1.6}
-.s2-textarea:focus{border-color:rgba(180,130,80,0.5);background:rgba(180,130,80,0.03)}
-.s2-textarea::placeholder{color:rgba(240,235,232,0.18)}
+.s2-textarea{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#1a1a2e;outline:none;resize:vertical;min-height:100px;line-height:1.6}
+.s2-textarea:focus{border-color:#b48250;background:#ede8da;box-shadow:0 0 0 3px rgba(180,130,80,0.1)}
+.s2-textarea::placeholder{color:rgba(26,26,46,0.35)}
 
 /* Etapa box */
 .etapa-box{background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:12px;padding:1.2rem;margin-bottom:1rem}
 .etapa-box-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
-.etapa-box-hint{font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:1rem;font-style:italic;line-height:1.5}
+.etapa-box-hint{font-size:12px;color:rgba(5,17,43,0.45);margin-bottom:1rem;font-style:italic;line-height:1.5}
 
 /* Passos dinâmicos */
 .passos-container{display:flex;flex-direction:column;gap:8px;margin-bottom:0.8rem}
@@ -197,39 +197,39 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 /* Prompt GPT */
 .prompt-box{background:rgba(5,17,43,0.8);border:1px solid rgba(180,130,80,0.25);border-radius:12px;padding:1.3rem;margin-bottom:1rem}
 .prompt-box-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:0.8rem}
-.prompt-text{font-size:12px;color:rgba(240,235,232,0.6);line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.prompt-text{font-size:12px;color:rgba(5,17,43,0.65);line-height:1.7;white-space:pre-wrap;word-break:break-word}
 .btn-copy-prompt{display:flex;align-items:center;gap:6px;margin-top:0.8rem;background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:8px 16px;color:#b48250;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s}
 .btn-copy-prompt:hover{background:rgba(180,130,80,0.1)}
 
 /* Canvas S2 */
 .canvas-s2{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem}
 .canvas-s2-header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(180,130,80,0.2)}
-.canvas-s2-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8}
+.canvas-s2-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#05112b}
 .canvas-s2-cause{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-top:4px}
 .canvas-s2-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden}
 .cs2c{background:rgba(5,17,43,0.92);padding:1rem}
 .cs2c.full{grid-column:1/-1}
 .cs2c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
-.cs2c-ttl{font-family:'Playfair Display',serif;font-size:12px;color:rgba(240,235,232,0.4);margin-bottom:5px}
-.cs2c-val{font-size:12px;color:#f0ebe8;line-height:1.5;font-style:italic;min-height:20px}
+.cs2c-ttl{font-family:'Playfair Display',serif;font-size:12px;color:rgba(5,17,43,0.45);margin-bottom:5px}
+.cs2c-val{font-size:12px;color:#05112b;line-height:1.5;font-style:italic;min-height:20px}
 
 /* Pilares grid no método visual */
 .mv-pilares-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:0.5rem}
 .mv-pilar-card{background:rgba(180,130,80,0.07);border:1px solid rgba(180,130,80,0.25);border-radius:12px;padding:1rem 1.1rem}
 .mv-pilar-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:6px}
-.mv-pilar-text{font-size:13px;color:#f0ebe8;line-height:1.5;font-style:italic}
-.mv-pilar-empty{color:rgba(240,235,232,0.25)}
+.mv-pilar-text{font-size:13px;color:#05112b;line-height:1.5;font-style:italic}
+.mv-pilar-empty{color:rgba(5,17,43,0.25)}
 .metodo-visual{background:linear-gradient(160deg,#071a3e,#05112b);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem;display:none}
-.mv-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;text-align:center;margin-bottom:0.3rem}
-.mv-subtitle{font-size:12px;color:rgba(240,235,232,0.4);text-align:center;margin-bottom:1.5rem}
+.mv-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#05112b;text-align:center;margin-bottom:0.3rem}
+.mv-subtitle{font-size:12px;color:rgba(5,17,43,0.45);text-align:center;margin-bottom:1.5rem}
 .mv-objetivo{background:rgba(180,130,80,0.1);border:1px solid rgba(180,130,80,0.3);border-radius:10px;padding:1rem;margin-bottom:1.2rem;text-align:center}
 .mv-objetivo-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:6px}
-.mv-objetivo-text{font-size:13px;color:#f0ebe8;font-style:italic;line-height:1.5}
+.mv-objetivo-text{font-size:13px;color:#05112b;font-style:italic;line-height:1.5}
 .mv-etapas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.2rem}
 .mv-etapa{background:rgba(255,255,255,0.03);border:1px solid rgba(180,130,80,0.15);border-radius:10px;padding:0.9rem}
 .mv-etapa-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
-.mv-etapa-title{font-family:'Playfair Display',serif;font-size:13px;color:#f0ebe8;margin-bottom:8px}
-.mv-passo{font-size:11px;color:rgba(240,235,232,0.5);padding:4px 0;border-bottom:1px solid rgba(180,130,80,0.08);line-height:1.4}
+.mv-etapa-title{font-family:'Playfair Display',serif;font-size:13px;color:#05112b;margin-bottom:8px}
+.mv-passo{font-size:11px;color:rgba(5,17,43,0.55);padding:4px 0;border-bottom:1px solid rgba(5,17,43,0.08);line-height:1.4}
 .mv-passo:last-child{border-bottom:none}
 .mv-passo-num{color:#b48250;font-weight:600;margin-right:4px}
 
@@ -250,36 +250,36 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 /* CHECKLIST WEEKS */
 .ck-wrapper{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
 .ck-header{text-align:center;margin-bottom:2.5rem}
-.ck-semana-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;display:block;margin-bottom:0.6rem}
-.ck-titulo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:0.4rem}
+.ck-semana-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a5f35;display:block;margin-bottom:0.6rem}
+.ck-titulo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#05112b;line-height:1.2;margin-bottom:0.4rem}
 .ck-titulo em{font-style:italic;color:#b48250}
-.ck-desc{font-size:14px;color:rgba(240,235,232,0.5);line-height:1.65;margin-bottom:1.5rem}
+.ck-desc{font-size:14px;color:rgba(5,17,43,0.55);line-height:1.65;margin-bottom:1.5rem}
 .ck-progress-bar{height:4px;background:rgba(180,130,80,0.12);border-radius:4px;overflow:hidden;margin-bottom:0.5rem}
 .ck-progress-fill{height:100%;background:linear-gradient(90deg,#b48250,#d4a06a);border-radius:4px;transition:width 0.5s ease}
-.ck-progress-label{font-size:11px;color:rgba(180,130,80,0.6);letter-spacing:1px;text-align:right}
+.ck-progress-label{font-size:11px;color:rgba(138,95,53,0.8);letter-spacing:1px;text-align:right}
 .ck-section{margin-bottom:2rem}
-.ck-section-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(180,130,80,0.1)}
-.ck-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.08);border-radius:12px;margin-bottom:8px;cursor:pointer;transition:all 0.25s;user-select:none}
+.ck-section-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(138,95,53,0.2)}
+.ck-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:rgba(255,255,255,0.7);border:1px solid rgba(138,95,53,0.15);border-radius:12px;margin-bottom:8px;cursor:pointer;transition:all 0.25s;user-select:none}
 .ck-item:hover{background:rgba(180,130,80,0.05);border-color:rgba(180,130,80,0.2)}
-.ck-item.done{background:rgba(180,130,80,0.06);border-color:rgba(180,130,80,0.25)}
-.ck-item.done .ck-text{color:rgba(240,235,232,0.35);text-decoration:line-through}
+.ck-item.done{background:rgba(180,130,80,0.12);border-color:rgba(138,95,53,0.3)}
+.ck-item.done .ck-text{color:rgba(5,17,43,0.35);text-decoration:line-through}
 .ck-box{width:22px;height:22px;border-radius:6px;border:2px solid rgba(180,130,80,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all 0.25s}
 .ck-item.done .ck-box{background:#b48250;border-color:#b48250}
 .ck-check{font-size:12px;color:#05112b;font-weight:700;display:none}
 .ck-item.done .ck-check{display:block}
-.ck-text{font-size:14px;color:rgba(240,235,232,0.75);line-height:1.5}
-.ck-text strong{color:#f0ebe8;font-weight:500}
-.ck-note{font-size:11px;color:rgba(180,130,80,0.5);margin-top:3px}
+.ck-text{font-size:14px;color:rgba(5,17,43,0.8);line-height:1.5}
+.ck-text strong{color:#05112b;font-weight:600}
+.ck-note{font-size:11px;color:rgba(138,95,53,0.7);margin-top:3px}
 .ck-link{font-size:11px;color:#b48250;text-decoration:none;border-bottom:1px solid rgba(180,130,80,0.3)}
 .ck-link:hover{color:#d4a06a}
-.ck-conquista{background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.5rem;text-align:center;margin-top:2rem;display:none}
+.ck-conquista{background:linear-gradient(135deg,rgba(180,130,80,0.15),rgba(180,130,80,0.06));border:1px solid rgba(138,95,53,0.4);border-radius:14px;padding:1.5rem;text-align:center;margin-top:2rem;display:none}
 .ck-conquista.visible{display:block}
 .ck-conquista-icon{font-size:36px;display:block;margin-bottom:0.6rem}
-.ck-conquista-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#b48250;margin-bottom:0.4rem}
-.ck-conquista-texto{font-size:13px;color:rgba(240,235,232,0.55);line-height:1.6}
+.ck-conquista-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#8a5f35;margin-bottom:0.4rem}
+.ck-conquista-texto{font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6}
 .cs-icon{width:70px;height:70px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:28px}
-.cs-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.6rem}
-.cs-desc{font-size:13px;color:rgba(240,235,232,0.4);line-height:1.7}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#05112b;margin-bottom:0.6rem}
+.cs-desc{font-size:13px;color:rgba(5,17,43,0.5);line-height:1.7}
 
 .footer{text-align:center;padding:2rem;border-top:1px solid rgba(180,130,80,0.1)}
 .footer p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.4)}
@@ -336,9 +336,9 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 /* TELA COMPARTILHAR */
 .compartilhar-wrapper{max-width:640px;margin:0 auto;text-align:center;padding:1rem 0}
-.compartilhar-titulo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;line-height:1.4;margin-bottom:1.2rem}
+.compartilhar-titulo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#05112b;line-height:1.4;margin-bottom:1.2rem}
 .compartilhar-titulo em{color:#b48250;font-style:italic}
-.compartilhar-texto{font-size:15px;color:rgba(240,235,232,0.75);line-height:1.8;margin-bottom:1.5rem;text-align:left}
+.compartilhar-texto{font-size:15px;color:rgba(5,17,43,0.7);line-height:1.8;margin-bottom:1.5rem;text-align:left}
 .compartilhar-acoes{display:flex;flex-direction:column;gap:12px;margin-bottom:1.5rem}
 .btn-compartilhar-print{width:100%;padding:16px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.3s}
 .btn-compartilhar-print:hover{opacity:0.9;transform:translateY(-2px)}
@@ -381,8 +381,8 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .modal-overlay.ativo{display:flex}
 .modal-box{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.4);border-radius:18px;padding:2rem 2rem 1.5rem;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .modal-icon{font-size:32px;margin-bottom:0.8rem;display:block}
-.modal-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0ebe8;margin-bottom:0.5rem;font-weight:700}
-.modal-texto{font-size:14px;color:rgba(240,235,232,0.7);line-height:1.6;margin-bottom:1.5rem}
+.modal-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#05112b;margin-bottom:0.5rem;font-weight:700}
+.modal-texto{font-size:14px;color:rgba(5,17,43,0.7);line-height:1.6;margin-bottom:1.5rem}
 .modal-btns{display:flex;gap:10px}
 .modal-btn-confirmar{flex:1;padding:13px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
 .modal-btn-confirmar:hover{opacity:0.9;transform:translateY(-1px)}
@@ -405,7 +405,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 /* LINHA DO TEMPO */
 .bloco-linha-tempo{background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:14px;padding:1.5rem;margin-bottom:1.2rem}
 .bloco-lt-header{font-size:13px;font-weight:600;color:#b48250;letter-spacing:1px;margin-bottom:0.2rem}
-.bloco-lt-sub{font-size:12px;color:rgba(240,235,232,0.45);font-style:italic;margin-bottom:1rem}
+.bloco-lt-sub{font-size:12px;color:rgba(5,17,43,0.5);font-style:italic;margin-bottom:1rem}
 
 /* MODAL VITÓRIA */
 .modal-vitoria{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.95);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
@@ -423,6 +423,87 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .vitoria-colecao{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
 .vitoria-badge{background:rgba(180,130,80,0.12);border:1px solid rgba(180,130,80,0.3);border-radius:10px;padding:6px 12px;font-size:11px;color:#b48250;display:flex;align-items:center;gap:5px}
 .vitoria-badge.conquistada{background:rgba(180,130,80,0.2);border-color:rgba(180,130,80,0.6);color:#f0ebe8}
+
+/* ===== ETAPA 9 — BIO E FIXADOS ===== */
+.ig-wrapper{max-width:680px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.ig-header{text-align:center;margin-bottom:2rem}
+.ig-etapa-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a5f35;display:block;margin-bottom:0.5rem}
+.ig-titulo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#05112b;line-height:1.2;margin-bottom:0.4rem}
+.ig-titulo em{font-style:italic;color:#b48250}
+.ig-desc{font-size:14px;color:rgba(5,17,43,0.55);line-height:1.65}
+
+/* Mock perfil Instagram */
+.ig-profile-mock{background:rgba(5,17,43,0.92);border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.5rem;margin-bottom:2rem}
+.ig-profile-top{display:flex;align-items:center;gap:1.2rem;margin-bottom:1rem}
+.ig-avatar-wrap{position:relative;cursor:pointer;flex-shrink:0}
+.ig-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(180,130,80,0.4);background:rgba(180,130,80,0.08);display:flex;align-items:center;justify-content:center}
+.ig-avatar img{width:72px;height:72px;border-radius:50%;object-fit:cover}
+.ig-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:rgba(180,130,80,0.08);border:2px dashed rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
+.ig-avatar-hint{font-size:9px;color:rgba(180,130,80,0.5);text-align:center;margin-top:4px;letter-spacing:0.5px}
+.ig-profile-info{flex:1}
+.ig-username{font-size:13px;color:rgba(240,235,232,0.35);letter-spacing:0.5px;margin-bottom:2px}
+.ig-nome-display{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;font-weight:700;margin-bottom:0.2rem;min-height:28px}
+.ig-bio-display{font-size:13px;color:rgba(240,235,232,0.65);line-height:1.6;min-height:40px;white-space:pre-wrap}
+.ig-bio-area{margin-bottom:1rem}
+.ig-bio-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:0.4rem;display:block}
+.ig-input-nome{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1a1a2e;outline:none;margin-bottom:0.6rem}
+.ig-input-nome:focus{border-color:#b48250;background:#ede8da}
+.ig-textarea-bio{width:100%;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1a1a2e;outline:none;resize:vertical;min-height:80px;line-height:1.6}
+.ig-textarea-bio:focus{border-color:#b48250;background:#ede8da}
+.ig-textarea-bio::placeholder{color:rgba(26,26,46,0.35)}
+.ig-input-nome::placeholder{color:rgba(26,26,46,0.35)}
+
+/* Fixados */
+.ig-fixados-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:1rem;border-top:1px solid rgba(180,130,80,0.1);padding-top:1rem}
+.ig-fixados-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem}
+.ig-fixado-card{background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.15);border-radius:12px;padding:1rem;cursor:pointer;transition:all 0.25s;text-align:center}
+.ig-fixado-card:hover{border-color:rgba(180,130,80,0.4);background:rgba(180,130,80,0.1)}
+.ig-fixado-card.aberto{border-color:#b48250;background:rgba(180,130,80,0.08)}
+.ig-fixado-icone{font-size:24px;display:block;margin-bottom:0.4rem}
+.ig-fixado-nome{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#b48250;margin-bottom:0.2rem}
+.ig-fixado-desc{font-size:11px;color:rgba(240,235,232,0.4);line-height:1.4}
+.ig-fixado-conteudo{display:none;background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:12px;padding:1.2rem;margin-top:-4px;margin-bottom:12px}
+.ig-fixado-conteudo.visivel{display:block}
+.ig-fixado-instrucao{font-size:13px;color:rgba(240,235,232,0.6);line-height:1.7;margin-bottom:1rem}
+.ig-fixado-instrucao strong{color:#f0ebe8}
+.ig-btn-salvar{background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 20px;font-size:13px;cursor:pointer;width:100%;margin-top:0.5rem;font-family:'DM Sans',sans-serif;letter-spacing:0.5px}
+.ig-btn-salvar:hover{opacity:0.9}
+
+/* ===== ETAPA 10 — DESTAQUES ===== */
+.dest-wrapper{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.dest-header{text-align:center;margin-bottom:2rem}
+.dest-principios{background:rgba(5,17,43,0.9);border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.4rem 1.6rem;margin-bottom:2.5rem}
+.dest-principios-titulo{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#b48250;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.dest-principios-titulo::before{content:'📌';font-size:14px}
+.dest-principio-item{font-size:13px;color:rgba(240,235,232,0.65);line-height:1.7;padding:0.4rem 0;border-bottom:1px solid rgba(180,130,80,0.08)}
+.dest-principio-item:last-child{border-bottom:none}
+.dest-principio-item strong{color:#b48250}
+
+.dest-bolinhas-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#8a5f35;margin-bottom:1.5rem;text-align:center}
+.dest-bolinhas{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-bottom:2rem}
+.dest-bolinha-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer}
+.dest-bolinha{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,rgba(180,130,80,0.15),rgba(180,130,80,0.05));border:2px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:26px;transition:all 0.3s;position:relative}
+.dest-bolinha-wrap:hover .dest-bolinha{border-color:#b48250;background:linear-gradient(135deg,rgba(180,130,80,0.25),rgba(180,130,80,0.1));transform:scale(1.05)}
+.dest-bolinha-wrap.ativa .dest-bolinha{border-color:#b48250;background:linear-gradient(135deg,#b48250,#8a5f35);box-shadow:0 0 20px rgba(180,130,80,0.3)}
+.dest-bolinha-wrap.ativa .dest-bolinha-nome{color:#b48250}
+.dest-bolinha-nome{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(5,17,43,0.6);text-align:center;max-width:80px;line-height:1.3}
+
+.dest-painel{display:none;background:rgba(5,17,43,0.9);border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}
+.dest-painel.visivel{display:block}
+.dest-painel-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0ebe8;margin-bottom:0.3rem}
+.dest-painel-sub{font-size:12px;color:rgba(180,130,80,0.7);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
+.dest-painel-body{font-size:13px;color:rgba(240,235,232,0.65);line-height:1.8}
+.dest-painel-body strong{color:#f0ebe8}
+.dest-painel-body em{color:#b48250;font-style:normal}
+.dest-estrutura{background:rgba(180,130,80,0.05);border:1px solid rgba(180,130,80,0.12);border-radius:10px;padding:1rem;margin:1rem 0}
+.dest-estrutura-titulo{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:0.6rem}
+.dest-estrutura-item{font-size:12px;color:rgba(240,235,232,0.55);padding:3px 0;border-left:2px solid rgba(180,130,80,0.2);padding-left:10px;margin-bottom:4px}
+.dest-prompt-btn{background:rgba(180,130,80,0.1);border:1px solid rgba(180,130,80,0.3);color:#b48250;border-radius:8px;padding:10px 16px;font-size:12px;cursor:pointer;width:100%;margin-top:1rem;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s;text-align:left}
+.dest-prompt-btn:hover{background:rgba(180,130,80,0.15)}
+.dest-prompt-area{display:none;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:1rem;margin-top:0.6rem;font-size:12px;color:#1a1a2e;line-height:1.7}
+.dest-prompt-area.visivel{display:block}
+.dest-prompt-copy{background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:6px;padding:8px 14px;font-size:11px;cursor:pointer;margin-top:0.6rem;font-family:'DM Sans',sans-serif}
+
 </style>
 </head>
 <body>
@@ -430,18 +511,18 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 <div id="portalHome">
   <div class="header">
     <div class="logo-badge">
-      <div class="logo-icon">12s</div>
+      <div class="logo-icon">PDA</div>
       <span class="logo-text">Portal Caverna Azul</span>
     </div>
-    <h1 class="header-title">Programa <em>12 Semanas</em> no Ar</h1>
-    <p class="header-sub">Programa Editorial Prático · Jade Torres</p>
+    <h1 class="header-title">Programa <em>Meu Projeto</em> Digital</h1>
+    <p class="header-sub">Meu Projeto Digital · Jade Torres</p>
     <div class="progress-summary">
       <div class="progress-dot"></div>
       Sua jornada começa aqui, guerreira
     </div>
   </div>
   <div class="weeks-section">
-    <span class="section-label">Sua jornada — 12 semanas</span>
+    <span class="section-label">Sua jornada · 12 etapas</span>
     <div class="grid" id="weeksGrid"></div>
   </div>
   <div class="footer"><p>Portal Caverna das Guerreiras · Jade Torres · 2025</p></div>
@@ -465,14 +546,14 @@ var weeks = [
   {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:false},
   {n:3,title:"Produtos do",sub:"Método",desc:"Defina os produtos que nascem do seu método com clareza e intenção.",tag:"Produtos",locked:false},
   {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:false},
-  {n:5,title:"Designer de",sub:"Plataforma",desc:"Seus produtos ganham cores e formas para valorizar sua vitrine.",tag:"Design",locked:false},
-  {n:6,title:"Gravação do",sub:"Método",desc:"O que você criou começa a ganhar formato profissional.",tag:"Gravação",locked:false},
-  {n:7,title:"Edição",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:false},
-  {n:8,title:"Validação do",sub:"Método",desc:"Hora de testar, ajustar e fortalecer sua solução principal.",tag:"Validação",locked:false},
-  {n:9,title:"Perfil Pronto",sub:"BIO e Fixados",desc:"Sua marca pessoal mostrará causa, propósito e identidade no digital.",tag:"Instagram",locked:true},
-  {n:10,title:"Perfil Pronto",sub:"Destaques",desc:"Cada destaque conta uma parte da sua história e convida ao próximo passo.",tag:"Instagram",locked:true},
-  {n:11,title:"Perfil Pronto",sub:"Feed",desc:"Produção e distribuição; conteúdo inicia um movimento alcançando novos espaços.",tag:"Conteúdo",locked:true},
-  {n:12,title:"Projeto",sub:"no Ar",desc:"Coletiva Final; você concluiu sua travessia. Seu projeto está pronto.",tag:"Conclusão",locked:true}
+  {n:5,title:"Método na",sub:"Plataforma",desc:"Design, gravação e estrutura — seu método ganha forma e encontra sua casa digital.",tag:"Produção",locked:false},
+  {n:6,title:"Edição e",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:false},
+  {n:7,title:"Validação do",sub:"Método",desc:"Hora de testar, ajustar e fortalecer sua solução principal.",tag:"Validação",locked:false},
+  {n:8,title:"Minha",sub:"Oferta",desc:"Construa a apresentação do seu produto com narrativa, estrutura e clareza para vender.",tag:"Oferta",locked:false},
+  {n:9,title:"Perfil Pronto",sub:"BIO e Fixados",desc:"Sua marca pessoal mostrará causa, propósito e identidade no digital.",tag:"Instagram",locked:false},
+  {n:10,title:"Perfil Pronto",sub:"Destaques",desc:"Cada destaque conta uma parte da sua história e convida ao próximo passo.",tag:"Instagram",locked:false},
+  {n:11,title:"Perfil Pronto",sub:"Feed",desc:"Produção e distribuição; conteúdo inicia um movimento alcançando novos espaços.",tag:"Conteúdo",locked:false},
+  {n:12,title:"Meu Projeto",sub:"Digital",desc:"Você chegou. Hora de celebrar, colher seu depoimento e imaginar os próximos passos.",tag:"Conclusão",locked:false}
 ];
 
 document.getElementById('btnBackMain').addEventListener('click', goHome);
@@ -489,7 +570,7 @@ function buildGrid() {
     } else {
       photoHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner" style="flex-direction:column;gap:6px"><span style="font-size:22px;color:rgba(180,130,80,0.5)">✦</span><span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.35)">Semana ' + w.n + '</span></div></div>';
     }
-    var badge = '<div class="card-week-badge"><div class="badge-icon ' + (w.locked ? 'badge-lock' : 'badge-check') + '">' + (w.locked ? '🔒' : '✓') + '</div>Semana ' + w.n + '</div>';
+    var badge = '<div class="card-week-badge"><div class="badge-icon ' + (w.locked ? 'badge-lock' : 'badge-check') + '">' + (w.locked ? '🔒' : '✓') + '</div>Etapa ' + w.n + '</div>';
     c.innerHTML = '<div class="card-photo">' + photoHTML + '<div class="card-overlay"></div>' + badge + '</div>' +
       '<div class="card-body"><div class="card-title">' + w.title + '</div><div class="card-subtitle">' + w.sub + '</div><div class="card-desc">' + w.desc + '</div><div class="card-tag">' + w.tag + '</div></div>';
     if (!w.locked) {
@@ -503,7 +584,7 @@ function openWeek(n) {
   document.getElementById('portalHome').style.display = 'none';
   document.getElementById('weekDetail').style.display = 'block';
   var w = weeks[n-1];
-  document.getElementById('detailWeekNum').textContent = 'Semana ' + n + ' · ' + w.tag;
+  document.getElementById('detailWeekNum').textContent = 'Etapa ' + n + ' · ' + w.tag;
   document.getElementById('detailWeekTitle').textContent = w.title + ' - ' + w.sub;
   var content = document.getElementById('weekContent');
   if (n === 1) {
@@ -547,16 +628,44 @@ function openWeek(n) {
     content.innerHTML = getS5HTML();
     bindCkEvents(5);
   } else if (n === 6) {
-    content.innerHTML = getS6HTML();
+    content.innerHTML = getCkHTML(6);
     bindCkEvents(6);
   } else if (n === 7) {
-    content.innerHTML = getS7HTML();
+    content.innerHTML = getCkHTML(7);
     bindCkEvents(7);
   } else if (n === 8) {
-    content.innerHTML = getS8HTML();
-    bindCkEvents(8);
+    content.innerHTML = getS8OfertaHTML();
+    bindS8OfertaEvents();
+  } else if (n === 9) {
+    content.innerHTML = getS9HTML();
+    bindS9Events();
+  } else if (n === 10) {
+    content.innerHTML = getS10HTML();
+    bindS10Events();
+  } else if (n === 11) {
+    content.innerHTML = getS11HTML();
+    content.querySelectorAll('[data-s11]').forEach(function(item) {
+      item.addEventListener('click', function() {
+        var k = 'c' + this.getAttribute('data-s11');
+        var saved = JSON.parse(localStorage.getItem('s11_data') || '{}');
+        saved[k] = !saved[k];
+        localStorage.setItem('s11_data', JSON.stringify(saved));
+        this.classList.toggle('done', saved[k]);
+        var total = 12, done = 0;
+        for (var i = 1; i <= total; i++) { if (saved['c'+i]) done++; }
+        var pct = Math.round(done/total*100);
+        var fill = document.getElementById('s11-fill');
+        var label = document.getElementById('s11-label');
+        var conq = document.getElementById('s11-conquista');
+        if(fill) fill.style.width = pct + '%';
+        if(label) label.textContent = done + ' de ' + total + ' concluídos';
+        if(conq) conq.classList.toggle('visible', pct === 100);
+      });
+    });
+  } else if (n === 12) {
+    content.innerHTML = getS12HTML();
   } else {
-    content.innerHTML = '<div class="coming-soon"><div class="cs-icon">⚔</div><div class="cs-title">Em construção, guerreira</div><div class="cs-desc">Esta etapa está sendo preparada com todo cuidado. Em breve você terá acesso à interface completa da Semana ' + n + '.</div></div>';
+    content.innerHTML = '<div class="coming-soon"><div class="cs-icon">⚔</div><div class="cs-title">Em construção, guerreira</div><div class="cs-desc">Esta etapa está sendo preparada com todo cuidado. Em breve você terá acesso à interface completa da Etapa ' + n + '.</div></div>';
   }
   window.scrollTo(0,0);
 }
@@ -566,8 +675,8 @@ function openWeek(n) {
 
 var CK_DATA = {
   5: {
-    titulo: 'Designer de', subtitulo: 'Plataforma',
-    desc: 'Chegou a hora de dar forma visual ao seu método. Cada imagem que você criar aqui vai representar sua autoridade na plataforma.',
+    titulo: 'Método na', subtitulo: 'Plataforma',
+    desc: 'Design, gravação e estrutura unidos em uma etapa. Aqui seu método ganha forma visual, é gravado e encontra sua casa digital.',
     sections: [
       { title: 'Plataforma', items: [
         { id: 'plat1', text: 'Escolher a plataforma de hospedagem do curso', note: 'Kiwify, Hotmart, Eduzz, Ticto ou outra de sua preferência' },
@@ -589,42 +698,19 @@ var CK_DATA = {
         { id: 'fer1', text: 'Acessar o <a class="ck-link" href="https://canva.com" target="_blank">Canva</a> e criar pasta do projeto com os templates' },
         { id: 'fer2', text: 'Decidir: você vai criar os designers ou contratar?', note: 'Se contratar: briefing pronto com paleta, fontes e referências' },
         { id: 'fer3', text: 'Usar IA de imagem (Gemini, Midjourney ou similar) se precisar de imagens personalizadas' }
+      ]},
+      { title: 'Gravação', items: [
+        { id: 'grav1', text: 'Definir cenário: <strong>interno</strong> (home office) ou <strong>externo</strong> (estúdio)?' },
+        { id: 'grav2', text: 'Testar iluminação, câmera e microfone' },
+        { id: 'grav3', text: 'Escrever a <strong>copy de cada aula</strong> para roteiro ou teleprompter' },
+        { id: 'grav4', text: 'Definir datas e cronograma de gravação' },
+        { id: 'grav5', text: 'Gravar todas as aulas do método' }
       ]}
     ],
-    conquista: { icon: '🎨', titulo: 'Plataforma Estruturada', texto: 'Sua vitrine digital está pronta. O método ganhou forma, cor e nome. Agora ele existe visualmente no mundo.' }
+    conquista: { icon: '🎬', titulo: 'Método Gravado', texto: 'Plataforma estruturada, aulas gravadas. Seu método existe visual e digitalmente. Próximo passo: editar e hospedar.' }
   },
+
   6: {
-    titulo: 'Gravação do', subtitulo: 'Método',
-    desc: 'Aqui o método sai do papel e entra em cena. Organize tudo antes de gravar — set, copy, datas. Gravação bem planejada é gravação bem executada.',
-    sections: [
-      { title: 'Cenário', items: [
-        { id: 'cen1', text: 'Decidir: cenário <strong>interno</strong> (home office, escritório) ou <strong>externo</strong> (estúdio alugado)?' },
-        { id: 'cen2', text: 'Organizar o fundo — limpo, elegante, coerente com seu posicionamento' },
-        { id: 'cen3', text: 'Testar iluminação: janela lateral ou luz artificial difusa' },
-        { id: 'cen4', text: 'Fazer teste de gravação de 2 minutos e avaliar imagem e som' }
-      ]},
-      { title: 'Equipamentos', items: [
-        { id: 'equ1', text: 'Definir câmera: celular (tripé + boa resolução) ou câmera dedicada?' },
-        { id: 'equ2', text: 'Definir microfone: lapela, condensador ou microfone do celular?' },
-        { id: 'equ3', text: 'Decidir: você vai gravar sozinha ou contratar operador/estúdio?' },
-        { id: 'equ4', text: 'Verificar espaço de armazenamento disponível (cartão, HD, nuvem)' }
-      ]},
-      { title: 'Conteúdo', items: [
-        { id: 'con1', text: 'Escrever a <strong>copy de cada aula</strong> para usar como roteiro ou teleprompter', note: 'Introdução, desenvolvimento e fechamento com CTA' },
-        { id: 'con2', text: 'Decidir: vai usar slides? Montar apresentação no Canva ou Google Slides' },
-        { id: 'con3', text: 'Instalar app de teleprompter no celular se for usar roteiro na câmera' },
-        { id: 'con4', text: 'Revisar roteiro de todas as aulas antes de gravar' }
-      ]},
-      { title: 'Agenda', items: [
-        { id: 'age1', text: 'Definir data de início das gravações' },
-        { id: 'age2', text: 'Criar cronograma: quantas aulas por dia de gravação?' },
-        { id: 'age3', text: 'Reservar dias para imprevistos e regravações' },
-        { id: 'age4', text: 'Confirmar data limite para encerrar todas as gravações' }
-      ]}
-    ],
-    conquista: { icon: '🎬', titulo: 'Pronta para Gravar', texto: 'Set organizado, roteiro na mão, agenda definida. Você está preparada para registrar o método que vai transformar outras mulheres.' }
-  },
-  7: {
     titulo: 'Edição e', subtitulo: 'Hospedagem',
     desc: 'Suas aulas gravadas agora ganham acabamento e encontram o lugar onde vão viver. Cuide do material — ele é o coração do seu produto digital.',
     sections: [
@@ -643,7 +729,7 @@ var CK_DATA = {
       { title: 'Upload na plataforma do curso', items: [
         { id: 'upl1', text: 'Fazer upload de todas as aulas na plataforma do curso (Kiwify ou outra)' },
         { id: 'upl2', text: 'Organizar módulos e aulas na ordem correta' },
-        { id: 'upl3', text: 'Adicionar capas de módulo e de aula (criadas na Semana 5)' },
+        { id: 'upl3', text: 'Adicionar capas de módulo e de aula (criadas na Etapa 5)' },
         { id: 'upl4', text: 'Incluir materiais complementares: PDFs, templates, checklists' },
         { id: 'upl5', text: 'Fazer teste completo da área de membros: acesso, navegação, reprodução' }
       ]},
@@ -653,9 +739,9 @@ var CK_DATA = {
         { id: 'rev3', text: 'Confirmar que todos os links e materiais estão funcionando' }
       ]}
     ],
-    conquista: { icon: '🚀', titulo: 'Método no Ar', texto: 'Suas aulas estão editadas, hospedadas e organizadas. O produto digital existe. Agora é hora de validar.' }
+    conquista: { icon: '🚀', titulo: 'Método Editado e Hospedado', texto: 'Suas aulas estão editadas, hospedadas e organizadas. O produto digital existe. Agora é hora de validar.' }
   },
-  8: {
+  7: {
     titulo: 'Validação do', subtitulo: 'Método',
     desc: 'Validar é o caminho mais seguro para transformar sua ideia em produto com confiança. A cada passo você ganha clareza, experiência e prova social.',
     sections: [
@@ -736,6 +822,10 @@ function getChecklistHTML(n) {
 }
 
 function getS5HTML() { return getChecklistHTML(5); }
+function getCkHTML(n) { return getChecklistHTML(n); }
+function getS6HTML() { return getChecklistHTML(6); }
+function getS7HTML() { return getChecklistHTML(7); }
+function getS8HTML() { return getChecklistHTML(8); }
 function getS6HTML() { return getChecklistHTML(6); }
 function getS7HTML() { return getChecklistHTML(7); }
 function getS8HTML() { return getChecklistHTML(8); }
@@ -767,6 +857,531 @@ function bindCkEvents(n) {
   });
 }
 /* ===================== FIM SEMANAS 5-7 ===================== */
+
+
+/* ===================== ETAPA 9 — BIO E FIXADOS ===================== */
+function getS9HTML() {
+  var saved = JSON.parse(localStorage.getItem('s9_data') || '{}');
+  var foto = localStorage.getItem('guerreira_photo') || '';
+  var avatarHTML = foto
+    ? '<img src="' + foto + '" alt="Foto de perfil">'
+    : '<div class="ig-avatar-placeholder" onclick="s9UploadFoto()">+</div>';
+
+  return '<div class="ig-wrapper">' +
+    '<div class="ig-header">' +
+      '<span class="ig-etapa-label">Etapa 9 · Instagram</span>' +
+      '<h2 class="ig-titulo">Perfil Pronto<br><em>Bio e Fixados</em></h2>' +
+      '<p class="ig-desc">Aqui você constrói a vitrine do seu projeto. A bio posiciona, os fixados amplificam. Trabalhe cada um com intenção.</p>' +
+    '</div>' +
+
+    '<div class="ig-profile-mock">' +
+      '<div class="ig-profile-top">' +
+        '<div class="ig-avatar-wrap">' +
+          '<div class="ig-avatar" id="s9-avatar-display">' + avatarHTML + '</div>' +
+          '<div class="ig-avatar-hint">foto de perfil</div>' +
+          '<input type="file" id="s9-foto-input" accept="image/*" style="display:none" onchange="s9ProcessarFoto(this)">' +
+        '</div>' +
+        '<div class="ig-profile-info">' +
+          '<div class="ig-username">@seuusuario</div>' +
+          '<div class="ig-nome-display" id="s9-nome-display">' + (saved.nome || '<span style="color:rgba(240,235,232,0.2);font-family:DM Sans">Seu nome aqui</span>') + '</div>' +
+          '<div class="ig-bio-display" id="s9-bio-display">' + (saved.bio || '<span style="color:rgba(240,235,232,0.2);font-size:12px">Sua bio aparece aqui...</span>') + '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="ig-bio-area">' +
+        '<span class="ig-bio-label">Seu nome no Instagram</span>' +
+        '<input class="ig-input-nome" id="s9-nome" placeholder="Ex: Dra. Ana Lima | Psicóloga 35+" value="' + (saved.nome || '') + '" oninput="s9Preview()">' +
+        '<span class="ig-bio-label">Sua bio</span>' +
+        '<textarea class="ig-textarea-bio" id="s9-bio" placeholder="Ex: Ajudo mulheres 40+ a reconectarem com sua identidade profissional ✦ Método autoral ✦ Mentoria" oninput="s9Preview()">' + (saved.bio || '') + '</textarea>' +
+      '</div>' +
+
+      '<div class="ig-fixados-title">⚔ Seus 3 Fixados</div>' +
+      '<div class="ig-fixados-grid">' +
+        '<div class="ig-fixado-card" id="fix-card-0" onclick="s9AbrirFixado(0)">' +
+          '<span class="ig-fixado-icone">👤</span>' +
+          '<div class="ig-fixado-nome">Quem sou eu</div>' +
+          '<div class="ig-fixado-desc">Sua história e identidade</div>' +
+        '</div>' +
+        '<div class="ig-fixado-card" id="fix-card-1" onclick="s9AbrirFixado(1)">' +
+          '<span class="ig-fixado-icone">⚙</span>' +
+          '<div class="ig-fixado-nome">O que eu faço</div>' +
+          '<div class="ig-fixado-desc">Seu método e entrega</div>' +
+        '</div>' +
+        '<div class="ig-fixado-card" id="fix-card-2" onclick="s9AbrirFixado(2)">' +
+          '<span class="ig-fixado-icone">🎯</span>' +
+          '<div class="ig-fixado-nome">Para quem faço</div>' +
+          '<div class="ig-fixado-desc">Seu público e transformação</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="ig-fixado-conteudo" id="fix-conteudo-0">' +
+        '<div class="ig-fixado-instrucao"><strong>Quem sou eu</strong><br>Este fixado conta sua história com autenticidade. Quem você é antes de ser especialista — sua jornada, suas viradas, o que te fez chegar até aqui.<br><br>Estrutura sugerida: <em>apresentação → virada → decisão → hoje</em></div>' +
+        '<textarea class="ig-textarea-bio" id="fix-texto-0" placeholder="Escreva aqui o roteiro do seu fixado Quem sou eu..." style="min-height:100px">' + (saved.fix0 || '') + '</textarea>' +
+        '<button class="ig-btn-salvar" onclick="s9SalvarFixado(0)">Salvar</button>' +
+      '</div>' +
+
+      '<div class="ig-fixado-conteudo" id="fix-conteudo-1">' +
+        '<div class="ig-fixado-instrucao"><strong>O que eu faço</strong><br>Este fixado apresenta seu método, sua forma de trabalhar e os produtos que você oferece. É a ponte entre sua história e o que você entrega.<br><br>Estrutura sugerida: <em>problema que resolve → como resolve → método → produtos</em></div>' +
+        '<textarea class="ig-textarea-bio" id="fix-texto-1" placeholder="Escreva aqui o roteiro do seu fixado O que eu faço..." style="min-height:100px">' + (saved.fix1 || '') + '</textarea>' +
+        '<button class="ig-btn-salvar" onclick="s9SalvarFixado(1)">Salvar</button>' +
+      '</div>' +
+
+      '<div class="ig-fixado-conteudo" id="fix-conteudo-2">' +
+        '<div class="ig-fixado-instrucao"><strong>Para quem faço</strong><br>Este fixado fala diretamente com sua audiência. Ela precisa se ver nele — sua dor, seu momento, o que ela deseja conquistar.<br><br>Estrutura sugerida: <em>retrato da pessoa → dor que ela sente → o que ela vai conquistar → convite</em></div>' +
+        '<textarea class="ig-textarea-bio" id="fix-texto-2" placeholder="Escreva aqui o roteiro do seu fixado Para quem faço..." style="min-height:100px">' + (saved.fix2 || '') + '</textarea>' +
+        '<button class="ig-btn-salvar" onclick="s9SalvarFixado(2)">Salvar</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<button class="ig-btn-salvar" onclick="s9Salvar()" style="margin-top:1rem">✦ Salvar perfil completo</button>' +
+  '</div>';
+}
+
+function bindS9Events() {
+  // avatar click
+  var av = document.getElementById('s9-avatar-display');
+  if (av) av.addEventListener('click', function() {
+    var inp = document.getElementById('s9-foto-input');
+    if (inp) inp.click();
+  });
+}
+
+function s9Preview() {
+  var nome = document.getElementById('s9-nome');
+  var bio = document.getElementById('s9-bio');
+  var nomeD = document.getElementById('s9-nome-display');
+  var bioD = document.getElementById('s9-bio-display');
+  if (nomeD && nome) nomeD.textContent = nome.value || 'Seu nome aqui';
+  if (bioD && bio) bioD.textContent = bio.value || '';
+}
+
+function s9AbrirFixado(i) {
+  [0,1,2].forEach(function(j) {
+    var c = document.getElementById('fix-conteudo-' + j);
+    var card = document.getElementById('fix-card-' + j);
+    if (j === i) {
+      c.classList.toggle('visivel');
+      card.classList.toggle('aberto');
+    } else {
+      if(c) c.classList.remove('visivel');
+      if(card) card.classList.remove('aberto');
+    }
+  });
+}
+
+function s9SalvarFixado(i) {
+  var saved = JSON.parse(localStorage.getItem('s9_data') || '{}');
+  var txt = document.getElementById('fix-texto-' + i);
+  if (txt) saved['fix' + i] = txt.value;
+  localStorage.setItem('s9_data', JSON.stringify(saved));
+  var btn = document.querySelector('#fix-conteudo-' + i + ' .ig-btn-salvar');
+  if (btn) { btn.textContent = '✓ Salvo'; setTimeout(function(){ btn.textContent = 'Salvar'; }, 1500); }
+}
+
+function s9Salvar() {
+  var nome = document.getElementById('s9-nome');
+  var bio = document.getElementById('s9-bio');
+  var saved = JSON.parse(localStorage.getItem('s9_data') || '{}');
+  if (nome) saved.nome = nome.value;
+  if (bio) saved.bio = bio.value;
+  localStorage.setItem('s9_data', JSON.stringify(saved));
+  var btn = document.querySelector('.ig-wrapper .ig-btn-salvar:last-child');
+  if (btn) { btn.textContent = '✓ Perfil salvo!'; setTimeout(function(){ btn.textContent = '✦ Salvar perfil completo'; }, 2000); }
+}
+
+function s9UploadFoto() {
+  var inp = document.getElementById('s9-foto-input');
+  if (inp) inp.click();
+}
+
+function s9ProcessarFoto(input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      var size = 300;
+      canvas.width = size; canvas.height = size;
+      var ctx = canvas.getContext('2d');
+      var min = Math.min(img.width, img.height);
+      var sx = (img.width - min) / 2, sy = (img.height - min) / 2;
+      ctx.drawImage(img, sx, sy, min, min, 0, 0, size, size);
+      var compressed = canvas.toDataURL('image/jpeg', 0.8);
+      localStorage.setItem('guerreira_photo', compressed);
+      var av = document.getElementById('s9-avatar-display');
+      if (av) av.innerHTML = '<img src="' + compressed + '" alt="Foto de perfil">';
+      if (typeof buildGrid === 'function') { document.getElementById('weeksGrid').innerHTML = ''; buildGrid(); }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ===================== ETAPA 10 — DESTAQUES NARRATIVOS ===================== */
+var DEST_DATA = [
+  {
+    id: 'quem', icone: '🪞', nome: 'Quem você é',
+    titulo: 'Quem você é',
+    sub: 'Jornada · Família · História · Elemento especial',
+    desc: 'Este destaque constrói a conexão humana antes de qualquer autoridade. Sua audiência precisa te conhecer como pessoa antes de te seguir como referência.',
+    estrutura: [
+      'Apresentação pessoal — nome, de onde veio, o que viveu',
+      'Virada de percepção — o momento que mudou algo em você',
+      'Família, filhos, relacionamentos — o que humaniza',
+      'Elemento especial — algo único que só você tem',
+      'Conexão com o trabalho — como sua história virou propósito'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque "Quem sou eu" para o meu Instagram.\n\nMeu nome é [NOME]. Trabalho com [ÁREA].\n\nMinha história em poucas linhas: [DESCREVA SUA TRAJETÓRIA]\n\nCrie um roteiro de destaque com 8 a 12 Stories seguindo esta estrutura:\n1. Capa chamativa com título provocador\n2. Pergunta de identificação para a audiência\n3. Apresentação pessoal com humanidade\n4. Momento de virada da minha história\n5. O que aprendi com isso\n6. Como isso se conecta com meu trabalho hoje\n7. CTA para conhecer mais\n\nTom: humano, direto, sem exageros emocionais. A história deve conduzir, não dramatizar.'
+  },
+  {
+    id: 'faz', icone: '⚙', nome: 'O que você faz',
+    titulo: 'O que você faz',
+    sub: 'Método · Posicionamento · Como você trabalha',
+    desc: 'Este destaque apresenta sua metodologia e forma de entrega. É onde a audiência entende o que te diferencia e como você pode ajudá-la.',
+    estrutura: [
+      'O problema principal que você resolve',
+      'Por que a maioria das soluções do mercado não funciona',
+      'Sua abordagem — o que é diferente no seu método',
+      'Como funciona na prática — o passo a passo',
+      'Produtos e formas de trabalhar com você',
+      'CTA para o próximo passo'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque "O que eu faço" para o meu Instagram.\n\nTrabaho com [ÁREA]. Meu método se chama [NOME DO MÉTODO].\n\nProblema que resolvo: [DESCREVA]\nComo resolvo: [DESCREVA O MÉTODO]\nProdutos: [LISTE SEUS PRODUTOS]\n\nCrie um roteiro de destaque com 8 a 10 Stories:\n1. Capa com headline de problema\n2. Agitação do problema que a audiência vive\n3. Por que as soluções comuns não funcionam\n4. Apresentação do método com clareza\n5. Como funciona na prática (passo a passo)\n6. Produtos disponíveis\n7. CTA\n\nTom: estratégico, claro, sem jargão técnico.'
+  },
+  {
+    id: 'posicionamento', icone: '⚔', nome: 'Posicionamento',
+    titulo: 'Seus Posicionamentos',
+    sub: 'Crenças · O que você defende · O que você recusa',
+    desc: 'Este destaque define sua identidade de mercado. É onde você toma partido, firma seu ponto de vista e filtra quem é para você e quem não é.',
+    estrutura: [
+      'Uma crença que você tem e o mercado ignora',
+      'O que você discorda que todo mundo fala',
+      'O que você defende com convicção',
+      'O que você recusa — limites e posicionamentos',
+      'Por que isso importa para sua audiência'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque de "Posicionamento" para o meu Instagram.\n\nMinha área: [ÁREA]. Meu público: [PÚBLICO].\n\nMinhas crenças principais: [LISTE 3 CRENÇAS]\nO que eu discordo do mercado: [DESCREVA]\nO que eu recuso fazer ou falar: [DESCREVA]\n\nCrie um roteiro de destaque com 6 a 10 Stories:\n1. Capa provocadora — uma afirmação forte\n2. Contexto — por que você está falando isso\n3. Posicionamento 1 com argumento\n4. Posicionamento 2 com argumento\n5. O que você discorda e por quê\n6. O que isso significa para quem te segue\n7. CTA\n\nTom: firme, honesto, sem agressividade. Você tem opinião e não tem medo de expressá-la.'
+  },
+  {
+    id: 'beneficios', icone: '🏆', nome: 'Benefícios',
+    titulo: 'Seus Benefícios',
+    sub: 'Autoridade · Eventos · Conquistas · Prova social',
+    desc: 'Este destaque mostra que você vive o que fala. Eventos que você foi, prêmios, formações, momentos marcantes — prova de autoridade que conecta e convence.',
+    estrutura: [
+      'Evento ou conquista marcante — você presente',
+      'O que você aprendeu ou viveu naquele momento',
+      'Referências que você acessa — pessoas, lugares, experiências',
+      'Formações e certificações relevantes',
+      'Prova de que você é quem diz ser'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque de "Benefícios e Autoridade" para o meu Instagram.\n\nMinha área: [ÁREA].\n\nEventos que já fui: [LISTE]\nFormações e certificações: [LISTE]\nConquistas relevantes: [LISTE]\nReferências que acesso: [LISTE PESSOAS, LUGARES, EXPERIÊNCIAS]\n\nCrie um roteiro de destaque com 8 a 12 Stories:\n1. Capa com algo que gera curiosidade ou admiração\n2. Contexto do evento ou conquista\n3. O que aconteceu — com imagens e narrativa\n4. O que você aprendeu ou sentiu\n5. Como isso impacta o seu trabalho\n6. Mais um momento de prova de autoridade\n7. CTA\n\nTom: natural, não arrogante. Você não está se gabando — está mostrando que vive o que fala.'
+  },
+  {
+    id: 'para-quem', icone: '🎯', nome: 'Para quem',
+    titulo: 'Para quem você faz',
+    sub: 'Público · Transformações · Resultados',
+    desc: 'Este destaque faz sua audiência se sentir vista. Ela precisa se reconhecer aqui — sua dor, seu momento, o que ela sonha conquistar.',
+    estrutura: [
+      'Retrato da pessoa que você atende — quem ela é',
+      'A dor que ela sente — com precisão cirúrgica',
+      'O que ela já tentou e não funcionou',
+      'O que ela vai conquistar com você',
+      'Resultados reais de quem já passou pelo método',
+      'Convite para dar o próximo passo'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque "Para quem eu faço" para o meu Instagram.\n\nMeu público: [DESCREVA COM DETALHES — idade, momento de vida, dores, desejos]\nTransformação que entrego: [DESCREVA]\nResultados de alunas: [DESCREVA 1 OU 2 CASOS]\n\nCrie um roteiro de destaque com 8 a 10 Stories:\n1. Capa com headline que fala diretamente com o público\n2. Retrato da pessoa — ela precisa se reconhecer\n3. A dor que ela sente descrita com precisão\n4. O que ela já tentou sem resultado\n5. O que ela vai conquistar\n6. Resultado de uma aluna real (ou simulado)\n7. CTA\n\nTom: empático, direto. A pessoa lê e pensa: ela está falando comigo.'
+  },
+  {
+    id: 'jornada', icone: '🗺', nome: 'Jornada pessoal',
+    titulo: 'Jornada Pessoal',
+    sub: 'Família · Viradas · Elementos especiais da sua vida',
+    desc: 'Este destaque aprofunda quem você é além do trabalho. Filhos, escolhas, momentos que te formaram — o que conecta coração com coração.',
+    estrutura: [
+      'Um momento marcante da sua vida pessoal',
+      'O que esse momento ensinou ou transformou',
+      'Família, filhos, relacionamentos — com intenção',
+      'Como sua vida pessoal e profissional se conectam',
+      'O que você quer que as pessoas saibam sobre quem você é'
+    ],
+    prompt: 'Preciso criar o roteiro do destaque de "Jornada Pessoal" para o meu Instagram.\n\nConte um momento marcante da minha vida: [DESCREVA]\nMinha família: [DESCREVA O QUE QUER MOSTRAR]\nConexão com meu trabalho: [COMO ISSO SE LIGA AO QUE VOCÊ FAZ]\n\nCrie um roteiro de destaque com 8 a 12 Stories:\n1. Capa com título que gera curiosidade\n2. Contexto do momento que vai contar\n3. Narrativa do acontecimento — com imagens se possível\n4. O que você sentiu e aprendeu\n5. Como isso moldou quem você é hoje\n6. Conexão com seu trabalho e propósito\n7. CTA leve — convite para seguir acompanhando\n\nTom: narrativo, humano, com leveza. Não é drama — é história.'
+  }
+];
+
+function getS10HTML() {
+  var principiosHTML = '<div class="dest-principios">' +
+    '<div class="dest-principios-titulo">Princípios dos Destaques Narrativos</div>' +
+    '<div class="dest-principio-item"><strong>Estrutura de todo destaque:</strong> chame atenção → fale do problema → desenvolva → CTA</div>' +
+    '<div class="dest-principio-item"><strong>Imagem e texto se conectam</strong> — a imagem reforça o que está sendo dito, nunca é decoração</div>' +
+    '<div class="dest-principio-item"><strong>Misture formatos</strong> — foto, vídeo, texto, enquete e emoji com propósito em cada Story</div>' +
+    '<div class="dest-principio-item"><strong>Cada categoria pode ter múltiplos destaques</strong> — não é um por categoria, é quantos forem necessários</div>' +
+    '<div class="dest-principio-item"><strong>Reciclagem de conteúdo é intencional</strong> — Stories antigos viram destaques novos, conteúdo bom se repete</div>' +
+    '<div class="dest-principio-item"><strong>Destaque narrativo é diferente de Carrossel</strong> — se o conteúdo for mais didático, pode virar post no feed</div>' +
+  '</div>';
+
+  var bolinshasHTML = '<div class="dest-bolinhas-title">Suas 6 categorias de destaque</div><div class="dest-bolinhas">';
+  DEST_DATA.forEach(function(d, i) {
+    bolinshasHTML += '<div class="dest-bolinha-wrap" id="dest-wrap-' + i + '" onclick="s10AbrirDestaque(' + i + ')">' +
+      '<div class="dest-bolinha">' + d.icone + '</div>' +
+      '<div class="dest-bolinha-nome">' + d.nome + '</div>' +
+    '</div>';
+  });
+  bolinshasHTML += '</div>';
+
+  var paineis = '';
+  DEST_DATA.forEach(function(d, i) {
+    var estruturaItems = d.estrutura.map(function(e){ return '<div class="dest-estrutura-item">' + e + '</div>'; }).join('');
+    paineis += '<div class="dest-painel" id="dest-painel-' + i + '">' +
+      '<div class="dest-painel-titulo">' + d.icone + ' ' + d.titulo + '</div>' +
+      '<div class="dest-painel-sub">' + d.sub + '</div>' +
+      '<div class="dest-painel-body">' + d.desc + '</div>' +
+      '<div class="dest-estrutura">' +
+        '<div class="dest-estrutura-titulo">Estrutura sugerida</div>' +
+        estruturaItems +
+      '</div>' +
+      '<button class="dest-prompt-btn" onclick="s10MostrarPrompt(' + i + ')">✦ Ver prompt de IA para este destaque</button>' +
+      '<div class="dest-prompt-area" id="dest-prompt-' + i + '">' +
+        d.prompt.replace(/\n/g, '<br>') +
+        '<br><button class="dest-prompt-copy" onclick="s10CopiarPrompt(' + i + ')">Copiar prompt</button>' +
+      '</div>' +
+    '</div>';
+  });
+
+  return '<div class="dest-wrapper">' +
+    '<div class="dest-header">' +
+      '<span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;display:block;margin-bottom:0.5rem">Etapa 10 · Instagram</span>' +
+      '<h2 style="font-family:\'Playfair Display\',serif;font-size:1.8rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:0.4rem">Perfil Pronto<br><em style=\'font-style:italic;color:#b48250\'>Destaques</em></h2>' +
+      '<p style="font-size:14px;color:rgba(240,235,232,0.5);line-height:1.65">Cada destaque conta um pedaço da sua história e convida para o próximo passo. Clique em cada bolinha para ver a estrutura e o prompt de IA.</p>' +
+    '</div>' +
+    principiosHTML +
+    bolinshasHTML +
+    paineis +
+  '</div>';
+}
+
+function bindS10Events() {}
+
+function s10AbrirDestaque(i) {
+  DEST_DATA.forEach(function(d, j) {
+    var p = document.getElementById('dest-painel-' + j);
+    var w = document.getElementById('dest-wrap-' + j);
+    if (j === i) {
+      var aberto = p.classList.contains('visivel');
+      p.classList.toggle('visivel', !aberto);
+      w.classList.toggle('ativa', !aberto);
+      if (!aberto) setTimeout(function(){ p.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 100);
+    } else {
+      if(p) p.classList.remove('visivel');
+      if(w) w.classList.remove('ativa');
+    }
+  });
+}
+
+function s10MostrarPrompt(i) {
+  var area = document.getElementById('dest-prompt-' + i);
+  if (area) area.classList.toggle('visivel');
+}
+
+function s10CopiarPrompt(i) {
+  var area = document.getElementById('dest-prompt-' + i);
+  if (!area) return;
+  var text = DEST_DATA[i].prompt;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = area.querySelector('.dest-prompt-copy');
+      if (btn) { btn.textContent = '✓ Copiado!'; setTimeout(function(){ btn.textContent = 'Copiar prompt'; }, 2000); }
+    });
+  }
+}
+/* ===================== FIM ETAPAS 9-10 ===================== */
+
+
+/* ===================== ETAPA 11 — FEED ===================== */
+function getS11HTML() {
+  var saved = JSON.parse(localStorage.getItem('s11_data') || '{}');
+  var total = 12;
+  var done = 0;
+  for (var i = 1; i <= total; i++) { if (saved['c' + i]) done++; }
+  var pct = Math.round(done / total * 100);
+
+  var checkItems = '';
+  for (var i = 1; i <= total; i++) {
+    var isDone = saved['c' + i] ? ' done' : '';
+    checkItems += '<div class="ck-item' + isDone + '" data-s11="' + i + '" style="cursor:pointer">' +
+      '<div class="ck-box"><span class="ck-check">✓</span></div>' +
+      '<div class="ck-text">Conteúdo ' + i + ' <span style="color:rgba(180,130,80,0.4);font-size:12px">— criado, publicado ou agendado</span></div>' +
+    '</div>';
+  }
+
+  return '<div class="ck-wrapper">' +
+    '<div class="ck-header">' +
+      '<span class="ck-semana-label">Etapa 11 · Conteúdo</span>' +
+      '<h2 class="ck-titulo">Perfil Pronto<br><em>Feed</em></h2>' +
+    '</div>' +
+
+    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.25);border-radius:14px;padding:1.6rem;margin-bottom:2rem;text-align:center">' +
+      '<p style="font-size:14px;color:rgba(240,235,232,0.7);line-height:1.8;margin-bottom:1.2rem">Sua estrutura está pronta. Agora é hora de dar vida ao seu feed com método.<br>Acesse o <strong style="color:#f0ebe8">Cubo Mágico</strong> para construir sua linha editorial — e volte aqui para registrar seus <strong style="color:#f0ebe8">12 primeiros conteúdos</strong>.<br><br><span style="font-size:12px;color:rgba(180,130,80,0.6)">12 conteúdos formam o mínimo necessário para o perfil ter presença real. São 3 linhas completas no feed — o visitante chega e vê um projeto, não um perfil vazio.</span></p>' +
+      '<a href="https://jadettorress-caverna.github.io/cubo-magico/" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;text-decoration:none;border-radius:10px;padding:14px 32px;font-size:14px;letter-spacing:1px;font-family:\'DM Sans\',sans-serif;transition:opacity 0.2s" onmouseover="this.style.opacity=\'0.85\'" onmouseout="this.style.opacity=\'1\'">✦ Acessar o Cubo Mágico</a>' +
+    '</div>' +
+
+    '<div class="ck-section">' +
+      '<div class="ck-section-title">Meus 12 primeiros conteúdos</div>' +
+      '<div class="ck-progress-bar" style="margin-bottom:0.5rem"><div class="ck-progress-fill" id="s11-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="ck-progress-label" id="s11-label" style="margin-bottom:1rem">' + done + ' de ' + total + ' concluídos</div>' +
+      checkItems +
+    '</div>' +
+
+    '<div class="ck-conquista' + (pct === 100 ? ' visible' : '') + '" id="s11-conquista">' +
+      '<span class="ck-conquista-icon">🌟</span>' +
+      '<div class="ck-conquista-titulo">✦ Perfil Pronto</div>' +
+      '<p class="ck-conquista-texto">Seu feed tem vida, método e presença. Você não tem mais um perfil — você tem um projeto digital no mundo.</p>' +
+    '</div>' +
+  '</div>';
+}
+/* ===================== FIM ETAPA 11 ===================== */
+
+
+/* ===================== ETAPA 8 — MINHA OFERTA ===================== */
+function getS8OfertaHTML() {
+  var saved = JSON.parse(localStorage.getItem('s8_oferta') || '{}');
+  var fields = [
+    { id: 'nome_produto', label: 'Nome do seu produto', placeholder: 'Ex: Mentoria Método Vivo · 3 meses', type: 'input' },
+    { id: 'para_quem', label: 'Para quem é', placeholder: 'Ex: Mulheres 35+ com conhecimento acumulado que querem transformar experiência em produto digital', type: 'textarea' },
+    { id: 'problema', label: 'Problema principal que resolve', placeholder: 'Ex: Sabe muito mas não sabe como empacotar e vender o que sabe', type: 'textarea' },
+    { id: 'o_que_entrega', label: 'O que você entrega', placeholder: 'Ex: Método estruturado em 12 etapas, suporte via WhatsApp, encontros coletivos ao vivo...', type: 'textarea' },
+    { id: 'resultados', label: 'Resultados que a aluna alcança', placeholder: 'Ex: Sai com o produto digital criado, o perfil pronto e a oferta estruturada', type: 'textarea' },
+    { id: 'bonus', label: 'Bônus (se tiver)', placeholder: 'Ex: 2 meses extras de suporte, acesso ao Cubo Mágico...', type: 'textarea' },
+    { id: 'preco', label: 'Preço e condições de pagamento', placeholder: 'Ex: R$ 4.000 à vista ou 12x de R$ 397', type: 'input' },
+    { id: 'garantia', label: 'Garantia (se tiver)', placeholder: 'Ex: 7 dias de garantia incondicional', type: 'input' },
+    { id: 'casos', label: 'Casos de sucesso ou depoimentos', placeholder: 'Descreva 1 ou 2 histórias de alunas — o antes, o processo e o depois', type: 'textarea' },
+  ];
+
+  var formHTML = fields.map(function(f) {
+    var input = f.type === 'textarea'
+      ? '<textarea class="ritual-textarea" id="of-' + f.id + '" placeholder="' + f.placeholder + '" style="min-height:80px">' + (saved[f.id] || '') + '</textarea>'
+      : '<input class="ritual-input" id="of-' + f.id + '" placeholder="' + f.placeholder + '" value="' + (saved[f.id] || '') + '">';
+    return '<div style="margin-bottom:1.2rem"><label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.7);display:block;margin-bottom:0.4rem">' + f.label + '</label>' + input + '</div>';
+  }).join('');
+
+  return '<div class="ck-wrapper">' +
+    '<div class="ck-header">' +
+      '<span class="ck-semana-label">Etapa 8 · Oferta</span>' +
+      '<h2 class="ck-titulo">Minha<br><em>Oferta</em></h2>' +
+      '<p class="ck-desc">Preencha os campos abaixo com as informações do seu produto. O portal vai gerar um prompt completo para você criar sua apresentação de vendas no Claude.</p>' +
+    '</div>' +
+
+    '<div style="background:rgba(180,130,80,0.11);border:1px solid rgba(180,130,80,0.25);border-radius:14px;padding:1.5rem;margin-bottom:2rem">' +
+      formHTML +
+      '<button onclick="s8SalvarOferta()" style="background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.3);color:#b48250;border-radius:8px;padding:10px 20px;font-size:13px;cursor:pointer;width:100%;font-family:\'DM Sans\',sans-serif;margin-bottom:0.8rem">Salvar rascunho</button>' +
+      '<button onclick="s8GerarPrompt()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:12px 20px;font-size:14px;cursor:pointer;width:100%;font-family:\'DM Sans\',sans-serif;letter-spacing:0.5px">✦ Gerar prompt da minha oferta</button>' +
+    '</div>' +
+
+    '<div id="s8-prompt-resultado" style="display:none">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.6);margin-bottom:0.8rem">Seu prompt gerado</div>' +
+      '<div id="s8-prompt-texto" style="background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:10px;padding:1.2rem;font-size:13px;color:#1a1a2e;line-height:1.8;white-space:pre-wrap;margin-bottom:0.8rem"></div>' +
+      '<button onclick="s8CopiarPrompt()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 20px;font-size:13px;cursor:pointer;font-family:\'DM Sans\',sans-serif">Copiar e abrir no Claude</button>' +
+      '<p style="font-size:11px;color:rgba(240,235,232,0.3);margin-top:0.6rem;line-height:1.6">Copie o prompt, abra o Claude em uma nova aba e cole. Peça para ele criar sua apresentação completa de vendas.</p>' +
+    '</div>' +
+  '</div>';
+}
+
+function bindS8OfertaEvents() {}
+
+function s8SalvarOferta() {
+  var fields = ['nome_produto','para_quem','problema','o_que_entrega','resultados','bonus','preco','garantia','casos'];
+  var saved = {};
+  fields.forEach(function(f) {
+    var el = document.getElementById('of-' + f);
+    if (el) saved[f] = el.value;
+  });
+  localStorage.setItem('s8_oferta', JSON.stringify(saved));
+  var btn = document.querySelector('#s8-prompt-resultado') || document.querySelector('.ck-wrapper');
+  alert('Rascunho salvo ✓');
+}
+
+function s8GerarPrompt() {
+  var fields = ['nome_produto','para_quem','problema','o_que_entrega','resultados','bonus','preco','garantia','casos'];
+  var saved = {};
+  fields.forEach(function(f) {
+    var el = document.getElementById('of-' + f);
+    if (el) saved[f] = el.value;
+    localStorage.setItem('s8_oferta_' + f, el ? el.value : '');
+  });
+  localStorage.setItem('s8_oferta', JSON.stringify(saved));
+
+  var prompt = 'Você é uma especialista em criação de propostas de venda elegantes e estratégicas.\n\n' +
+'Preciso que você crie uma proposta de vendas completa para o meu produto digital, no estilo de uma página navegável com abas, seguindo exatamente esta estrutura:\n\n' +
+'ABA 1 — BOAS-VINDAS\n' +
+'Uma mensagem de abertura calorosa e posicionada. Apresente o produto com o nome e uma frase de impacto.\n\n' +
+'ABA 2 — QUEM SOU EU\n' +
+'Apresentação da mentora com autoridade e humanidade. Use os dados abaixo para construir uma narrativa de 3 a 4 parágrafos.\n\n' +
+'ABA 3 — O CAMINHO\n' +
+'Apresente as etapas do programa de forma visual e sequencial. Cada etapa com nome, número e descrição curta.\n\n' +
+'ABA 4 — CASOS DE SUCESSO\n' +
+'Histórias de transformação de alunas. Se não houver casos reais, crie exemplos ilustrativos coerentes com o perfil do público.\n\n' +
+'ABA 5 — PLANO DE PAGAMENTO\n' +
+'Apresente o investimento com clareza, elegância e sem pressão. Inclua condições e garantia.\n\n' +
+'---\n' +
+'DADOS DO PRODUTO:\n\n' +
+'Nome: ' + (saved['nome_produto'] || '[não preenchido]') + '\n' +
+'Para quem é: ' + (saved['para_quem'] || '[não preenchido]') + '\n' +
+'Problema que resolve: ' + (saved['problema'] || '[não preenchido]') + '\n' +
+'O que entrega: ' + (saved['o_que_entrega'] || '[não preenchido]') + '\n' +
+'Resultados: ' + (saved['resultados'] || '[não preenchido]') + '\n' +
+'Bônus: ' + (saved['bonus'] || 'nenhum') + '\n' +
+'Preço: ' + (saved['preco'] || '[não preenchido]') + '\n' +
+'Garantia: ' + (saved['garantia'] || 'nenhuma') + '\n' +
+'Casos de sucesso: ' + (saved['casos'] || '[não preenchido]') + '\n\n' +
+'---\n' +
+'Crie a proposta completa em HTML responsivo e elegante. Use tipografia sofisticada, paleta de cores que transmita autoridade e leveza. A proposta deve ter navegação por abas e ser visualmente superior a uma apresentação comum de slides. Entregue o HTML completo pronto para usar.';
+
+  var resultado = document.getElementById('s8-prompt-resultado');
+  var texto = document.getElementById('s8-prompt-texto');
+  if (resultado) resultado.style.display = 'block';
+  if (texto) texto.textContent = prompt;
+  if (resultado) resultado.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function s8CopiarPrompt() {
+  var texto = document.getElementById('s8-prompt-texto');
+  if (!texto) return;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(texto.textContent).then(function() {
+      window.open('https://claude.ai', '_blank');
+    });
+  }
+}
+
+/* ===================== ETAPA 12 — MEU PROJETO DIGITAL ===================== */
+function getS12HTML() {
+  var saved = JSON.parse(localStorage.getItem('s1_data') || '{}');
+  var nome = saved.nome || 'Guerreira';
+
+  return '<div style="max-width:620px;margin:0 auto;padding:3rem 1.5rem;text-align:center">' +
+    '<div style="font-size:52px;margin-bottom:1.5rem">⚔</div>' +
+    '<span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;display:block;margin-bottom:0.8rem">Etapa 12 · Conclusão</span>' +
+    '<h2 style="font-family:\'Playfair Display\',serif;font-size:2rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1.2rem">Meu Projeto<br><em style="font-style:italic;color:#b48250">Digital</em></h2>' +
+
+    '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:2rem;margin-bottom:2rem;text-align:left">' +
+      '<p style="font-size:15px;color:#f0ebe8;line-height:1.9;margin-bottom:0">' +
+        'Você chegou até aqui.<br><br>' +
+        'Não é pouca coisa. Você transformou experiência em método, método em produto, produto em presença digital. Fez o que a maioria nunca faz — foi do pensamento à execução.<br><br>' +
+        'Seu projeto existe. Seu perfil está no ar. Sua oferta está pronta.<br><br>' +
+        'O que você construiu aqui é o alicerce. O próximo passo é colocar para vender com sistema — e é exatamente isso que a <strong style="color:#b48250">Caverna Vermelha</strong> entrega.' +
+      '</p>' +
+    '</div>' +
+
+    '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(180,130,80,0.15);border-radius:14px;padding:1.5rem;margin-bottom:2rem">' +
+      '<p style="font-size:13px;color:rgba(180,130,80,0.8);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.8rem">Seu próximo passo</p>' +
+      '<p style="font-size:14px;color:rgba(240,235,232,0.7);line-height:1.7;margin-bottom:1.2rem">Agende sua <strong style="color:#f0ebe8">Coletiva de Conclusão</strong> comigo. A gente revisita tudo que você construiu, colhe seu depoimento e traça os próximos passos da sua jornada.</p>' +
+      '<a href="https://wa.me/5598999012270?text=Oi%20Jade!%20Conclui%20o%20Programa%20Meu%20Projeto%20Digital%20e%20quero%20agendar%20minha%20Coletiva%20de%20Conclusão%20🎉" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;text-decoration:none;border-radius:10px;padding:14px 32px;font-size:14px;letter-spacing:1px;font-family:\'DM Sans\',sans-serif">⚔ Agendar minha Coletiva de Conclusão</a>' +
+    '</div>' +
+
+    '<p style="font-size:12px;color:rgba(240,235,232,0.25);line-height:1.6">Caverna das Guerreiras · Jade Torres<br>Programa Meu Projeto Digital</p>' +
+  '</div>';
+}
+/* ===================== FIM ETAPAS 8 E 12 ===================== */
 
 function goHome() {
   // Salvar antes de sair — tenta salvar independente de qual semana está
@@ -1131,11 +1746,11 @@ function getManifestoHTML() {
       '</div>' +
       '<div class="s1-actions">' +
         '<button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>' +
-        '<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Semana 1 como concluída</button>' +
+        '<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Etapa 1 como concluída</button>' +
       '</div>' +
       '<div class="s1-proxima">' +
         '<span class="s1-proxima-label">Próxima Batalha</span>' +
-        '<div class="s1-proxima-title">Semana 2 — Método Autoral</div>' +
+        '<div class="s1-proxima-title">Etapa 2 — Método Autoral</div>' +
         '<div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>' +
         '<button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>' +
       '</div>' +
@@ -1398,7 +2013,7 @@ function s1GerarPromptLT() {
       var sep = '\n' + '='.repeat(40) + '\n';
       elp.textContent = 'Ola, ChatGPT!\n\n' +
         'Quero que voce se comporte como um expert em descoberta de proposito na carreira. ' +
-        'Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar.\n' +
+        'Estou sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n' +
         sep + 'MINHA LINHA DO TEMPO' + sep + '\n' +
         '[ Preencha os campos acima — o prompt sera gerado automaticamente aqui ]\n' +
         sep + 'O QUE PRECISO QUE VOCE FACA' + sep + '\n' +
@@ -1413,7 +2028,7 @@ function s1GerarPromptLT() {
   var sep = '\n' + '='.repeat(40) + '\n';
   var prompt = 'Ola, ChatGPT!' + '\n\n' +
     'Quero que voce se comporte como um expert em descoberta de proposito na carreira, com especialidade em psicologia avancada e neuromarketing. ' +
-    'Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar da Caverna das Guerreiras.' + '\n\n' +
+    'Estou sendo mentorada pela Jade Torres no programa Meu Projeto Digital da Caverna das Guerreiras.' + '\n\n' +
     'Respondi um questionario de linha do tempo com minhas experiencias de vida. ' +
     'Analise tudo com atencao e me ajude a encontrar meu proposito e meu assunto principal no digital.' + '\n' +
     sep +
@@ -1559,7 +2174,7 @@ function s1MarcarConcluida() {
   if (nomeEl) nomeEl.textContent = nome;
 
   var semanaEl = document.getElementById('vitoria-semana');
-  if (semanaEl) semanaEl.textContent = '✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
+  if (semanaEl) semanaEl.textContent = '✦ Etapa 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
 
   var fraseEl = document.getElementById('vitoria-frase');
   if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
@@ -1777,7 +2392,7 @@ function getS2HTML() {
 
   // BOAS VINDAS
   '<div style="padding:2rem 0 0.5rem">' +
-    '<span class="s-label">Semana 2 · Construção</span>' +
+    '<span class="s-label">Etapa 2 · Construção</span>' +
     '<h2 class="s-title">Método <em style="font-style:italic;color:#b48250">Autoral</em></h2>' +
     '<p class="s-desc">Guerreira, se você chegou até aqui é porque você já tem o seu Manifesto nas mãos. Você já sabe quem você é, qual é a sua causa e para quem você entrega. Agora é hora de transformar tudo isso em um caminho; um passo a passo que só você poderia criar. Esse é o seu método autoral. Vamos começar.</p>' +
   '</div>' +
@@ -1878,11 +2493,11 @@ function getS2HTML() {
       '<button class="btn-bk" style="flex:1;padding:12px;text-align:center" id="btnVoltarS2p1" onclick="s2VoltarP1()">← Editar método</button>' +
     '</div>' +
     '<div style="margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Semana 2 como concluída</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Etapa 2 como concluída</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Próxima Batalha</span>' +
-      '<div class="s1-proxima-title">Semana 3 — Produtos do Método</div>' +
+      '<div class="s1-proxima-title">Etapa 3 — Produtos do Método</div>' +
       '<div class="s1-proxima-desc">Guerreira, seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos. Sua próxima batalha te espera.</div>' +
       '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">⚔ Partir para os Produtos →</button>' +
     '</div>' +
@@ -1918,7 +2533,7 @@ function s2ConcluirSemana() {
   try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   var nomeVit = document.getElementById('vitoria-nome'); if(nomeVit) nomeVit.textContent = nome;
-  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '✦ Semana 2 — Método Autoral · Concluída';
+  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '✦ Etapa 2 — Método Autoral · Concluída';
   var frVit = document.getElementById('vitoria-frase'); if(frVit) frVit.textContent = '"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."';
   var colVit = document.getElementById('vitoria-colecao');
   if (colVit) {
@@ -2563,7 +3178,7 @@ function s1GerarPromptLT() {
   var c = document.getElementById('weekContent');
   if (!c) return;
   function ltval(id) { var el = c.querySelector('#'+id); return el && el.value.trim() ? el.value.trim() : '—'; }
-  var prompt = 'Olá ChatGPT! Quero que você se comporte como um expert em descoberta de propósito na carreira, com especialidade em psicologia avançada e neuromarketing. Estou sendo mentorada pela Jade Torres no programa 12 Semanas no Ar e preciso encontrar meu assunto principal no digital.\n\nRespondi um questionário de linha do tempo com minhas experiências de vida. Por favor, analise tudo e me ajude a preencher o Sprint da Fatia de Subnicho com sugestões baseadas na minha história real.\n\n' +
+  var prompt = 'Olá ChatGPT! Quero que você se comporte como um expert em descoberta de propósito na carreira, com especialidade em psicologia avançada e neuromarketing. Estou sendo mentorada pela Jade Torres no programa Meu Projeto Digital e preciso encontrar meu assunto principal no digital.\n\nRespondi um questionário de linha do tempo com minhas experiências de vida. Por favor, analise tudo e me ajude a preencher o Sprint da Fatia de Subnicho com sugestões baseadas na minha história real.\n\n' +
     '== BLOCO 1 — ORIGEM E CONTEXTO ==\n' +
     '1. Onde nasceu e cresceu: ' + ltval('lt1') + '\n' +
     '2. Ambiente em casa: ' + ltval('lt2') + '\n' +
@@ -2692,7 +3307,7 @@ function s1MarcarConcluida() {
   if (nomeEl) nomeEl.textContent = nome;
 
   var semanaEl = document.getElementById('vitoria-semana');
-  if (semanaEl) semanaEl.textContent = '✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
+  if (semanaEl) semanaEl.textContent = '✦ Etapa 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
 
   var fraseEl = document.getElementById('vitoria-frase');
   if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
@@ -3035,7 +3650,7 @@ function s3ConcluirSemana() {
   if (nomeVit) nomeVit.textContent = 'Guerreira';
 
   var semVit = document.getElementById('vitoria-semana');
-  if (semVit) semVit.textContent = '✦ Semana 3 — Produtos do Método · Concluída';
+  if (semVit) semVit.textContent = '✦ Etapa 3 — Produtos do Método · Concluída';
 
   var frVit = document.getElementById('vitoria-frase');
   if (frVit) frVit.textContent = '"Você acaba de construir a visão empresarial do seu negócio. Seus produtos existem — agora é hora de levá-los ao mundo."';
@@ -3083,7 +3698,7 @@ function s3GetCamposProduto(tipo, subtipo) {
     '</div>';
 
   if (tipo === 'metodo' || tipo === 'curso') {
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa 12 Semanas no Ar.\n\nDiante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a construir ' + (tipo === 'metodo' ? 'a estrutura gravada dele' : 'a estrutura de um curso que poderia ser o front-end do meu neg\u00f3cio') + '.\n\nNome: [PREENCHA]\nDescri\u00e7\u00e3o: [PREENCHA]\nP\u00fablico: [PREENCHA]\n\nPor favor:\n1. Sugira de 4 a 6 m\u00f3dulos\n2. Para cada m\u00f3dulo, sugira de 3 a 5 aulas\n3. Me sugira uma analogia\n4. Indique a dura\u00e7\u00e3o de cada aula';
+    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\nDiante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a construir ' + (tipo === 'metodo' ? 'a estrutura gravada dele' : 'a estrutura de um curso que poderia ser o front-end do meu neg\u00f3cio') + '.\n\nNome: [PREENCHA]\nDescri\u00e7\u00e3o: [PREENCHA]\nP\u00fablico: [PREENCHA]\n\nPor favor:\n1. Sugira de 4 a 6 m\u00f3dulos\n2. Para cada m\u00f3dulo, sugira de 3 a 5 aulas\n3. Me sugira uma analogia\n4. Indique a dura\u00e7\u00e3o de cada aula';
     campos = comuns +
       '<div style="margin-top:1.5rem"><label class="f-label">M\u00f3dulos e Aulas</label>' +
       '<span class="s2-field-hint" style="display:block;margin-bottom:8px">Adicione os m\u00f3dulos</span>' +
@@ -3242,7 +3857,7 @@ function getS3HTML() {
 
   '<div id="s3p1">' +
     '<div style="padding:2rem 0 0.5rem">' +
-      '<span class="s-label">Semana 3 \u00b7 Produtos</span>' +
+      '<span class="s-label">Etapa 3 \u00b7 Produtos</span>' +
       '<h2 class="s-title">Produtos do<br><em style="font-style:italic;color:#b48250">M\u00e9todo</em></h2>' +
     '</div>' +
     '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
@@ -3270,13 +3885,13 @@ function getS3HTML() {
     '</div>' +
     '<div id="s3-produtos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:2rem"></div>' +
     '<div style="display:flex;flex-direction:column;gap:12px;margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" id="btnConcluirS3" style="width:100%;padding:14px" onclick="s3ConcluirSemana()">\u2726 Marcar Semana 3 como conclu\u00edda</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnConcluirS3" style="width:100%;padding:14px" onclick="s3ConcluirSemana()">\u2726 Marcar Etapa 3 como conclu\u00edda</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Pr\u00f3xima Batalha</span>' +
-      '<div class="s1-proxima-title">Semana 4 \u2014 Metodologia</div>' +
+      '<div class="s1-proxima-title">Etapa 4 \u2014 Metodologia</div>' +
       '<div class="s1-proxima-desc">Guerreira, seus produtos est\u00e3o mapeados. Agora \u00e9 hora de organizar sua entrega para escalar.</div>' +
-      '<button class="btn-proxima" onclick="s3IrS4()">\u2694 Partir para a Semana 4 \u2192</button>' +
+      '<button class="btn-proxima" onclick="s3IrS4()">\u2694 Partir para a Etapa 4 \u2192</button>' +
     '</div>' +
   '</div>' +
 
@@ -3285,7 +3900,7 @@ function getS3HTML() {
     '<span class="vitoria-icon">🏆</span>' +
     '<div class="vitoria-selo">✦ Conquista desbloqueada</div>' +
     '<h2 class="modal-titulo" style="font-family:Playfair Display,serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, Guerreira!</h2>' +
-    '<div class="vitoria-semana">✦ Semana 3 — Produtos do Método · Concluída</div>' +
+    '<div class="vitoria-semana">✦ Etapa 3 — Produtos do Método · Concluída</div>' +
     '<div class="vitoria-frase">"Você acaba de construir a visão empresarial do seu negócio. Seus produtos existem — agora é hora de levá-los ao mundo."</div>' +
     '<div class="vitoria-colecao">' +
       '<div class="vitoria-badge conquistada">✦ S1 Manifesto</div>' +
@@ -3406,7 +4021,7 @@ function getS4HTML() {
   var pontos = [
     { id:'p1', icone:'🎬', titulo:'Boas-vindas / Onboarding', exemplo:'Ex: Vídeo gravado enviado via WhatsApp logo após a confirmação do pagamento.' },
     { id:'p2', icone:'💬', titulo:'Grupo Individual no WhatsApp', exemplo:'Ex: Acesso premium direto comigo para dúvidas e suporte durante todo o processo.' },
-    { id:'p3', icone:'🎓', titulo:'Método Gravado', exemplo:'Ex: 12 Semanas no Ar — acesso completo à plataforma com todas as etapas gravadas.' },
+    { id:'p3', icone:'🎓', titulo:'Método Gravado', exemplo:'Ex: Meu Projeto Digital — acesso completo à plataforma com todas as etapas gravadas.' },
     { id:'p4', icone:'📎', titulo:'Ferramentas Principais', exemplo:'Ex: PDFs, links, materiais de apoio que direcionam cada etapa do método.' },
     { id:'p5', icone:'⚔', titulo:'Encontros em Grupo', exemplo:'Ex: Campos de Batalha — encontros semanais ou quinzenais online para avançar juntas.' },
     { id:'p6', icone:'✨', titulo:'Encontro Individual para Evolução do Processo', exemplo:'Ex: Oficina individual para destravar pontos específicos e acelerar o progresso.' },
@@ -3446,7 +4061,7 @@ function getS4HTML() {
     // PÁGINA 1 — TEXTO
     '<div id="s4p1">' +
       '<div style="padding:2rem 0 0.5rem">' +
-        '<span class="s-label">Semana 4 · Metodologia</span>' +
+        '<span class="s-label">Etapa 4 · Metodologia</span>' +
         '<h2 class="s-title">Entrega<br><em style="font-style:italic;color:#b48250">Escalável</em></h2>' +
       '</div>' +
       '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
@@ -3476,14 +4091,14 @@ function getS4HTML() {
 
     '<div style="display:flex;gap:12px;margin-top:2rem">' +
       '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1">⬇ Imprimir Metodologia</button>' +
-      '<button class="btn-download btn-dl-primary" id="btnConcluirS4" style="flex:1;padding:14px">✦ Marcar Semana 4 como concluída</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnConcluirS4" style="flex:1;padding:14px">✦ Marcar Etapa 4 como concluída</button>' +
     '</div>' +
 
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Próxima Batalha</span>' +
-      '<div class="s1-proxima-title">Semana 5 — Designer de Plataforma</div>' +
+      '<div class="s1-proxima-title">Etapa 5 — Designer de Plataforma</div>' +
       '<div class="s1-proxima-desc">Guerreira, sua metodologia está mapeada. Agora é hora de dar forma e cor à sua vitrine.</div>' +
-      '<button class="btn-proxima" id="btnIrS5">⚔ Partir para a Semana 5 →</button>' +
+      '<button class="btn-proxima" id="btnIrS5">⚔ Partir para a Etapa 5 →</button>' +
     '</div>' +
 
     // Modal vitória S4
@@ -3492,7 +4107,7 @@ function getS4HTML() {
         '<span class="vitoria-icon">🏆</span>' +
         '<div class="vitoria-selo">✦ Conquista desbloqueada</div>' +
         '<h2 class="modal-titulo" style="font-family:Playfair Display,serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, Guerreira!</h2>' +
-        '<div class="vitoria-semana">✦ Semana 4 — Metodologia · Entrega Escalável · Concluída</div>' +
+        '<div class="vitoria-semana">✦ Etapa 4 — Metodologia · Entrega Escalável · Concluída</div>' +
         '<div class="vitoria-frase">"Você acaba de construir a sua entrega escalável. Agora sua aluna sabe exatamente o que vai receber; e você sabe exatamente o que vai entregar; sem perder seu tempo, sua energia ou sua vida."</div>' +
         '<div class="vitoria-colecao">' +
           '<div class="vitoria-badge conquistada">✦ S1 Manifesto</div>' +
@@ -3887,11 +4502,11 @@ buildGrid();
 </div>
 <div class="s1-actions">
 <button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>
-<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Semana 1 como concluída</button>
+<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Etapa 1 como concluída</button>
 </div>
 <div class="s1-proxima">
 <span class="s1-proxima-label">Próxima Batalha</span>
-<div class="s1-proxima-title">Semana 2 — Método Autoral</div>
+<div class="s1-proxima-title">Etapa 2 — Método Autoral</div>
 <div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>
 <button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>
 </div>
@@ -3905,7 +4520,7 @@ buildGrid();
     <span class="vitoria-icon">🏆</span>
     <div class="vitoria-selo">✦ Conquista desbloqueada</div>
     <h2 class="modal-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, <em id="modalVitoriaS1-nome" style="color:#b48250;font-style:italic"></em>!</h2>
-    <div class="vitoria-semana">✦ Semana 1 — Manifesto Editorial · Fatia de Subnicho · Concluída</div>
+    <div class="vitoria-semana">✦ Etapa 1 — Manifesto Editorial · Fatia de Subnicho · Concluída</div>
     <div class="vitoria-frase">"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."</div>
     <div class="vitoria-colecao">
       <div class="vitoria-badge conquistada">✦ S1 Manifesto</div>
@@ -3930,7 +4545,7 @@ buildGrid();
     <span class="vitoria-icon">🏆</span>
     <div class="vitoria-selo">✦ Conquista desbloqueada</div>
     <h2 class="modal-titulo" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, <em id="modalVitoriaS2-nome" style="color:#b48250;font-style:italic"></em>!</h2>
-    <div class="vitoria-semana">✦ Semana 2 — Método Autoral · Concluída</div>
+    <div class="vitoria-semana">✦ Etapa 2 — Método Autoral · Concluída</div>
     <div class="vitoria-frase">"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."</div>
     <div class="vitoria-colecao">
       <div class="vitoria-badge conquistada">✦ S1 Manifesto</div>
