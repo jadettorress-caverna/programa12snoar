@@ -1470,6 +1470,22 @@ function s1Load() {
   // Ir para tela salva
   var current = data['s1-current'] || 'r1';
   s1GoTo(current);
+  
+  // Re-preencher campos após ir para a tela (garante que os elementos existem)
+  setTimeout(function() {
+    var c2 = document.getElementById('weekContent');
+    if (!c2) return;
+    ids.forEach(function(id) {
+      var el = c2.querySelector('#'+id);
+      if (el && data[id] !== undefined && data[id] !== '') el.value = data[id];
+    });
+    // Atualizar label do nome novamente
+    var nomeEl2 = c2.querySelector('#s1-nome');
+    if (nomeEl2 && nomeEl2.value.trim()) {
+      var label2 = c2.querySelector('#s1-nome-label');
+      if (label2) label2.textContent = 'Bem-vinda de volta, ' + nomeEl2.value.trim() + '! ✦';
+    }
+  }, 200);
 
   // Restaurar juramento se necessário
   if (['r4','r4b','r5','caminhoA','caminhoB','s1Resultado'].indexOf(current) > -1) {
