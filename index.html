@@ -599,15 +599,16 @@ function openWeek(n) {
       // Verificar se há progresso salvo
       var saved = s1GetSaved();
       console.log('openWeek: saved=', saved);
-      if (!saved || !saved['s1-nome'] || !saved['s1-nome'].trim()) { console.log('openWeek: sem progresso salvo'); return; }
+      if (!saved) { console.log('openWeek: sem progresso salvo'); return; }
       // Tem nome salvo — mostrar modal sempre
+      var nomeVolta = (saved['s1-nome'] && saved['s1-nome'].trim()) ? saved['s1-nome'].trim() : 'guerreira';
       s1Modal({
         icone: '⚔',
-        titulo: 'Bem-vinda de volta, ' + saved['s1-nome'].trim() + '!',
+        titulo: 'Bem-vinda de volta, ' + nomeVolta + '!',
         texto: 'Você tem uma etapa em andamento. Deseja continuar de onde parou ou recomeçar do início?',
         confirmar: 'Continuar',
         cancelar: 'Recomeçar',
-        onConfirmar: function() { s1Load(); },
+        onConfirmar: function() { setTimeout(function(){ s1Load(); }, 100); },
         onCancelar: function() {
           s1ClearSaved();
           var wc = document.getElementById('weekContent');
