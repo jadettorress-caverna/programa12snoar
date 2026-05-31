@@ -202,14 +202,14 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .btn-copy-prompt:hover{background:rgba(180,130,80,0.1)}
 
 /* Canvas S2 */
-.canvas-s2{background:linear-gradient(160deg,#071a3e,#071a2e);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem}
-.canvas-s2-header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(180,130,80,0.2)}
-.canvas-s2-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#05112b}
-.canvas-s2-cause{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-top:4px}
-.canvas-s2-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.15);border-radius:12px;overflow:hidden}
-.cs2c{background:rgba(5,17,43,0.92);padding:1rem}
+.canvas-s2{background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.35);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem}
+.canvas-s2-header{text-align:center;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(107,68,35,0.25)}
+.canvas-s2-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:#2a1200}
+.canvas-s2-cause{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#6b4423;margin-top:4px}
+.canvas-s2-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(107,68,35,0.2);border:1px solid rgba(107,68,35,0.2);border-radius:12px;overflow:hidden}
+.cs2c{background:linear-gradient(135deg,#e8dfc0,#ddd3a8);padding:1rem}
 .cs2c.full{grid-column:1/-1}
-.cs2c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:4px}
+.cs2c-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#6b4423;margin-bottom:4px}
 .cs2c-ttl{font-family:'Playfair Display',serif;font-size:12px;color:rgba(5,17,43,0.45);margin-bottom:5px}
 .cs2c-val{font-size:12px;color:#05112b;line-height:1.5;font-style:italic;min-height:20px}
 
@@ -310,15 +310,15 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .s1-resultado{max-width:960px;margin:0 auto;padding:2rem 2rem}
 
 .s1-res-header{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:2rem}
-.s1-res-card{background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.2rem 1.5rem;text-align:center}
-.s1-res-card-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:8px;display:block}
-.s1-res-card-value{font-family:'Playfair Display',serif;font-size:1.1rem;color:#f0ebe8;font-style:italic;line-height:1.4}
-.s1-res-card-icon{font-size:24px;display:block;margin-bottom:6px}
+.s1-res-card{background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.4);border-radius:14px;padding:1.2rem 1.5rem;text-align:center}
+.s1-res-card-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6b4423;margin-bottom:8px;display:block}
+.s1-res-card-value{font-family:'Playfair Display',serif;font-size:1.1rem;color:#2a1200;font-style:italic;line-height:1.4}
+.s1-res-card-icon{font-size:24px;display:block;margin-bottom:6px;filter:invert(20%) sepia(50%) saturate(500%) hue-rotate(10deg)}
 
-.s1-proxima{background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(5,17,43,0.5));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;text-align:center;margin-top:1.5rem}
+.s1-proxima{background:linear-gradient(135deg,#05112b,#0a1e3d);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;text-align:center;margin-top:1.5rem}
 .s1-proxima-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
-.s1-proxima-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;margin-bottom:0.5rem}
-.s1-proxima-desc{font-size:13px;color:rgba(240,235,232,0.5);line-height:1.6;margin-bottom:1.2rem}
+.s1-proxima-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f0ebe8;margin-bottom:0.5rem;font-weight:700}
+.s1-proxima-desc{font-size:13px;color:rgba(240,235,232,0.65);line-height:1.6;margin-bottom:1.2rem}
 .btn-proxima{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#b48250,#8a5f35);border:none;border-radius:10px;color:#05112b;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
 .btn-proxima:hover{opacity:0.9;transform:translateY(-2px)}
 
@@ -552,9 +552,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
       <p class="bv-subtitulo">Bem-vinda, guerreira. Você está prestes a transformar tudo que sabe em um projeto digital que te representa, te posiciona e te gera receita.</p>
     </div>
 
-    <div class="bv-video" id="bv-video-wrap">
-      <iframe src="https://www.youtube.com/embed/rV9F768HYkE" allowfullscreen></iframe>
-    </div>
+
 
     <div class="bv-plano">
       <div class="bv-plano-titulo">📍 Seu plano de ação</div>
@@ -659,7 +657,8 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 <div class="week-detail" id="weekDetail">
   <div class="detail-header">
     <button class="btn-back-detail" id="btnBackMain">←</button>
-    <button id="btnTelaInicial" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Tela Inicial</button>
+    <button id="btnEtapas" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Etapas</button>
+    <button id="btnMarcos" onclick="irBoasVindas()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Marcos</button>
     <div class="detail-info">
       <div class="detail-week-num" id="detailWeekNum"></div>
       <div class="detail-week-title" id="detailWeekTitle"></div>
@@ -1525,11 +1524,7 @@ function bvInit() {
     var el = document.getElementById('bv-data-' + i);
     if (el && saved['data' + i]) el.value = saved['data' + i];
   }
-  // Se já visitou antes, vai direto para home
-  if (saved.visitou) {
-    document.getElementById('boasVindas').style.display = 'none';
-    document.getElementById('portalHome').style.display = 'block';
-  }
+  // Sempre mostra boas-vindas na primeira carga — navegação via botões Etapas/Marcos
 }
 
 function bvSalvar() {
@@ -1581,6 +1576,143 @@ function wppResumoS1() {
   oracao = oracao.replace(/\s+/g, ' ').trim();
   wppEnviarResumo(1, '*Ora\u00e7\u00e3o da Guerreira:*\n' + (oracao || '-'));
 }
+
+/* ===== SPRINT PROMPTS COM DISTRIBUIÇÃO AUTOMÁTICA ===== */
+
+var SPRINT_FORMATO = 'IMPORTANTE: Responda EXATAMENTE neste formato, uma linha por campo, sem explicações extras:\n\n';
+
+function spGetPromptE1() {
+  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meu posicionamento.\n\n' +
+    SPRINT_FORMATO +
+    'AREA: (minha grande área de atuação)\n' +
+    'NICHO: (meu nicho específico dentro da área)\n' +
+    'FATIA: (minha fatia única de subnicho — bem específica)\n' +
+    'PUBLICO: (descrição detalhada de quem eu atendo)\n' +
+    'TRANSFORMACAO: (como a pessoa fica depois de passar pelo meu método)\n\n' +
+    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+}
+
+function spGetPromptE2() {
+  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meus ingredientes de marca.\n\n' +
+    SPRINT_FORMATO +
+    'DONS: (o que faço com facilidade que as pessoas admiram)\n' +
+    'HABILIDADES: (o que desenvolvi ao longo dos anos)\n' +
+    'EXPERIENCIAS: (o que vivi que me faz entender meu público profundamente)\n' +
+    'CRENCA: (completar: Acredito que toda mulher tem o direito de...)\n' +
+    'CAUSA: (que impacto quero causar no mundo)\n\n' +
+    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+}
+
+function spGetPromptE3() {
+  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meu Sprint da Fatia.\n\n' +
+    SPRINT_FORMATO +
+    'PROBLEMA: (principal dor que resolvo)\n' +
+    'PROVA: (caso real ou ilustrativo de transformação que já gerei)\n' +
+    'FERRAMENTA: (material ou fundamento principal que uso)\n' +
+    'PUBLICOALVO: (perfil detalhado de quem ajudo)\n' +
+    'TRANSFORMACAOPRINCIPAL: (transformação concreta que a pessoa alcança)\n' +
+    'PRODUTO: (como entrego e em quais formatos)\n' +
+    'TEMPO: (em quanto tempo a pessoa alcança o resultado)\n\n' +
+    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+}
+
+function spGetPromptE4() {
+  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meu Manifesto.\n\n' +
+    SPRINT_FORMATO +
+    'FRASE: (minha frase de manifesto — como título de revista, algo que só eu poderia dizer)\n' +
+    'GRITAR: (o que quero gritar para o mundo sem filtro)\n' +
+    'LEGADO: (como quero ser lembrada daqui a 10 anos)\n\n' +
+    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+}
+
+function spCopiarPrompt(etapa) {
+  var prompts = { 1: spGetPromptE1, 2: spGetPromptE2, 3: spGetPromptE3, 4: spGetPromptE4 };
+  var txt = prompts[etapa]();
+  var btn = document.getElementById('sp-btn-copy-' + etapa);
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(function() {
+      if (btn) { btn.textContent = '✓ Copiado!'; setTimeout(function(){ btn.textContent = '⧉ Copiar prompt da Etapa ' + etapa; }, 2500); }
+    });
+  } else {
+    var ta = document.createElement('textarea'); ta.value = txt;
+    ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta);
+    ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    if (btn) { btn.textContent = '✓ Copiado!'; setTimeout(function(){ btn.textContent = '⧉ Copiar prompt da Etapa ' + etapa; }, 2500); }
+  }
+}
+
+function spDistribuir(etapa) {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var campo = c.querySelector('#sp-cola-' + etapa);
+  if (!campo || !campo.value.trim()) return;
+  
+  var texto = campo.value;
+  var linhas = texto.split('\n');
+  var mapa = {
+    1: { 'AREA': 's1-area', 'NICHO': 's1-nicho', 'FATIA': 's1-fatia', 'PUBLICO': 's1-publico', 'TRANSFORMACAO': 's1-trans' },
+    2: { 'DONS': 's1-dons', 'HABILIDADES': 's1-habilidades', 'EXPERIENCIAS': 's1-experiencias', 'CRENCA': 's1-crenca', 'CAUSA': 's1-causa' },
+    3: { 'PROBLEMA': 'sp-problema', 'PROVA': 'sp-prova', 'FERRAMENTA': 'sp-ferramenta', 'PUBLICOALVO': 'sp-publico', 'TRANSFORMACAOPRINCIPAL': 'sp-trans', 'PRODUTO': 'sp-produto', 'TEMPO': 'sp-tempo' },
+    4: { 'FRASE': 's1-frase', 'GRITAR': 's1-gritar', 'LEGADO': 's1-legado' }
+  };
+  
+  var campos = mapa[etapa];
+  var distribuidos = 0;
+  
+  linhas.forEach(function(linha) {
+    var partes = linha.split(':');
+    if (partes.length < 2) return;
+    var chave = partes[0].trim().toUpperCase();
+    var valor = partes.slice(1).join(':').trim();
+    if (campos[chave] && valor) {
+      var el = c.querySelector('#' + campos[chave]);
+      if (el) { el.value = valor; distribuidos++; }
+    }
+  });
+  
+  var btn = document.getElementById('sp-btn-dist-' + etapa);
+  if (btn) {
+    btn.textContent = distribuidos > 0 ? '✓ ' + distribuidos + ' campos preenchidos!' : '⚠ Verifique o formato';
+    btn.style.background = distribuidos > 0 ? 'linear-gradient(135deg,#2a7a2a,#1a5a1a)' : 'linear-gradient(135deg,#8a4a10,#5a2a05)';
+    setTimeout(function(){
+      btn.textContent = '✦ Distribuir nos campos';
+      btn.style.background = '';
+    }, 3000);
+  }
+  
+  s1Save();
+}
+/* ===== FIM SPRINT PROMPTS ===== */
+
+function wppEnviarCanvas() {
+  var c = document.getElementById('weekContent') || document;
+  var get = function(id) { var el = c.querySelector ? c.querySelector('#'+id) : document.getElementById(id); return el ? (el.textContent || el.value || '').trim() : ''; };
+  var nome = get('res-nome') || get('r-nome') || '-';
+  var espada = get('res-espada') || '-';
+  var frase = get('res-frase') || get('r-frase') || '-';
+  var idPessoal = get('r-id') || '-';
+  var idEdit = get('r-ed') || '-';
+  var pub = get('r-pub') || '-';
+  var met = get('r-met') || '-';
+  var cau = get('r-cau') || '-';
+  var leg = get('r-leg') || '-';
+
+  var texto = '⚔ *Canvas do Manifesto Editorial*\n\n' +
+    '*Guerreira:* ' + nome + '\n' +
+    '*Palavra-espada:* ' + espada + '\n' +
+    '*Manifesto:* ' + frase + '\n\n' +
+    '*Quem sou eu:* ' + idPessoal + '\n' +
+    '*O que eu fa\u00e7o:* ' + idEdit + '\n' +
+    '*Para quem eu fa\u00e7o:* ' + pub + '\n' +
+    '*Como eu fa\u00e7o:* ' + met + '\n' +
+    '*Para qu\u00ea eu fa\u00e7o:* ' + cau + '\n' +
+    '*Por que eu fa\u00e7o:* ' + leg + '\n\n' +
+    '_Enviado pelo Portal Meu Projeto Digital_';
+
+  var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
+  window.open(url, '_blank');
+}
+
 function goHome() {
   // Forçar save síncrono antes de qualquer coisa
   try {
@@ -1886,7 +2018,7 @@ function getManifestoHTML() {
       '<div class="step-screen active" id="ms1">' +
         '<span class="s-label">Etapa 1 de 4 · A Pizza</span>' +
         '<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>' +
-        '<p class="s-desc">Preencha os campos abaixo para organizar suas informações de posicionamento.<br><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Assistir a aula de Sprint da Fatia no módulo de Manifesto.</p>' +
+        '<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>' +
         '<div class="form-2col">' +
           '<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>' +
           '<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>' +
@@ -1894,12 +2026,20 @@ function getManifestoHTML() {
           '<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>' +
           '<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>' +
         '</div>' +
+        '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+        '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 1</div>' +
+        '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt, leve para o chat de IA da sua preferência e cole a resposta abaixo.</p>' +
+        '<button id="sp-btn-copy-1" onclick="spCopiarPrompt(1)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem">⧉ Copiar prompt da Etapa 1</button>' +
+        '<label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>' +
+        '<textarea id="sp-cola-1" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA..."></textarea>' +
+        '<button id="sp-btn-dist-1" onclick="spDistribuir(1)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem">✦ Distribuir nos campos</button>' +
+        '</div>' +
         '<div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>' +
       '</div>' +
       '<div class="step-screen" id="ms2">' +
         '<span class="s-label">Etapa 2 de 4 · Ingredientes</span>' +
         '<h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>' +
-        '<p class="s-desc">O que compõe a sua essência única.</p>' +
+        '<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>' +
         '<div class="form-2col">' +
           '<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>' +
           '<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>' +
@@ -1907,12 +2047,20 @@ function getManifestoHTML() {
           '<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>' +
           '<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>' +
         '</div>' +
+        '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+        '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 2</div>' +
+        '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt, leve para o chat de IA da sua preferência e cole a resposta abaixo.</p>' +
+        '<button id="sp-btn-copy-2" onclick="spCopiarPrompt(2)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem">⧉ Copiar prompt da Etapa 2</button>' +
+        '<label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>' +
+        '<textarea id="sp-cola-2" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA..."></textarea>' +
+        '<button id="sp-btn-dist-2" onclick="spDistribuir(2)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem">✦ Distribuir nos campos</button>' +
+        '</div>' +
         '<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>' +
       '</div>' +
       '<div class="step-screen" id="ms3">' +
         '<span class="s-label">Etapa 3 de 4 · Sprint</span>' +
         '<h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>' +
-        '<p class="s-desc">Consolide sua fatia em respostas rápidas e precisas.</p>' +
+        '<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>' +
         '<div class="form-2col">' +
           '<div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>' +
           '<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>' +
@@ -1922,16 +2070,32 @@ function getManifestoHTML() {
           '<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>' +
           '<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>' +
         '</div>' +
+        '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+        '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 3</div>' +
+        '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt, leve para o chat de IA da sua preferência e cole a resposta abaixo.</p>' +
+        '<button id="sp-btn-copy-3" onclick="spCopiarPrompt(3)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem">⧉ Copiar prompt da Etapa 3</button>' +
+        '<label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>' +
+        '<textarea id="sp-cola-3" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA..."></textarea>' +
+        '<button id="sp-btn-dist-3" onclick="spDistribuir(3)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem">✦ Distribuir nos campos</button>' +
+        '</div>' +
         '<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>' +
       '</div>' +
       '<div class="step-screen" id="ms4">' +
         '<span class="s-label">Etapa 4 de 4 · Manifesto</span>' +
         '<h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>' +
-        '<p class="s-desc">A frase que será o norte de toda a sua comunicação.</p>' +
+        '<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>' +
         '<div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." Uma frase que só você poderia dizer.</p></div>' +
         '<div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>' +
         '<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>' +
         '<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>' +
+        '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+        '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 4</div>' +
+        '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt, leve para o chat de IA da sua preferência e cole a resposta abaixo.</p>' +
+        '<button id="sp-btn-copy-4" onclick="spCopiarPrompt(4)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem">⧉ Copiar prompt da Etapa 4</button>' +
+        '<label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>' +
+        '<textarea id="sp-cola-4" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA..."></textarea>' +
+        '<button id="sp-btn-dist-4" onclick="spDistribuir(4)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem">✦ Distribuir nos campos</button>' +
+        '</div>' +
         '<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>' +
       '</div>' +
     '</div>' +
@@ -1991,7 +2155,7 @@ function getManifestoHTML() {
         '<div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">' + s_getNomeMovimento() + '</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>' +
       '</div>' +
       '<div class="s1-actions">' +
-        '<button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>' +
+        '<button class="btn-wpp" id="btnEnviarCanvas" onclick="wppEnviarCanvas()" style="flex:1;padding:12px">📲 Enviar Canvas para a Jade</button>' +
         '<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Etapa 1 como concluída</button>' +
       '</div>' +
       '<div class="s1-proxima">' +
@@ -2260,26 +2424,15 @@ function s1GerarPromptLT() {
     var elp = c.querySelector('#bPromptText');
     if (elp) {
       var sep = '\n' + '='.repeat(40) + '\n';
-      elp.textContent = 'Ola, ChatGPT!\n\n' +
-        'Quero que voce se comporte como um expert em descoberta de proposito na carreira. ' +
-        'Estou sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n' +
-        sep + 'MINHA LINHA DO TEMPO' + sep + '\n' +
-        '[ Preencha os campos acima — o prompt sera gerado automaticamente aqui ]\n' +
-        sep + 'O QUE PRECISO QUE VOCE FACA' + sep + '\n' +
-        '1. PROPOSITO: Com base na minha historia, qual seria meu proposito no digital?\n\n' +
-        '2. ASSUNTO PRINCIPAL: Qual seria meu assunto principal?\n\n' +
-        '3. SPRINT SUGERIDO: Me ajude a responder o Sprint da Fatia com sugestoes baseadas na minha historia.\n\n' +
-        '4. FRASE DE MANIFESTO: Uma frase poderosa que so eu poderia dizer.';
+      elp.textContent = '[ Preencha os campos da Linha do Tempo acima — o prompt sera gerado automaticamente aqui ]';
     }
     return;
   }
 
   var sep = '\n' + '='.repeat(40) + '\n';
-  var prompt = 'Ola, ChatGPT!' + '\n\n' +
-    'Quero que voce se comporte como um expert em descoberta de proposito na carreira, com especialidade em psicologia avancada e neuromarketing. ' +
-    'Estou sendo mentorada pela Jade Torres no programa Meu Projeto Digital da Caverna das Guerreiras.' + '\n\n' +
-    'Respondi um questionario de linha do tempo com minhas experiencias de vida. ' +
-    'Analise tudo com atencao e me ajude a encontrar meu proposito e meu assunto principal no digital.' + '\n' +
+  var prompt = 'Ola!' + '\n\n' +
+    'As informacoes abaixo sao dados pessoais da minha historia de vida. ' +
+    'Leia com atencao e guarde como contexto — vou usar essas informacoes como base para pedidos especificos que vou fazer em seguida.' + '\n' +
     sep +
     'MINHA LINHA DO TEMPO' +
     sep + '\n';
@@ -2294,34 +2447,10 @@ function s1GerarPromptLT() {
   prompt += sep +
     'O QUE PRECISO QUE VOCE FACA' +
     sep + '\n' +
-    'Com base em tudo que compartilhei acima, responda cada pergunta abaixo como se fosse eu respondendo. ' +
-    'Use linguagem natural, na primeira pessoa. Seja direta e especifica — nao generica.\n\n' +
-    '--- ETAPA 1: FATIA DE SUBNICHO ---\n\n' +
-    'Area de atuacao: (qual grande area ela atua)\n\n' +
-    'Nicho: (qual nicho especifico dentro da area)\n\n' +
-    'Fatia de subnicho: (a fatia unica onde ela se destaca — bem especifica)\n\n' +
-    'Para quem faz: (descreva o perfil da pessoa que ela atende)\n\n' +
-    'Transformacao que entrega: (como a pessoa fica depois de passar pelo metodo dela)\n\n' +
-    '--- ETAPA 2: INGREDIENTES DE MARCA ---\n\n' +
-    'Dons naturais: (o que ela faz com facilidade que as pessoas admiram)\n\n' +
-    'Habilidades: (o que ela desenvolveu ao longo dos anos)\n\n' +
-    'Experiencias marcantes: (o que ela viveu que a faz entender seu publico)\n\n' +
-    'Crenca principal: (completar: Acredito que toda mulher tem o direito de...)\n\n' +
-    'Causa: (que impacto quer causar no mundo)\n\n' +
-    '--- ETAPA 3: SPRINT DA FATIA ---\n\n' +
-    'Problema principal que resolve: (qual a principal dor que ela resolve)\n\n' +
-    'Prova social: (alguem ja foi transformado por essa solucao — descreva um caso ilustrativo)\n\n' +
-    'Ferramenta principal: (que material ou fundamento ela usa)\n\n' +
-    'Publico alvo principal: (perfil detalhado de quem ela ajuda)\n\n' +
-    'Transformacao principal: (qual a transformacao concreta que a pessoa alcanca)\n\n' +
-    'Produto principal: (como ela entrega e em quais formatos de produto)\n\n' +
-    'Tempo de validacao: (em quanto tempo a pessoa alcanca o resultado)\n\n' +
-    '--- ETAPA 4: MANIFESTO ---\n\n' +
-    'Frase de manifesto: (uma frase poderosa que so ela poderia dizer — como titulo de revista)\n\n' +
-    'O que quer gritar para o mundo: (sem filtro — o que ela quer comunicar de mais verdadeiro)\n\n' +
-    'Como quer ser lembrada em 10 anos: (o que as pessoas vao falar sobre o trabalho dela)\n\n' +
-    'IMPORTANTE: Responda no formato exato acima, com cada campo em uma linha separada. ' +
-    'Nao adicione introducoes ou conclusoes longas. Vai direto ao preenchimento de cada campo.';
+    'Leia atentamente tudo que compartilhei acima e guarde essas informacoes. ' +
+    'Vou te enviar em seguida perguntas especificas de cada etapa do meu Sprint de posicionamento. ' +
+    'Para cada pergunta, responda com base na minha historia — use linguagem natural, na primeira pessoa, seja especifica e evite respostas genericas.\n\n' +
+    'Responda apenas: "Entendido! Estou pronta para receber suas perguntas."';
 
   var el = c.querySelector('#bPromptText');
   if (el) el.textContent = prompt;
@@ -2586,7 +2715,7 @@ function bindManifestoEvents() {
   }
 
   // Linha do tempo — atualizar prompt ao digitar
-  for (var i = 1; i <= 27; i++) {
+  for (var i = 1; i <= 30; i++) {
     (function(n) {
       var el = c.querySelector('#lt'+n);
       if (el) el.addEventListener('input', function(){ s1GerarPromptLT(); s1Save(); });
@@ -2598,8 +2727,12 @@ function bindManifestoEvents() {
     if (el) el.addEventListener('input', function() { atualizarBPrompt(); s1Save(); });
   });
 
+  // Gerar prompt inicial ao abrir
+  s1GerarPromptLT();
+
   var bcopy = c.querySelector('#btnCopyBPrompt');
   if (bcopy) bcopy.addEventListener('click', function() {
+    s1GerarPromptLT();
     var txt = c.querySelector('#bPromptText').textContent;
     var btn = this;
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -3768,7 +3901,7 @@ buildGrid();
 <div class="step-screen active" id="ms1">
 <span class="s-label">Etapa 1 de 4 · A Pizza</span>
 <h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>
-<p class="s-desc">Preencha os campos abaixo para organizar suas informações de posicionamento.<br><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Assistir a aula de Sprint da Fatia no módulo de Manifesto.</p>
+<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
 <div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>
 <div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>
@@ -3776,12 +3909,21 @@ buildGrid();
 <div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
 <div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
 </div>
+<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
+  <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 1 — Assistente de IA</div>
+  <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
+  <button id="sp-btn-copy-1" onclick="spCopiarPrompt(1)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">⧉ Copiar prompt da Etapa 1</button>
+  <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>
+  <textarea id="sp-cola-1" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA — os campos serão preenchidos automaticamente..."></textarea>
+  <button id="sp-btn-dist-1" onclick="spDistribuir(1)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
+  <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
+</div>
 <div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms2">
 <span class="s-label">Etapa 2 de 4 · Ingredientes</span>
 <h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>
-<p class="s-desc">O que compõe a sua essência única.</p>
+<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
 <div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
 <div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>
@@ -3789,12 +3931,21 @@ buildGrid();
 <div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
 <div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
 </div>
+<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
+  <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 2 — Assistente de IA</div>
+  <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
+  <button id="sp-btn-copy-2" onclick="spCopiarPrompt(2)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">⧉ Copiar prompt da Etapa 2</button>
+  <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>
+  <textarea id="sp-cola-2" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA — os campos serão preenchidos automaticamente..."></textarea>
+  <button id="sp-btn-dist-2" onclick="spDistribuir(2)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
+  <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
+</div>
 <div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms3">
 <span class="s-label">Etapa 3 de 4 · Sprint</span>
 <h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>
-<p class="s-desc">Consolide sua fatia em respostas rápidas e precisas.</p>
+<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
 <div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>
 <div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
@@ -3804,16 +3955,34 @@ buildGrid();
 <div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>
 <div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
 </div>
+<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
+  <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 3 — Assistente de IA</div>
+  <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
+  <button id="sp-btn-copy-3" onclick="spCopiarPrompt(3)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">⧉ Copiar prompt da Etapa 3</button>
+  <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>
+  <textarea id="sp-cola-3" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA — os campos serão preenchidos automaticamente..."></textarea>
+  <button id="sp-btn-dist-3" onclick="spDistribuir(3)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
+  <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
+</div>
 <div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms4">
 <span class="s-label">Etapa 4 de 4 · Manifesto</span>
 <h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>
-<p class="s-desc">A frase que será o norte de toda a sua comunicação.</p>
+<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." Uma frase que só você poderia dizer.</p></div>
 <div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
 <div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>
 <div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
+<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
+  <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 4 — Assistente de IA</div>
+  <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
+  <button id="sp-btn-copy-4" onclick="spCopiarPrompt(4)" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">⧉ Copiar prompt da Etapa 4</button>
+  <label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(5,17,43,0.5);display:block;margin-bottom:0.4rem">Cole a resposta da IA aqui</label>
+  <textarea id="sp-cola-4" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA — os campos serão preenchidos automaticamente..."></textarea>
+  <button id="sp-btn-dist-4" onclick="spDistribuir(4)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
+  <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
+</div>
 <div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
 </div>
 </div>
@@ -3958,7 +4127,7 @@ buildGrid();
 <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>
 </div>
 <div class="s1-actions">
-<button class="btn-imprimir" id="btnImprimirCanvas" onclick="s1BtnImprimir()">⬇ Imprimir / Salvar PDF</button>
+<button class="btn-wpp" id="btnEnviarCanvas" onclick="wppEnviarCanvas()" style="flex:1;padding:12px">📲 Enviar Canvas para a Jade</button>
 <button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Etapa 1 como concluída</button>
 </div>
 <div class="s1-proxima">
