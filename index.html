@@ -782,6 +782,7 @@ function openWeek(n) {
     content.innerHTML = getS2HTML();
     bindS2Events();
     setTimeout(function(){ s2Load(); }, 150);
+    s1MostrarBtnSalvar(true);
   } else if (n === 3) {
     content.innerHTML = getS3HTML();
     bindS3Events();
@@ -3286,7 +3287,10 @@ function s1MostrarBtnSalvar(mostrar) {
 }
 
 function s1BtnSalvar() {
-  s1Save();
+  try { s1Save(); } catch(e) {}
+  try { s2Save(); } catch(e) {}
+  try { s3Save(); } catch(e) {}
+  try { s4Save(); } catch(e) {}
   var btn = document.getElementById('btnSalvarFixo');
   if (btn) {
     var textoOriginal = btn.innerHTML;
