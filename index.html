@@ -156,11 +156,11 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .s2-content{padding-top:1rem}
 
 /* Cabeçalho Manifesto */
-.manifesto-header{background:linear-gradient(135deg,rgba(7,26,62,0.98),rgba(5,17,43,0.98));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:0.9rem 1.5rem;margin:1.5rem 0 2rem;position:sticky;top:65px;z-index:40;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(5,17,43,0.8);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.mh-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b48250;white-space:nowrap;flex-shrink:0}
-.mh-frase-input{flex:1;min-width:180px;background:transparent;border:none;border-bottom:1px solid rgba(180,130,80,0.3);border-radius:0;padding:4px 0;font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:#f0ebe8;outline:none}
+.manifesto-header{background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.35);border-radius:16px;padding:0.9rem 1.5rem;margin:1.5rem 0 2rem;position:sticky;top:65px;z-index:40;box-shadow:0 4px 16px rgba(138,95,53,0.15);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mh-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#6b4423;white-space:nowrap;flex-shrink:0}
+.mh-frase-input{flex:1;min-width:180px;background:transparent;border:none;border-bottom:1px solid rgba(107,68,35,0.4);border-radius:0;padding:4px 0;font-family:'Playfair Display',serif;font-size:14px;font-style:italic;color:#2a1200;outline:none}
 .mh-frase-input:focus{border-bottom-color:#b48250}
-.mh-frase-input::placeholder{color:rgba(240,235,232,0.25);font-style:italic}
+.mh-frase-input::placeholder{color:rgba(26,10,3,0.35);font-style:italic}
 
 /* Seções S2 */
 .s2-section{margin-bottom:2rem;scroll-margin-top:180px}
@@ -185,11 +185,11 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .passos-container{display:flex;flex-direction:column;gap:8px;margin-bottom:0.8rem}
 .passo-row{display:flex;align-items:center;gap:8px}
 .passo-num{width:26px;height:26px;border-radius:50%;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:#b48250;flex-shrink:0;font-weight:600}
-.passo-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(180,130,80,0.2);border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:#f0ebe8;outline:none}
+.passo-input{flex:1;background:#f5f0e8;border:1px solid rgba(180,130,80,0.35);border-radius:8px;padding:10px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1a1a2e;outline:none}
 .passo-input:focus{border-color:rgba(180,130,80,0.5)}
-.passo-input::placeholder{color:rgba(240,235,232,0.18)}
-.passo-del{background:none;border:none;color:rgba(240,235,232,0.25);cursor:pointer;font-size:16px;padding:4px;line-height:1}
-.passo-del:hover{color:rgba(240,235,232,0.6)}
+.passo-input::placeholder{color:rgba(26,26,46,0.35)}
+.passo-del{background:none;border:none;color:rgba(5,17,43,0.3);cursor:pointer;font-size:16px;padding:4px;line-height:1}
+.passo-del:hover{color:rgba(5,17,43,0.7)}
 .btn-add-passo{display:flex;align-items:center;gap:6px;background:transparent;border:1px dashed rgba(180,130,80,0.3);border-radius:8px;padding:8px 14px;color:rgba(180,130,80,0.7);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.2s;margin-top:4px}
 .btn-add-passo:hover{border-color:#b48250;color:#b48250}
 .aviso-menos-mais{background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:8px;padding:10px 14px;font-size:12px;color:#b48250;font-style:italic;margin-top:8px;display:none}
@@ -537,12 +537,55 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .btn-wpp{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#25d366,#1aab52);border:none;color:#fff;border-radius:12px;padding:14px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:1rem;transition:all 0.2s;text-decoration:none;letter-spacing:0.5px;box-shadow:0 4px 15px rgba(37,211,102,0.3)}
 .btn-wpp:hover{background:linear-gradient(135deg,#1aab52,#128c3e);box-shadow:0 6px 20px rgba(37,211,102,0.4);transform:translateY(-1px)}
 
+
+/* ===== EDIÇÃO DO MÉTODO ===== */
+.metodo-editor{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.me-section{background:#fff;border:1px solid rgba(138,95,53,0.2);border-radius:14px;padding:1.4rem;margin-bottom:1.2rem}
+.me-section-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.me-modulo{background:#f5f0e8;border:1px solid rgba(138,95,53,0.25);border-radius:10px;padding:1rem;margin-bottom:0.8rem}
+.me-modulo-nome{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#6b4423;margin-bottom:0.5rem}
+.me-aula{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.me-aula-num{font-size:11px;color:#8a5f35;width:20px;flex-shrink:0}
+.me-add-btn{background:none;border:1px dashed rgba(138,95,53,0.3);border-radius:6px;padding:6px 12px;font-size:12px;color:#8a5f35;cursor:pointer;width:100%;margin-top:6px}
+.me-add-btn:hover{background:rgba(138,95,53,0.05)}
+.me-del{background:none;border:none;color:rgba(5,17,43,0.2);cursor:pointer;font-size:14px;padding:2px 6px}
+.me-del:hover{color:#c0392b}
+
+
+/* ===== TELA DE ENTRADA ===== */
+#telaEntrada{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(160deg,#05112b,#0a1e3d);padding:2rem;text-align:center}
+.entrada-foto{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid rgba(180,130,80,0.5);box-shadow:0 0 0 8px rgba(180,130,80,0.1);margin-bottom:1.5rem}
+.entrada-foto-placeholder{width:110px;height:110px;border-radius:50%;background:rgba(180,130,80,0.1);border:2px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 1.5rem}
+.entrada-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
+.entrada-titulo{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:0.4rem}
+.entrada-titulo em{font-style:italic;color:#b48250}
+.entrada-subtitulo{font-size:14px;color:rgba(240,235,232,0.45);margin-bottom:2.5rem;line-height:1.6;max-width:400px}
+.entrada-btns{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px}
+.entrada-btn-primary{background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:14px;padding:18px 24px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.5px;transition:all 0.2s;box-shadow:0 4px 20px rgba(180,130,80,0.3)}
+.entrada-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(180,130,80,0.4)}
+.entrada-btn-secondary{background:transparent;color:rgba(240,235,232,0.6);border:1px solid rgba(240,235,232,0.15);border-radius:14px;padding:16px 24px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
+.entrada-btn-secondary:hover{border-color:rgba(180,130,80,0.4);color:#f0ebe8;background:rgba(180,130,80,0.06)}
+
 </style>
 </head>
 <body>
 
-<div id="boasVindas">
+<div id="telaEntrada">
+  <div class="entrada-foto-placeholder" id="entrada-avatar">
+    <img src="fotos/jade.jpg" alt="Jade Torres" style="width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center" onerror="this.style.display='none';this.parentElement.innerHTML='⚔'">
+  </div>
+  <span class="entrada-label">Caverna das Guerreiras · Jade Torres</span>
+  <h1 class="entrada-titulo">Programa <em>Meu Projeto</em> Digital</h1>
+  <p class="entrada-subtitulo">Bem-vinda, guerreira. Por onde você quer começar hoje?</p>
+  <div class="entrada-btns">
+    <button class="entrada-btn-primary" onclick="entradaIrEtapas()">🗺 Seguir para minhas Etapas</button>
+    <button class="entrada-btn-secondary" onclick="entradaIrJornada()">⚔ Calendário da Jornada</button>
+  </div>
+</div>
+
+<div id="boasVindas" style="display:none">
   <div class="bv-wrapper">
+    <div style="text-align:right;margin-bottom:0.5rem"><button onclick="irTelaEntrada()" style="background:none;border:none;color:rgba(180,130,80,0.5);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:1px">← Início</button></div>
     <div class="bv-hero">
       <div class="bv-foto" id="bv-avatar">
         <img src="fotos/jade.jpg" alt="Jade Torres" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=font-size:32px>⚔</span>'">
@@ -648,6 +691,9 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
     </div>
   </div>
   <div class="weeks-section">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:0.8rem">
+      <button onclick="irTelaEntrada()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:7px 16px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">← Início</button>
+    </div>
     <span class="section-label">Sua jornada · 12 etapas</span>
     <div class="grid" id="weeksGrid"></div>
   </div>
@@ -657,7 +703,8 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 <div class="week-detail" id="weekDetail">
   <div class="detail-header">
     <button class="btn-back-detail" id="btnBackMain">←</button>
-    <button id="btnEtapas" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Etapas</button>
+    <button id="btnInicio" onclick="irTelaEntrada()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Início</button>
+    <button id="btnEtapas" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Etapas</button>
     <button id="btnMarcos" onclick="irBoasVindas()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Marcos</button>
     <div class="detail-info">
       <div class="detail-week-num" id="detailWeekNum"></div>
@@ -734,12 +781,15 @@ function openWeek(n) {
   } else if (n === 2) {
     content.innerHTML = getS2HTML();
     bindS2Events();
+    setTimeout(function(){ s2Load(); }, 150);
   } else if (n === 3) {
     content.innerHTML = getS3HTML();
     bindS3Events();
+    setTimeout(function(){ s3Load(); }, 150);
   } else if (n === 4) {
     content.innerHTML = getS4HTML();
     bindS4Events();
+    setTimeout(function(){ s4Load(); }, 150);
   } else if (n === 5) {
     content.innerHTML = getS5HTML();
     bindCkEvents(5);
@@ -1496,20 +1546,29 @@ function getS12HTML() {
 /* ===================== FIM ETAPAS 8 E 12 ===================== */
 
 function s1BtnVoltarTela() {
-  // Detecta qual etapa está aberta pelo weekDetail
   var detail = document.getElementById('weekDetail');
   if (!detail || detail.style.display === 'none') { goHome(); return; }
-  
-  // Tenta voltar tela anterior da S1
   var c = document.getElementById('weekContent');
   if (!c) { goHome(); return; }
-  
+
+  // Verificar se está na T3B
+  var t3b = c.querySelector('#s2t3b');
+  if (t3b && t3b.style.display === 'block') { s2GoTo(3); return; }
+  // Verificar se está em outra tela da Etapa 2
+  for (var i = 4; i >= 1; i--) {
+    var t = c.querySelector('#s2t' + i);
+    if (t && t.style.display === 'block') {
+      if (i > 1) { s2GoTo(i - 1); return; }
+      else { goHome(); return; }
+    }
+  }
+
+  // Etapa 1 — voltar tela anterior
   var atual = s1TelaAtual ? s1TelaAtual() : null;
   if (atual && S1_PREV && S1_PREV[atual]) {
     s1GoTo(S1_PREV[atual]);
     s1Save();
   } else if (atual === 'r1' || !atual) {
-    // Já está na primeira tela — vai para home
     goHome();
   } else {
     goHome();
@@ -1524,7 +1583,6 @@ function bvInit() {
     var el = document.getElementById('bv-data-' + i);
     if (el && saved['data' + i]) el.value = saved['data' + i];
   }
-  // Sempre mostra boas-vindas na primeira carga — navegação via botões Etapas/Marcos
 }
 
 function bvSalvar() {
@@ -1538,9 +1596,6 @@ function bvSalvar() {
 
 function bvEntrar() {
   bvSalvar();
-  var saved = JSON.parse(localStorage.getItem('bv_data') || '{}');
-  saved.visitou = true;
-  localStorage.setItem('bv_data', JSON.stringify(saved));
   document.getElementById('boasVindas').style.display = 'none';
   document.getElementById('portalHome').style.display = 'block';
   window.scrollTo(0,0);
@@ -1557,6 +1612,10 @@ function irBoasVindas() {
 // Inicializar boas-vindas ao carregar
 document.addEventListener('DOMContentLoaded', function() {
   bvInit();
+  // Show entrance screen on load
+  document.getElementById('telaEntrada').style.display = 'flex';
+  document.getElementById('boasVindas').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'none';
 });
 
 /* ===== WHATSAPP RESUMO ===== */
@@ -1840,16 +1899,786 @@ function wppSprintE4() {
 }
 /* ===== FIM SPRINT WHATSAPP ===== */
 
+
+/* ===== ETAPA 2 — SAVE / LOAD ===== */
+var S2_KEY = 's2_metodo_data';
+
+function s2Save() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var data = {};
+  var fields = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  fields.forEach(function(id) {
+    var el = c.querySelector('#' + id);
+    if (el) data[id] = el.value;
+  });
+  // Salvar passos
+  var passos = [];
+  c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ passos.push(p.value); });
+  data['passos'] = passos;
+  // Salvar pilares
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ pilares.push(p.value); });
+  data['pilares'] = pilares;
+  try { localStorage.setItem(S2_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function s2Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var raw; try { raw = localStorage.getItem(S2_KEY); } catch(e) {}
+  if (!raw) { s2GoTo(1); return; }
+  var data; try { data = JSON.parse(raw); } catch(e) { return; }
+  var fields = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  fields.forEach(function(id) {
+    if (data[id] !== undefined) {
+      var el = c.querySelector('#' + id);
+      if (el) el.value = data[id];
+    }
+  });
+  // Restaurar passos
+  if (data['passos'] && data['passos'].length) {
+    var passosContainer = c.querySelector('#passosContainer');
+    if (passosContainer) {
+      passosContainer.querySelectorAll('.passo-input').forEach(function(inp, i) {
+        if (data['passos'][i] !== undefined) inp.value = data['passos'][i];
+      });
+    }
+  }
+  // Restaurar pilares
+  if (data['pilares'] && data['pilares'].length) {
+    var pilaresContainer = c.querySelector('#pilaresContainer');
+    if (pilaresContainer) {
+      pilaresContainer.querySelectorAll('.passo-input').forEach(function(inp, i) {
+        if (data['pilares'][i] !== undefined) inp.value = data['pilares'][i];
+      });
+    }
+  }
+  // Restaurar tela ativa do S2
+  var tela = data['s2-tela'] || 1;
+  if (typeof s2GoTo === 'function') setTimeout(function(){ s2GoTo(parseInt(tela)); }, 200);
+  else if (typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
+}
+/* ===== FIM S2 SAVE/LOAD ===== */
+
+
+/* ===== S2 NAVEGAÇÃO E WHATSAPP ===== */
+function s2GoTo(n) {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  // Also hide t3b
+  var t3b = c.querySelector('#s2t3b'); if (t3b) t3b.style.display = 'none';
+  for (var i = 1; i <= 4; i++) {
+    var t = c.querySelector('#s2t' + i);
+    if (t) t.style.display = i === n ? 'block' : 'none';
+    var dot = c.querySelector('#s2pd' + i);
+    if (dot) dot.className = 'pdot' + (i === n ? ' active' : i < n ? ' done' : '');
+    var line = c.querySelector('#s2pl' + i);
+    if (line && i < 4) line.className = 'pline' + (i < n ? ' done' : '');
+  }
+  // Ao chegar na tela 4 preencher o método
+  if (n === 4) {
+    // Manifesto Editorial
+    var frase = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+    var mvM = c.querySelector('#mv-manifesto');
+    if (mvM) mvM.textContent = frase || 'Ainda não preenchido';
+
+    // Objetivo
+    var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+    var mvObj = c.querySelector('#mv-objetivo-texto');
+    if (mvObj) mvObj.textContent = objetivo || 'Ainda não preenchido';
+
+    // Pilares
+    var pilares = []; var passos = [];
+    c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+    c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+    var grid = c.querySelector('#mv-pilares-grid');
+    if (grid) {
+      grid.innerHTML = '';
+      var itens = pilares.length > 0 ? pilares : passos;
+      if (itens.length === 0) {
+        grid.innerHTML = '<p style="color:rgba(5,17,43,0.4);font-style:italic;font-size:13px">Nenhum pilar adicionado ainda.</p>';
+      } else {
+        itens.forEach(function(nome, i) {
+          var card = document.createElement('div'); card.className = 'mv-pilar-card';
+          card.innerHTML = '<div class="mv-pilar-num">'+(i+1)+'</div><div class="mv-pilar-nome">'+nome+'</div>';
+          grid.appendChild(card);
+        });
+      }
+    }
+
+    // Estrutura de módulos e aulas
+    var estruturaEl = c.querySelector('#mv-estrutura-grid');
+    if (estruturaEl) {
+      try {
+        var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
+        var estrutura = d['s2-estrutura'] || [];
+        if (estrutura.length > 0) {
+          estruturaEl.style.display = 'block';
+          var html = '';
+          estrutura.forEach(function(mod, i) {
+            html += '<div style="margin-bottom:1rem;background:#fff;border:1px solid rgba(138,95,53,0.2);border-radius:10px;padding:1rem">';
+            html += '<div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px">Módulo '+(i+1)+'</div>';
+            html += '<div style="font-weight:600;color:#05112b;margin-bottom:8px">'+mod.nome+'</div>';
+            mod.aulas.forEach(function(aula, j) {
+              html += '<div style="font-size:13px;color:#1a1a2e;padding:4px 0 4px 12px;border-left:2px solid rgba(180,130,80,0.3)">Aula '+(j+1)+': '+aula+'</div>';
+            });
+            html += '</div>';
+          });
+          estruturaEl.innerHTML = html;
+        } else {
+          estruturaEl.style.display = 'none';
+        }
+      } catch(e) {}
+    }
+  }
+  // Salvar tela atual
+  try {
+    var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
+    d['s2-tela'] = n;
+    localStorage.setItem(S2_KEY, JSON.stringify(d));
+  } catch(e) {}
+  if (n === 3 && typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
+  window.scrollTo(0, 0);
+  s2Save();
+}
+
+function wppS2T1() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var g = function(id) { var el = c.querySelector('#' + id); return el ? el.value.trim() : '-'; };
+  var texto = '\u2694 *Etapa 2 \u2014 Brainstorming do M\u00e9todo*\n\n' +
+    '*Objetivo do m\u00e9todo:*\n' + g('s2-objetivo') + '\n\n' +
+    '*O QU\u00ca vou ensinar:*\n' + g('s2-que') + '\n\n' +
+    '_Enviado pelo Portal Meu Projeto Digital_';
+  window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function wppS2T2() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var g = function(id) { var el = c.querySelector('#' + id); return el ? el.value.trim() : '-'; };
+  var texto = '\u2694 *Etapa 2 \u2014 O Como do M\u00e9todo*\n\n' +
+    '*Prepara\u00e7\u00e3o:*\n' + g('s2-etapa1') + '\n\n' +
+    '*P\u00f3s M\u00e9todo:*\n' + g('s2-etapa3') + '\n\n' +
+    '_Enviado pelo Portal Meu Projeto Digital_';
+  window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function wppS2T3() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+  var texto = '\u2694 *Etapa 2 \u2014 Pilares do M\u00e9todo*\n\n' +
+    pilares.map(function(p, i){ return '*Pilar ' + (i+1) + ':* ' + p; }).join('\n') + '\n\n' +
+    '_Enviado pelo Portal Meu Projeto Digital_';
+  window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function wppS2Metodo() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var titulo = c.querySelector('#mv-titulo'); var manifesto = c.querySelector('#mv-manifesto');
+  var pilares = [];
+  c.querySelectorAll('#mv-pilares-grid .mv-pilar').forEach(function(p){
+    var t = p.querySelector('.mv-pilar-text'); if(t) pilares.push(t.textContent);
+  });
+  var texto = '\u2694 *M\u00e9todo Autoral \u2014 Pronto*\n\n' +
+    '*T\u00edtulo:* ' + (titulo ? titulo.textContent : '-') + '\n' +
+    '*Manifesto:* ' + (manifesto ? manifesto.textContent : '-') + '\n\n' +
+    '*Pilares:*\n' + pilares.map(function(p,i){ return (i+1)+'. '+p; }).join('\n') + '\n\n' +
+    '_Enviado pelo Portal Meu Projeto Digital_';
+  window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function baixarS2T1() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var g = function(id) { var el = c.querySelector('#' + id); return el ? el.value.trim() : ''; };
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Brainstorming do M\u00e9todo</title>' +
+    '<style>body{font-family:Georgia,serif;max-width:800px;margin:40px auto;padding:20px;color:#1a1a2e;line-height:1.8}' +
+    'h1{font-size:2rem;color:#05112b;border-bottom:2px solid #b48250;padding-bottom:10px}' +
+    '.bloco{margin-bottom:24px;padding:16px;background:#f5f0e8;border-left:4px solid #b48250;border-radius:4px}' +
+    '.titulo{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px}' +
+    '.conteudo{font-size:15px;color:#1a1a2e;white-space:pre-wrap}</style></head><body>' +
+    '<h1>\u2694 Brainstorming do M\u00e9todo</h1>' +
+    '<p style="color:#8a5f35">Etapa 2 \u00b7 Programa Meu Projeto Digital</p>' +
+    '<div class="bloco"><div class="titulo">Objetivo do m\u00e9todo</div><div class="conteudo">' + (g('s2-objetivo')||'N\u00e3o preenchido') + '</div></div>' +
+    '<div class="bloco"><div class="titulo">O QU\u00ca vou ensinar</div><div class="conteudo">' + (g('s2-que')||'N\u00e3o preenchido') + '</div></div>' +
+    '</body></html>';
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'brainstorming-metodo.html'; document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+}
+
+function baixarS2T2() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var g = function(id) { var el = c.querySelector('#' + id); return el ? el.value.trim() : ''; };
+  var passos = [];
+  c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>O Como do M\u00e9todo</title>' +
+    '<style>body{font-family:Georgia,serif;max-width:800px;margin:40px auto;padding:20px;color:#1a1a2e;line-height:1.8}' +
+    'h1{font-size:2rem;color:#05112b;border-bottom:2px solid #b48250;padding-bottom:10px}' +
+    '.bloco{margin-bottom:24px;padding:16px;background:#f5f0e8;border-left:4px solid #b48250;border-radius:4px}' +
+    '.titulo{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px}' +
+    '.conteudo{font-size:15px;color:#1a1a2e;white-space:pre-wrap}</style></head><body>' +
+    '<h1>\u2694 O Como do M\u00e9todo</h1>' +
+    '<div class="bloco"><div class="titulo">Prepara\u00e7\u00e3o</div><div class="conteudo">' + (g('s2-etapa1')||'-') + '</div></div>' +
+    '<div class="bloco"><div class="titulo">Passo a Passo</div><div class="conteudo">' + passos.map(function(p,i){ return (i+1)+'. '+p; }).join('\n') + '</div></div>' +
+    '<div class="bloco"><div class="titulo">P\u00f3s M\u00e9todo</div><div class="conteudo">' + (g('s2-etapa3')||'-') + '</div></div>' +
+    '</body></html>';
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'o-como-metodo.html'; document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+}
+
+function baixarS2T3() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Pilares do M\u00e9todo</title>' +
+    '<style>body{font-family:Georgia,serif;max-width:800px;margin:40px auto;padding:20px;color:#1a1a2e;line-height:1.8}' +
+    'h1{font-size:2rem;color:#05112b;border-bottom:2px solid #b48250;padding-bottom:10px}' +
+    '.pilar{margin-bottom:16px;padding:16px;background:#f5f0e8;border-left:4px solid #b48250;border-radius:4px;font-size:15px;color:#1a1a2e}</style></head><body>' +
+    '<h1>\u2694 Pilares do M\u00e9todo</h1>' +
+    pilares.map(function(p,i){ return '<div class="pilar"><strong>Pilar '+(i+1)+':</strong> '+p+'</div>'; }).join('') +
+    '</body></html>';
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'pilares-metodo.html'; document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+}
+/* ===== FIM S2 NAV ===== */
+
+
+/* ===== S3 SAVE/LOAD ===== */
+var S3_KEY = 's3_produtos_data';
+function s3Save() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var data = {};
+  c.querySelectorAll('input[id], textarea[id], select[id]').forEach(function(el) {
+    if (el.id) data[el.id] = el.value;
+  });
+  // Salvar tipo de produto selecionado
+  var tipoEl = c.querySelector('.tipo-btn.ativo');
+  if (tipoEl) data['s3-tipo-ativo'] = tipoEl.getAttribute('data-tipo') || tipoEl.textContent;
+  try { localStorage.setItem(S3_KEY, JSON.stringify(data)); } catch(e) {}
+}
+function s3Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var raw; try { raw = localStorage.getItem(S3_KEY); } catch(e) {}
+  if (!raw) return;
+  var data; try { data = JSON.parse(raw); } catch(e) { return; }
+  Object.keys(data).forEach(function(id) {
+    if (id === 's3-tipo-ativo') return;
+    var el = c.querySelector('#' + id);
+    if (el && data[id] !== undefined) el.value = data[id];
+  });
+}
+
+/* ===== S4 SAVE/LOAD ===== */
+var S4_KEY = 's4_metodologia_data';
+function s4Save() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var data = {};
+  c.querySelectorAll('input[id], textarea[id], select[id]').forEach(function(el) {
+    if (el.id) data[el.id] = el.value;
+  });
+  try { localStorage.setItem(S4_KEY, JSON.stringify(data)); } catch(e) {}
+}
+function s4Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var raw; try { raw = localStorage.getItem(S4_KEY); } catch(e) {}
+  if (!raw) return;
+  var data; try { data = JSON.parse(raw); } catch(e) { return; }
+  Object.keys(data).forEach(function(id) {
+    var el = c.querySelector('#' + id);
+    if (el && data[id] !== undefined) el.value = data[id];
+  });
+}
+/* ===== FIM S3/S4 SAVE ===== */
+
+
+function s2DistribuirPilares() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var cola = c.querySelector('#s2-pilares-cola');
+  if (!cola || !cola.value.trim()) return;
+
+  var texto = cola.value.trim();
+  var linhas = texto.split('\n').map(function(l){ return l.trim(); }).filter(function(l){ return l.length > 0; });
+
+  var pilares = [];
+  var modulos = {};
+  var moduloAtual = null;
+
+  linhas.forEach(function(linha) {
+    // Detectar PILAR
+    var mPilar = linha.match(/^PILAR\d+:\s*(.+)/i);
+    if (mPilar) { pilares.push(mPilar[1].trim()); return; }
+
+    // Detectar MODULO
+    var mMod = linha.match(/^MODULO(\d+):\s*(.+)/i);
+    if (mMod) {
+      moduloAtual = parseInt(mMod[1]);
+      modulos[moduloAtual] = { nome: mMod[2].trim(), aulas: [] };
+      return;
+    }
+
+    // Detectar AULA
+    var mAula = linha.match(/^AULA(\d+)\.(\d+):\s*(.+)/i);
+    if (mAula && modulos[parseInt(mAula[1])]) {
+      modulos[parseInt(mAula[1])].aulas.push(mAula[3].trim());
+      return;
+    }
+  });
+
+  // Distribuir pilares
+  if (pilares.length > 0) {
+    var container = c.querySelector('#pilaresContainer');
+    if (container) {
+      container.innerHTML = '';
+      pilares.forEach(function(pilar, i) {
+        var div = document.createElement('div');
+        div.className = 'passo-wrap';
+        div.innerHTML = '<input type="text" class="passo-input f-input" placeholder="Pilar ' + (i+1) + '..." value="' + pilar.replace(/"/g, '&quot;') + '">' +
+          '<button class="passo-del" onclick="this.parentElement.remove();s2Save()">×</button>';
+        container.appendChild(div);
+        div.querySelector('.passo-input').addEventListener('input', function(){ s2Save(); });
+      });
+    }
+  }
+
+  // Salvar estrutura de módulos no localStorage para a tela 4
+  var estrutura = [];
+  Object.keys(modulos).sort(function(a,b){ return parseInt(a)-parseInt(b); }).forEach(function(k) {
+    estrutura.push(modulos[k]);
+  });
+  try {
+    var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
+    d['s2-estrutura'] = estrutura;
+    localStorage.setItem(S2_KEY, JSON.stringify(d));
+  } catch(e) {}
+
+  var total = pilares.length + Object.keys(modulos).length;
+  var btn = c.querySelector('[onclick="s2DistribuirPilares()"]');
+  if (btn) {
+    btn.textContent = '✓ ' + pilares.length + ' pilares e ' + Object.keys(modulos).length + ' módulos distribuídos!';
+    btn.style.background = 'linear-gradient(135deg,#2a7a2a,#1a5a1a)';
+    setTimeout(function(){
+      btn.textContent = '✦ Criar e distribuir estrutura';
+      btn.style.background = '';
+    }, 3000);
+  }
+  s2Save();
+}
+
+
+function s2AbrirMetodoNovaAba() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  // Coletar dados
+  var manifesto = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+  var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+  var que = c.querySelector('#s2-que') ? c.querySelector('#s2-que').value.trim() : '';
+  var etapa1 = c.querySelector('#s2-etapa1') ? c.querySelector('#s2-etapa1').value.trim() : '';
+  var etapa3 = c.querySelector('#s2-etapa3') ? c.querySelector('#s2-etapa3').value.trim() : '';
+
+  var passos = [];
+  c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+
+  // Montar HTML da nova aba
+  var passosHTML = passos.length ? passos.map(function(p,i){
+    return '<div style="display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid rgba(180,130,80,0.15)">' +
+      '<span style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">'+(i+1)+'</span>' +
+      '<span style="font-size:15px;color:#1a1a2e;line-height:1.6">'+p+'</span></div>';
+  }).join('') : '<p style="color:#aaa;font-style:italic">Nenhum passo adicionado.</p>';
+
+  var pilaresHTML = pilares.length ? pilares.map(function(p,i){
+    return '<div style="background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.3);border-radius:12px;padding:1rem 1.2rem;text-align:center">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6b4423;margin-bottom:4px">Pilar '+(i+1)+'</div>' +
+      '<div style="font-family:\'Playfair Display\',Georgia,serif;font-size:1rem;color:#2a1200;font-style:italic">'+p+'</div></div>';
+  }).join('') : '<p style="color:#aaa;font-style:italic">Nenhum pilar adicionado.</p>';
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<title>Minha Ideia de Método</title>' +
+    '<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">' +
+    '<style>' +
+    'body{font-family:"DM Sans",sans-serif;background:#f2ede8;color:#1a1a2e;max-width:800px;margin:0 auto;padding:40px 24px 80px}' +
+    'h1{font-family:"Playfair Display",serif;font-size:2.2rem;color:#05112b;margin-bottom:0.3rem}' +
+    'h1 em{font-style:italic;color:#b48250}' +
+    '.secao{background:#fff;border:1px solid rgba(138,95,53,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem}' +
+    '.secao-titulo{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.8rem}' +
+    '.secao-conteudo{font-size:15px;color:#1a1a2e;line-height:1.8;white-space:pre-wrap}' +
+    '.pilares-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:0.5rem}' +
+    '.rodape{text-align:center;margin-top:3rem;font-size:11px;color:#aaa;letter-spacing:1px}' +
+    '@media print{body{padding:20px}}' +
+    '</style></head><body>' +
+    '<div style="text-align:center;margin-bottom:2.5rem">' +
+      '<div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Jade Torres</div>' +
+      '<h1>Minha ideia de <em>Método</em></h1>' +
+      (manifesto ? '<p style="font-family:\'Playfair Display\',serif;font-size:1.1rem;font-style:italic;color:#6b4423;margin-top:0.5rem">"'+manifesto+'"</p>' : '') +
+    '</div>' +
+    (objetivo ? '<div class="secao"><div class="secao-titulo">Objetivo do método</div><div class="secao-conteudo">'+objetivo+'</div></div>' : '') +
+    (que ? '<div class="secao"><div class="secao-titulo">O que vou ensinar</div><div class="secao-conteudo">'+que+'</div></div>' : '') +
+    '<div class="secao"><div class="secao-titulo">O Como — estrutura da jornada</div>' +
+      (etapa1 ? '<div style="margin-bottom:1rem"><div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">⬡ Preparação</div><div class="secao-conteudo">'+etapa1+'</div></div>' : '') +
+      (passos.length ? '<div style="margin-bottom:1rem"><div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">⬡ Passo a Passo</div>'+passosHTML+'</div>' : '') +
+      (etapa3 ? '<div><div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">⬡ Pós Método</div><div class="secao-conteudo">'+etapa3+'</div></div>' : '') +
+    '</div>' +
+    (pilares.length ? '<div class="secao"><div class="secao-titulo">Pilares do método</div><div class="pilares-grid">'+pilaresHTML+'</div></div>' : '') +
+    '<div class="rodape">Programa Meu Projeto Digital · Caverna das Guerreiras · Jade Torres</div>' +
+    '</body></html>';
+
+  var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  window.open(url, '_blank');
+}
+
+
+function baixarS2Metodo() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var manifesto = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+  var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+  var passos = [];
+  c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
+  var itens = pilares.length > 0 ? pilares : passos;
+
+  var pilaresHTML = itens.map(function(p,i){
+    return '<div style="background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.3);border-radius:12px;padding:1rem 1.2rem;text-align:center;margin-bottom:10px">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6b4423;margin-bottom:4px">Pilar '+(i+1)+'</div>' +
+      '<div style="font-family:Georgia,serif;font-size:1rem;color:#2a1200;font-style:italic">'+p+'</div></div>';
+  }).join('');
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Meu M\u00e9todo Autoral</title>' +
+    '<style>body{font-family:Georgia,serif;background:#f2ede8;color:#1a1a2e;max-width:800px;margin:0 auto;padding:40px 24px 80px}' +
+    'h1{font-family:Georgia,serif;font-size:2rem;color:#05112b;margin-bottom:0.3rem}' +
+    'h1 em{font-style:italic;color:#b48250}' +
+    '.secao{background:#fff;border:1px solid rgba(138,95,53,0.2);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}' +
+    '.label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px}' +
+    '.texto{font-size:15px;line-height:1.8;white-space:pre-wrap}' +
+    '.rodape{text-align:center;margin-top:3rem;font-size:11px;color:#aaa;letter-spacing:1px}' +
+    '@media print{body{padding:20px}}</style></head><body>' +
+    '<div style="text-align:center;margin-bottom:2rem">' +
+      '<div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.4rem">Caverna das Guerreiras · Jade Torres</div>' +
+      '<h1>Minha ideia de <em>m\u00e9todo pronta!</em></h1>' +
+      (manifesto ? '<p style="font-style:italic;color:#6b4423;font-size:1rem;margin-top:0.3rem">"'+manifesto+'"</p>' : '') +
+    '</div>' +
+    (objetivo ? '<div class="secao"><div class="label">Objetivo do m\u00e9todo</div><div class="texto">'+objetivo+'</div></div>' : '') +
+    (itens.length ? '<div class="secao"><div class="label">Pilares do m\u00e9todo</div>'+pilaresHTML+'</div>' : '') +
+    '<div class="rodape">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
+    '</body></html>';
+
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'meu-metodo-autoral.html'; document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+}
+
+
+/* ===== EDITOR DO MÉTODO (T3B) ===== */
+function s2AbrirEditor() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  // Mostrar T3B, esconder outras
+  for (var i = 1; i <= 4; i++) {
+    var t = c.querySelector('#s2t' + i);
+    if (t) t.style.display = 'none';
+  }
+  var t3b = c.querySelector('#s2t3b');
+  if (t3b) t3b.style.display = 'block';
+
+  // Carregar dados salvos
+  var d = {};
+  try { d = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
+
+  // Nome do método
+  var nomeEl = c.querySelector('#me-nome');
+  if (nomeEl && d['me-nome']) nomeEl.value = d['me-nome'];
+
+  // Pilares
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+  if (pilares.length === 0 && d['pilares']) pilares = d['pilares'];
+  var pilaresC = c.querySelector('#me-pilares-container');
+  if (pilaresC) {
+    pilaresC.innerHTML = '';
+    (pilares.length > 0 ? pilares : ['','','']).forEach(function(p, i) {
+      meAddPilarItem(pilaresC, p, i+1);
+    });
+  }
+
+  // Módulos e aulas
+  var estrutura = d['s2-estrutura'] || [];
+  var modulosC = c.querySelector('#me-modulos-container');
+  if (modulosC) {
+    modulosC.innerHTML = '';
+    if (estrutura.length > 0) {
+      estrutura.forEach(function(mod, i) {
+        meAddModuloItem(modulosC, mod.nome, mod.aulas, i+1);
+      });
+    } else {
+      meAddModuloItem(modulosC, 'Preparação para o Método', ['Conheça a mentora', 'Seja bem-vinda'], 1);
+    }
+  }
+
+  // Auto-save ao digitar
+  t3b.querySelectorAll('input, textarea').forEach(function(el) {
+    el.addEventListener('input', function(){ s2SalvarEditor(); });
+  });
+
+  window.scrollTo(0, 0);
+}
+
+function meAddPilarItem(container, valor, num) {
+  var div = document.createElement('div');
+  div.className = 'passo-wrap';
+  div.style.marginBottom = '8px';
+  div.innerHTML = '<span style="min-width:24px;height:24px;border-radius:50%;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:#8a5f35;flex-shrink:0">' + (num||'') + '</span>' +
+    '<input type="text" class="passo-input f-input" placeholder="Nome do pilar..." value="' + (valor||'').replace(/"/g,'&quot;') + '" style="flex:1">' +
+    '<button class="me-del" onclick="this.parentElement.remove();s2SalvarEditor()">×</button>';
+  container.appendChild(div);
+  div.querySelector('input').addEventListener('input', function(){ s2SalvarEditor(); });
+}
+
+function meAddPilar() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var container = c.querySelector('#me-pilares-container');
+  if (!container) return;
+  var num = container.querySelectorAll('.passo-wrap').length + 1;
+  meAddPilarItem(container, '', num);
+}
+
+function meAddModuloItem(container, nomeModulo, aulas, numMod) {
+  var div = document.createElement('div');
+  div.className = 'me-modulo';
+  div.setAttribute('data-modulo', numMod);
+
+  var aulasHTML = (aulas || []).map(function(a, i) {
+    return '<div class="me-aula">' +
+      '<span class="me-aula-num">' + (i+1) + '</span>' +
+      '<input type="text" class="passo-input f-input" placeholder="Nome da aula..." value="' + (a||'').replace(/"/g,'&quot;') + '" style="flex:1">' +
+      '<button class="me-del" onclick="this.parentElement.remove();s2SalvarEditor()">×</button>' +
+    '</div>';
+  }).join('');
+
+  div.innerHTML = '<div class="me-modulo-nome">Módulo ' + numMod + '</div>' +
+    '<input type="text" class="passo-input f-input" placeholder="Nome do módulo..." value="' + (nomeModulo||'').replace(/"/g,'&quot;') + '" style="width:100%;margin-bottom:8px">' +
+    '<div class="me-aulas-container">' + aulasHTML + '</div>' +
+    '<button class="me-add-btn" onclick="meAddAula(this)" style="margin-top:4px">+ adicionar aula</button>' +
+    '<button class="me-del" onclick="this.parentElement.remove();s2SalvarEditor()" style="display:block;margin-top:4px;font-size:11px;color:rgba(192,57,43,0.6)">remover módulo</button>';
+
+  container.appendChild(div);
+  div.querySelectorAll('input').forEach(function(el) {
+    el.addEventListener('input', function(){ s2SalvarEditor(); });
+  });
+}
+
+function meAddModulo() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var container = c.querySelector('#me-modulos-container');
+  if (!container) return;
+  var num = container.querySelectorAll('.me-modulo').length + 1;
+  meAddModuloItem(container, '', [], num);
+}
+
+function meAddAula(btn) {
+  var modulo = btn.parentElement;
+  var aulasC = modulo.querySelector('.me-aulas-container');
+  if (!aulasC) return;
+  var num = aulasC.querySelectorAll('.me-aula').length + 1;
+  var div = document.createElement('div');
+  div.className = 'me-aula';
+  div.innerHTML = '<span class="me-aula-num">' + num + '</span>' +
+    '<input type="text" class="passo-input f-input" placeholder="Nome da aula..." style="flex:1">' +
+    '<button class="me-del" onclick="this.parentElement.remove();s2SalvarEditor()">×</button>';
+  aulasC.appendChild(div);
+  div.querySelector('input').addEventListener('input', function(){ s2SalvarEditor(); });
+  div.querySelector('input').focus();
+}
+
+function s2SalvarEditor() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var d = {};
+  try { d = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
+
+  // Nome
+  var nomeEl = c.querySelector('#me-nome');
+  if (nomeEl) d['me-nome'] = nomeEl.value;
+
+  // Pilares
+  var pilares = [];
+  c.querySelectorAll('#me-pilares-container .passo-input').forEach(function(el){ if(el.value.trim()) pilares.push(el.value.trim()); });
+  d['pilares'] = pilares;
+
+  // Estrutura
+  var estrutura = [];
+  c.querySelectorAll('#me-modulos-container .me-modulo').forEach(function(mod) {
+    var nomeInput = mod.querySelector('input');
+    var nome = nomeInput ? nomeInput.value.trim() : '';
+    var aulas = [];
+    mod.querySelectorAll('.me-aula input').forEach(function(a){ if(a.value.trim()) aulas.push(a.value.trim()); });
+    if (nome || aulas.length > 0) estrutura.push({ nome: nome, aulas: aulas });
+  });
+  d['s2-estrutura'] = estrutura;
+
+  try { localStorage.setItem(S2_KEY, JSON.stringify(d)); } catch(e) {}
+}
+
+function wppMetodoEditor() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var d = {};
+  try { d = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
+  var nome = d['me-nome'] || '-';
+  var pilares = d['pilares'] || [];
+  var estrutura = d['s2-estrutura'] || [];
+  var texto = '\u2694 *Estrutura do M\u00e9todo*\n\n' +
+    '*Nome:* ' + nome + '\n\n' +
+    '*Pilares:*\n' + pilares.map(function(p,i){ return (i+1)+'. '+p; }).join('\n') + '\n\n' +
+    '*M\u00f3dulos:*\n' + estrutura.map(function(m,i){
+      return 'M\u00f3dulo '+(i+1)+': '+m.nome+'\n'+m.aulas.map(function(a,j){ return '  Aula '+(j+1)+': '+a; }).join('\n');
+    }).join('\n\n') + '\n\n_Enviado pelo Portal Meu Projeto Digital_';
+  window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
+}
+
+function baixarMetodoEditor() {
+  var d = {};
+  try { d = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
+  var nome = d['me-nome'] || 'Meu M\u00e9todo';
+  var pilares = d['pilares'] || [];
+  var estrutura = d['s2-estrutura'] || [];
+  var manifesto = d['mhi-frase'] || '';
+
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + nome + '</title>' +
+    '<style>body{font-family:Georgia,serif;background:#f2ede8;color:#1a1a2e;max-width:800px;margin:0 auto;padding:40px 24px 80px}' +
+    'h1{font-size:2rem;color:#05112b;margin-bottom:0.3rem}h1 em{font-style:italic;color:#b48250}' +
+    '.secao{background:#fff;border:1px solid rgba(138,95,53,0.2);border-radius:14px;padding:1.4rem;margin-bottom:1.2rem}' +
+    '.label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:8px}' +
+    '.pilar{background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border-radius:8px;padding:10px 14px;margin-bottom:6px;font-size:14px;color:#2a1200}' +
+    '.modulo{background:#f5f0e8;border-left:3px solid #b48250;border-radius:6px;padding:12px;margin-bottom:10px}' +
+    '.modulo-nome{font-size:12px;font-weight:600;color:#05112b;margin-bottom:6px}' +
+    '.aula{font-size:13px;color:#1a1a2e;padding:3px 0 3px 12px;border-left:1px solid rgba(180,130,80,0.3);margin-bottom:3px}' +
+    '</style></head><body>' +
+    '<div style="text-align:center;margin-bottom:2rem">' +
+      '<div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.4rem">Caverna das Guerreiras</div>' +
+      '<h1>' + nome + '</h1>' +
+      (manifesto ? '<p style="font-style:italic;color:#6b4423">"' + manifesto + '"</p>' : '') +
+    '</div>' +
+    (pilares.length ? '<div class="secao"><div class="label">Pilares</div>' + pilares.map(function(p,i){ return '<div class="pilar"><strong>'+(i+1)+'.</strong> '+p+'</div>'; }).join('') + '</div>' : '') +
+    '<div class="secao"><div class="label">Estrutura</div>' +
+    estrutura.map(function(m,i){
+      return '<div class="modulo"><div class="modulo-nome">M\u00f3dulo '+(i+1)+': '+m.nome+'</div>' +
+        m.aulas.map(function(a,j){ return '<div class="aula">Aula '+(j+1)+': '+a+'</div>'; }).join('') + '</div>';
+    }).join('') + '</div>' +
+    '<div style="text-align:center;margin-top:3rem;font-size:11px;color:#aaa">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
+    '</body></html>';
+
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'estrutura-do-metodo.html';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+/* ===== FIM EDITOR ===== */
+
+
+function s2ImprimirMetodoT4() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  var manifesto = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+  var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+  var nome = '';
+  try { var d = JSON.parse(localStorage.getItem(S2_KEY)||'{}'); nome = d['me-nome'] || ''; } catch(e) {}
+
+  var pilares = [];
+  c.querySelectorAll('#mv-pilares-grid .mv-pilar-card').forEach(function(card) {
+    var n = card.querySelector('.mv-pilar-nome'); if (n) pilares.push(n.textContent);
+  });
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    document.body.appendChild(printArea);
+  }
+
+  printArea.innerHTML =
+    '<div style="font-family:Georgia,serif;max-width:720px;margin:0 auto;padding:2rem">' +
+      '<div style="text-align:center;margin-bottom:2rem;border-bottom:2px solid #b48250;padding-bottom:1.5rem">' +
+        '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Jade Torres</div>' +
+        '<h1 style="font-size:1.8rem;color:#05112b;margin:0 0 0.3rem">' + (nome || 'Meu Método Autoral') + '</h1>' +
+        (manifesto ? '<p style="font-style:italic;color:#6b4423;margin:0.3rem 0 0">"' + manifesto + '"</p>' : '') +
+      '</div>' +
+      (objetivo ? '<div style="margin-bottom:1.5rem"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px">Objetivo do Método</div><p style="font-size:14px;color:#1a1a2e;line-height:1.7;margin:0">' + objetivo + '</p></div>' : '') +
+      (pilares.length ? '<div style="margin-bottom:1.5rem"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:10px">Pilares</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">' +
+        pilares.map(function(p,i){ return '<div style="background:#e8dfc0;border-radius:8px;padding:10px;text-align:center"><div style="font-size:10px;color:#6b4423;margin-bottom:3px">Pilar '+(i+1)+'</div><div style="font-size:13px;font-style:italic;color:#2a1200">'+p+'</div></div>'; }).join('') +
+      '</div></div>' : '') +
+      '<div style="margin-top:2rem;font-size:10px;color:#aaa;text-align:center;border-top:1px solid #ddd;padding-top:1rem">Programa Meu Projeto Digital · Caverna das Guerreiras · Jade Torres</div>' +
+    '</div>';
+
+  window.print();
+
+  setTimeout(function() { printArea.innerHTML = ''; }, 1000);
+}
+
+
+/* ===== TELA DE ENTRADA ===== */
+function entradaIrEtapas() {
+  document.getElementById('telaEntrada').style.display = 'none';
+  document.getElementById('boasVindas').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function entradaIrJornada() {
+  document.getElementById('telaEntrada').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'none';
+  document.getElementById('boasVindas').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function irTelaEntrada() {
+  document.getElementById('telaEntrada').style.display = 'flex';
+  document.getElementById('boasVindas').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'none';
+  var detail = document.getElementById('weekDetail');
+  if (detail) detail.style.display = 'none';
+  window.scrollTo(0,0);
+}
+/* ===== FIM ENTRADA ===== */
+
 function goHome() {
   // Forçar save síncrono antes de qualquer coisa
   try {
     var c = document.getElementById('weekContent');
     if (c) {
-      // Detectar qual etapa está aberta e salvar
       var detail = document.getElementById('weekDetail');
       if (detail && detail.style.display !== 'none') {
-        s1Save();
-        // Salvar também dados de outras etapas se necessário
+        try { s1Save(); } catch(e) {}
+        try { s2Save(); } catch(e) {}
+        try { s3Save(); } catch(e) {}
+        try { s4Save(); } catch(e) {}
       }
     }
   } catch(e) { console.error('goHome save erro:', e); }
@@ -2786,6 +3615,12 @@ function s1Bback(){ s1GoTo('r5'); }
 function s1Bnext(){ s1GoTo('caminhoA'); s1Save(); }
 function bindManifestoEvents() {
   var c = document.getElementById('weekContent');
+  // Auto-save on any input in S1
+  if (c) c.addEventListener('input', function(e){
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+      setTimeout(s1Save, 300);
+    }
+  });
   if (!c) { console.error('bindManifestoEvents: weekContent não encontrado!'); return; }
   s1MostrarBtnSalvar(true);
   s1AtualizarNavHeader();
@@ -2922,7 +3757,6 @@ function gerarManifesto() {
 
 function getS2HTML() {
   return '<div class="s2-page">' +
-  '<div id="s2p1">' +
 
   // CABEÇALHO MANIFESTO
   '<div class="manifesto-header" id="mh-box">' +
@@ -2934,117 +3768,167 @@ function getS2HTML() {
   '<div style="padding:2rem 0 0.5rem">' +
     '<span class="s-label">Etapa 2 · Construção</span>' +
     '<h2 class="s-title">Método <em style="font-style:italic;color:#b48250">Autoral</em></h2>' +
-    '<p class="s-desc">Guerreira, se você chegou até aqui é porque você já tem o seu Manifesto nas mãos. Você já sabe quem você é, qual é a sua causa e para quem você entrega. Agora é hora de transformar tudo isso em um caminho; um passo a passo que só você poderia criar. Esse é o seu método autoral. Vamos começar.</p>' +
+    '<p class="s-desc">Seu Manifesto está nas mãos. Agora é hora de transformar tudo isso em um caminho — um passo a passo que só você poderia criar.</p>' +
   '</div>' +
 
-  '<hr class="s2-divider">' +
+  // BOLINHAS DE NAVEGAÇÃO
+  '<div class="pbar" style="justify-content:center;margin:1rem 0 1.5rem">' +
+    '<div class="pdot active" id="s2pd1" onclick="s2GoTo(1)" style="cursor:pointer">1</div>' +
+    '<div class="pline" id="s2pl1"></div>' +
+    '<div class="pdot" id="s2pd2" onclick="s2GoTo(2)" style="cursor:pointer">2</div>' +
+    '<div class="pline" id="s2pl2"></div>' +
+    '<div class="pdot" id="s2pd3" onclick="s2GoTo(3)" style="cursor:pointer">3</div>' +
+    '<div class="pline" id="s2pl3"></div>' +
+    '<div class="pdot" id="s2pd4" onclick="s2GoTo(4)" style="cursor:pointer">4</div>' +
+  '</div>' +
 
-  // CAMPO 1 - OBJETIVO
-  '<div class="s2-section">' +
-    '<h3 class="s2-section-title">Qual é o objetivo do seu método?</h3>' +
-    '<div class="s2-field">' +
-      '<span class="s2-field-hint">Antes de qualquer coisa, me diz: qual é a grande transformação que o seu método vai entregar? Não precisa ser perfeito. Escreve do jeito que tá pulsando no seu coração.</span>' +
+  // TELA 1 — BRAINSTORMING
+  '<div class="step-screen" id="s2t1" style="display:block">' +
+    '<span class="s-label">PASSO 1 DE 3 · BRAINSTORMING</span>' +
+    '<h2 class="s-title">Brainstorming<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
+    '<p class="s-desc">Antes de qualquer estrutura, solte o que está dentro. Sem julgamento, sem ordem perfeita.</p>' +
+    '<hr class="s2-divider">' +
+    '<div class="s2-section">' +
+      '<h3 class="s2-section-title">Qual é o objetivo do seu método?</h3>' +
+      '<span class="s2-field-hint">Qual é a grande transformação que o seu método vai entregar? Escreve do jeito que está pulsando.</span>' +
       '<textarea class="s2-textarea" id="s2-objetivo" placeholder="O objetivo do meu método é entregar..." rows="4"></textarea>' +
     '</div>' +
-  '</div>' +
-
-  '<hr class="s2-divider">' +
-
-  // CAMPO 2 - O QUÊ
-  '<div class="s2-section">' +
-    '<h3 class="s2-section-title">O QUÊ você vai ensinar?</h3>' +
-    '<div class="s2-field">' +
-      '<span class="s2-field-hint">Agora descarrega tudo. O que você sabe? O que você quer ensinar? Não se preocupa com ordem, nem com perfeição. Isso aqui é o seu brainstorm; quanto mais você jogar para fora, melhor.</span>' +
-      '<textarea class="s2-textarea" id="s2-que" placeholder="1. &#10;2. &#10;3. &#10;4. &#10;5. " rows="8"></textarea>' +
+    '<hr class="s2-divider">' +
+    '<div class="s2-section">' +
+      '<h3 class="s2-section-title">O QUÊ você vai ensinar?</h3>' +
+      '<span class="s2-field-hint">Descarrega tudo. O que você sabe? O que você quer ensinar? Quanto mais jogar para fora, melhor.</span>' +
+      '<textarea class="s2-textarea" id="s2-que" placeholder="1. \n2. \n3. \n4. \n5. " rows="8"></textarea>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem">' +
+      '<button onclick="wppS2T1()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">📲 Enviar para a Jade</button>' +
+      '<button onclick="baixarS2T1()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar Brainstorming</button>' +
+    '</div>' +
+    '<div class="nav-btns" style="margin-top:1rem">' +
+      '<button class="btn-nx" style="width:100%" onclick="s2GoTo(2)">Seguir para O Como →</button>' +
     '</div>' +
   '</div>' +
 
-  '<hr class="s2-divider">' +
-
-  // CAMPO 3 - O COMO (3 etapas)
-  '<div class="s2-section">' +
-    '<h3 class="s2-section-title">O COMO - as etapas do seu método</h3>' +
-    '<p class="s2-section-hint">Agora você vai aprofundar cada etapa da jornada que você vai conduzir sua aluna. São 3 momentos: antes, durante e depois do seu método.</p>' +
-
-    // Etapa 1
-    '<div class="etapa-box">' +
-      '<div class="etapa-box-title">⬡ Etapa 1 - Preparação para o Método</div>' +
-      '<div class="etapa-box-hint">O que essa pessoa precisa saber ou fazer antes de entrar no seu método? O que ela precisa entender, acreditar ou se preparar para poder receber o que você vai ensinar?</div>' +
-      '<textarea class="s2-textarea" id="s2-etapa1" placeholder="Antes de começar o método, minha aluna precisa..." rows="4"></textarea>' +
+  // TELA 2 — O COMO
+  '<div class="step-screen" id="s2t2" style="display:none">' +
+    '<span class="s-label">PASSO 2 DE 3 · ESTRUTURA</span>' +
+    '<h2 class="s-title">O Como<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
+    '<p class="s-desc">Agora dê forma à jornada que você vai conduzir sua aluna — antes, durante e depois.</p>' +
+    '<hr class="s2-divider">' +
+    '<div class="s2-section">' +
+      '<div class="etapa-box">' +
+        '<div class="etapa-box-title">\u2b21 Etapa 1 - Preparação para o Método</div>' +
+        '<div class="etapa-box-hint">O que essa pessoa precisa saber ou fazer antes de entrar no seu método?</div>' +
+        '<textarea class="s2-textarea" id="s2-etapa1" placeholder="Antes de começar o método, minha aluna precisa..." rows="4"></textarea>' +
+      '</div>' +
+      '<div class="etapa-box">' +
+        '<div class="etapa-box-title">\u2b21 Etapa 2 - O Passo a Passo do Método</div>' +
+        '<div class="etapa-box-hint">Esse é o coração do seu método. Quais são os passos que você vai guiar essa pessoa?</div>' +
+        '<div class="passos-container" id="passosContainer"></div>' +
+        '<div class="aviso-menos-mais" id="avisoMenos">✦ Lembra guerreira, menos é mais!</div>' +
+        '<button class="btn-add-passo" id="btnAddPasso">+ adicionar passo</button>' +
+      '</div>' +
+      '<div class="etapa-box">' +
+        '<div class="etapa-box-title">\u2b21 Etapa 3 - Pós Método</div>' +
+        '<div class="etapa-box-hint">O que acontece depois? Como a transformação continua na vida dela?</div>' +
+        '<textarea class="s2-textarea" id="s2-etapa3" placeholder="Depois de concluir o método, minha aluna vai..." rows="4"></textarea>' +
+      '</div>' +
     '</div>' +
-
-    // Etapa 2 - passos dinâmicos
-    '<div class="etapa-box">' +
-      '<div class="etapa-box-title">⬡ Etapa 2 - O Passo a Passo do Método</div>' +
-      '<div class="etapa-box-hint">Esse é o coração do seu método. Quais são os passos que você vai guiar essa pessoa? Exemplo: Primeiro ela faz isso, depois aquilo...</div>' +
-      '<div class="passos-container" id="passosContainer"></div>' +
-      '<div class="aviso-menos-mais" id="avisoMenos">✦ Lembra guerreira, menos é mais! Mas se o seu método precisar de mais passos, pode continuar...</div>' +
-      '<button class="btn-add-passo" id="btnAddPasso">+ adicionar passo</button>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem">' +
+      '<button onclick="wppS2T2()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">📲 Enviar para a Jade</button>' +
+      '<button onclick="baixarS2T2()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar O Como</button>' +
     '</div>' +
-
-    // Etapa 3
-    '<div class="etapa-box">' +
-      '<div class="etapa-box-title">⬡ Etapa 3 - Pós Método</div>' +
-      '<div class="etapa-box-hint">O que acontece depois? O que essa pessoa precisa saber ou fazer para que a transformação continue reverberando na vida dela depois que o método terminar?</div>' +
-      '<textarea class="s2-textarea" id="s2-etapa3" placeholder="Depois de concluir o método, minha aluna vai..." rows="4"></textarea>' +
+    '<div class="nav-btns" style="margin-top:1rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(1)">← Voltar</button>' +
+      '<button class="btn-nx" onclick="s2GoTo(3)">Seguir para o Método →</button>' +
     '</div>' +
   '</div>' +
 
-  '<hr class="s2-divider">' +
-
-  // PILARES - PROMPT GPT
-  '<div class="s2-section">' +
-    '<h3 class="s2-section-title">Pilares do seu Método</h3>' +
-    '<p class="s2-section-hint">Com tudo que você escreveu acima, o ChatGPT vai organizar os grandes pilares do seu método. Copie o prompt, leve ao ChatGPT e cole cada pilar abaixo.</p>' +
-    '<div class="prompt-box">' +
-      '<div class="prompt-box-title">✦ Prompt @1 - Copie e leve ao ChatGPT</div>' +
-      '<div class="prompt-text" id="promptText">Preencha os campos acima para gerar seu prompt personalizado.</div>' +
+  // TELA 3 — PILARES
+  '<div class="step-screen" id="s2t3" style="display:none">' +
+    '<span class="s-label">PASSO 3 DE 4 · ESTRUTURA</span>' +
+    '<h2 class="s-title">Estrutura do<br><em style="color:#b48250;font-style:italic">Método</em></h2>' +
+    '<p class="s-desc">Use o prompt abaixo para pedir à sua IA que organize os pilares e a estrutura completa em módulos e aulas.</p>' +
+    '<div class="prompt-box" style="margin-top:1rem">' +
+      '<div class="prompt-box-title">✦ Prompt — Copie e leve ao seu Chat de IA</div>' +
+      '<div class="prompt-text" id="promptText">Preencha os campos das telas anteriores para gerar o prompt.</div>' +
       '<button class="btn-copy-prompt" id="btnCopyPrompt">⧉ Copiar prompt</button>' +
     '</div>' +
-    '<div style="margin-top:1.5rem">' +
-      '<label class="s2-field-label">Cole aqui os pilares que o ChatGPT gerou</label>' +
-      '<span class="s2-field-hint" style="display:block;margin-bottom:10px">Cole cada pilar no campo correspondente. Adicione ou remova conforme o ChatGPT indicar.</span>' +
-      '<div class="passos-container" id="pilaresContainer"></div>' +
-      '<div class="aviso-menos-mais" id="avisoPilares">✦ Lembra guerreira, menos é mais! Mas se o seu método precisar de mais pilares, pode continuar...</div>' +
-      '<button class="btn-add-passo" id="btnAddPilar">+ adicionar pilar</button>' +
+    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.5rem">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Cole a resposta da IA aqui</div>' +
+      '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Cole o que a IA gerou — os pilares serão criados e preenchidos automaticamente.</p>' +
+      '<textarea id="s2-pilares-cola" class="f-textarea" rows="5" style="min-height:110px" placeholder="Cole aqui a resposta da IA com os pilares..."></textarea>' +
+      '<button onclick="s2DistribuirPilares()" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Criar e distribuir estrutura</button>' +
+      '<p style="font-size:11px;color:#c0392b;margin-top:0.6rem;line-height:1.6"><strong>⚠ Importante:</strong> Analise e ajuste os pilares gerados antes de continuar.</p>' +
+    '</div>' +
+    '<div class="nav-btns" style="margin-top:1.5rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(2)">← Voltar</button>' +
+      '<button class="btn-nx" style="flex:2" onclick="s2AbrirEditor()">\u2726 Editar e revisar meu m\u00e9todo \u2192</button>' +
     '</div>' +
   '</div>' +
 
-  // BOTÃO VER MÉTODO
-  // BOTÃO IR PARA PÁGINA 2
-  '<div style="margin-top:2rem;text-align:center"><button class="btn-espada" id="btnVerMetodo">✦ Ver meu Método pronto →</button></div>' +
-  '</div>' + // fecha s2p1
+  // TELA 3B — EDIÇÃO DO MÉTODO
+  '<div class="step-screen" id="s2t3b" style="display:none">' +
+    '<span class="s-label">EDI\u00c7\u00c3O DO M\u00c9TODO</span>' +
+    '<h2 class="s-title">Edição do<br><em style="color:#b48250;font-style:italic">Método</em></h2>' +
+    '<p class="s-desc">Revise e ajuste tudo antes de seguir.</p>' +
+    '<div class="me-section">' +
+      '<div class="me-section-title">Nome do Método</div>' +
+      '<input type="text" class="f-input" id="me-nome" placeholder="Ex: Método Caverna, Método das 3 Fases..." style="width:100%">' +
+    '</div>' +
+    '<div class="me-section">' +
+      '<div class="me-section-title">Pilares (2 a 4)</div>' +
+      '<div id="me-pilares-container"></div>' +
+      '<button class="me-add-btn" onclick="meAddPilar()">+ adicionar pilar</button>' +
+    '</div>' +
+    '<div class="me-section">' +
+      '<div class="me-section-title">Estrutura — M\u00f3dulos e Aulas</div>' +
+      '<div id="me-modulos-container"></div>' +
+      '<button class="me-add-btn" onclick="meAddModulo()">+ adicionar m\u00f3dulo</button>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem">' +
+      '<button onclick="wppMetodoEditor()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\ud83d\udcf2 Enviar para a Jade</button>' +
+      '<button onclick="baixarMetodoEditor()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar M\u00e9todo</button>' +
+    '</div>' +
+    '<div class="nav-btns" style="margin-top:1rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(3)">← Voltar</button>' +
+      '<button class="btn-espada" style="flex:2" onclick="s2GoTo(4)">\u2726 Ver minha ideia de m\u00e9todo pronta!</button>' +
+    '</div>' +
+  '</div>' +
 
-  // PÁGINA 2 — MÉTODO PRONTO
-  '<div id="s2p2" style="display:none">' +
-    '<div style="text-align:center;padding:1.5rem 0 1rem">' +
-      '<span class="s-label">✦ Seu Método Autoral</span>' +
-      '<h2 class="s-title" style="margin-bottom:0.3rem">Guerreira, aqui está<br><em style="color:#b48250;font-style:italic">seu método pronto</em></h2>' +
-      '<p class="s-desc">Este é o método que só você poderia criar. Guarde, imprima e use como base para tudo que vem a seguir.</p>' +
-    '</div>' +
+  // TELA 4 — MÉTODO PRONTO
+  '<div class="step-screen" id="s2t4" style="display:none">' +
+    '<span class="s-label">PASSO 4 DE 4 · RESULTADO</span>' +
+    '<h2 class="s-title">Minha ideia de<br><em style="color:#b48250;font-style:italic">método pronta!</em></h2>' +
+    '<p class="s-desc">Aqui está tudo que você construiu. Revise, ajuste o que precisar e quando estiver pronta, marque a etapa como concluída.</p>' +
     '<div class="metodo-visual" id="metodoVisual">' +
-      '<div class="mv-title" id="mv-titulo">Método Autoral</div>' +
-      '<div class="mv-subtitle">Os pilares da sua jornada de transformação</div>' +
-      '<div class="mv-objetivo"><div class="mv-objetivo-label">✦ Manifesto</div><div class="mv-objetivo-text" id="mv-manifesto">—</div></div>' +
-      '<div style="margin-top:1.2rem" id="mv-pilares-grid"></div>' +
+      '<div class="mv-objetivo" style="margin-bottom:1rem">' +
+        '<div class="mv-objetivo-label">✦ Manifesto Editorial</div>' +
+        '<div class="mv-objetivo-text" id="mv-manifesto" style="font-style:italic">—</div>' +
+      '</div>' +
+      '<div class="mv-objetivo" style="margin-bottom:1.2rem">' +
+        '<div class="mv-objetivo-label">✦ Objetivo do Método</div>' +
+        '<div class="mv-objetivo-text" id="mv-objetivo-texto">—</div>' +
+      '</div>' +
+      '<div class="mv-objetivo-label" style="margin-bottom:0.6rem">✦ Pilares do Método</div>' +
+      '<div id="mv-pilares-grid"></div>' +
+      '<div id="mv-estrutura-label" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin:1.2rem 0 0.6rem">✦ Estrutura do Método</div>' +
+      '<div id="mv-estrutura-grid" style="display:none"></div>' +
     '</div>' +
-    '<div class="s1-actions" style="margin-top:1.2rem">' +
-      '<button class="btn-imprimir" id="btnPrintMetodo" onclick="s2ImprimirMetodo()">⬇ Imprimir Método</button>' +
-      '<button class="btn-bk" style="flex:1;padding:12px;text-align:center" id="btnVoltarS2p1" onclick="s2VoltarP1()">← Editar método</button>' +
-    '</div>' +
-    '<div style="margin-top:1rem">' +
+    '<div style="margin-top:1.2rem">' +
+      '<button onclick="s2ImprimirMetodoT4()" style="background:rgba(5,17,43,0.08);border:1px solid rgba(5,17,43,0.2);color:#05112b;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">🖨 Imprimir / Salvar PDF</button>' +
       '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Etapa 2 como concluída</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Próxima Batalha</span>' +
       '<div class="s1-proxima-title">Etapa 3 — Produtos do Método</div>' +
-      '<div class="s1-proxima-desc">Guerreira, seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos. Sua próxima batalha te espera.</div>' +
-      '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">⚔ Partir para os Produtos →</button>' +
+      '<div class="s1-proxima-desc">Seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos.</div>' +
+      '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">\u2694 Partir para os Produtos →</button>' +
     '</div>' +
   '</div>' +
 
   '</div>';
 }
+
 
 function s2VoltarP1() {
   var c = document.getElementById('weekContent');
@@ -3107,7 +3991,14 @@ function bindS2Events() {
 
   // Cabeçalho - atualiza prompt quando frase muda
   var fraseEl = c.querySelector('#mhi-frase');
-  if (fraseEl) fraseEl.addEventListener('input', atualizarPrompt);
+  if (fraseEl) fraseEl.addEventListener('input', function(){ atualizarPrompt(); s2Save(); });
+
+  // Auto-save em todos os campos da S2
+  var s2fields = ['s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  s2fields.forEach(function(id) {
+    var el = c.querySelector('#' + id);
+    if (el) el.addEventListener('input', function(){ s2Save(); });
+  });
 
   // Passos dinâmicos
   var passosContainer = c.querySelector('#passosContainer');
@@ -3127,8 +4018,9 @@ function bindS2Events() {
       row.remove();
       renumerar();
       verificarPassos();
+      s2Save();
     });
-    row.querySelector('.passo-input').addEventListener('input', atualizarPrompt);
+    row.querySelector('.passo-input').addEventListener('input', function(){ atualizarPrompt(); s2Save(); });
     passosContainer.appendChild(row);
     verificarPassos();
     atualizarPrompt();
@@ -3174,16 +4066,51 @@ function bindS2Events() {
     var objetivo = (c.querySelector('#s2-objetivo') && c.querySelector('#s2-objetivo').value.trim()) || 'escreva aqui o objetivo do seu método';
     var passos = getPassos();
 
-    var prompt = 'Olá chat, estou sendo mentorada pela Jade Torres que é especialista em comunicação autoral e idealizadora de um programa que ensina mulheres com mais de 30 anos a transformarem seu conhecimento em métodos e produtos na internet.\n\n' +
-      'Estou desenvolvendo meu Método Autoral e preciso da sua ajuda para organizar os pilares.\n\n' +
-      'Meu Manifesto Editorial é:\n"' + frase + '"\n\n' +
-      'Objetivo do meu método:\n' + objetivo + '\n\n' +
-      'Minha primeira ideia de passo a passo:\n' + passos + '\n\n' +
-      'Minha tarefa é:\n' +
-      '1. Listar um resumo do passo a passo do meu método em pilares (Pilar 1, Pilar 2, Pilar 3...)\n' +
-      '2. Me sinaliza quantos pilares meu método deve ter conforme o brainstorm acima.\n' +
-      '3. Para cada pilar, descreve em uma frase o que minha aluna vai conquistar.\n\n' +
-      '';
+    var etapa1 = (c.querySelector('#s2-etapa1') && c.querySelector('#s2-etapa1').value.trim()) || '';
+    var etapa3 = (c.querySelector('#s2-etapa3') && c.querySelector('#s2-etapa3').value.trim()) || '';
+
+    var prompt = 'Olá! Estou sendo mentorada pela Jade Torres, especialista em comunicação autoral, e estou desenvolvendo meu Método Autoral.\n\n' +
+      'Preciso da sua ajuda para organizar duas coisas: os Pilares do meu método e a Estrutura completa em módulos e aulas.\n\n' +
+      '---\n' +
+      'MEUS DADOS:\n' +
+      '---\n\n' +
+      'Manifesto Editorial: "' + frase + '"\n\n' +
+      'Objetivo do método: ' + objetivo + '\n\n' +
+      'Brainstorming — o que vou ensinar:\n' + passos + '\n\n' +
+      'Preparação (antes do método): ' + (etapa1 || 'não preenchido') + '\n\n' +
+      'Pós Método (depois do método): ' + (etapa3 || 'não preenchido') + '\n\n' +
+      '---\n' +
+      'O QUE PRECISO QUE VOCÊ ENTREGUE:\n' +
+      '---\n\n' +
+      '**PARTE 1 — PILARES DO MÉTODO**\n' +
+      'Pilares são os fundamentos conceituais que sustentam o método — como colunas de um edifício. São entre 2 e 4 pilares no máximo. Cada pilar representa um princípio central que permeia todo o método. Exemplo: Posicionamento, Metodologia, Marketing.\n\n' +
+      'Entregue no formato exato abaixo:\n' +
+      'PILAR1: (nome do pilar — máximo 3 palavras)\n' +
+      'PILAR2: (nome do pilar — máximo 3 palavras)\n' +
+      'PILAR3: (nome do pilar — máximo 3 palavras, se necessário)\n' +
+      'PILAR4: (nome do pilar — máximo 3 palavras, se necessário)\n\n' +
+      '**PARTE 2 — ESTRUTURA DO MÉTODO EM MÓDULOS E AULAS**\n' +
+      'Módulos são agrupamentos de aulas por tema. Aulas são as unidades de conteúdo dentro de cada módulo.\n\n' +
+      'A estrutura deve seguir as 3 etapas abaixo:\n\n' +
+      'Etapa 1 — Preparação (Módulo 01)\n' +
+      'São as aulas iniciais que preparam a aluna para receber o método. Exemplos: Conheça a mentora, Seja bem-vinda ao método, Conheça a técnica principal.\n\n' +
+      'Etapa 2 — O Passo a Passo do Método (Módulos 02 em diante)\n' +
+      'São os módulos que entregam o método propriamente dito, baseados no brainstorming e nos pilares.\n\n' +
+      'Etapa 3 — Pós Método (Último módulo)\n' +
+      'São as aulas de encerramento. Exemplos: Como continuar usando o método, Receba seu certificado, Próximos passos.\n\n' +
+      'Entregue no formato exato abaixo (sem texto adicional fora do formato):\n\n' +
+      'MODULO1: Preparação para o Método\n' +
+      'AULA1.1: Conheça a mentora\n' +
+      'AULA1.2: Seja bem-vinda ao [nome do método]\n' +
+      'AULA1.3: [aula preparatória]\n' +
+      'MODULO2: [nome do módulo]\n' +
+      'AULA2.1: [nome da aula]\n' +
+      'AULA2.2: [nome da aula]\n' +
+      '(continue para todos os módulos da Etapa 2)\n' +
+      'MODULO[N]: Pós Método\n' +
+      'AULA[N].1: Como continuar usando o método\n' +
+      'AULA[N].2: Receba seu certificado\n\n' +
+      'IMPORTANTE: Responda APENAS com os dados nos formatos acima. Não adicione introduções, explicações ou conclusões fora dos formatos solicitados.';
 
     var el = c.querySelector('#promptText');
     if (el) el.textContent = prompt;
@@ -3264,31 +4191,7 @@ function bindS2Events() {
   addPilar(''); addPilar(''); addPilar('');
   btnAddPilar.addEventListener('click', function() { addPilar(''); });
 
-  // Ver método - baseado nos pilares
-  var btnVerMetodo = c.querySelector('#btnVerMetodo');
-  if (btnVerMetodo) btnVerMetodo.addEventListener('click', function() {
-    var frase = (c.querySelector('#mhi-frase') && c.querySelector('#mhi-frase').value.trim()) || '—';
-    c.querySelector('#mv-manifesto').textContent = frase;
-    var passos = [];
-    c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ if(p.value.trim()) passos.push(p.value.trim()); });
-    var pilares = [];
-    c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
-    var grid = c.querySelector('#mv-pilares-grid');
-    if (grid) {
-      grid.innerHTML = '';
-      var itens = pilares.length > 0 ? pilares : passos;
-      itens.forEach(function(nome, i) {
-        var card = document.createElement('div'); card.className = 'mv-pilar-card';
-        card.innerHTML = '<div class="mv-pilar-num">' + (i+1) + '</div><div class="mv-pilar-nome">' + nome + '</div>';
-        grid.appendChild(card);
-      });
-    }
-    var p1 = c.querySelector('#s2p1');
-    var p2 = c.querySelector('#s2p2');
-    if (p1) p1.style.display = 'none';
-    if (p2) p2.style.display = 'block';
-    window.scrollTo(0,0);
-  });
+  // btnVerMetodo agora abre em nova aba via s2AbrirMetodoNovaAba()
   // Imprimir método
   var _btnPM=c.querySelector('#btnPrintMetodo'); if(_btnPM) _btnPM.addEventListener('click', function() {
     var mv = c.querySelector('#metodoVisual');
@@ -3580,8 +4483,8 @@ function getS3HTML() {
       '<span class="s-label">Etapa 3 \u00b7 Produtos</span>' +
       '<h2 class="s-title">Produtos do<br><em style="font-style:italic;color:#b48250">M\u00e9todo</em></h2>' +
     '</div>' +
-    '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
-      '<p style="font-size:1rem;color:#f0ebe8;line-height:1.9;font-style:italic;font-family:Playfair Display,serif">' +
+    '<div style="background:linear-gradient(135deg,#e8dfc0,#ddd3a8);border:1px solid rgba(138,95,53,0.3);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
+      '<p style="font-size:1rem;color:#2a1200;line-height:1.9;font-style:italic;font-family:Playfair Display,serif">' +
         '"Que jornada incr\u00edvel voc\u00ea j\u00e1 percorreu at\u00e9 aqui, Guerreira. Agora voc\u00ea sobe para um pr\u00f3ximo n\u00edvel do seu projeto. Quero que voc\u00ea tenha vis\u00e3o empresarial do seu neg\u00f3cio e visualize todas as possibilidades de ganhos com seu m\u00e9todo autoral.' +
         '<br><br>' +
         'Mas antes de visualizar seus produtos, preciso que voc\u00ea d\u00ea um nome para o seu movimento. Esse nome representa tudo que voc\u00ea construiu at\u00e9 aqui; sua causa, seu m\u00e9todo, sua ess\u00eancia. Pode ser um portal, uma comunidade, um instituto, uma academia... Como voc\u00ea quer que o mundo conhe\u00e7a o seu movimento?"' +
@@ -3589,7 +4492,7 @@ function getS3HTML() {
     '</div>' +
     '<div class="s2-field">' +
       '<label class="s2-field-label">Nome do seu Movimento</label>' +
-      '<span class="s2-field-hint" style="display:block;margin-bottom:8px">Portal, Comunidade, Instituto, Academia, Escola...</span>' +
+      '<span class="s2-field-hint" style="display:block;margin-bottom:8px;color:rgba(5,17,43,0.5)">Portal, Comunidade, Instituto, Academia, Escola...</span>' +
       '<input type="text" class="f-input" id="s3-movimento" placeholder="Ex: Instituto Renascer, Portal da Mulher Autoral...">' +
     '</div>' +
     '<div style="margin-top:2rem;text-align:center">' +
@@ -3643,6 +4546,9 @@ function getS3HTML() {
 }
 
 function bindS3Events() {
+  var c = document.getElementById('weekContent');
+  if (c) c.addEventListener('input', function(){ s3Save(); });
+  if (c) c.addEventListener('change', function(){ s3Save(); });
   var c = document.getElementById('weekContent');
   if (!c) return;
 
@@ -3851,6 +4757,9 @@ function getS4HTML() {
 }
 
 function bindS4Events() {
+  var c = document.getElementById('weekContent');
+  if (c) c.addEventListener('input', function(){ s4Save(); });
+  if (c) c.addEventListener('change', function(){ s4Save(); });
   var c = document.getElementById('weekContent');
   if (!c) return;
 
