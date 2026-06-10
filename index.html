@@ -1906,20 +1906,48 @@ var S2_KEY = 's2_metodo_data';
 function s2Save() {
   var c = document.getElementById('weekContent');
   if (!c) return;
+  // Sempre começa com o que já está salvo — nunca sobrescreve com vazio
   var data = {};
+  try { data = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
+  
+  // Só atualiza um campo se ele existir E tiver valor OU se já tinha valor antes
   var fields = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
   fields.forEach(function(id) {
     var el = c.querySelector('#' + id);
-    if (el) data[id] = el.value;
+    if (el) {
+      var val = el.value;
+      // Salva se tem valor, ou se o campo existe (para salvar string vazia intencionalmente ao editar)
+      // Mas não sobrescreve dados salvos com campo vazio que acabou de ser renderizado
+      if (val.trim() !== '' || data[id] !== undefined) {
+        data[id] = val;
+      }
+    }
   });
-  // Salvar passos
-  var passos = [];
-  c.querySelectorAll('#passosContainer .passo-input').forEach(function(p){ passos.push(p.value); });
-  data['passos'] = passos;
-  // Salvar pilares
-  var pilares = [];
-  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ pilares.push(p.value); });
-  data['pilares'] = pilares;
+  
+  // Salvar tela atual
+  for (var i = 1; i <= 4; i++) {
+    var t = c.querySelector('#s2t' + i);
+    if (t && t.style.display === 'block') { data['s2-tela'] = i; break; }
+  }
+  // Salvar passos — só se container existe
+  var passosC = c.querySelector('#passosContainer');
+  if (passosC) {
+    var passos = [];
+    passosC.querySelectorAll('.passo-input').forEach(function(p){ passos.push(p.value); });
+    // Só salva se tem passos ou se já tinha passos salvos
+    if (passos.some(function(p){ return p.trim(); }) || data['passos']) {
+      data['passos'] = passos;
+    }
+  }
+  // Salvar pilares — só se container existe
+  var pilaresC = c.querySelector('#pilaresContainer');
+  if (pilaresC) {
+    var pilares = [];
+    pilaresC.querySelectorAll('.passo-input').forEach(function(p){ pilares.push(p.value); });
+    if (pilares.some(function(p){ return p.trim(); }) || data['pilares']) {
+      data['pilares'] = pilares;
+    }
+  }
   try { localStorage.setItem(S2_KEY, JSON.stringify(data)); } catch(e) {}
 }
 
@@ -1955,9 +1983,26 @@ function s2Load() {
     }
   }
   // Restaurar tela ativa do S2
-  var tela = data['s2-tela'] || 1;
-  if (typeof s2GoTo === 'function') setTimeout(function(){ s2GoTo(parseInt(tela)); }, 200);
-  else if (typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
+  var tela = parseInt(data['s2-tela'] || 1);
+  if (typeof s2GoTo === 'function') {
+    s2GoTo(tela);
+    // Re-fill fields after GoTo (GoTo may reset display but not values)
+    setTimeout(function() {
+      var c2 = document.getElementById('weekContent');
+      if (!c2) return;
+      var fields2 = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+      fields2.forEach(function(id) {
+        if (data[id] !== undefined) {
+          var el = c2.querySelector('#' + id);
+          if (el) el.value = data[id];
+        }
+      });
+      // Re-fill manifesto input
+      var mhiFrase = c2.querySelector('#mhi-frase');
+      if (mhiFrase && data['mhi-frase']) mhiFrase.value = data['mhi-frase'];
+      if (typeof atualizarPrompt === 'function') atualizarPrompt();
+    }, 300);
+  }
 }
 /* ===== FIM S2 SAVE/LOAD ===== */
 
@@ -2040,7 +2085,6 @@ function s2GoTo(n) {
   } catch(e) {}
   if (n === 3 && typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
   window.scrollTo(0, 0);
-  s2Save();
 }
 
 function wppS2T1() {
@@ -4153,43 +4197,31 @@ function bindS2Events() {
     setTimeout(function(){ btn.textContent = '⧉ Copiar prompt'; }, 2000);
   }
 
-  // Pilares dinâmicos
+  // Pilares dinâmicos — container removido da T3, mantido apenas para compatibilidade
   var pilaresContainer = c.querySelector('#pilaresContainer');
   var btnAddPilar = c.querySelector('#btnAddPilar');
   var avisoPilares = c.querySelector('#avisoPilares');
 
-  function addPilar(val) {
-    var total = pilaresContainer.querySelectorAll('.passo-row').length;
-    if (total >= 12) return;
-    var num = total + 1;
-    var row = document.createElement('div');
-    row.className = 'passo-row';
-    row.innerHTML = '<div class="passo-num">' + num + '</div>' +
-      '<input class="passo-input" placeholder="Pilar ' + num + ' - cole aqui o pilar do ChatGPT..." value="' + (val||'') + '">' +
-      '<button class="passo-del" title="Remover">×</button>';
-    row.querySelector('.passo-del').addEventListener('click', function() {
-      row.remove();
-      renumerarPilares();
-      verificarPilares();
-    });
-    pilaresContainer.appendChild(row);
-    verificarPilares();
+  if (pilaresContainer && btnAddPilar) {
+    function addPilar(val) {
+      var total = pilaresContainer.querySelectorAll('.passo-row').length;
+      if (total >= 12) return;
+      var num = total + 1;
+      var row = document.createElement('div');
+      row.className = 'passo-row';
+      row.innerHTML = '<div class="passo-num">' + num + '</div>' +
+        '<input class="passo-input" placeholder="Pilar ' + num + '..." value="' + (val||'') + '">' +
+        '<button class="passo-del" title="Remover">×</button>';
+      row.querySelector('.passo-del').addEventListener('click', function() {
+        row.remove();
+        s2Save();
+      });
+      row.querySelector('.passo-input').addEventListener('input', function(){ s2Save(); });
+      pilaresContainer.appendChild(row);
+    }
+    addPilar(''); addPilar(''); addPilar('');
+    btnAddPilar.addEventListener('click', function() { addPilar(''); });
   }
-
-  function renumerarPilares() {
-    pilaresContainer.querySelectorAll('.passo-row').forEach(function(r, i) {
-      r.querySelector('.passo-num').textContent = i + 1;
-    });
-  }
-
-  function verificarPilares() {
-    var total = pilaresContainer.querySelectorAll('.passo-row').length;
-    avisoPilares.style.display = total >= 8 ? 'block' : 'none';
-    btnAddPilar.style.display = total >= 12 ? 'none' : 'flex';
-  }
-
-  addPilar(''); addPilar(''); addPilar('');
-  btnAddPilar.addEventListener('click', function() { addPilar(''); });
 
   // btnVerMetodo agora abre em nova aba via s2AbrirMetodoNovaAba()
   // Imprimir método
