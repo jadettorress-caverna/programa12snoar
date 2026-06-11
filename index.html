@@ -1642,62 +1642,67 @@ function wppResumoS1() {
 var SPRINT_FORMATO = 'IMPORTANTE: Responda EXATAMENTE neste formato, uma linha por campo, sem explicações extras:\n\n';
 
 function spGetPromptE1() {
-  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meus ingredientes de marca pessoal.\n\n' +
+  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre meus Ingredientes de Marca Pessoal.\n\nResponda na primeira pessoa, de forma específica e fiel à minha história. Não seja genérica.\n\n' +
     SPRINT_FORMATO +
-    'DONS: (o que faço com facilidade que as pessoas admiram)\n' +
-    'HABILIDADES: (o que desenvolvi ao longo dos anos)\n' +
-    'EXPERIENCIAS: (o que vivi que me faz entender meu público profundamente)\n' +
-    'CRENCA: (completar: Acredito que toda mulher tem o direito de...)\n' +
-    'CAUSA: (que impacto quero causar no mundo)\n\n' +
-    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+    'DONS: (O que você faz com tanta facilidade que parece óbvio, mas as pessoas ao redor admiram e pedem ajuda?)\n' +
+    'HABILIDADES: (Quais habilidades você desenvolveu ao longo dos anos — no trabalho, na vida, nas relações?)\n' +
+    'EXPERIENCIAS: (Que experiências marcantes você viveu que te fazem entender profundamente o público que quer ajudar?)\n' +
+    'CRENCA: (Complete: Acredito que toda mulher tem o direito de...)\n' +
+    'CAUSA: (Que mudança você quer ver no mundo por causa do seu trabalho?)\n\n' +
+    'Responda APENAS com o formato acima. Sem introdução nem conclusão.';
 }
 
 function spGetPromptE2() {
-  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre os ingredientes do meu produto.\n\n' +
+  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre o Sprint da minha Fatia de Subnicho.\n\nResponda na primeira pessoa, de forma específica e fiel à minha história. Não seja genérica.\n\n' +
     SPRINT_FORMATO +
-    'PROBLEMA: (principal dor que resolvo)\n' +
-    'PROVA: (caso real ou ilustrativo de transformação que já gerei)\n' +
-    'FERRAMENTA: (material ou fundamento principal que uso)\n' +
-    'PUBLICOALVO: (perfil detalhado de quem ajudo)\n' +
-    'TRANSFORMACAOPRINCIPAL: (transformação concreta que a pessoa alcança)\n' +
-    'PRODUTO: (como entrego e em quais formatos)\n' +
-    'TEMPO: (em quanto tempo a pessoa alcança o resultado)\n\n' +
-    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+    'AREA: (Qual é a grande área onde você atua? Ex: Saúde, Educação, Relacionamentos, Negócios, Comunicação...)\n' +
+    'NICHO: (Qual é o seu nicho específico dentro dessa área? Ex: Nutrição funcional, Educação financeira feminina...)\n' +
+    'FATIA: (Qual é a sua fatia única de subnicho — o recorte bem específico onde você se destaca? Ex: Nutrição funcional para mulheres 40+ em menopausa)\n' +
+    'PUBLICO: (Descreva detalhadamente a pessoa que você atende — quem ela é, o que sente, o que quer, onde está na vida)\n' +
+    'TRANSFORMACAO: (Como essa pessoa fica depois de passar pelo seu método? O que muda concretamente na vida dela?)\n\n' +
+    'Responda APENAS com o formato acima. Sem introdução nem conclusão.';
 }
 
 function spGetPromptE3() {
-  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meu Sprint da Fatia de Subnicho.\n\n' +
+  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre os Ingredientes do meu Produto.\n\nResponda na primeira pessoa, de forma específica e fiel à minha história. Não seja genérica.\n\n' +
     SPRINT_FORMATO +
-    'AREA: (minha grande área de atuação)\n' +
-    'NICHO: (meu nicho específico dentro da área)\n' +
-    'FATIA: (minha fatia única de subnicho — bem específica)\n' +
-    'PUBLICO: (descrição detalhada de quem eu atendo)\n' +
-    'TRANSFORMACAO: (como a pessoa fica depois de passar pelo meu método)\n\n' +
-    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+    'PROBLEMA: (Qual a principal dor que você resolve? O que sua cliente sente antes de te encontrar?)\n' +
+    'PROVA: (Alguém já foi transformado por essa solução — mesmo que informalmente? Descreva um caso real ou ilustrativo.)\n' +
+    'FERRAMENTA: (Qual o método, material ou fundamento principal que você usa para entregar essa transformação?)\n' +
+    'PUBLICOALVO: (Qual o perfil detalhado da pessoa que você ajuda — idade, momento de vida, o que ela já tentou, o que ela deseja?)\n' +
+    'TRANSFORMACAOPRINCIPAL: (Qual a transformação concreta que a pessoa alcança depois do seu método? Como ela fica?)\n' +
+    'PRODUTO: (Como você entrega esse conteúdo — mentoria, curso, grupo? Em quais formatos?)\n' +
+    'TEMPO: (Em quanto tempo a pessoa alcança o resultado principal? Ex: 30 dias, 3 meses, 6 meses.)\n\n' +
+    'Responda APENAS com o formato acima. Sem introdução nem conclusão.';
 }
 
 function spGetPromptE4() {
-  return 'Com base na minha história que compartilhei anteriormente, responda as perguntas abaixo sobre meu Manifesto.\n\n' +
+  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre o meu Manifesto Editorial.\n\nResponda na primeira pessoa, com ousadia e fidelidade à minha história. Ouse. Não seja genérica.\n\n' +
     SPRINT_FORMATO +
-    'FRASE: (minha frase de manifesto — como título de revista, algo que só eu poderia dizer)\n' +
-    'GRITAR: (o que quero gritar para o mundo sem filtro)\n' +
-    'LEGADO: (como quero ser lembrada daqui a 10 anos)\n\n' +
-    'Responda apenas com o formato acima. Não adicione texto antes ou depois.';
+    'FRASE: (Qual seria a frase de manifesto que só você poderia dizer — como título de revista, direta e marcante? Ex: "Eu não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40.")\n' +
+    'GRITAR: (Se você pudesse gritar uma verdade para o mundo sem filtro, o que seria? O que você quer que as pessoas saibam?)\n' +
+    'LEGADO: (Como você quer ser lembrada daqui a 10 anos? O que as pessoas vão falar sobre o seu trabalho e impacto?)\n\n' +
+    'Responda APENAS com o formato acima. Sem introdução nem conclusão.';
 }
 
 function spCopiarPrompt(etapa) {
   var prompts = { 1: spGetPromptE1, 2: spGetPromptE2, 3: spGetPromptE3, 4: spGetPromptE4 };
   var txt = prompts[etapa]();
   var btn = document.getElementById('sp-btn-copy-' + etapa);
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(txt).then(function() {
-      if (btn) { btn.textContent = '✓ Copiado!'; setTimeout(function(){ btn.textContent = '⧉ Copiar prompt da Etapa ' + etapa; }, 2500); }
-    });
-  } else {
+  function confirmar() {
+    if (btn) { btn.textContent = '✓ Copiado!'; btn.style.background = 'linear-gradient(135deg,#2a7a2a,#1a5a1a)'; setTimeout(function(){ btn.textContent = '⧉ Copiar prompt da Etapa ' + etapa; btn.style.background = ''; }, 2500); }
+  }
+  function fallback() {
     var ta = document.createElement('textarea'); ta.value = txt;
-    ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta);
-    ta.focus(); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-    if (btn) { btn.textContent = '✓ Copiado!'; setTimeout(function(){ btn.textContent = '⧉ Copiar prompt da Etapa ' + etapa; }, 2500); }
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); confirmar(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(confirmar).catch(fallback);
+  } else {
+    fallback();
   }
 }
 
@@ -1711,8 +1716,8 @@ function spDistribuir(etapa) {
   var linhas = texto.split('\n');
   var mapa = {
     1: { 'DONS': 's1-dons', 'HABILIDADES': 's1-habilidades', 'EXPERIENCIAS': 's1-experiencias', 'CRENCA': 's1-crenca', 'CAUSA': 's1-causa' },
-    2: { 'PROBLEMA': 'sp-problema', 'PROVA': 'sp-prova', 'FERRAMENTA': 'sp-ferramenta', 'PUBLICOALVO': 'sp-publico', 'TRANSFORMACAOPRINCIPAL': 'sp-trans', 'PRODUTO': 'sp-produto', 'TEMPO': 'sp-tempo' },
-    3: { 'AREA': 's1-area', 'NICHO': 's1-nicho', 'FATIA': 's1-fatia', 'PUBLICO': 's1-publico', 'TRANSFORMACAO': 's1-trans' },
+    2: { 'AREA': 's1-area', 'NICHO': 's1-nicho', 'FATIA': 's1-fatia', 'PUBLICO': 's1-publico', 'TRANSFORMACAO': 's1-trans' },
+    3: { 'PROBLEMA': 'sp-problema', 'PROVA': 'sp-prova', 'FERRAMENTA': 'sp-ferramenta', 'PUBLICOALVO': 'sp-publico', 'TRANSFORMACAOPRINCIPAL': 'sp-trans-ms3', 'PRODUTO': 'sp-produto', 'TEMPO': 'sp-tempo' },
     4: { 'FRASE': 's1-frase', 'GRITAR': 's1-gritar', 'LEGADO': 's1-legado' }
   };
   
@@ -1861,14 +1866,12 @@ function wppSprintE2() {
   var c = document.getElementById('weekContent');
   if (!c) return;
   var g = function(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : '-'; };
-  var texto = '\u2694 *Sprint \u2014 Etapa 2: Ingredientes do Produto*\n\n' +
-    '*Problema principal:* ' + g('sp-problema') + '\n' +
-    '*Prova social:* ' + g('sp-prova') + '\n' +
-    '*Ferramenta principal:* ' + g('sp-ferramenta') + '\n' +
-    '*P\u00fablico alvo:* ' + g('sp-publico') + '\n' +
-    '*Transforma\u00e7\u00e3o principal:* ' + g('sp-trans') + '\n' +
-    '*Produto principal:* ' + g('sp-produto') + '\n' +
-    '*Tempo de valida\u00e7\u00e3o:* ' + g('sp-tempo') + '\n\n' +
+  var texto = '\u2694 *Sprint \u2014 Etapa 2: Sprint da Fatia*\n\n' +
+    '*\u00c1rea:* ' + g('s1-area') + '\n' +
+    '*Nicho:* ' + g('s1-nicho') + '\n' +
+    '*Fatia:* ' + g('s1-fatia') + '\n' +
+    '*Para quem:* ' + g('s1-publico') + '\n' +
+    '*Transforma\u00e7\u00e3o:* ' + g('s1-trans') + '\n\n' +
     '_Enviado pelo Portal Meu Projeto Digital_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
@@ -1877,12 +1880,14 @@ function wppSprintE3() {
   var c = document.getElementById('weekContent');
   if (!c) return;
   var g = function(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : '-'; };
-  var texto = '\u2694 *Sprint \u2014 Etapa 3: Sprint da Fatia*\n\n' +
-    '*\u00c1rea de atua\u00e7\u00e3o:* ' + g('s1-area') + '\n' +
-    '*Nicho:* ' + g('s1-nicho') + '\n' +
-    '*Fatia de subnicho:* ' + g('s1-fatia') + '\n' +
-    '*Para quem faz:* ' + g('s1-publico') + '\n' +
-    '*Transforma\u00e7\u00e3o que entrega:* ' + g('s1-trans') + '\n\n' +
+  var texto = '\u2694 *Sprint \u2014 Etapa 3: Ingredientes do Produto*\n\n' +
+    '*Problema principal:* ' + g('sp-problema') + '\n' +
+    '*Prova social:* ' + g('sp-prova') + '\n' +
+    '*Ferramenta principal:* ' + g('sp-ferramenta') + '\n' +
+    '*P\u00fablico alvo:* ' + g('sp-publico') + '\n' +
+    '*Transforma\u00e7\u00e3o principal:* ' + g('sp-trans-ms3') + '\n' +
+    '*Produto principal:* ' + g('sp-produto') + '\n' +
+    '*Tempo de valida\u00e7\u00e3o:* ' + g('sp-tempo') + '\n\n' +
     '_Enviado pelo Portal Meu Projeto Digital_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
@@ -3022,15 +3027,15 @@ function getManifestoHTML() {
     '<div style="max-width:960px;margin:0 auto">' +
       '<div class="pbar"><div class="pdot active" id="pd1" onclick="mGoTo(1)" style="cursor:pointer">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2" onclick="mGoTo(2)" style="cursor:pointer">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3" onclick="mGoTo(3)" style="cursor:pointer">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4" onclick="mGoTo(4)" style="cursor:pointer">4</div></div>' +
       '<div class="step-screen active" id="ms1">' +
-        '<span class="s-label">Etapa 1 de 4 · A Pizza</span>' +
-        '<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>' +
+        '<span class="s-label">ETAPA 1 DE 4 · MARCA PESSOAL</span>' +
+        '<h2 class="s-title">Ingredientes de<br><em style="color:#b48250;font-style:italic">Marca Pessoal</em></h2>' +
         '<p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>' +
         '<div class="form-2col">' +
-          '<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Terapia..."></div>' +
-          '<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>' +
-          '<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>' +
-          '<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>' +
-          '<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo do tempo..."></textarea></div>' +
+          '<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>' +
+          '<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>' +
         '</div>' +
         '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
         '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 1</div>' +
@@ -4986,8 +4991,8 @@ buildGrid();
 <div style="max-width:960px;margin:0 auto">
 <div class="pbar"><div class="pdot active" id="pd1" onclick="mGoTo(1)" style="cursor:pointer">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2" onclick="mGoTo(2)" style="cursor:pointer">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3" onclick="mGoTo(3)" style="cursor:pointer">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4" onclick="mGoTo(4)" style="cursor:pointer">4</div></div>
 <div class="step-screen active" id="ms1">
-<span class="s-label">Etapa 1 de 4 · A Pizza</span>
-<h2 class="s-title">Sua fatia<br><em style="color:#b48250;font-style:italic">de subnicho</em></h2>
+<span class="s-label">ETAPA 1 DE 4 · MARCA PESSOAL</span>
+<h2 class="s-title">Ingredientes de<br><em style="color:#b48250;font-style:italic">Marca Pessoal</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
 <div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
@@ -5008,15 +5013,15 @@ buildGrid();
 <div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE1()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms2">
-<span class="s-label">Etapa 2 de 4 · Ingredientes</span>
-<h2 class="s-title">Seus ingredientes<br><em style="color:#b48250;font-style:italic">de marca</em></h2>
+<span class="s-label">ETAPA 2 DE 4 · POSICIONAMENTO</span>
+<h2 class="s-title">Sprint da<br><em style="color:#b48250;font-style:italic">Fatia</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
-<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
-<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo dos anos..."></textarea></div>
-<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>
-<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
-<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
+<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Negócios..."></div>
+<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>
+<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>
+<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
+<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
 </div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
   <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 2 — Assistente de IA</div>
@@ -5030,16 +5035,16 @@ buildGrid();
 <div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE2()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms3">
-<span class="s-label">Etapa 3 de 4 · Sprint</span>
-<h2 class="s-title">O Sprint<br><em style="color:#b48250;font-style:italic">da sua fatia</em></h2>
+<span class="s-label">ETAPA 3 DE 4 · PRODUTO</span>
+<h2 class="s-title">Ingredientes do<br><em style="color:#b48250;font-style:italic">Produto</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div class="form-2col">
-<div class="f-group"><label class="f-label">Problema principal que você resolve</label><textarea class="f-textarea" id="sp-problema" rows="2" style="min-height:70px" placeholder="Qual a principal dor que você resolve?"></textarea></div>
-<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" rows="2" style="min-height:70px" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
-<div class="f-group"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" rows="2" style="min-height:70px" placeholder="Que material ou fundamento você usa?"></textarea></div>
-<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" rows="2" style="min-height:70px" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
-<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans" rows="2" style="min-height:70px" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
-<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" rows="2" style="min-height:70px" placeholder="Como você entrega e em quais produtos?"></textarea></div>
+<div class="f-group"><label class="f-label">Problema principal que resolve</label><textarea class="f-textarea" id="sp-problema" placeholder="Qual a principal dor que você resolve?"></textarea></div>
+<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
+<div class="f-group form-full"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" placeholder="Que material ou fundamento você usa?"></textarea></div>
+<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
+<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans-ms3" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
+<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" placeholder="Como você entrega e em quais produtos?"></textarea></div>
 <div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
 </div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
