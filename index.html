@@ -2322,14 +2322,12 @@ function s2DistribuirPilares() {
   var total = pilares.length + Object.keys(modulos).length;
   var btn = c.querySelector('[onclick="s2DistribuirPilares()"]');
   if (btn) {
-    btn.textContent = '✓ ' + pilares.length + ' pilares e ' + Object.keys(modulos).length + ' módulos distribuídos!';
+    btn.textContent = '✓ Distribuído! Abrindo editor...';
     btn.style.background = 'linear-gradient(135deg,#2a7a2a,#1a5a1a)';
-    setTimeout(function(){
-      btn.textContent = '✦ Criar e distribuir estrutura';
-      btn.style.background = '';
-    }, 3000);
   }
   s2Save();
+  // Abre o editor automaticamente após distribuir
+  setTimeout(function(){ s2AbrirEditor(); }, 600);
 }
 
 
@@ -3915,7 +3913,6 @@ function getS2HTML() {
     '</div>' +
     '<div class="nav-btns" style="margin-top:1.5rem">' +
       '<button class="btn-bk" onclick="s2GoTo(2)">← Voltar</button>' +
-      '<button class="btn-nx" style="flex:2" onclick="s2AbrirEditor()">\u2726 Editar e revisar meu m\u00e9todo \u2192</button>' +
     '</div>' +
   '</div>' +
 
@@ -3946,6 +3943,7 @@ function getS2HTML() {
       '<button class="btn-bk" onclick="s2GoTo(3)">← Voltar</button>' +
       '<button class="btn-espada" style="flex:2" onclick="s2GoTo(4)">\u2726 Ver minha ideia de m\u00e9todo pronta!</button>' +
     '</div>' +
+    '<p style="font-size:11px;color:rgba(5,17,43,0.4);text-align:center;margin-top:0.5rem">Revise, envie para a Jade, baixe e depois veja seu método pronto.</p>' +
   '</div>' +
 
   // TELA 4 — MÉTODO PRONTO
