@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-height:100vh}
+html,body{font-family:'DM Sans',sans-serif;background:#233658;color:#f0ebe8;min-height:100vh}
 
 /* HEADER */
 .header{background:linear-gradient(160deg,#071a3e 0%,#05112b 60%);padding:2.5rem 1.5rem 2rem;border-bottom:1px solid rgba(180,130,80,0.2);text-align:center;position:relative;overflow:hidden}
@@ -15,7 +15,8 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .logo-badge{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.2rem}
 .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#b48250,#8a5f35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#05112b}
 .logo-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250}
-.header-title{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#f0ebe8;margin-bottom:0.4rem;line-height:1.2}
+.header-title{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:#f0ebe8;margin-bottom:0.5rem;line-height:1.15}
+.header-title em{color:#b48250;font-style:italic}
 .header-title em{font-style:italic;color:#b48250}
 .header-sub{font-size:13px;color:rgba(240,235,232,0.45);letter-spacing:1px;margin-bottom:1.8rem}
 .progress-summary{display:inline-flex;align-items:center;gap:10px;background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.2);border-radius:20px;padding:8px 20px;font-size:12px;color:rgba(240,235,232,0.6)}
@@ -27,7 +28,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
 
 /* CARD */
-.card{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.15);border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.3s}
+.card{background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.15);border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.3s}
 .card:hover{border-color:rgba(180,130,80,0.5);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
 .card.locked{opacity:0.45;cursor:not-allowed}
 .card.locked:hover{transform:none;border-color:rgba(180,130,80,0.15);box-shadow:none}
@@ -40,7 +41,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .badge-icon{width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
 .badge-check{background:#b48250;color:#05112b;font-weight:700}
 .badge-lock{background:rgba(240,235,232,0.15)}
-.card-body{padding:1.1rem 1.2rem 1.4rem}
+.card-body{padding:1.1rem 1.2rem 1.4rem;background:linear-gradient(160deg,#071a3e,#05112b)}
 .card-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1px}
 .card-subtitle{font-family:'Playfair Display',serif;font-size:1rem;font-style:italic;color:#b48250;margin-bottom:9px}
 .card-desc{font-size:12px;color:rgba(240,235,232,0.4);line-height:1.55;margin-bottom:12px}
@@ -108,7 +109,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .btn-caminho-desc{font-size:12px;opacity:0.8;display:block}
 .manifesto-wrapper{max-width:960px;margin:0 auto;padding:2rem 2rem}
 .pbar{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 2rem;max-width:360px}
-.pdot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(240,235,232,0.4);transition:all 0.3s;flex-shrink:0;background:#05112b;cursor:pointer}
+.pdot{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(240,235,232,0.4);transition:all 0.3s;flex-shrink:0;background:#233658;cursor:pointer}
 .pdot.active{border-color:#b48250;color:#b48250;background:rgba(180,130,80,0.1)}
 .pdot.done{border-color:#b48250;background:#b48250;color:#05112b;font-weight:600}
 .pline{flex:1;height:1px;background:rgba(180,130,80,0.2);max-width:34px}
@@ -361,11 +362,12 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .card-oracao-texto-print{font-family:'Playfair Display',serif;font-size:0.95rem;color:#05112b;line-height:1.8;font-style:italic;margin-bottom:1.2rem;text-align:center}
 .card-footer-print{text-align:center;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#b48250;border-top:1px solid #eee;padding-top:1rem}
 .card-acoes-print{display:flex;gap:10px;margin-top:1.2rem}
-.btn-print-now{flex:1;padding:12px;background:#05112b;border:none;border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
+.btn-print-now{flex:1;padding:12px;background:#233658;border:none;border-radius:8px;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
 .btn-print-close{flex:1;padding:12px;background:transparent;border:1px solid #ccc;border-radius:8px;color:#888;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
 @media print{
+  @page { margin: 20mm 12mm 8mm 12mm; }
   body>*{display:none!important}
-  #printArea{display:block!important;position:fixed;inset:0;background:white;z-index:99999;padding:2rem}
+  #printArea{display:block!important;position:static;background:white;z-index:99999;padding:2rem;width:100%;min-height:auto}
   .card-juramento-print.ativo{display:block!important;position:fixed!important;inset:0!important;background:white!important;padding:2rem!important;overflow:visible!important}
   .card-juramento-print.ativo .card-juramento-inner{display:block!important;box-shadow:none!important;border-radius:0!important;max-width:100%!important}
   .card-juramento-print.ativo .card-close,
@@ -379,7 +381,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 /* MODAL CUSTOMIZADO */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.92);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
 .modal-overlay.ativo{display:flex}
-.modal-box{background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.4);border-radius:18px;padding:2rem 2rem 1.5rem;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.modal-box{background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.4);border-radius:18px;padding:2rem 2rem 1.5rem;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .modal-icon{font-size:32px;margin-bottom:0.8rem;display:block}
 .modal-titulo{font-family:'Playfair Display',serif;font-size:1.2rem;color:#05112b;margin-bottom:0.5rem;font-weight:700}
 .modal-texto{font-size:14px;color:rgba(5,17,43,0.7);line-height:1.6;margin-bottom:1.5rem}
@@ -410,7 +412,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 /* MODAL VITÓRIA */
 .modal-vitoria{display:none;position:fixed;inset:0;background:rgba(5,17,43,0.95);z-index:99999;align-items:center;justify-content:center;padding:1.5rem}
 .modal-vitoria.ativo{display:flex}
-.modal-vitoria-box{background:linear-gradient(160deg,#0a1f4a,#05112b);border:2px solid rgba(180,130,80,0.6);border-radius:20px;padding:2.5rem 2rem;max-width:440px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(180,130,80,0.15),0 0 0 1px rgba(180,130,80,0.1)}
+.modal-vitoria-box{background:linear-gradient(160deg,#2c4269,#233658);border:2px solid rgba(180,130,80,0.6);border-radius:20px;padding:2.5rem 2rem;max-width:440px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(180,130,80,0.15),0 0 0 1px rgba(180,130,80,0.1)}
 .vitoria-icon{font-size:56px;display:block;margin-bottom:1rem;animation:vitoriaPulse 1s ease-in-out infinite alternate}
 @keyframes vitoriaPulse{from{transform:scale(1)}to{transform:scale(1.1)}}
 .vitoria-selo{display:inline-flex;align-items:center;gap:6px;background:rgba(180,130,80,0.15);border:1px solid rgba(180,130,80,0.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:1rem}
@@ -566,6 +568,60 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .entrada-btn-secondary{background:transparent;color:rgba(240,235,232,0.6);border:1px solid rgba(240,235,232,0.15);border-radius:14px;padding:16px 24px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s}
 .entrada-btn-secondary:hover{border-color:rgba(180,130,80,0.4);color:#f0ebe8;background:rgba(180,130,80,0.06)}
 
+
+/* ===== MARCO CARDS ===== */
+.marco-card{background:#fff;border:1px solid rgba(138,95,53,0.15);border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.25s;display:flex;flex-direction:column}
+.marco-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(180,130,80,0.15);border-color:rgba(180,130,80,0.4)}
+.marco-card-header{background:linear-gradient(135deg,#05112b,#0a1e3d);padding:1.4rem 1.6rem;display:flex;align-items:center;justify-content:space-between}
+.marco-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:rgba(180,130,80,0.9);line-height:1}
+.marco-etapa-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,235,232,0.4)}
+.marco-card-body{padding:1.4rem 1.6rem;flex:1;display:flex;flex-direction:column;gap:0.8rem}
+.marco-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#05112b;line-height:1.3;font-weight:700}
+.marco-title em{font-style:italic;color:#b48250}
+.marco-desc{font-size:13px;color:rgba(5,17,43,0.55);line-height:1.6;flex:1}
+.marco-meta{background:#f5f0e8;border-radius:10px;padding:0.8rem 1rem;display:flex;flex-direction:column;gap:0.4rem}
+.marco-meta-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;display:block;margin-bottom:2px}
+.marco-meta-val{font-size:12px;color:#05112b;font-weight:500}
+.marco-semanas,.marco-entregavel{display:flex;flex-direction:column}
+.marco-cta{background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border-radius:8px;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-align:center;margin-top:auto}
+.marco-card:hover .marco-cta{background:linear-gradient(135deg,#c49260,#9a6f45)}
+
+.desafio-card .marco-card-header{background:linear-gradient(135deg,#2a7a2a,#1a5a1a)}
+.desafio-card .marco-num{color:rgba(37,211,102,0.9)}
+.desafio-card .marco-cta{background:linear-gradient(135deg,#25d366,#1aab52)}
+.desafio-card:hover .marco-cta{background:linear-gradient(135deg,#2de870,#1aab52)}
+
+/* Grid 2 colunas para os novos cards */
+#weeksGrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 1rem 2rem}
+@media(max-width:600px){#weeksGrid{grid-template-columns:1fr}}
+/* ===== FIM MARCO CARDS ===== */
+
+
+/* ===== CAMPOS DE BATALHA ===== */
+.campo-mes-bloco{margin-bottom:2rem}
+.campo-mes-titulo{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(180,130,80,0.2)}
+.campo-mes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.campo-mes-grid{grid-template-columns:1fr}}
+.campo-card{background:#fff;border:1px solid rgba(138,95,53,0.15);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:0.5rem;transition:all 0.2s;position:relative;overflow:hidden}
+.campo-card.concluido{border-color:rgba(180,130,80,0.35);background:#fffdf9}
+.campo-badge-pendente{position:absolute;bottom:10px;right:10px;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:600;white-space:nowrap;box-shadow:0 2px 8px rgba(180,130,80,0.3)}
+.campo-card-header{display:flex;align-items:center;justify-content:space-between}
+.campo-num{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35}
+.campo-data{font-size:11px;color:#05112b;font-weight:600}
+.campo-data.vazio{color:rgba(5,17,43,0.3)}
+.campo-nome{font-size:13px;font-weight:600;color:#05112b;line-height:1.3}
+.campo-tema{font-size:12px;color:rgba(5,17,43,0.5);font-style:italic}
+.campo-tema.vazio{color:rgba(5,17,43,0.25)}
+.campo-participacao{margin-top:0.3rem}
+.campo-part-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(5,17,43,0.4);margin-bottom:0.4rem}
+.campo-part-opcoes{display:flex;flex-wrap:wrap;gap:4px}
+.campo-btn{background:transparent;border:1px solid rgba(138,95,53,0.2);border-radius:6px;padding:4px 8px;font-size:11px;color:rgba(5,17,43,0.5);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.campo-btn:hover{border-color:rgba(180,130,80,0.4);color:#05112b}
+.campo-btn.ativo{background:linear-gradient(135deg,#05112b,#0a1e3d);border-color:#05112b;color:#f0ebe8}
+.campo-btn.ativo.azul{background:linear-gradient(135deg,#2D8CFF,#1a6fd4);border-color:#2D8CFF;color:#fff}
+.campo-btn.ativo.vermelha{background:linear-gradient(135deg,#E53935,#b71c1c);border-color:#E53935;color:#fff}
+/* ===== FIM CAMPOS CSS ===== */
+
 </style>
 </head>
 <body>
@@ -585,95 +641,30 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 <div id="boasVindas" style="display:none">
   <div class="bv-wrapper">
-    <div style="text-align:right;margin-bottom:0.5rem"><button onclick="irTelaEntrada()" style="background:none;border:none;color:rgba(180,130,80,0.5);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:1px">← Início</button></div>
+    <div style="text-align:right;margin-bottom:0.5rem">
+      <button onclick="irTelaEntrada()" style="background:none;border:none;color:rgba(180,130,80,0.5);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:1px">← Início</button>
+    </div>
+
     <div class="bv-hero">
-      <div class="bv-foto" id="bv-avatar">
+      <div class="bv-foto-placeholder" id="bv-avatar">
         <img src="fotos/jade.jpg" alt="Jade Torres" style="width:100%;height:100%;border-radius:50%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=font-size:32px>⚔</span>'">
       </div>
       <span class="bv-nome">Caverna das Guerreiras · Jade Torres</span>
-      <h1 class="bv-titulo">Programa <em>Meu Projeto</em> Digital</h1>
-      <p class="bv-subtitulo">Bem-vinda, guerreira. Você está prestes a transformar tudo que sabe em um projeto digital que te representa, te posiciona e te gera receita.</p>
+      <h1 class="bv-titulo">Calendário dos <em>Campos de Batalha</em></h1>
+      <p class="bv-subtitulo">24 campos em 6 meses. Marque como participou de cada um.</p>
     </div>
 
-
-
-    <div class="bv-plano">
-      <div class="bv-plano-titulo">📍 Seu plano de ação</div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone encontro">🤝</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Encontro 1 — Onboarding</div>
-          <div class="bv-marco-desc">Alinhamento inicial, apresentação do método e definição do caminho</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data realizada</span>
-            <input type="date" id="bv-data-0" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone">1</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Marco 1 — Lugar de Fala · Posicionamento</div>
-          <div class="bv-marco-desc">Etapas 1 e 2 concluídas — manifesto editorial e método autoral</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data de conclusão</span>
-            <input type="date" id="bv-data-1" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone">2</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Marco 2 — Método Autoral</div>
-          <div class="bv-marco-desc">Etapas 3, 4 e 5 concluídas — produtos, metodologia e método na plataforma</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data de conclusão</span>
-            <input type="date" id="bv-data-2" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone">3</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Marco 3 — Programa · Produto</div>
-          <div class="bv-marco-desc">Etapas 6, 7 e 8 concluídas — edição, validação e oferta</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data de conclusão</span>
-            <input type="date" id="bv-data-3" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone">4</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Marco 4 — Perfil no Ar · Conteúdo</div>
-          <div class="bv-marco-desc">Etapas 9, 10 e 11 concluídas — bio, destaques e feed</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data de conclusão</span>
-            <input type="date" id="bv-data-4" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
-
-      <div class="bv-marco">
-        <div class="bv-marco-icone encontro">🏆</div>
-        <div class="bv-marco-body">
-          <div class="bv-marco-nome">Encontro 2 — Coletiva Final</div>
-          <div class="bv-marco-desc">Etapa 12 concluída — celebração, depoimento e próximos passos</div>
-          <div class="bv-marco-data">
-            <span class="bv-marco-data-label">Data realizada</span>
-            <input type="date" id="bv-data-5" onchange="bvSalvar()">
-          </div>
-        </div>
-      </div>
+    <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.5rem">
+      <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin:0">
+        <strong style="color:#8a5f35">Como funciona:</strong> Todo mês acontecem 4 Campos de Batalha ao vivo. Quem não puder ao vivo assiste pela gravação. Marque abaixo como você participou de cada campo.
+      </p>
     </div>
 
-    <button class="bv-btn-entrar" onclick="bvEntrar()">⚔ Acessar minhas etapas</button>
+    <div id="campos-container">
+      <!-- Gerado pelo JS -->
+    </div>
+
+    <button class="bv-btn-entrar" onclick="bvEntrar()" style="margin-top:1rem">⚔ Acessar minhas Etapas</button>
   </div>
 </div>
 
@@ -684,7 +675,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
       <span class="logo-text">Portal Caverna Azul</span>
     </div>
     <h1 class="header-title">Programa <em>Meu Projeto</em> Digital</h1>
-    <p class="header-sub">Meu Projeto Digital · Jade Torres</p>
+    <p class="header-sub">Sua metodologia, etapa por etapa — sem enrolação, sem teoria solta.</p>
     <div class="progress-summary">
       <div class="progress-dot"></div>
       Sua jornada começa aqui, guerreira
@@ -705,7 +696,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
     <button class="btn-back-detail" id="btnBackMain">←</button>
     <button id="btnInicio" onclick="irTelaEntrada()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:8px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Início</button>
     <button id="btnEtapas" onclick="goHome()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Etapas</button>
-    <button id="btnMarcos" onclick="irBoasVindas()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Marcos</button>
+    <button id="btnMarcos" onclick="irBoasVindas()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:6px;padding:6px 14px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:6px;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">Campos</button>
     <div class="detail-info">
       <div class="detail-week-num" id="detailWeekNum"></div>
       <div class="detail-week-title" id="detailWeekTitle"></div>
@@ -717,37 +708,43 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 <script>
 var weeks = [
-  {n:1,title:"Manifesto Editorial",sub:"Fatia de Subnicho",desc:"Posicionamento; sua mensagem é única e deve ser comunicada de forma única.",tag:"Posicionamento",locked:false},
-  {n:2,title:"Método Autoral",sub:"Brainstorming",desc:"É hora de transformar seu conhecimento em método e ser mentora com liberdade.",tag:"Construção",locked:false},
-  {n:3,title:"Produtos do",sub:"Método",desc:"Defina os produtos que nascem do seu método com clareza e intenção.",tag:"Produtos",locked:false},
-  {n:4,title:"Metodologia",sub:"Entrega Escalável",desc:"Organize sua entrega para escalar sem depender só do seu tempo.",tag:"Escalabilidade",locked:false},
-  {n:5,title:"Método na",sub:"Plataforma",desc:"Design, gravação e estrutura — seu método ganha forma e encontra sua casa digital.",tag:"Produção",locked:false},
-  {n:6,title:"Edição e",sub:"Hospedagem",desc:"Seus conteúdos ganham acabamento e encontram sua casa na plataforma.",tag:"Produção",locked:false},
-  {n:7,title:"Validação do",sub:"Método",desc:"Hora de testar, ajustar e fortalecer sua solução principal.",tag:"Validação",locked:false},
-  {n:8,title:"Minha",sub:"Oferta",desc:"Construa a apresentação do seu produto com narrativa, estrutura e clareza para vender.",tag:"Oferta",locked:false},
-  {n:9,title:"Perfil Pronto",sub:"BIO e Fixados",desc:"Sua marca pessoal mostrará causa, propósito e identidade no digital.",tag:"Instagram",locked:false},
-  {n:10,title:"Perfil Pronto",sub:"Destaques",desc:"Cada destaque conta uma parte da sua história e convida ao próximo passo.",tag:"Instagram",locked:false},
-  {n:11,title:"Perfil Pronto",sub:"Feed",desc:"Produção e distribuição; conteúdo inicia um movimento alcançando novos espaços.",tag:"Conteúdo",locked:false},
-  {n:12,title:"Meu Projeto",sub:"Digital",desc:"Você chegou. Hora de celebrar, colher seu depoimento e imaginar os próximos passos.",tag:"Conclusão",locked:false}
+  {n:1,title:"Armadura da Guerreira",sub:"Espada e Juramento",desc:"Antes de falar, se tornar. Seu nome, sua espada e sua foto — o começo de tudo.",tag:"Cadastro",locked:false,semanas:"Cadastro",entregavel:"Perfil de guerreira ativado"},
+  {n:2,title:"Lugar de Fala",sub:"Linha do Tempo",desc:"Antes de falar, saber de onde se fala. Sua história de vida como dado estratégico.",tag:"Semanas 1 e 2",locked:false,semanas:"1 e 2",entregavel:"Manifesto Editorial + Canvas"},
+  {n:3,title:"Sprint de Decisões",sub:"Posicionamento",desc:"Sem posicionamento definido, qualquer público serve — e nenhum compra.",tag:"Semanas 3 e 4",locked:false,semanas:"3 e 4",entregavel:"Sprint de Decisões completo"},
+  {n:4,title:"Método",sub:"Autoral",desc:"O que você faz precisa ter nome, sequência e lógica replicável.",tag:"Semanas 5 e 6",locked:false,semanas:"5 e 6",entregavel:"Metodologia com pilares, módulos e aulas"},
+  {n:5,title:"Produtos",sub:"Do Método",desc:"A partir do método, ela cria produtos. Cada produto tem formato, entrega e oferta.",tag:"Semanas 7 a 10",locked:false,semanas:"7, 8, 9 e 10",entregavel:"Produto gravado, hospedado, validado e com oferta"},
+  {n:6,title:"Linha",sub:"Editorial",desc:"Comunicação não é postar — é sustentar narrativa de autoridade ao longo do tempo.",tag:"Semanas 11 e 12",locked:false,semanas:"11 e 12",entregavel:"Perfil no ar + Cubo Mágico configurado"},
+  {n:7,title:"Desafio",sub:"12 Semanas no Ar",desc:"O ritmo de execução. Acompanhe semana a semana o que precisa fazer e marque o que concluiu.",tag:"Paralelo",locked:false,semanas:"Paralelo",entregavel:"Checklist de execução semanal",isDesafio:true}
 ];
+
+
 
 document.getElementById('btnBackMain').addEventListener('click', function(){ s1BtnVoltarTela(); });
 
 function buildGrid() {
   var g = document.getElementById('weeksGrid');
+  var foto = localStorage.getItem('guerreira_photo') || '';
   weeks.forEach(function(w) {
     var c = document.createElement('div');
-    c.className = 'card' + (w.locked ? ' locked' : '');
-    var guerreiraPhoto = localStorage.getItem('guerreira_photo');
-    var photoHTML;
-    if (guerreiraPhoto) {
-      photoHTML = '<img src="' + guerreiraPhoto + '" alt="Sua foto" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block">';
-    } else {
-      photoHTML = '<div class="card-photo-placeholder"><div class="placeholder-inner" style="flex-direction:column;gap:6px"><span style="font-size:22px;color:rgba(180,130,80,0.5)">✦</span><span style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,130,80,0.35)">Semana ' + w.n + '</span></div></div>';
-    }
-    var badge = '<div class="card-week-badge"><div class="badge-icon ' + (w.locked ? 'badge-lock' : 'badge-check') + '">' + (w.locked ? '🔒' : '✓') + '</div>Etapa ' + w.n + '</div>';
-    c.innerHTML = '<div class="card-photo">' + photoHTML + '<div class="card-overlay"></div>' + badge + '</div>' +
-      '<div class="card-body"><div class="card-title">' + w.title + '</div><div class="card-subtitle">' + w.sub + '</div><div class="card-desc">' + w.desc + '</div><div class="card-tag">' + w.tag + '</div></div>';
+    c.className = 'card' + (w.locked ? ' locked' : '') + (w.isDesafio ? ' desafio-card' : '');
+
+    var etapaLabel = w.isDesafio ? '✦ DESAFIO' : ('✓ ETAPA ' + w.n);
+    var photoHTML = foto
+      ? '<img src="' + foto + '" alt="Foto da guerreira">'
+      : '<div class="card-photo-placeholder"><div class="placeholder-inner">' + (w.isDesafio ? '✦' : w.n) + '</div></div>';
+
+    c.innerHTML =
+      '<div class="card-photo">' + photoHTML +
+        '<div class="card-overlay"></div>' +
+        '<div class="card-week-badge">' + etapaLabel + '</div>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div class="card-title">' + w.title + '</div>' +
+        '<div class="card-subtitle">' + w.sub + '</div>' +
+        '<div class="card-desc">' + w.desc + '</div>' +
+        '<div class="card-tag" style="color:#b48250;font-weight:600">' + (w.isDesafio ? '✦ Checklist de execução' : ('Entregável: ' + (w.entregavel || ''))) + '</div>' +
+      '</div>';
+
     if (!w.locked) {
       (function(wk) { c.addEventListener('click', function() { openWeek(wk.n); }); })(w);
     }
@@ -759,47 +756,80 @@ function openWeek(n) {
   document.getElementById('portalHome').style.display = 'none';
   document.getElementById('weekDetail').style.display = 'block';
   var w = weeks[n-1];
-  document.getElementById('detailWeekNum').textContent = 'Etapa ' + n + ' · ' + w.tag;
-  document.getElementById('detailWeekTitle').textContent = w.title + ' - ' + w.sub;
+  document.getElementById('detailWeekNum').textContent = w.isDesafio ? 'Desafio' : ('Etapa ' + n);
+  document.getElementById('detailWeekTitle').textContent = w.title + ' ' + w.sub;
   var content = document.getElementById('weekContent');
   if (n === 1) {
+    // Etapa 1 - Armadura da Guerreira (Ritual + Foto). Termina em r5 ("Avante, Guerreira!")
     var tpl = document.getElementById('tplS1');
     content.innerHTML = tpl ? tpl.innerHTML : '';
-    ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'].forEach(function(sid){
+    ['r2','r3','r4','r4b','r5','caminhoA','caminhoB','ltPrompt','ltFinal','r_checkpoint','s1Resultado','s2Checkpoint'].forEach(function(sid){
       var el = content.querySelector('#'+sid);
       if(el) el.style.display = 'none';
     });
     setTimeout(function(){
       bindManifestoEvents();
-      // Verificar se há progresso salvo
       var saved = s1GetSaved();
       if (saved) {
-        // Tem progresso — carrega direto sem modal
-        setTimeout(function(){ s1Load(); }, 100);
+        setTimeout(function(){
+          s1Load();
+          // Se a última tela salva pertence à Linha do Tempo ou depois, não é da Armadura.
+          setTimeout(function(){
+            var atual = s1TelaAtual ? s1TelaAtual() : null;
+            var telasDepois = ['caminhoB','ltPrompt','ltFinal','r_checkpoint','caminhoA','s1Resultado','s2Checkpoint'];
+            if (telasDepois.indexOf(atual) > -1) {
+              s1GoTo('r1');
+            }
+          }, 100);
+        }, 100);
       }
     }, 150);
   } else if (n === 2) {
+    // Etapa 2 - Lugar de Fala / Linha do Tempo (entra direto no caminhoB)
+    var tplLT = document.getElementById('tplS1');
+    content.innerHTML = tplLT ? tplLT.innerHTML : '';
+    setTimeout(function(){
+      bindManifestoEvents();
+      var saved = s1GetSaved();
+      if (saved) { s1Load(); }
+      setTimeout(function(){
+        var atual = s1TelaAtual ? s1TelaAtual() : null;
+        var telasEtapa2 = ['caminhoB','ltPrompt','ltFinal','r_checkpoint'];
+        if (telasEtapa2.indexOf(atual) === -1) {
+          s1GoTo('caminhoB');
+          s1GerarPromptLT();
+        }
+      }, 300);
+    }, 150);
+  } else if (n === 3) {
+    // Etapa 3 - Posicionamento (Sprint de Decisões — entra direto no caminhoA)
+    var tpl2 = document.getElementById('tplS1');
+    content.innerHTML = tpl2 ? tpl2.innerHTML : '';
+    setTimeout(function(){
+      bindManifestoEvents();
+      var saved = s1GetSaved();
+      if (saved) { s1Load(); }
+      setTimeout(function(){ s1GoTo('caminhoA'); }, 300);
+    }, 150);
+  } else if (n === 4) {
+    // Etapa 4 - Método Autoral
     content.innerHTML = getS2HTML();
     bindS2Events();
     setTimeout(function(){ s2Load(); }, 150);
     s1MostrarBtnSalvar(true);
-  } else if (n === 3) {
+  } else if (n === 5) {
+    // Etapa 5 - Produtos (Entrega, Plataforma, Edição, Validação e Oferta conectadas)
     content.innerHTML = getS3HTML();
     bindS3Events();
-    setTimeout(function(){ s3Load(); }, 150);
-  } else if (n === 4) {
-    content.innerHTML = getS4HTML();
     bindS4Events();
-    setTimeout(function(){ s4Load(); }, 150);
-  } else if (n === 5) {
+    bindCkEvents();
+    setTimeout(function(){ s3Load(); s4Load(); }, 150);
+  } else if (n === 6) {
     content.innerHTML = getS5HTML();
     bindCkEvents(5);
-  } else if (n === 6) {
+  } else if (n === 7) {
     content.innerHTML = getCkHTML(6);
     bindCkEvents(6);
-  } else if (n === 7) {
-    content.innerHTML = getCkHTML(7);
-    bindCkEvents(7);
   } else if (n === 8) {
     content.innerHTML = getS8OfertaHTML();
     bindS8OfertaEvents();
@@ -956,7 +986,7 @@ function getChecklistHTML(n) {
 
   var html = '<div class="ck-wrapper">';
   html += '<div class="ck-header">';
-  html += '<span class="ck-semana-label">Semana ' + n + ' · ' + (n===5?'Design':n===6?'Gravação':'Produção') + '</span>';
+  html += '<span class="ck-semana-label">Etapa 5 · ' + (n===5?'Plataforma':n===6?'Edição e Hospedagem':'Validação') + '</span>';
   html += '<h2 class="ck-titulo">' + d.titulo + '<br><em>' + d.subtitulo + '</em></h2>';
   html += '<p class="ck-desc">' + d.desc + '</p>';
   html += '<div class="ck-progress-bar"><div class="ck-progress-fill" id="ck-fill-'+n+'" style="width:' + pct + '%"></div></div>';
@@ -1429,7 +1459,7 @@ function getS8OfertaHTML() {
 
   return '<div class="ck-wrapper">' +
     '<div class="ck-header">' +
-      '<span class="ck-semana-label">Etapa 8 · Oferta</span>' +
+      '<span class="ck-semana-label">Etapa 5 · Oferta</span>' +
       '<h2 class="ck-titulo">Minha<br><em>Oferta</em></h2>' +
       '<p class="ck-desc">Preencha os campos abaixo com as informações do seu produto. O portal vai gerar um prompt completo para você criar sua apresentação de vendas no Claude.</p>' +
     '</div>' +
@@ -1564,6 +1594,18 @@ function s1BtnVoltarTela() {
     }
   }
 
+  // Verificar se está dentro do Sprint (caminhoA) — voltar pra sub-etapa anterior, não pra Linha do Tempo
+  var ca = c.querySelector('#caminhoA');
+  if (ca && ca.style.display !== 'none') {
+    for (var m = 4; m >= 1; m--) {
+      var ms = ca.querySelector('#ms' + m);
+      if (ms && ms.classList.contains('active')) {
+        if (m > 1) { mGoTo(m - 1); return; }
+        else { s1GoTo('r5'); s1Save(); return; }
+      }
+    }
+  }
+
   // Etapa 1 — voltar tela anterior
   var atual = s1TelaAtual ? s1TelaAtual() : null;
   if (atual && S1_PREV && S1_PREV[atual]) {
@@ -1579,11 +1621,7 @@ function s1BtnVoltarTela() {
 
 /* ===== BOAS-VINDAS ===== */
 function bvInit() {
-  var saved = JSON.parse(localStorage.getItem('bv_data') || '{}');
-  for (var i = 0; i <= 5; i++) {
-    var el = document.getElementById('bv-data-' + i);
-    if (el && saved['data' + i]) el.value = saved['data' + i];
-  }
+  buildCampos();
 }
 
 function bvSalvar() {
@@ -1607,6 +1645,7 @@ function irBoasVindas() {
   document.getElementById('weekDetail').style.display = 'none';
   document.getElementById('portalHome').style.display = 'none';
   document.getElementById('boasVindas').style.display = 'block';
+  setTimeout(buildCampos, 100);
   window.scrollTo(0,0);
 }
 
@@ -1653,7 +1692,7 @@ function spGetPromptE1() {
 }
 
 function spGetPromptE2() {
-  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre o Sprint da minha Fatia de Subnicho.\n\nResponda na primeira pessoa, de forma específica e fiel à minha história. Não seja genérica.\n\n' +
+  return 'Com base na minha história que compartilhei, responda as perguntas abaixo sobre a minha Fatia de Subnicho.\n\nResponda na primeira pessoa, de forma específica e fiel à minha história. Não seja genérica.\n\n' +
     SPRINT_FORMATO +
     'AREA: (Qual é a grande área onde você atua? Ex: Saúde, Educação, Relacionamentos, Negócios, Comunicação...)\n' +
     'NICHO: (Qual é o seu nicho específico dentro dessa área? Ex: Nutrição funcional, Educação financeira feminina...)\n' +
@@ -1749,9 +1788,9 @@ function spDistribuir(etapa) {
 }
 /* ===== FIM SPRINT PROMPTS ===== */
 
-function wppEnviarCanvas() {
+function imprimirPosicionamento() {
   var c = document.getElementById('weekContent') || document;
-  var get = function(id) { var el = c.querySelector ? c.querySelector('#'+id) : document.getElementById(id); return el ? (el.textContent || el.value || '').trim() : ''; };
+  var get = function(id) { var el = c.querySelector ? c.querySelector('#'+id) : document.getElementById(id); return el ? (el.textContent || el.value || '').trim() : '-'; };
   var nome = get('res-nome') || get('r-nome') || '-';
   var espada = get('res-espada') || '-';
   var frase = get('res-frase') || get('r-frase') || '-';
@@ -1762,7 +1801,84 @@ function wppEnviarCanvas() {
   var cau = get('r-cau') || '-';
   var leg = get('r-leg') || '-';
 
-  var texto = '⚔ *Canvas do Manifesto Editorial*\n\n' +
+  function linha(label, valor) {
+    return '<div style="margin-bottom:1rem;page-break-inside:avoid">' +
+      '<div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">' + label + '</div>' +
+      '<div style="font-size:14px;color:#222;font-style:italic;padding:6px 0;border-bottom:1px solid #ddd">' + (valor || '<span style="color:#bbb">Não preenchida</span>') + '</div>' +
+      '</div>';
+  }
+  function secao(titulo) {
+    return '<div style="font-size:13px;font-weight:700;color:#8a5f35;margin:1.5rem 0 0.8rem;padding-top:1rem;border-top:2px solid rgba(180,130,80,0.2)">📍 ' + titulo + '</div>';
+  }
+
+  var html = '<div style="font-family:Georgia,serif;max-width:850px;margin:0 auto;padding:1rem">' +
+    '<div style="text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Posicionamento</div>' +
+    '<div style="font-size:1.4rem;font-weight:700;color:#111">Meu Canvas de Posicionamento</div>' +
+    '</div>' +
+    secao('Manifesto Editorial') +
+    linha('Guerreira', nome) +
+    linha('Palavra-espada', espada) +
+    linha('Manifesto', frase) +
+    linha('Quem sou eu', idPessoal) +
+    linha('O que eu faço', idEdit) +
+    linha('Para quem eu faço', pub) +
+    linha('Como eu faço', met) +
+    linha('Para quê eu faço', cau) +
+    linha('Por que eu faço', leg) +
+    secao('Ingredientes de Marca Pessoal') +
+    linha('Dons naturais', get('s1-dons')) +
+    linha('Habilidades', get('s1-habilidades')) +
+    linha('Experiências marcantes', get('s1-experiencias')) +
+    linha('Crença principal', get('s1-crenca')) +
+    linha('Causa', get('s1-causa')) +
+    secao('Fatia de Subnicho') +
+    linha('Área', get('s1-area')) +
+    linha('Nicho', get('s1-nicho')) +
+    linha('Fatia', get('s1-fatia')) +
+    linha('Para quem', get('s1-publico')) +
+    linha('Transformação', get('s1-trans')) +
+    secao('Ingredientes do Produto') +
+    linha('Problema principal', get('sp-problema')) +
+    linha('Prova social', get('sp-prova')) +
+    linha('Ferramenta principal', get('sp-ferramenta')) +
+    linha('Público alvo', get('sp-publico')) +
+    linha('Transformação principal', get('sp-trans-ms3')) +
+    linha('Produto principal', get('sp-produto')) +
+    linha('Tempo de validação', get('sp-tempo')) +
+    secao('Manifesto') +
+    linha('O que quer gritar para o mundo', get('s1-gritar')) +
+    linha('Como quer ser lembrada', get('s1-legado')) +
+    linha('Frase de manifesto', get('s1-frase')) +
+    '</div>';
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = html;
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+
+function wppEnviarCanvas() {
+  var c = document.getElementById('weekContent') || document;
+  var get = function(id) { var el = c.querySelector ? c.querySelector('#'+id) : document.getElementById(id); return el ? (el.textContent || el.value || '').trim() : '-'; };
+  var nome = get('res-nome') || get('r-nome') || '-';
+  var espada = get('res-espada') || '-';
+  var frase = get('res-frase') || get('r-frase') || '-';
+  var idPessoal = get('r-id') || '-';
+  var idEdit = get('r-ed') || '-';
+  var pub = get('r-pub') || '-';
+  var met = get('r-met') || '-';
+  var cau = get('r-cau') || '-';
+  var leg = get('r-leg') || '-';
+
+  var texto = '\u2694 *Canvas do Manifesto Editorial \u2014 Etapa 3 completa*\n\n' +
     '*Guerreira:* ' + nome + '\n' +
     '*Palavra-espada:* ' + espada + '\n' +
     '*Manifesto:* ' + frase + '\n\n' +
@@ -1772,6 +1888,30 @@ function wppEnviarCanvas() {
     '*Como eu fa\u00e7o:* ' + met + '\n' +
     '*Para qu\u00ea eu fa\u00e7o:* ' + cau + '\n' +
     '*Por que eu fa\u00e7o:* ' + leg + '\n\n' +
+    '\ud83d\udccd *Ingredientes de Marca Pessoal*\n' +
+    '*Dons naturais:* ' + get('s1-dons') + '\n' +
+    '*Habilidades:* ' + get('s1-habilidades') + '\n' +
+    '*Experi\u00eancias marcantes:* ' + get('s1-experiencias') + '\n' +
+    '*Cren\u00e7a principal:* ' + get('s1-crenca') + '\n' +
+    '*Causa:* ' + get('s1-causa') + '\n\n' +
+    '\ud83d\udccd *Fatia de Subnicho*\n' +
+    '*\u00c1rea:* ' + get('s1-area') + '\n' +
+    '*Nicho:* ' + get('s1-nicho') + '\n' +
+    '*Fatia:* ' + get('s1-fatia') + '\n' +
+    '*Para quem:* ' + get('s1-publico') + '\n' +
+    '*Transforma\u00e7\u00e3o:* ' + get('s1-trans') + '\n\n' +
+    '\ud83d\udccd *Ingredientes do Produto*\n' +
+    '*Problema principal:* ' + get('sp-problema') + '\n' +
+    '*Prova social:* ' + get('sp-prova') + '\n' +
+    '*Ferramenta principal:* ' + get('sp-ferramenta') + '\n' +
+    '*P\u00fablico alvo:* ' + get('sp-publico') + '\n' +
+    '*Transforma\u00e7\u00e3o principal:* ' + get('sp-trans-ms3') + '\n' +
+    '*Produto principal:* ' + get('sp-produto') + '\n' +
+    '*Tempo de valida\u00e7\u00e3o:* ' + get('sp-tempo') + '\n\n' +
+    '\ud83d\udccd *Manifesto*\n' +
+    '*Frase de manifesto:* ' + get('s1-frase') + '\n' +
+    '*O que quer gritar para o mundo:* ' + get('s1-gritar') + '\n' +
+    '*Como quer ser lembrada:* ' + get('s1-legado') + '\n\n' +
     '_Enviado pelo Portal Meu Projeto Digital_';
 
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
@@ -1813,6 +1953,38 @@ function wppEnviarLT() {
   linhas += '_Enviado pelo Portal Meu Projeto Digital_';
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(linhas);
   window.open(url, '_blank');
+}
+
+function imprimirLT() {
+  var c = document.getElementById('weekContent');
+  if (!c) { window.print(); return; }
+  var html = '<div style="font-family:Georgia,serif;max-width:850px;margin:0 auto;padding:1rem">' +
+    '<div style="text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Lugar de Fala</div>' +
+    '<div style="font-size:1.4rem;font-weight:700;color:#111">Minha Linha do Tempo</div>' +
+    '</div>';
+  for (var i = 1; i <= 30; i++) {
+    var el = c.querySelector('#lt' + i);
+    var val = el ? el.value.trim() : '';
+    var perg = LT_PERGUNTAS['lt'+i] || ('Pergunta ' + i);
+    html += '<div style="margin-bottom:1.3rem;page-break-inside:avoid">' +
+      '<div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">' + i + '. ' + perg + '</div>' +
+      '<div style="font-size:14px;color:#222;font-style:italic;padding:8px 0;border-bottom:1px solid #ddd">' + (val || '<span style="color:#bbb">Não preenchida</span>') + '</div>' +
+      '</div>';
+  }
+  html += '</div>';
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = html;
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
 }
 
 function baixarLT() {
@@ -1866,7 +2038,7 @@ function wppSprintE2() {
   var c = document.getElementById('weekContent');
   if (!c) return;
   var g = function(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : '-'; };
-  var texto = '\u2694 *Sprint \u2014 Etapa 2: Sprint da Fatia*\n\n' +
+  var texto = '\u2694 *Sprint \u2014 Etapa 3: Fatia de Subnicho*\n\n' +
     '*\u00c1rea:* ' + g('s1-area') + '\n' +
     '*Nicho:* ' + g('s1-nicho') + '\n' +
     '*Fatia:* ' + g('s1-fatia') + '\n' +
@@ -2716,6 +2888,97 @@ function irTelaEntrada() {
 }
 /* ===== FIM ENTRADA ===== */
 
+
+/* ===== CAMPOS DE BATALHA ===== */
+var CAMPOS = [
+  // MÊS 1
+  {mes:1,n:1,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:1,n:2,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:1,n:3,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  {mes:1,n:4,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  // MÊS 2
+  {mes:2,n:5,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:2,n:6,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:2,n:7,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  {mes:2,n:8,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  // MÊS 3
+  {mes:3,n:9,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:3,n:10,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:3,n:11,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  {mes:3,n:12,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  // MÊS 4
+  {mes:4,n:13,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:4,n:14,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:4,n:15,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  {mes:4,n:16,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  // MÊS 5
+  {mes:5,n:17,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:5,n:18,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça",caverna:"azul"},
+  {mes:5,n:19,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  {mes:5,n:20,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça",caverna:"vermelha"},
+  // MÊS 6
+  {mes:6,n:21,nome:"Campo de Método Autoral",tema:"",data:"",dia:"Terça"},
+  {mes:6,n:22,nome:"Campo de Produto e Programa",tema:"",data:"",dia:"Terça"},
+  {mes:6,n:23,nome:"Campo de Funil de Vendas",tema:"",data:"",dia:"Terça"},
+  {mes:6,n:24,nome:"Campo de CRM e Entrega",tema:"",data:"",dia:"Terça"}
+];
+
+var CAMPOS_KEY = 'campos_batalha_data';
+
+function buildCampos() {
+  var container = document.getElementById('campos-container');
+  if (!container) return;
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(CAMPOS_KEY) || '{}'); } catch(e) {}
+
+  var mesAtual = 0;
+  var html = '';
+  
+  CAMPOS.forEach(function(campo) {
+    if (campo.mes !== mesAtual) {
+      if (mesAtual > 0) html += '</div></div>';
+      mesAtual = campo.mes;
+      html += '<div class="campo-mes-bloco">' +
+        '<div class="campo-mes-titulo">MÊS ' + campo.mes + '</div>' +
+        '<div class="campo-mes-grid">';
+    }
+    
+    var participacao = saved['campo_' + campo.n] || '';
+    var cardStatus = participacao ? 'concluido' : '';
+    var badgePendente = participacao ? '' : '<div class="campo-badge-pendente">⏳ Aguardando participação</div>';
+    var cavernaTag = campo.caverna === 'azul' ? '<span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#2D8CFF;font-weight:600">● Caverna Azul</span>' : '<span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#E53935;font-weight:600">● Caverna Vermelha</span>';
+    html += '<div class="campo-card ' + cardStatus + '" id="campo-card-' + campo.n + '">' + badgePendente +
+      '<div class="campo-card-header">' + cavernaTag +
+        '<span class="campo-num">Campo ' + campo.n + '</span>' +
+        (campo.data ? '<span class="campo-data">Data: ' + campo.data + '</span>' : '<span class="campo-data vazio">Data: em breve</span>') +
+      '</div>' +
+      '<div class="campo-nome">' + campo.nome + '</div>' +
+      (campo.tema ? '<div class="campo-tema">Tema: ' + campo.tema + '</div>' : '<div class="campo-tema vazio">Tema: em breve</div>') +
+      '<div class="campo-participacao">' +
+        '<div class="campo-part-label">Como você participou?</div>' +
+        '<div class="campo-part-opcoes">' +
+          '<button class="campo-btn ' + (participacao === 'modelo' ? 'ativo ' + campo.caverna : '') + '" onclick="marcarCampo(' + campo.n + ',\'modelo\')">🎯 Fui aluna modelo</button>' +
+          '<button class="campo-btn ' + (participacao === 'presente' ? 'ativo ' + campo.caverna : '') + '" onclick="marcarCampo(' + campo.n + ',\'presente\')">👥 Assisti ao vivo</button>' +
+          '<button class="campo-btn ' + (participacao === 'gravacao' ? 'ativo ' + campo.caverna : '') + '" onclick="marcarCampo(' + campo.n + ',\'gravacao\')">📽 Assisti a gravação</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  
+  if (mesAtual > 0) html += '</div></div>';
+  container.innerHTML = html;
+}
+
+function marcarCampo(n, tipo) {
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(CAMPOS_KEY) || '{}'); } catch(e) {}
+  saved['campo_' + n] = tipo;
+  localStorage.setItem(CAMPOS_KEY, JSON.stringify(saved));
+  buildCampos();
+}
+
+/* ===== FIM CAMPOS DE BATALHA ===== */
+
 function goHome() {
   // Forçar save síncrono antes de qualquer coisa
   try {
@@ -2743,7 +3006,7 @@ function goHome() {
 /* SEMANA 1 - RITUAL + MANIFESTO */
 
 var S1_KEY = 's1_caverna_data';
-var S1_SCREENS = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','r_checkpoint','s1Resultado'];
+var S1_SCREENS = ['r1','r2','r3','r4','r4b','r5','caminhoA','caminhoB','ltPrompt','ltFinal','r_checkpoint','s1Resultado','s2Checkpoint'];
 
 function s1Save() {
   var c = document.getElementById('weekContent');
@@ -3215,17 +3478,55 @@ function s1BtnJuro() {
 }
 function s1BtnCaminhoA() { s1GoTo('caminhoA'); s1Save(); }
 function s1BtnCaminhoB() {
-  s1GoTo('caminhoB');
-  setTimeout(function(){ s1GerarPromptLT(); }, 100);
   var c = document.getElementById('weekContent');
-  s1GerarPromptLT();
+  var nome = c && c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['etapa1'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   s1Save();
+
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '✦ Etapa 1 — Armadura da Guerreira · Concluída';
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Você vestiu sua armadura e pegou sua espada. A partir de agora, cada batalha te aproxima do método que vai mudar vidas."';
+  s_renderBadges(conquistas);
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
+
+  // Só avança pra Etapa 2 depois que a guerreira fechar o modal de conquista
+  window.__proximaAposModal = function(){ goHome(); setTimeout(function(){ openWeek(2); }, 300); };
 }
 function s1BtnVoltarCaminhos() { s1GoTo('r5'); }
 function s1BtnBback() { s1GoTo('r5'); }
 function s1BtnCheckpointOk() {
   s1GoTo('caminhoA');
   s1Save();
+}
+function s1ConcluirEtapa1() {
+  var c = document.getElementById('weekContent');
+  var nome = c && c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['etapa2'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  s1Save();
+
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '✦ Etapa 2 — Lugar de Fala · Linha do Tempo · Concluída';
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
+  s_renderBadges(conquistas);
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
 }
 function s1BtnCheckpointVoltar() {
   var ck = document.getElementById('r_checkpoint');
@@ -3234,7 +3535,8 @@ function s1BtnCheckpointVoltar() {
   if (cb) { cb.style.display = 'block'; cb.scrollIntoView({behavior:'smooth', block:'start'}); }
 }
 function s1BtnBnext() {
-  s1GoTo('r_checkpoint');
+  s1GerarPromptLT();
+  s1GoTo('ltPrompt');
   s1Save();
 }
 
@@ -3267,7 +3569,11 @@ var S1_PREV = {
   'r5': 'r4b',
   'caminhoA': 'r5',
   'caminhoB': 'r5',
-  's1Resultado': 'caminhoA'
+  'ltPrompt': 'caminhoB',
+  'ltFinal': 'ltPrompt',
+  'r_checkpoint': 'ltFinal',
+  's1Resultado': 'caminhoA',
+  's2Checkpoint': 's1Resultado'
 };
 
 function s1TelaAtual() {
@@ -3440,7 +3746,7 @@ function s1GerarPromptLT() {
     var elp = c.querySelector('#bPromptText');
     if (elp) {
       var sep = '\n' + '='.repeat(40) + '\n';
-      elp.textContent = '[ Preencha os campos da Linha do Tempo acima — o prompt sera gerado automaticamente aqui ]';
+      elp.textContent = 'A sua Linha do Tempo alimenta e gera o prompt automaticamente aqui.';
     }
     return;
   }
@@ -3545,6 +3851,103 @@ function s1Ms3next(){ mGoTo(4); s1Save(); }
 function s1Ms4back(){ mGoTo(3); s1Save(); }
 function s1Ms4next(){ s1PreencherResultado(); s1GoTo('s1Resultado'); s1Save(); }
 function s1BtnEditar(){ mGoTo(4); }
+function s1ImprimirPosicionamentoEmBranco() {
+  var c = document.getElementById('weekContent');
+  if (!c) { window.print(); return; }
+  var ca = c.querySelector('#caminhoA');
+  if (!ca) { window.print(); return; }
+
+  var html = '<div style="font-family:Georgia,serif;max-width:850px;margin:0 auto;padding:1rem">' +
+    '<div style="text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Posicionamento</div>' +
+    '<div style="font-size:1.4rem;font-weight:700;color:#111">Meu Posicionamento — Sprint de Decisões</div>' +
+    '<div style="font-size:12px;color:#555;margin-top:0.4rem">As 4 etapas do Manifesto Editorial, pra responder à mão.</div>' +
+    '</div>';
+
+  var titulos = {ms1:'1. Ingredientes de Marca Pessoal', ms2:'2. Fatia de Subnicho', ms3:'3. Ingredientes do Produto', ms4:'4. Manifesto Editorial'};
+  ['ms1','ms2','ms3','ms4'].forEach(function(msId) {
+    var tela = ca.querySelector('#'+msId);
+    if (!tela) return;
+    html += '<div style="margin:1.8rem 0 1rem;padding-top:1rem;border-top:2px solid rgba(180,130,80,0.2)">' +
+      '<div style="font-size:15px;font-weight:700;color:#8a5f35">' + titulos[msId] + '</div>' +
+      '</div>';
+    tela.querySelectorAll('.f-group').forEach(function(grupo) {
+      var label = grupo.querySelector('label.f-label');
+      if (!label) return;
+      var campo = grupo.querySelector('textarea, input');
+      var explicacao = campo ? (campo.getAttribute('placeholder') || '') : '';
+      var linhasHTML = '';
+      for (var i = 0; i < 6; i++) {
+        linhasHTML += '<div style="border-bottom:1px solid #999;height:20px' + (i > 0 ? ';margin-top:14px' : '') + '"></div>';
+      }
+      html += '<div style="margin-bottom:1.3rem;page-break-inside:avoid">' +
+        '<div style="font-size:14px;color:#222;margin-bottom:2px">' + label.textContent + '</div>' +
+        (explicacao ? '<div style="font-size:11px;color:#888;font-style:italic;margin-bottom:6px">' + explicacao + '</div>' : '') +
+        linhasHTML +
+        '</div>';
+    });
+  });
+  html += '</div>';
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = html;
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
+
+function s1ImprimirLinhaTempo() {
+  var blocos = document.querySelectorAll('#weekContent #caminhoB .bloco-linha-tempo');
+  if (!blocos.length) { window.print(); return; }
+  var html = '<div style="font-family:Georgia,serif;max-width:850px;margin:0 auto;padding:1rem">' +
+    '<div style="text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Lugar de Fala</div>' +
+    '<div style="font-size:1.4rem;font-weight:700;color:#111">Linha do Tempo — Sua História</div>' +
+    '<div style="font-size:12px;color:#555;margin-top:0.4rem">Responda com calma e sinceridade. Não existem respostas certas ou erradas.</div>' +
+    '</div>';
+  blocos.forEach(function(bloco) {
+    var header = bloco.querySelector('.bloco-lt-header');
+    var sub = bloco.querySelector('.bloco-lt-sub');
+    html += '<div style="margin-bottom:1.8rem;page-break-inside:avoid">' +
+      '<div style="font-size:14px;font-weight:700;color:#8a5f35;margin-bottom:2px">' + (header ? header.textContent : '') + '</div>' +
+      '<div style="font-size:12px;color:#777;font-style:italic;margin-bottom:0.8rem">' + (sub ? sub.textContent : '') + '</div>';
+    bloco.querySelectorAll('.f-label').forEach(function(label) {
+      var numMatch = label.textContent.match(/^(\d+)\./);
+      var num = numMatch ? parseInt(numMatch[1], 10) : 0;
+      var curtas = [1,3,11,19,29,30];
+      var longas = [5,6,9,18,23,27];
+      var qtdLinhas = curtas.indexOf(num) > -1 ? 2 : (longas.indexOf(num) > -1 ? 6 : 4);
+      var linhasHTML = '';
+      for (var i = 0; i < qtdLinhas; i++) {
+        linhasHTML += '<div style="border-bottom:1px solid #999;height:20px' + (i > 0 ? ';margin-top:14px' : '') + '"></div>';
+      }
+      html += '<div style="margin-bottom:1.3rem">' +
+        '<div style="font-size:14px;color:#222;margin-bottom:0.5rem">' + label.textContent + '</div>' +
+        linhasHTML +
+        '</div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = html;
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
+}
 function s1BtnImprimir() {
   var wc = document.getElementById('weekContent');
   // Tentar canvasManifesto primeiro, depois s1-resultado
@@ -3568,67 +3971,63 @@ function s1BtnImprimir() {
   window.print();
   printArea.style.display = 'none';
 }
+function s_renderBadges(conquistas) {
+  var colecaoEl = document.getElementById('vitoria-colecao');
+  if (!colecaoEl) return;
+  var etapas = [
+    {k:'etapa1', nome:'Armadura da Guerreira'},
+    {k:'etapa2', nome:'Lugar de Fala'},
+    {k:'etapa3', nome:'Posicionamento'},
+    {k:'etapa4', nome:'Método Autoral'},
+    {k:'etapa5', nome:'Produtos'},
+    {k:'etapa6', nome:'Linha Editorial'},
+    {k:'desafio', nome:'Desafio 12 Semanas no Ar'}
+  ];
+  colecaoEl.innerHTML = '';
+  etapas.forEach(function(et) {
+    var conquistada = conquistas[et.k];
+    var badge = document.createElement('div');
+    badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
+    badge.innerHTML = (conquistada ? '✦ ' : '○ ') + et.nome;
+    colecaoEl.appendChild(badge);
+  });
+}
+
 function s1MarcarConcluida() {
   var c = document.getElementById('weekContent');
   var nome = c && c.querySelector('#s1-nome') ? c.querySelector('#s1-nome').value.trim() : 'Guerreira';
 
-  // Salvar conquista no localStorage
   var conquistas = {};
   try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
-  conquistas['semana1'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  conquistas['etapa3'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
   try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
 
-  // Mostrar modal de vitória
   var nomeEl = document.getElementById('vitoria-nome');
   if (nomeEl) nomeEl.textContent = nome;
 
   var semanaEl = document.getElementById('vitoria-semana');
-  if (semanaEl) semanaEl.textContent = '✦ Etapa 1 — Manifesto Editorial · Fatia de Subnicho · Concluída';
+  if (semanaEl) semanaEl.textContent = '✦ Etapa 3 — Posicionamento · Sprint de Decisões · Concluída';
 
   var fraseEl = document.getElementById('vitoria-frase');
   if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
 
-  // Mostrar coleção de conquistas
-  var colecaoEl = document.getElementById('vitoria-colecao');
-  if (colecaoEl) {
-    var semanas = [
-      {n:1, nome:'Manifesto'},
-      {n:2, nome:'Método'},
-      {n:3, nome:'Produtos'},
-      {n:4, nome:'Metodologia'},
-      {n:5, nome:'Plataforma'},
-      {n:6, nome:'Gravação'},
-      {n:7, nome:'Edição'},
-      {n:8, nome:'Validação'},
-      {n:9, nome:'Perfil Bio'},
-      {n:10, nome:'Destaques'},
-      {n:11, nome:'Feed'},
-      {n:12, nome:'No Ar!'}
-    ];
-    colecaoEl.innerHTML = '';
-    semanas.forEach(function(s) {
-      var conquistada = conquistas['semana'+s.n];
-      var badge = document.createElement('div');
-      badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
-      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
-      colecaoEl.appendChild(badge);
-    });
-  }
+  s_renderBadges(conquistas);
 
-  // Atualizar nome no modal próprio
-  var nomeModalS1 = document.getElementById('modalVitoriaS1-nome');
-  if (nomeModalS1) nomeModalS1.textContent = nome;
-  var modal = document.getElementById('modalVitoriaS1');
+  var modal = document.getElementById('modalVitoria');
   if (modal) modal.classList.add('ativo');
 
-  // Atualizar card no portal
   s1AtualizarCardPortal();
 }
 
 function s1FecharVitoria() {
   var modal = document.getElementById('modalVitoria');
   if (modal) modal.classList.remove('ativo');
+  if (typeof window.__proximaAposModal === 'function') {
+    var fn = window.__proximaAposModal;
+    window.__proximaAposModal = null;
+    fn();
+  }
 }
 
 function s1AtualizarCardPortal() {
@@ -3643,7 +4042,7 @@ function s1AtualizarCardPortal() {
 }
 
 function s1BtnEnviar(){ alert('Em breve esta função enviará seu Canvas para a Jade!'); }
-function s1BtnIrS2(){ goHome(); setTimeout(function(){ openWeek(2); }, 300); }
+function s1BtnIrS2(){ goHome(); setTimeout(function(){ openWeek(4); }, 300); }
 function s1BtnRecomecar(){
   s1Modal({
     icone: '↺',
@@ -3770,7 +4169,6 @@ function bindManifestoEvents() {
   }
 
   var _bb=c.querySelector('#bback'); if(_bb) _bb.addEventListener('click', function() { s1GoTo('r5'); });
-  var _bn=c.querySelector('#bnext'); if(_bn) _bn.addEventListener('click', function() { s1GoTo('caminhoA'); s1Save(); });
 
   // s1Load é chamado pelo modal ou automaticamente se não há progresso
 }
@@ -3967,11 +4365,11 @@ function getS2HTML() {
     '</div>' +
     '<div style="margin-top:1.2rem">' +
       '<button onclick="s2ImprimirMetodoT4()" style="background:rgba(5,17,43,0.08);border:1px solid rgba(5,17,43,0.2);color:#05112b;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">🖨 Imprimir / Salvar PDF</button>' +
-      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Etapa 2 como concluída</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Etapa 4 como concluída</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Próxima Batalha</span>' +
-      '<div class="s1-proxima-title">Etapa 3 — Produtos do Método</div>' +
+      '<div class="s1-proxima-title">Etapa 5 — Produtos do Método</div>' +
       '<div class="s1-proxima-desc">Seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos.</div>' +
       '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">\u2694 Partir para os Produtos →</button>' +
     '</div>' +
@@ -4004,30 +4402,17 @@ function s2ConcluirSemana() {
   var nome = nomeEl ? nomeEl.value.trim() : 'Guerreira';
   var conquistas = {};
   try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || sessionStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
-  conquistas['semana2'] = { data: new Date().toLocaleDateString('pt-BR') };
+  conquistas['etapa4'] = { data: new Date().toLocaleDateString('pt-BR') };
   try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
   var nomeVit = document.getElementById('vitoria-nome'); if(nomeVit) nomeVit.textContent = nome;
-  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '✦ Etapa 2 — Método Autoral · Concluída';
+  var semVit = document.getElementById('vitoria-semana'); if(semVit) semVit.textContent = '✦ Etapa 4 — Método Autoral · Concluída';
   var frVit = document.getElementById('vitoria-frase'); if(frVit) frVit.textContent = '"Você deu o primeiro passo para transformar o que você sabe em um caminho estruturado. Seu método autoral começa a tomar forma — e isso muda tudo."';
-  var colVit = document.getElementById('vitoria-colecao');
-  if (colVit) {
-    var semanas = [{n:1,nome:'Manifesto'},{n:2,nome:'Método'},{n:3,nome:'Produtos'},{n:4,nome:'Metodologia'},{n:5,nome:'Plataforma'},{n:6,nome:'Gravação'},{n:7,nome:'Edição'},{n:8,nome:'Validação'},{n:9,nome:'Perfil Bio'},{n:10,nome:'Destaques'},{n:11,nome:'Feed'},{n:12,nome:'No Ar!'}];
-    colVit.innerHTML = '';
-    semanas.forEach(function(s) {
-      var conquistada = conquistas['semana'+s.n];
-      var badge = document.createElement('div'); badge.className = 'vitoria-badge' + (conquistada ? ' conquistada' : '');
-      badge.innerHTML = (conquistada ? '✦ ' : '○ ') + 'S' + s.n + ' ' + s.nome;
-      colVit.appendChild(badge);
-    });
-  }
-  // Atualizar nome no modal próprio
-  var nomeModalS2 = document.getElementById('modalVitoriaS2-nome');
-  if (nomeModalS2) nomeModalS2.textContent = nome;
-  var modal = document.getElementById('modalVitoriaS2');
+  s_renderBadges(conquistas);
+  var modal = document.getElementById('modalVitoria');
   if (modal) modal.classList.add('ativo');
 }
-function s2IrS3() { goHome(); }
+function s2IrS3() { goHome(); setTimeout(function(){ openWeek(5); }, 300); }
 function bindS2Events() {
   var c = document.getElementById('weekContent');
 
@@ -4290,7 +4675,11 @@ var S1_PREV = {
   'r5': 'r4b',
   'caminhoA': 'r5',
   'caminhoB': 'r5',
-  's1Resultado': 'caminhoA'
+  'ltPrompt': 'caminhoB',
+  'ltFinal': 'ltPrompt',
+  'r_checkpoint': 'ltFinal',
+  's1Resultado': 'caminhoA',
+  's2Checkpoint': 's1Resultado'
 };
 
 function s3ConcluirSemana() {
@@ -4334,6 +4723,15 @@ function s3ConcluirSemana() {
 }
 
 function s3IrS4() { goHome(); }
+
+function s3ConcluirEtapa4Real() {
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['etapa5'] = { data: new Date().toLocaleDateString('pt-BR') };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  alert('✦ Etapa 5 concluída — produto, entrega, plataforma e oferta prontos. Guerreira, sua próxima batalha é a Etapa 6 — Linha Editorial.');
+  goHome();
+}
 
 function s3ImprimirProduto(dados) {
   var printArea = document.getElementById('printArea');
@@ -4547,13 +4945,22 @@ function getS3HTML() {
     '</div>' +
     '<div id="s3-produtos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:2rem"></div>' +
     '<div style="display:flex;flex-direction:column;gap:12px;margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" id="btnConcluirS3" style="width:100%;padding:14px" onclick="s3ConcluirSemana()">\u2726 Marcar Etapa 3 como conclu\u00edda</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnAvancarS3p3" style="width:100%;padding:14px">\u2726 Avan\u00e7ar \u2014 Entrega, Plataforma e Oferta \u2192</button>' +
     '</div>' +
-    '<div class="s1-proxima" style="margin-top:1.2rem">' +
+  '</div>' +
+
+  '<div id="s3p3" style="display:none">' +
+    getS4HTML() +
+    getChecklistHTML(5) +
+    getChecklistHTML(6) +
+    getChecklistHTML(7) +
+    getS8OfertaHTML() +
+    '<div class="s1-proxima" style="margin-top:1.5rem">' +
+      '<button class="btn-download btn-dl-primary" id="btnConcluirEtapa4Real" style="width:100%;padding:14px;margin-bottom:1.2rem">\u2726 Marcar Etapa 5 como conclu\u00edda</button>' +
       '<span class="s1-proxima-label">Pr\u00f3xima Batalha</span>' +
-      '<div class="s1-proxima-title">Etapa 4 \u2014 Metodologia</div>' +
-      '<div class="s1-proxima-desc">Guerreira, seus produtos est\u00e3o mapeados. Agora \u00e9 hora de organizar sua entrega para escalar.</div>' +
-      '<button class="btn-proxima" onclick="s3IrS4()">\u2694 Partir para a Etapa 4 \u2192</button>' +
+      '<div class="s1-proxima-title">Etapa 6 \u2014 Linha Editorial</div>' +
+      '<div class="s1-proxima-desc">Guerreira, seu produto existe e est\u00e1 pronto pra vender. Agora \u00e9 hora de dar vida ao seu perfil.</div>' +
+      '<button class="btn-proxima" id="btnIrEtapa5Real">\u2694 Voltar para a Jornada \u2192</button>' +
     '</div>' +
   '</div>' +
 
@@ -4594,7 +5001,15 @@ function bindS3Events() {
   // Delegação de eventos — apenas IDs diretos do target
   c.addEventListener('click', function(e) {
     var id = e.target.id || '';
-    if (id === 'btnConcluirS3') { s3ConcluirSemana(); return; }
+    if (id === 'btnAvancarS3p3') {
+      var p2 = c.querySelector('#s3p2'); var p3 = c.querySelector('#s3p3');
+      if (p2) p2.style.display = 'none';
+      if (p3) p3.style.display = 'block';
+      window.scrollTo(0,0);
+      return;
+    }
+    if (id === 'btnConcluirEtapa4Real') { s3ConcluirEtapa4Real(); return; }
+    if (id === 'btnIrEtapa5Real') { goHome(); return; }
   });
 
   // Criar modal fora do weekContent para evitar conflitos
@@ -4664,7 +5079,7 @@ function s3BuildGrid(c) {
   grid.innerHTML = '';
   produtos.forEach(function(p) {
     var card = document.createElement('div');
-    card.style.cssText = 'background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s';
+    card.style.cssText = 'background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s';
     card.innerHTML =
       '<div style="padding:1.5rem 1.5rem 1rem">' +
         '<div style="font-size:32px;margin-bottom:0.8rem">' + p.icone + '</div>' +
@@ -4697,7 +5112,7 @@ function getS4HTML() {
   var pontosHTML = '';
   pontos.forEach(function(p, i) {
     pontosHTML +=
-      '<div style="background:linear-gradient(160deg,#0a1f4a,#05112b);border:1px solid rgba(180,130,80,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1rem">' +
+      '<div style="background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1rem">' +
         '<div style="display:flex;align-items:center;gap:12px;margin-bottom:1.2rem">' +
           '<span style="font-size:28px">' + p.icone + '</span>' +
           '<div>' +
@@ -4726,7 +5141,7 @@ function getS4HTML() {
     // PÁGINA 1 — TEXTO
     '<div id="s4p1">' +
       '<div style="padding:2rem 0 0.5rem">' +
-        '<span class="s-label">Etapa 4 · Metodologia</span>' +
+        '<span class="s-label">Etapa 5 · Metodologia</span>' +
         '<h2 class="s-title">Entrega<br><em style="font-style:italic;color:#b48250">Escalável</em></h2>' +
       '</div>' +
       '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
@@ -4755,8 +5170,7 @@ function getS4HTML() {
       '<div id="s4-pontos">' + pontosHTML + '</div>' +
 
     '<div style="display:flex;gap:12px;margin-top:2rem">' +
-      '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1">⬇ Imprimir Metodologia</button>' +
-      '<button class="btn-download btn-dl-primary" id="btnConcluirS4" style="flex:1;padding:14px">✦ Marcar Etapa 4 como concluída</button>' +
+      '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1;width:100%">⬇ Imprimir Metodologia</button>' +
     '</div>' +
 
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
@@ -4956,10 +5370,7 @@ buildGrid();
     </div>
     <!-- FIM FOTO -->
     <div class="compartilhar-acoes">
-      <button class="btn-wpp" onclick="wppResumoS1()" style="width:100%;justify-content:center;margin-top:0">
-        <span>📲</span> Enviar resumo para a Jade
-      </button>
-      <button class="btn-compartilhar-continuar" onclick="s1BtnIrCaminhos()">Estou pronta para começar →</button>
+      <button class="btn-compartilhar-continuar" onclick="s1BtnIrCaminhos()" style="width:100%">Estou pronta para começar →</button>
     </div>
   </div>
 </div>
@@ -4972,8 +5383,22 @@ buildGrid();
     <p style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#8a5f35;font-weight:400;font-style:italic;line-height:1.8;letter-spacing:0.2px">Transformar sua história, experiência, conhecimento, dons e habilidades... em um método autoral que muda vidas e impacta gerações.</p>
   </div>
 </div>
-<div style="background:rgba(180,130,80,0.08);border:1px solid rgba(180,130,80,0.25);border-radius:14px;padding:1.4rem 1.6rem;margin-bottom:1.5rem;text-align:center">
-  <p style="font-size:13px;color:rgba(5,17,43,0.65);line-height:1.7;margin-bottom:0">Vamos começar pela <strong style="color:#05112b">Linha do Tempo</strong> — ela é o caminho mais completo para você investigar sua história, encontrar seu assunto principal e assumir seu lugar de fala com profundidade.</p>
+<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;text-align:left">
+  <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem">O que vem a seguir</div>
+  <div style="display:flex;flex-direction:column;gap:0.8rem">
+    <div style="display:flex;align-items:flex-start;gap:12px">
+      <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
+      <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai investigar sua <strong style="color:#05112b">história de vida</strong> — de onde veio, o que viveu, o que a formou</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:12px">
+      <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
+      <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai identificar seus <strong style="color:#05112b">dons e habilidades</strong> — o que você já sabe fazer com facilidade</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:12px">
+      <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
+      <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai assumir seu <strong style="color:#05112b">lugar de fala</strong> — a base pra tudo que vem depois</p>
+    </div>
+  </div>
 </div>
 <div style="text-align:center;margin-top:1rem" onclick="s1BtnCaminhoB()" id="btnCaminhoB">
   <div style="display:inline-flex;flex-direction:column;align-items:center;gap:0;cursor:pointer">
@@ -4988,17 +5413,13 @@ buildGrid();
 <div id="caminhoA" style="display:none">
 <div style="max-width:960px;margin:0 auto">
 <div class="pbar"><div class="pdot active" id="pd1" onclick="mGoTo(1)" style="cursor:pointer">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2" onclick="mGoTo(2)" style="cursor:pointer">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3" onclick="mGoTo(3)" style="cursor:pointer">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4" onclick="mGoTo(4)" style="cursor:pointer">4</div></div>
+<div style="text-align:center;margin:1rem 0 1.2rem">
+  <button onclick="s1ImprimirPosicionamentoEmBranco()" style="background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:8px;padding:9px 18px;color:#8a5f35;font-size:12px;letter-spacing:0.5px;cursor:pointer;font-family:'DM Sans',sans-serif">🖨 Imprimir as 4 etapas do Posicionamento em branco</button>
+</div>
 <div class="step-screen active" id="ms1">
 <span class="s-label">ETAPA 1 DE 4 · MARCA PESSOAL</span>
 <h2 class="s-title">Ingredientes de<br><em style="color:#b48250;font-style:italic">Marca Pessoal</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
-<div class="form-2col">
-<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
-<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo do tempo..."></textarea></div>
-<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>
-<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
-<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
-</div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
   <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 1 — Assistente de IA</div>
   <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
@@ -5008,19 +5429,19 @@ buildGrid();
   <button id="sp-btn-dist-1" onclick="spDistribuir(1)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
   <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
 </div>
-<div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE1()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Seus dons naturais</label><textarea class="f-textarea" id="s1-dons" placeholder="O que você faz com facilidade que as pessoas admiram..."></textarea></div>
+<div class="f-group"><label class="f-label">Suas habilidades</label><textarea class="f-textarea" id="s1-habilidades" placeholder="O que você desenvolveu ao longo do tempo..."></textarea></div>
+<div class="f-group form-full"><label class="f-label">Suas experiências marcantes</label><textarea class="f-textarea" id="s1-experiencias" placeholder="O que você viveu que te faz entender seu público..."></textarea></div>
+<div class="f-group"><label class="f-label">Sua crença principal</label><textarea class="f-textarea" id="s1-crenca" placeholder="Acredito que toda mulher tem o direito de..."></textarea></div>
+<div class="f-group"><label class="f-label">Sua causa</label><textarea class="f-textarea" id="s1-causa" placeholder="Que impacto quer causar no mundo?"></textarea></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="btnVoltarCaminhos" onclick="s1VoltarCaminhos()">← Voltar</button><button class="btn-nx" id="ms1next" onclick="s1Ms1next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms2">
 <span class="s-label">ETAPA 2 DE 4 · POSICIONAMENTO</span>
-<h2 class="s-title">Sprint da<br><em style="color:#b48250;font-style:italic">Fatia</em></h2>
+<h2 class="s-title">Fatia de<br><em style="color:#b48250;font-style:italic">Subnicho</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
-<div class="form-2col">
-<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Negócios..."></div>
-<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>
-<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>
-<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
-<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
-</div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
   <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 2 — Assistente de IA</div>
   <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
@@ -5030,21 +5451,19 @@ buildGrid();
   <button id="sp-btn-dist-2" onclick="spDistribuir(2)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
   <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
 </div>
-<div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE2()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Área de atuação</label><input type="text" class="f-input" id="s1-area" placeholder="Ex: Saúde, Educação, Negócios..."></div>
+<div class="f-group"><label class="f-label">Seu nicho</label><input type="text" class="f-input" id="s1-nicho" placeholder="Ex: Nutrição, Psicologia..."></div>
+<div class="f-group form-full"><label class="f-label">Sua fatia de subnicho</label><input type="text" class="f-input" id="s1-fatia" placeholder="A fatia específica onde você vai se destacar..."></div>
+<div class="f-group"><label class="f-label">Para quem você faz</label><textarea class="f-textarea" id="s1-publico" placeholder="Descreva a pessoa que você atende..."></textarea></div>
+<div class="f-group"><label class="f-label">Qual transformação você entrega?</label><textarea class="f-textarea" id="s1-trans" placeholder="Como ela fica depois de passar pelo seu método?"></textarea></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="ms2back" onclick="s1Ms2back()">← Voltar</button><button class="btn-nx" id="ms2next" onclick="s1Ms2next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms3">
-<span class="s-label">ETAPA 3 DE 4 · PRODUTO</span>
-<h2 class="s-title">Ingredientes do<br><em style="color:#b48250;font-style:italic">Produto</em></h2>
+<span class="s-label">ETAPA 3 DE 4 · ASSUNTO PRINCIPAL</span>
+<h2 class="s-title">Ingredientes do<br><em style="color:#b48250;font-style:italic">Assunto Principal</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
-<div class="form-2col">
-<div class="f-group"><label class="f-label">Problema principal que resolve</label><textarea class="f-textarea" id="sp-problema" placeholder="Qual a principal dor que você resolve?"></textarea></div>
-<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
-<div class="f-group form-full"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" placeholder="Que material ou fundamento você usa?"></textarea></div>
-<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
-<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans-ms3" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
-<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" placeholder="Como você entrega e em quais produtos?"></textarea></div>
-<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
-</div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
   <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 3 — Assistente de IA</div>
   <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
@@ -5054,16 +5473,21 @@ buildGrid();
   <button id="sp-btn-dist-3" onclick="spDistribuir(3)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
   <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
 </div>
-<div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE3()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
+<div class="form-2col">
+<div class="f-group"><label class="f-label">Problema principal que resolve</label><textarea class="f-textarea" id="sp-problema" placeholder="Qual a principal dor que você resolve?"></textarea></div>
+<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
+<div class="f-group form-full"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" placeholder="Que material ou fundamento você usa?"></textarea></div>
+<div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
+<div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans-ms3" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
+<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" placeholder="Como você entrega e em quais produtos?"></textarea></div>
+<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
+</div>
+<div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms4">
 <span class="s-label">Etapa 4 de 4 · Manifesto</span>
-<h2 class="s-title">Sua frase<br><em style="color:#b48250;font-style:italic">de manifesto</em></h2>
+<h2 class="s-title">Manifesto<br><em style="color:#b48250;font-style:italic">Editorial</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
-<div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." Uma frase que só você poderia dizer.</p></div>
-<div class="f-group"><label class="f-label">Seu manifesto em uma frase</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
-<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>
-<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
   <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Prompt da Etapa 4 — Assistente de IA</div>
   <p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Copie o prompt abaixo e leve para o chat de IA da sua preferência. Cole a resposta no campo abaixo e clique em distribuir para preencher os campos automaticamente.</p>
@@ -5072,8 +5496,12 @@ buildGrid();
   <textarea id="sp-cola-4" class="f-textarea" rows="4" style="min-height:90px" placeholder="Cole aqui a resposta da IA — os campos serão preenchidos automaticamente..."></textarea>
   <button id="sp-btn-dist-4" onclick="spDistribuir(4)" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Distribuir nos campos</button>
   <p style="font-size:11px;color:rgba(5,17,43,0.5);margin-top:0.6rem;line-height:1.6"><strong style="color:#c0392b">⚠ Importante:</strong> O chat vai te dar respostas baseadas na Linha do Tempo, mas você deve analisar e corrigir antes de seguir para a próxima etapa. Você também pode preencher os campos manualmente, sem usar a IA.</p>
-</div>
-<div class="nav-btns" style="flex-wrap:wrap;gap:8px"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-wpp" onclick="wppSprintE4()" style="flex:none;padding:10px 14px;font-size:12px">📲 Enviar para a Jade</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
+</div><div class="insight"><p>"Não faço divórcio." / "Dietas não funcionam." / "A coragem de ser feliz aos 40." Uma frase que só você poderia dizer.</p></div>
+<div class="f-group"><label class="f-label">O que você quer gritar para o mundo?</label><textarea class="f-textarea" id="s1-gritar" placeholder="Solte aqui sem filtro..."></textarea></div>
+<div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
+<div class="f-group"><label class="f-label">Escreva a frase que vai representar o seu Manifesto Editorial</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
+
+<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
 </div>
 </div>
 </div>
@@ -5082,6 +5510,9 @@ buildGrid();
   <span class="s-label">Linha do Tempo · Sua jornada interna</span>
   <h2 class="s-title" style="margin-bottom:0.5rem">Sua história é<br><em style="color:#b48250;font-style:italic">sua maior riqueza</em></h2>
   <p class="s-desc">Responda com calma e sinceridade. Não existem respostas certas ou erradas. Você não precisa caprichar — precisa ser verdadeira.</p>
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <button onclick="s1ImprimirLinhaTempo()" style="background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:8px;padding:9px 18px;color:#8a5f35;font-size:12px;letter-spacing:0.5px;cursor:pointer;font-family:'DM Sans',sans-serif">🖨 Imprimir estas perguntas em PDF</button>
+  </div>
 
   <!-- BLOCO 1 -->
   <div class="bloco-linha-tempo">
@@ -5149,19 +5580,6 @@ buildGrid();
     <div class="f-group"><label class="f-label">30. Em quanto tempo você acredita que consegue gerar uma transformação real em alguém com esse assunto?</label><textarea class="f-textarea" id="lt30" rows="2" style="min-height:60px" placeholder="Ex: 30 dias, 3 meses, 6 meses..."></textarea></div>
   </div>
 
-  <!-- PROMPT GERADO -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
-    <button onclick="wppEnviarLT()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(37,211,102,0.3)">📲 Enviar para a Jade</button>
-    <button onclick="baixarLT()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">⤓ Baixar minha LT</button>
-  </div>
-  <div class="prompt-box" style="margin-top:0.5rem">
-    <div class="prompt-box-title">✦ Prompt gerado — Copie e leve ao ChatGPT</div>
-    <div class="prompt-text" id="bPromptText">Preencha os campos acima para gerar seu prompt personalizado.</div>
-    <button class="btn-copy-prompt" id="btnCopyBPrompt" onclick="s1CopyBPrompt()">⧉ Copiar prompt</button>
-  </div>
-
-
-
   <div class="nav-btns" style="margin-top:1.5rem">
     <button class="btn-bk" id="bback" onclick="s1BtnBback()">← Voltar</button>
     <button class="btn-nx" id="bnext" onclick="s1BtnBnext()">Seguir →</button>
@@ -5169,32 +5587,76 @@ buildGrid();
 </div>
 </div>
 
+<div id="ltPrompt" style="display:none">
+  <div style="max-width:680px;margin:0 auto">
+    <span class="s-label">Linha do Tempo · Passo final</span>
+    <h2 class="s-title" style="margin-bottom:0.8rem">Leve sua história<br><em style="color:#b48250;font-style:italic">para sua IA de conversa</em></h2>
+    <p style="font-size:14px;color:#3a2a1a;line-height:1.7;margin-bottom:1.5rem">Copie o prompt abaixo e leve para a sua IA preferida de conversa (ChatGPT, Claude, Gemini). Abra um chat novo e alimente com essas informações — ela vai te ajudar a organizar o que você acabou de escrever.</p>
+    <div class="prompt-box">
+      <div class="prompt-box-title">✦ Prompt gerado — Copie e leve à sua IA</div>
+      <div class="prompt-text" id="bPromptText">A sua Linha do Tempo alimenta e gera o prompt automaticamente aqui.</div>
+      <button class="btn-copy-prompt" id="btnCopyBPrompt" onclick="s1CopyBPrompt()">⧉ Copiar prompt</button>
+    </div>
+    <div class="nav-btns" style="margin-top:1.5rem;justify-content:center">
+      <button class="btn-bk" onclick="s1GoTo('caminhoB')">← Voltar</button>
+      <button class="btn-nx" onclick="s1GoTo('ltFinal'); s1Save();">Continuar →</button>
+    </div>
+  </div>
+</div>
+
+<div id="ltFinal" style="display:none">
+  <div style="max-width:620px;margin:0 auto;text-align:center;padding:2rem 0">
+    <span style="font-size:48px;display:block;margin-bottom:1.2rem">✦</span>
+    <span class="s-label">Linha do Tempo · Concluída</span>
+    <h2 class="s-title" style="margin-bottom:1rem">Parabéns, guerreira!<br><em style="color:#b48250;font-style:italic">Sua Linha do Tempo está pronta</em></h2>
+    <p style="font-size:15px;color:#3a2a1a;line-height:1.8;margin-bottom:2rem;text-align:left">Agora você vai fazer mais duas etapas aqui dentro. Antes de seguir, guarda esse material de dois jeitos:</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem">
+      <button onclick="wppEnviarLT()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(37,211,102,0.3)">📲 Enviar para a Jade<br><span style="font-size:10px;font-weight:400;opacity:0.9">pra ela acompanhar seu processo em tempo real</span></button>
+      <button onclick="baixarLT()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">⤓ Baixar minha LT<br><span style="font-size:10px;font-weight:400;opacity:0.9">guarda na pasta do seu projeto</span></button>
+    </div>
+    <div class="nav-btns" style="justify-content:center">
+      <button class="btn-bk" onclick="s1GoTo('ltPrompt')">← Voltar</button>
+      <button class="btn-nx" onclick="s1GoTo('r_checkpoint'); s1Save();">Continuar →</button>
+    </div>
+  </div>
+</div>
+
 <div id="r_checkpoint" style="display:none;max-width:620px;margin:0 auto">
   <div style="text-align:center;padding:2rem 0">
     <span style="font-size:48px;display:block;margin-bottom:1.2rem">⚔</span>
     <span class="s-label">Checkpoint</span>
     <h2 class="s-title" style="margin-bottom:1rem">Sua Linha do Tempo<br><em style="color:#b48250;font-style:italic">está completa!</em></h2>
-    <p style="font-size:15px;color:rgba(240,235,232,0.75);line-height:1.8;margin-bottom:2rem">Você acabou de mapear sua história, suas competências e seu propósito.<br><br>Antes de avançar, certifique-se de que está segura com o que preencheu e com as sugestões que recebeu do ChatGPT.<br><br>Se precisar de ajuda para interpretar sua história ou tiver dúvidas sobre sua escolha, fale com a Jade ou com a equipe pelo suporte antes de continuar.</p>
-    <div style="background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.03));border:1px solid rgba(180,130,80,0.3);border-radius:14px;padding:1.5rem;margin-bottom:2rem;text-align:left">
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:1rem">O que vem a seguir</div>
+    <p style="font-size:15px;color:#3a2a1a;line-height:1.8;margin-bottom:2rem">Você acabou de mapear sua história — pessoal e profissional.<br><br>Esse material alimenta sua IA de conversa com contexto real pra gerar os próximos prompts, e serve também como uma revisão completa de tudo que você já viveu.<br><br>Antes de avançar, certifique-se de que você terminou todas as etapas da linha do tempo.</p>
+    <div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:2rem;text-align:left">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem">O que vem a seguir</div>
       <div style="display:flex;flex-direction:column;gap:0.8rem">
         <div style="display:flex;align-items:flex-start;gap:12px">
-          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
-          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Você vai posicionar sua <strong style="color:#f0ebe8">fatia de subnicho</strong> — a área específica onde vai se tornar referência</p>
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai mapear seus <strong style="color:#05112b">ingredientes de marca pessoal</strong> — dons, habilidades, experiências, crença e causa</p>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px">
-          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
-          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Vai mapear seus <strong style="color:#f0ebe8">ingredientes de marca</strong> — os elementos únicos que compõem sua essência</p>
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai posicionar sua <strong style="color:#05112b">fatia de subnicho</strong> — a área específica onde vai se tornar referência</p>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px">
-          <span style="background:#b48250;color:#05112b;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
-          <p style="font-size:14px;color:rgba(240,235,232,0.75);line-height:1.6;margin:0">Vai responder o <strong style="color:#f0ebe8">Sprint da Fatia</strong> com suas próprias palavras e gerar seu Canvas de Manifesto</p>
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai definir os <strong style="color:#05112b">ingredientes do seu produto</strong> — problema, prova, público e transformação</p>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">4</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai escrever seu <strong style="color:#05112b">Manifesto</strong> com suas próprias palavras e gerar seu Canvas final</p>
         </div>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
-      <button class="btn-espada" onclick="s1BtnCheckpointOk()">⚔ Estou pronta — Seguir para o Sprint de Decisões →</button>
+      <button class="btn-espada" onclick="s1ConcluirEtapa1()">✦ Marcar Etapa 2 como concluída</button>
       <button class="btn-bk" style="width:100%;padding:13px;text-align:center" onclick="s1BtnCheckpointVoltar()">← Revisar minhas respostas</button>
+    </div>
+    <div class="s1-proxima" style="margin-top:1.2rem">
+      <span class="s1-proxima-label">Próxima Batalha</span>
+      <div class="s1-proxima-title">Etapa 3 — Posicionamento</div>
+      <div class="s1-proxima-desc">Guerreira, seu Lugar de Fala está mapeado. Agora é hora do Sprint de Decisões.</div>
+      <button class="btn-proxima" onclick="goHome(); setTimeout(function(){ openWeek(3); }, 300);">⚔ Partir para o Posicionamento →</button>
     </div>
   </div>
 </div>
@@ -5220,19 +5682,52 @@ buildGrid();
 </div>
 <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>
 </div>
-<div class="s1-actions">
-<button class="btn-wpp" id="btnEnviarCanvas" onclick="wppEnviarCanvas()" style="flex:1;padding:12px">📲 Enviar Canvas para a Jade</button>
-<button class="btn-download btn-dl-primary" id="btnEnviarJade" onclick="s1MarcarConcluida()" style="flex:1;padding:12px">✦ Marcar Etapa 1 como concluída</button>
+<div class="s1-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button class="btn-wpp" id="btnEnviarCanvas" onclick="wppEnviarCanvas()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(37,211,102,0.3)">📲 Enviar meu Posicionamento para a Jade<br><span style="font-size:10px;font-weight:400;opacity:0.9">pra ela acompanhar seu processo em tempo real</span></button>
+<button onclick="imprimirPosicionamento()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">🖨 Baixar / Imprimir<br><span style="font-size:10px;font-weight:400;opacity:0.9">guarda ou imprime seu Posicionamento</span></button>
 </div>
-<div class="s1-proxima">
-<span class="s1-proxima-label">Próxima Batalha</span>
-<div class="s1-proxima-title">Etapa 2 — Método Autoral</div>
-<div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>
-<button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>
-</div>
-<button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>
+<div class="nav-btns" style="justify-content:center;margin-top:1rem">
+<button class="btn-nx" onclick="s1GoTo('s2Checkpoint'); s1Save();">Continuar →</button>
 </div>
 </div>
+</div>
+</div>
+
+<div id="s2Checkpoint" style="display:none;max-width:620px;margin:0 auto">
+  <div style="text-align:center;padding:2rem 0">
+    <span style="font-size:48px;display:block;margin-bottom:1.2rem">⚔</span>
+    <span class="s-label">Checkpoint</span>
+    <h2 class="s-title" style="margin-bottom:1rem">Seu Manifesto Editorial<br><em style="color:#b48250;font-style:italic">Seu Posicionamento está completo!</em></h2>
+    <p style="font-size:15px;color:#3a2a1a;line-height:1.8;margin-bottom:2rem">Você acabou de mapear seus ingredientes de marca, sua fatia de subnicho, os ingredientes do seu produto e seu manifesto.<br><br>Antes de avançar, certifique-se de que você terminou todas as etapas do Posicionamento.</p>
+    <div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:2rem;text-align:left">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem">O que vem a seguir</div>
+      <div style="display:flex;flex-direction:column;gap:0.8rem">
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai definir o <strong style="color:#05112b">objetivo do seu método</strong> — o que ele resolve e pra quem</p>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai fazer o <strong style="color:#05112b">brainstorming</strong> de tudo que você sabe sobre o assunto</p>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px">
+          <span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span>
+          <p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai estruturar seus <strong style="color:#05112b">pilares e módulos</strong> — o esqueleto do seu método autoral</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <button class="btn-espada" onclick="s1MarcarConcluida()">✦ Marcar Etapa 3 como concluída</button>
+      <button class="btn-bk" style="width:100%;padding:13px;text-align:center" onclick="s1GoTo('s1Resultado')">← Revisar meu Canvas</button>
+    </div>
+    <div class="s1-proxima" style="margin-top:1.2rem">
+      <span class="s1-proxima-label">Próxima Batalha</span>
+      <div class="s1-proxima-title">Etapa 4 — Método Autoral</div>
+      <div class="s1-proxima-desc">Guerreira, seu Manifesto está pronto. Agora é hora de transformar sua causa em método. Sua próxima batalha te espera.</div>
+      <button class="btn-proxima" id="btnIrS2" onclick="s1BtnIrS2()">⚔ Partir para o Método →</button>
+    </div>
+    <button class="btn-recomecar" id="btnRecomecar" onclick="s1BtnRecomecar()">↺ Recomeçar minha jornada</button>
+  </div>
 </div>
 
 <div class="modal-vitoria" id="modalVitoriaS1">
