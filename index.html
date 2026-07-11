@@ -251,6 +251,9 @@ html,body{font-family:'DM Sans',sans-serif;background:#233658;color:#f0ebe8;min-
 /* CHECKLIST WEEKS */
 .ck-wrapper{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
 .ck-header{text-align:center;margin-bottom:2.5rem}
+#s2t5-checklists .ck-header,#s2t6-checklists .ck-header,#s2t7-checklists .ck-header{text-align:left}
+#s2t5-checklists .ck-wrapper,#s2t6-checklists .ck-wrapper,#s2t7-checklists .ck-wrapper{padding-left:0;padding-right:0}
+#s2t5-checklists .ck-semana-label,#s2t6-checklists .ck-semana-label,#s2t7-checklists .ck-semana-label{display:none}
 .ck-semana-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8a5f35;display:block;margin-bottom:0.6rem}
 .ck-titulo{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#05112b;line-height:1.2;margin-bottom:0.4rem}
 .ck-titulo em{font-style:italic;color:#b48250}
@@ -264,6 +267,8 @@ html,body{font-family:'DM Sans',sans-serif;background:#233658;color:#f0ebe8;min-
 .ck-item:hover{background:rgba(180,130,80,0.05);border-color:rgba(180,130,80,0.2)}
 .ck-item.done{background:rgba(180,130,80,0.12);border-color:rgba(138,95,53,0.3)}
 .ck-item.done .ck-text{color:rgba(5,17,43,0.35);text-decoration:line-through}
+.ck-item[data-static="true"] .ck-text{color:#1a1a2e;text-decoration:none}
+.ck-item[data-static="true"]{cursor:default}
 .ck-box{width:22px;height:22px;border-radius:6px;border:2px solid rgba(180,130,80,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:all 0.25s}
 .ck-item.done .ck-box{background:#b48250;border-color:#b48250}
 .ck-check{font-size:12px;color:#05112b;font-weight:700;display:none}
@@ -815,21 +820,37 @@ function openWeek(n) {
     // Etapa 4 - Método Autoral
     content.innerHTML = getS2HTML();
     bindS2Events();
-    setTimeout(function(){ s2Load(); }, 150);
+    bindCkEvents();
+    setTimeout(function(){
+      s2Load();
+      var mhi = content.querySelector('#mhi-frase');
+      if (mhi && !mhi.value.trim()) {
+        try {
+          var s1data = JSON.parse(localStorage.getItem('s1_caverna_data') || '{}');
+          if (s1data['s1-frase']) mhi.value = s1data['s1-frase'];
+        } catch(e) {}
+      }
+    }, 150);
     s1MostrarBtnSalvar(true);
   } else if (n === 5) {
-    // Etapa 5 - Produtos (Entrega, Plataforma, Edição, Validação e Oferta conectadas)
+    // Etapa 5 - Produtos (Metodologia de Entrega e Oferta conectadas)
     content.innerHTML = getS3HTML();
     bindS3Events();
     bindS4Events();
     bindCkEvents();
     setTimeout(function(){ s3Load(); s4Load(); }, 150);
   } else if (n === 6) {
-    content.innerHTML = getS5HTML();
-    bindCkEvents(5);
+    content.innerHTML = '<div style="max-width:520px;margin:4rem auto;text-align:center">' +
+      '<span style="font-size:40px;display:block;margin-bottom:1rem">✦</span>' +
+      '<h2 class="s-title" style="margin-bottom:0.8rem">Linha Editorial</h2>' +
+      '<p class="s-desc">Essa etapa ainda está sendo construída. Em breve: Bio, Destaques Narrativos e Feed.</p>' +
+      '</div>';
   } else if (n === 7) {
-    content.innerHTML = getCkHTML(6);
-    bindCkEvents(6);
+    content.innerHTML = '<div style="max-width:520px;margin:4rem auto;text-align:center">' +
+      '<span style="font-size:40px;display:block;margin-bottom:1rem">✦</span>' +
+      '<h2 class="s-title" style="margin-bottom:0.8rem">Desafio 12 Semanas no Ar</h2>' +
+      '<p class="s-desc">Essa etapa ainda está sendo construída. Em breve: checklist de execução semanal.</p>' +
+      '</div>';
   } else if (n === 8) {
     content.innerHTML = getS8OfertaHTML();
     bindS8OfertaEvents();
@@ -873,7 +894,7 @@ function openWeek(n) {
 var CK_DATA = {
   5: {
     titulo: 'Método na', subtitulo: 'Plataforma',
-    desc: 'Design, gravação e estrutura unidos em uma etapa. Aqui seu método ganha forma visual, é gravado e encontra sua casa digital.',
+    desc: 'Design e estrutura em uma etapa só. Aqui seu método ganha forma visual e encontra sua casa digital.',
     sections: [
       { title: 'Plataforma', items: [
         { id: 'plat1', text: 'Escolher a plataforma de hospedagem do curso', note: 'Kiwify, Hotmart, Eduzz, Ticto ou outra de sua preferência' },
@@ -895,22 +916,22 @@ var CK_DATA = {
         { id: 'fer1', text: 'Acessar o <a class="ck-link" href="https://canva.com" target="_blank">Canva</a> e criar pasta do projeto com os templates' },
         { id: 'fer2', text: 'Decidir: você vai criar os designers ou contratar?', note: 'Se contratar: briefing pronto com paleta, fontes e referências' },
         { id: 'fer3', text: 'Usar IA de imagem (Gemini, Midjourney ou similar) se precisar de imagens personalizadas' }
-      ]},
+      ]}
+    ],
+    conquista: { icon: '🎨', titulo: 'Plataforma Estruturada', texto: 'Design definido, plataforma escolhida e configurada. Seu método já tem casa digital. Próximo passo: gravar, editar e hospedar.' }
+  },
+
+  6: {
+    titulo: 'Gravação, Edição e', subtitulo: 'Hospedagem',
+    desc: 'Suas aulas ganham vida, acabamento e encontram o lugar onde vão viver. Cuide do material — ele é o coração do seu produto digital.',
+    sections: [
       { title: 'Gravação', items: [
         { id: 'grav1', text: 'Definir cenário: <strong>interno</strong> (home office) ou <strong>externo</strong> (estúdio)?' },
         { id: 'grav2', text: 'Testar iluminação, câmera e microfone' },
         { id: 'grav3', text: 'Escrever a <strong>copy de cada aula</strong> para roteiro ou teleprompter' },
         { id: 'grav4', text: 'Definir datas e cronograma de gravação' },
         { id: 'grav5', text: 'Gravar todas as aulas do método' }
-      ]}
-    ],
-    conquista: { icon: '🎬', titulo: 'Método Gravado', texto: 'Plataforma estruturada, aulas gravadas. Seu método existe visual e digitalmente. Próximo passo: editar e hospedar.' }
-  },
-
-  6: {
-    titulo: 'Edição e', subtitulo: 'Hospedagem',
-    desc: 'Suas aulas gravadas agora ganham acabamento e encontram o lugar onde vão viver. Cuide do material — ele é o coração do seu produto digital.',
-    sections: [
+      ]},
       { title: 'Edição', items: [
         { id: 'edi1', text: 'Decidir: você vai editar ou contratar um editor?' },
         { id: 'edi2', text: 'Se contratar: briefing com estilo, cortes, vinheta, trilha e identidade visual' },
@@ -942,30 +963,30 @@ var CK_DATA = {
     titulo: 'Validação do', subtitulo: 'Método',
     desc: 'Validar é o caminho mais seguro para transformar sua ideia em produto com confiança. A cada passo você ganha clareza, experiência e prova social.',
     sections: [
-      { title: 'Passo 1 · Validação individual', items: [
+      { title: 'Opção 1 · Validação individual', items: [
         { id: 'val1_1', text: 'Escolher <strong>uma pessoa</strong> para testar o método — pode ser gratuito' },
         { id: 'val1_2', text: 'Realizar os encontros individuais com essa pessoa' },
         { id: 'val1_3', text: 'Anotar feedbacks: o que funcionou, o que confundiu, o que faltou' },
         { id: 'val1_4', text: 'Ajustar o método com base no que aprendeu' }
       ]},
-      { title: 'Passo 2 · Validação em grupo pequeno', items: [
+      { title: 'Opção 2 · Validação em grupo pequeno', items: [
         { id: 'val2_1', text: 'Montar uma pequena turma — convidar pessoas ou cobrar valor simbólico' },
         { id: 'val2_2', text: 'Realizar os encontros ao vivo com o grupo' },
         { id: 'val2_3', text: '<strong>Gravar os encontros</strong> e hospedar as aulas na plataforma', note: 'Isso cria sua primeira versão registrada do método' },
         { id: 'val2_4', text: 'Coletar depoimentos e feedbacks do grupo' }
       ]},
-      { title: 'Passo 3 · Entrega híbrida', items: [
+      { title: 'Opção 3 · Entrega híbrida', items: [
         { id: 'val3_1', text: 'Começar a vender com gravações + encontros ao vivo mais curtos' },
         { id: 'val3_2', text: 'Definir formato: quantos encontros ao vivo e quais aulas são gravadas' },
         { id: 'val3_3', text: 'Testar precificação nessa fase híbrida' },
         { id: 'val3_4', text: 'Registrar o que pode ser simplificado ou eliminado' }
       ]},
-      { title: 'Passo 4 · Regravação estruturada em módulos', items: [
+      { title: 'Opção 4 · Regravação estruturada em módulos', items: [
         { id: 'val4_1', text: 'Organizar todas as aulas em módulos definitivos com base no que aprendeu' },
         { id: 'val4_2', text: 'Regravar com mais qualidade — estúdio ou home office organizado' },
         { id: 'val4_3', text: 'Hospedar a versão final na plataforma', note: 'Esse é o produto estruturado e pronto para escalar' }
       ]},
-      { title: 'Passo 5 · Estrutura de grupo consolidada', items: [
+      { title: 'Opção 5 · Estrutura de grupo consolidada', items: [
         { id: 'val5_1', text: 'Passar a vender e entregar em grupo de forma recorrente' },
         { id: 'val5_2', text: 'Combinar o conteúdo gravado com a força dos encontros coletivos' },
         { id: 'val5_3', text: 'Definir calendário de turmas e modelo de escala' },
@@ -978,6 +999,31 @@ var CK_DATA = {
 
 function getChecklistHTML(n) {
   var d = CK_DATA[n];
+
+  if (n === 6 || n === 7) {
+    var html7 = '<div class="ck-wrapper">';
+    html7 += '<div class="ck-header">';
+    html7 += '<h2 class="ck-titulo">' + d.titulo + '<br><em>' + d.subtitulo + '</em></h2>';
+    html7 += '<p class="ck-desc">' + d.desc + '</p>';
+    html7 += '</div>';
+
+    d.sections.forEach(function(sec) {
+      html7 += '<div class="ck-section">';
+      html7 += '<div class="ck-section-title">' + sec.title + '</div>';
+      sec.items.forEach(function(item) {
+        html7 += '<div class="ck-item done" data-static="true">';
+        html7 += '<div class="ck-box"><span class="ck-check">✓</span></div>';
+        html7 += '<div><div class="ck-text">' + item.text + '</div>';
+        if (item.note) html7 += '<div class="ck-note">' + item.note + '</div>';
+        html7 += '</div></div>';
+      });
+      html7 += '</div>';
+    });
+
+    html7 += '</div>';
+    return html7;
+  }
+
   var saved = JSON.parse(localStorage.getItem('ck_s' + n) || '{}');
   var totalItems = 0;
   d.sections.forEach(function(s){ totalItems += s.items.length; });
@@ -986,7 +1032,7 @@ function getChecklistHTML(n) {
 
   var html = '<div class="ck-wrapper">';
   html += '<div class="ck-header">';
-  html += '<span class="ck-semana-label">Etapa 5 · ' + (n===5?'Plataforma':n===6?'Edição e Hospedagem':'Validação') + '</span>';
+  html += '<span class="ck-semana-label">' + (n===7?'Etapa 5 · Validação':'Etapa 4 · ' + (n===5?'Plataforma':'Edição e Hospedagem')) + '</span>';
   html += '<h2 class="ck-titulo">' + d.titulo + '<br><em>' + d.subtitulo + '</em></h2>';
   html += '<p class="ck-desc">' + d.desc + '</p>';
   html += '<div class="ck-progress-bar"><div class="ck-progress-fill" id="ck-fill-'+n+'" style="width:' + pct + '%"></div></div>';
@@ -1025,7 +1071,7 @@ function getS7HTML() { return getChecklistHTML(7); }
 function getS8HTML() { return getChecklistHTML(8); }
 function bindCkEvents(n) {
   var content = document.getElementById('weekContent');
-  content.querySelectorAll('.ck-item').forEach(function(item) {
+  content.querySelectorAll('.ck-item:not([data-static])').forEach(function(item) {
     item.addEventListener('click', function() {
       var id = this.getAttribute('data-id');
       var week = this.getAttribute('data-week');
@@ -1936,14 +1982,18 @@ var LT_PERGUNTAS = {
   lt26:'Que transformação você quer facilitar?', lt27:'Se sua história pudesse evitar que alguém passasse pelo que você passou, sobre o que ela seria?',
   lt28:'Você já ajudou alguém com esse assunto informalmente? Qual foi o resultado?',
   lt29:'Se você fosse criar um produto, como seria o formato?',
-  lt30:'Em quanto tempo você acredita que consegue gerar uma transformação real?'
+  lt30:'Em quanto tempo você acredita que consegue gerar uma transformação real?',
+  lt31:'Conte a linha do tempo da sua formação — no que você se formou, quais cursos e especializações fez.',
+  lt32:'Hoje, qual área você sente que quer levar para o digital? E dentro dela, existe um recorte específico?',
+  lt33:'Complete: eu acredito que toda mulher tem o direito de...',
+  lt34:'Qual método, técnica ou fundamento você mais usa para levar alguém do problema até o resultado?'
 };
 
 function wppEnviarLT() {
   var c = document.getElementById('weekContent');
   if (!c) return;
   var linhas = '\u2694 *Minha Linha do Tempo*\n\n';
-  for (var i = 1; i <= 30; i++) {
+  for (var i = 1; i <= 34; i++) {
     var el = c.querySelector('#lt' + i);
     var val = el ? el.value.trim() : '';
     if (val) {
@@ -1963,7 +2013,7 @@ function imprimirLT() {
     '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Lugar de Fala</div>' +
     '<div style="font-size:1.4rem;font-weight:700;color:#111">Minha Linha do Tempo</div>' +
     '</div>';
-  for (var i = 1; i <= 30; i++) {
+  for (var i = 1; i <= 34; i++) {
     var el = c.querySelector('#lt' + i);
     var val = el ? el.value.trim() : '';
     var perg = LT_PERGUNTAS['lt'+i] || ('Pergunta ' + i);
@@ -2000,7 +2050,7 @@ function baixarLT() {
   html += '<h1>\u2694 Minha Linha do Tempo</h1>';
   html += '<p style="color:#8a5f35;margin-bottom:30px">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</p>';
 
-  for (var i = 1; i <= 30; i++) {
+  for (var i = 1; i <= 34; i++) {
     var el = c.querySelector('#lt' + i);
     var val = el ? el.value.trim() : '';
     var perg = LT_PERGUNTAS['lt'+i] || 'Pergunta ' + i;
@@ -2191,13 +2241,13 @@ function s2GoTo(n) {
   if (!c) return;
   // Also hide t3b
   var t3b = c.querySelector('#s2t3b'); if (t3b) t3b.style.display = 'none';
-  for (var i = 1; i <= 4; i++) {
+  for (var i = 1; i <= 8; i++) {
     var t = c.querySelector('#s2t' + i);
     if (t) t.style.display = i === n ? 'block' : 'none';
     var dot = c.querySelector('#s2pd' + i);
     if (dot) dot.className = 'pdot' + (i === n ? ' active' : i < n ? ' done' : '');
     var line = c.querySelector('#s2pl' + i);
-    if (line && i < 4) line.className = 'pline' + (i < n ? ' done' : '');
+    if (line && i < 8) line.className = 'pline' + (i < n ? ' done' : '');
   }
   // Ao chegar na tela 4 preencher o método
   if (n === 4) {
@@ -2255,6 +2305,7 @@ function s2GoTo(n) {
       } catch(e) {}
     }
   }
+  if (n === 5) { s2GerarPromptArtefato(); }
   // Salvar tela atual
   try {
     var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
@@ -3019,6 +3070,7 @@ function s1Save() {
     'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
     'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
     'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
+  for (var ltIdx = 1; ltIdx <= 34; ltIdx++) { ids.push('lt' + ltIdx); }
   ids.forEach(function(id) {
     var el = c.querySelector('#'+id);
     if (el) data[id] = el.value;
@@ -3065,6 +3117,7 @@ function s1Load() {
     'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
     'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
     'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
+  for (var ltIdx = 1; ltIdx <= 34; ltIdx++) { ids.push('lt' + ltIdx); }
   ids.forEach(function(id) {
     var el = c.querySelector('#'+id);
     if (el && data[id] !== undefined) el.value = data[id];
@@ -3741,8 +3794,14 @@ function s1GerarPromptLT() {
     ['29. Formato de produto que imagina criar:','lt29'],
     ['30. Em quanto tempo gera transformacao real:','lt30']
   ]);
+  var b7 = bloco('FORMACAO E DIRECAO', [
+    ['31. Linha do tempo da formacao (cursos e especializacoes):','lt31'],
+    ['32. Area que quer levar pro digital e recorte especifico:','lt32'],
+    ['33. Acredita que toda mulher tem o direito de:','lt33'],
+    ['34. Metodo/tecnica/fundamento que mais usa:','lt34']
+  ]);
 
-  if (!b1 && !b2 && !b3 && !b4 && !b5 && !b6) {
+  if (!b1 && !b2 && !b3 && !b4 && !b5 && !b6 && !b7) {
     var elp = c.querySelector('#bPromptText');
     if (elp) {
       var sep = '\n' + '='.repeat(40) + '\n';
@@ -3765,6 +3824,7 @@ function s1GerarPromptLT() {
   if (b4) prompt += b4;
   if (b5) prompt += b5;
   if (b6) prompt += b6;
+  if (b7) prompt += b7;
 
   prompt += sep +
     'O QUE PRECISO QUE VOCE FACA' +
@@ -3920,8 +3980,8 @@ function s1ImprimirLinhaTempo() {
     bloco.querySelectorAll('.f-label').forEach(function(label) {
       var numMatch = label.textContent.match(/^(\d+)\./);
       var num = numMatch ? parseInt(numMatch[1], 10) : 0;
-      var curtas = [1,3,11,19,29,30];
-      var longas = [5,6,9,18,23,27];
+      var curtas = [1,3,11,19,29,30,33];
+      var longas = [5,6,9,18,23,27,31,32];
       var qtdLinhas = curtas.indexOf(num) > -1 ? 2 : (longas.indexOf(num) > -1 ? 6 : 4);
       var linhasHTML = '';
       for (var i = 0; i < qtdLinhas; i++) {
@@ -4136,7 +4196,7 @@ function bindManifestoEvents() {
   }
 
   // Linha do tempo — atualizar prompt ao digitar
-  for (var i = 1; i <= 30; i++) {
+  for (var i = 1; i <= 34; i++) {
     (function(n) {
       var el = c.querySelector('#lt'+n);
       if (el) el.addEventListener('input', function(){ s1GerarPromptLT(); s1Save(); });
@@ -4207,21 +4267,21 @@ function gerarManifesto() {
 function getS2HTML() {
   return '<div class="s2-page">' +
 
-  // CABEÇALHO MANIFESTO
-  '<div class="manifesto-header" id="mh-box">' +
+  // CABEÇALHO MANIFESTO (escondido — só guarda o dado, não aparece mais na tela)
+  '<div class="manifesto-header" id="mh-box" style="display:none">' +
     '<div class="mh-title">✦ Seu Manifesto - lembre de onde você veio</div>' +
     '<input class="mh-frase-input" id="mhi-frase" placeholder="Ex: Eu não faço divórcio! · A coragem de ser feliz aos 40+">' +
   '</div>' +
 
   // BOAS VINDAS
   '<div style="padding:2rem 0 0.5rem">' +
-    '<span class="s-label">Etapa 2 · Construção</span>' +
+    '<span class="s-label">Método Autoral</span>' +
     '<h2 class="s-title">Método <em style="font-style:italic;color:#b48250">Autoral</em></h2>' +
     '<p class="s-desc">Seu Manifesto está nas mãos. Agora é hora de transformar tudo isso em um caminho — um passo a passo que só você poderia criar.</p>' +
   '</div>' +
 
   // BOLINHAS DE NAVEGAÇÃO
-  '<div class="pbar" style="justify-content:center;margin:1rem 0 1.5rem">' +
+  '<div class="pbar" style="justify-content:center;margin:1rem auto 1.5rem">' +
     '<div class="pdot active" id="s2pd1" onclick="s2GoTo(1)" style="cursor:pointer">1</div>' +
     '<div class="pline" id="s2pl1"></div>' +
     '<div class="pdot" id="s2pd2" onclick="s2GoTo(2)" style="cursor:pointer">2</div>' +
@@ -4229,11 +4289,19 @@ function getS2HTML() {
     '<div class="pdot" id="s2pd3" onclick="s2GoTo(3)" style="cursor:pointer">3</div>' +
     '<div class="pline" id="s2pl3"></div>' +
     '<div class="pdot" id="s2pd4" onclick="s2GoTo(4)" style="cursor:pointer">4</div>' +
+    '<div class="pline" id="s2pl4"></div>' +
+    '<div class="pdot" id="s2pd5" onclick="s2GoTo(5)" style="cursor:pointer">5</div>' +
+    '<div class="pline" id="s2pl5"></div>' +
+    '<div class="pdot" id="s2pd6" onclick="s2GoTo(6)" style="cursor:pointer">6</div>' +
+    '<div class="pline" id="s2pl6"></div>' +
+    '<div class="pdot" id="s2pd7" onclick="s2GoTo(7)" style="cursor:pointer">7</div>' +
+    '<div class="pline" id="s2pl7"></div>' +
+    '<div class="pdot" id="s2pd8" onclick="s2GoTo(8)" style="cursor:pointer">8</div>' +
   '</div>' +
 
   // TELA 1 — BRAINSTORMING
   '<div class="step-screen" id="s2t1" style="display:block">' +
-    '<span class="s-label">PASSO 1 DE 3 · BRAINSTORMING</span>' +
+    '<span class="s-label">PASSO 1 DE 8 · BRAINSTORMING</span>' +
     '<h2 class="s-title">Brainstorming<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
     '<p class="s-desc">Antes de qualquer estrutura, solte o que está dentro. Sem julgamento, sem ordem perfeita.</p>' +
     '<hr class="s2-divider">' +
@@ -4259,8 +4327,8 @@ function getS2HTML() {
 
   // TELA 2 — O COMO
   '<div class="step-screen" id="s2t2" style="display:none">' +
-    '<span class="s-label">PASSO 2 DE 3 · ESTRUTURA</span>' +
-    '<h2 class="s-title">O Como<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
+    '<span class="s-label">PASSO 2 DE 8 · ARQUITETURA</span>' +
+    '<h2 class="s-title">Organização<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
     '<p class="s-desc">Agora dê forma à jornada que você vai conduzir sua aluna — antes, durante e depois.</p>' +
     '<hr class="s2-divider">' +
     '<div class="s2-section">' +
@@ -4294,7 +4362,7 @@ function getS2HTML() {
 
   // TELA 3 — PILARES
   '<div class="step-screen" id="s2t3" style="display:none">' +
-    '<span class="s-label">PASSO 3 DE 4 · ESTRUTURA</span>' +
+    '<span class="s-label">PASSO 3 DE 8 · ESTRUTURA</span>' +
     '<h2 class="s-title">Estrutura do<br><em style="color:#b48250;font-style:italic">Método</em></h2>' +
     '<p class="s-desc">Use o prompt abaixo para pedir à sua IA que organize os pilares e a estrutura completa em módulos e aulas.</p>' +
     '<div class="prompt-box" style="margin-top:1rem">' +
@@ -4346,9 +4414,9 @@ function getS2HTML() {
 
   // TELA 4 — MÉTODO PRONTO
   '<div class="step-screen" id="s2t4" style="display:none">' +
-    '<span class="s-label">PASSO 4 DE 4 · RESULTADO</span>' +
+    '<span class="s-label">PASSO 4 DE 8 · RESULTADO</span>' +
     '<h2 class="s-title">Minha ideia de<br><em style="color:#b48250;font-style:italic">método pronta!</em></h2>' +
-    '<p class="s-desc">Aqui está tudo que você construiu. Revise, ajuste o que precisar e quando estiver pronta, marque a etapa como concluída.</p>' +
+    '<p class="s-desc">Aqui está tudo que você construiu. Revise, ajuste o que precisar e siga para gravar seu método.</p>' +
     '<div class="metodo-visual" id="metodoVisual">' +
       '<div class="mv-objetivo" style="margin-bottom:1rem">' +
         '<div class="mv-objetivo-label">✦ Manifesto Editorial</div>' +
@@ -4365,12 +4433,60 @@ function getS2HTML() {
     '</div>' +
     '<div style="margin-top:1.2rem">' +
       '<button onclick="s2ImprimirMetodoT4()" style="background:rgba(5,17,43,0.08);border:1px solid rgba(5,17,43,0.2);color:#05112b;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">🖨 Imprimir / Salvar PDF</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(5)">✦ Avançar — Artefato Inteligente →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t5" style="display:none">' +
+    '<span class="s-label">PASSO 5 DE 8 · ARTEFATO INTELIGENTE</span>' +
+    '<h2 class="s-title">Transforme seu método<br><em style="color:#b48250;font-style:italic">numa ferramenta viva</em></h2>' +
+    '<p class="s-desc">Seu método já está organizado e revisado. Agora você vai levar essa estrutura para o Claude e pedir que ele construa um artefato interativo — uma ferramenta onde qualquer pessoa consegue visualizar e percorrer o seu método, passo a passo.</p>' +
+    '<div class="prompt-box" style="margin-top:1rem">' +
+      '<div class="prompt-box-title">✦ Prompt do Artefato Inteligente — Copie e leve ao Claude</div>' +
+      '<div class="prompt-text" id="promptArtefatoInteligente">Preencha e revise seu método no Passo 4 para gerar este prompt automaticamente.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyArtefato" onclick="s2CopiarPromptArtefato()">⧉ Copiar prompt</button>' +
+    '</div>' +
+    '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1.2rem;text-align:left">' +
+      '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">Como fazer</div>' +
+      '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Abra um chat novo no Claude (claude.ai).<br>3. Cole o prompt e envie.<br>4. Peça ajustes de conteúdo e visual até o artefato representar seu método do jeito que você imaginou.<br>5. Salve o link do artefato — ele vai ser a ferramenta que você usa com suas mentoradas.</p>' +
+    '</div>' +
+    '<div style="margin-top:1.2rem">' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(6)">✦ Avançar — Método na Plataforma →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t6" style="display:none">' +
+    '<span class="s-label">PASSO 6 DE 8 · MÉTODO NA PLATAFORMA</span>' +
+    '<div id="s2t5-checklists" style="text-align:left">' +
+    getChecklistHTML(5) +
+    '</div>' +
+    '<div style="margin-top:1.2rem">' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(7)">✦ Avançar — Gravação, Edição e Hospedagem →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t7" style="display:none">' +
+    '<span class="s-label">PASSO 7 DE 8 · GRAVAÇÃO, EDIÇÃO E HOSPEDAGEM</span>' +
+    '<div id="s2t6-checklists" style="text-align:left">' +
+    getChecklistHTML(6) +
+    '</div>' +
+    '<div style="margin-top:1.2rem">' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(8)">✦ Avançar — Validação do Método →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t8" style="display:none">' +
+    '<span class="s-label">PASSO 8 DE 8 · VALIDAÇÃO</span>' +
+    '<div id="s2t7-checklists" style="text-align:left">' +
+    getChecklistHTML(7) +
+    '</div>' +
+    '<div style="margin-top:1.2rem">' +
       '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" id="btnConcluirS2" onclick="s2ConcluirSemana()">✦ Marcar Etapa 4 como concluída</button>' +
     '</div>' +
     '<div class="s1-proxima" style="margin-top:1.2rem">' +
       '<span class="s1-proxima-label">Próxima Batalha</span>' +
       '<div class="s1-proxima-title">Etapa 5 — Produtos do Método</div>' +
-      '<div class="s1-proxima-desc">Seu Método Autoral está pronto. Agora é hora de transformar seu método em produtos.</div>' +
+      '<div class="s1-proxima-desc">Seu Método Autoral está pronto, gravado e validado. Agora é hora de transformar seu método em produtos.</div>' +
       '<button class="btn-proxima" id="btnIrS3" onclick="s2IrS3()">\u2694 Partir para os Produtos →</button>' +
     '</div>' +
   '</div>' +
@@ -4396,6 +4512,74 @@ function s2ImprimirMetodo() {
   printArea.innerHTML = '<div style="font-family:serif;max-width:800px;margin:0 auto;padding:2rem"><div style="text-align:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #b48250"><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250">' + s_getNomeMovimento() + '</div><div style="font-size:1.5rem;font-weight:700">Meu Método Autoral</div></div>' + clone.outerHTML + '</div>';
   printArea.style.display='block'; window.print(); printArea.style.display='none';
 }
+function s2GerarPromptArtefato() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var el = c.querySelector('#promptArtefatoInteligente');
+  if (!el) return;
+
+  var manifesto = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+  var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+  var pilares = [];
+  c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
+
+  var estrutura = [];
+  try {
+    var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
+    estrutura = d['s2-estrutura'] || [];
+  } catch(e) {}
+
+  if (!objetivo && pilares.length === 0 && estrutura.length === 0) {
+    el.textContent = 'Preencha e revise seu método no Passo 4 para gerar este prompt automaticamente.';
+    return;
+  }
+
+  var sep = '\n' + '='.repeat(40) + '\n';
+  var prompt = 'Ola! Quero que voce crie um artefato interativo (um HTML autocontido, tipo aplicativo) que represente o meu metodo autoral de forma visual e navegavel.' + '\n\n' +
+    'As informacoes abaixo sao o meu metodo, ja estruturado. Use exatamente esses dados — nao invente conteudo novo.' +
+    sep + 'MEU MANIFESTO' + sep + '\n' + (manifesto || 'Nao preenchido') + '\n\n' +
+    sep + 'OBJETIVO DO METODO' + sep + '\n' + (objetivo || 'Nao preenchido') + '\n\n' +
+    sep + 'PILARES DO METODO' + sep + '\n';
+
+  if (pilares.length > 0) {
+    pilares.forEach(function(p, i) { prompt += (i+1) + '. ' + p + '\n'; });
+  } else {
+    prompt += 'Nao preenchido\n';
+  }
+
+  prompt += '\n' + sep + 'ESTRUTURA DE MODULOS E AULAS' + sep + '\n';
+  if (estrutura.length > 0) {
+    estrutura.forEach(function(mod, i) {
+      prompt += 'Modulo ' + (i+1) + ': ' + mod.nome + '\n';
+      (mod.aulas || []).forEach(function(aula, j) { prompt += '  Aula ' + (j+1) + ': ' + aula + '\n'; });
+    });
+  } else {
+    prompt += 'Nao preenchido\n';
+  }
+
+  prompt += '\n' + sep + 'O QUE PRECISO QUE VOCE FACA' + sep + '\n' +
+    'Crie um artefato interativo, com cara de ferramenta profissional (nao um documento de texto), onde a pessoa consiga:' + '\n' +
+    '1. Ver o objetivo e o manifesto do metodo logo na abertura' + '\n' +
+    '2. Navegar pelos pilares como um menu ou trilha visual' + '\n' +
+    '3. Dentro de cada pilar, ver os modulos e aulas organizados' + '\n' +
+    '4. Ter uma experiencia bonita, clara e facil de seguir — nao um formulario, uma jornada' + '\n\n' +
+    'Depois de gerar a primeira versao, vou te pedir ajustes de conteudo e visual ate ficar do jeito que eu imaginei.';
+
+  el.textContent = prompt;
+}
+
+function s2CopiarPromptArtefato() {
+  var el = document.getElementById('promptArtefatoInteligente');
+  var btn = document.getElementById('btnCopyArtefato');
+  if (!el) return;
+  var ta = document.createElement('textarea');
+  ta.value = el.textContent;
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); if (btn) btn.textContent = '✓ Copiado!'; } catch(e) { if (btn) btn.textContent = '✗ Tente manualmente'; }
+  document.body.removeChild(ta);
+  setTimeout(function() { if (btn) btn.textContent = '⧉ Copiar prompt'; }, 2000);
+}
+
 function s2ConcluirSemana() {
   var c = document.getElementById('weekContent');
   var nomeEl = c && c.querySelector('#s1-nome');
@@ -4747,75 +4931,100 @@ function s3ImprimirProduto(dados) {
 }
 
 function s3GetCamposProduto(tipo, subtipo) {
-  var campos = '';
-  var promptTexto = '';
+  if (tipo === 'metodo' && subtipo === 'acompanhamento') {
+    return s3CamposProgramaMentoria();
+  }
 
-  var comuns = '<div class="f-group"><label class="f-label">Nome do produto</label><input type="text" class="f-input" id="s3-prod-nome" placeholder="Ex: M\u00e9todo Renascer..."></div>' +
-    '<div class="form-2col" style="margin-top:1rem">' +
-    '<div class="f-group"><label class="f-label">Descri\u00e7\u00e3o</label><textarea class="f-textarea" id="s3-prod-desc" placeholder="O que \u00e9 esse produto..."></textarea></div>' +
-    '<div class="f-group"><label class="f-label">P\u00fablico</label><textarea class="f-textarea" id="s3-prod-publico" placeholder="Para quem \u00e9 esse produto..."></textarea></div>' +
-    '<div class="f-group form-full"><label class="f-label">Pre\u00e7o</label><input type="text" class="f-input" id="s3-prod-preco" placeholder="Ex: R$ 497..."></div>' +
-    '</div>';
+  var descricoes = {
+    'curso': 'um curso gravado, que pode ser o front-end do meu negócio',
+    'mentoria_individual': 'uma mentoria individual',
+    'comunidade': 'uma comunidade',
+    'workshop_aovivo': 'um workshop ao vivo',
+    'workshop_online': 'um workshop online',
+    'consultoria': 'uma consultoria',
+    'ebook': 'um e-book'
+  };
+  var chave = tipo === 'mentoria' ? 'mentoria_' + subtipo : (tipo === 'workshop' ? 'workshop_' + subtipo : tipo);
+  var descricaoTipo = descricoes[chave] || 'este produto';
 
-  if (tipo === 'metodo' || tipo === 'curso') {
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\nDiante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a construir ' + (tipo === 'metodo' ? 'a estrutura gravada dele' : 'a estrutura de um curso que poderia ser o front-end do meu neg\u00f3cio') + '.\n\nNome: [PREENCHA]\nDescri\u00e7\u00e3o: [PREENCHA]\nP\u00fablico: [PREENCHA]\n\nPor favor:\n1. Sugira de 4 a 6 m\u00f3dulos\n2. Para cada m\u00f3dulo, sugira de 3 a 5 aulas\n3. Me sugira uma analogia\n4. Indique a dura\u00e7\u00e3o de cada aula';
-    campos = comuns +
-      '<div style="margin-top:1.5rem"><label class="f-label">M\u00f3dulos e Aulas</label>' +
-      '<span class="s2-field-hint" style="display:block;margin-bottom:8px">Adicione os m\u00f3dulos</span>' +
+  var promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\n' +
+    'Diante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a estruturar a oferta de ' + descricaoTipo + '.\n\n' +
+    'Nome: [PREENCHA]\nPara quem \u00e9: [PREENCHA]\nProblema principal que resolve: [PREENCHA]\nO que entrego: [PREENCHA]\nResultados que a aluna alcan\u00e7a: [PREENCHA]\nB\u00f4nus: [PREENCHA]\nPre\u00e7o: [PREENCHA]\n\n' +
+    'Por favor:\n1. Revise e refine essas informa\u00e7\u00f5es, deixando a oferta mais clara e persuasiva\n2. Sugira uma estrutura de entrega adequada a ' + descricaoTipo + '\n3. Sugira uma faixa de pre\u00e7o coerente com o formato e a profundidade da entrega\n4. Me ajude a escrever uma chamada de vendas curta para essa oferta';
+
+  var campos =
+    '<div class="f-group"><label class="f-label">Nome do produto</label><input type="text" class="ritual-input" id="s3-prod-nome" placeholder="Ex: M\u00e9todo Renascer..."></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Para quem \u00e9</label><textarea class="ritual-textarea" id="s3-prod-publico" placeholder="Ex: Mulheres 35+ com conhecimento acumulado que querem transformar experi\u00eancia em produto digital"></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Problema principal que resolve</label><textarea class="ritual-textarea" id="s3-prod-problema" placeholder="Ex: Sabe muito mas n\u00e3o sabe como empacotar e vender o que sabe"></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">O que voc\u00ea entrega</label><textarea class="ritual-textarea" id="s3-prod-entrega" placeholder="Ex: M\u00e9todo estruturado, suporte, encontros..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Resultados que a aluna alcan\u00e7a</label><textarea class="ritual-textarea" id="s3-prod-resultados" placeholder="Ex: Sai com o produto criado e pronto para vender"></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">B\u00f4nus (se tiver)</label><textarea class="ritual-textarea" id="s3-prod-bonus" placeholder="Ex: Acesso extra, material b\u00f4nus..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Pre\u00e7o e condi\u00e7\u00f5es</label><input type="text" class="ritual-input" id="s3-prod-preco" placeholder="Ex: R$ 497 \u00e0 vista ou 12x..."></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Garantia (se tiver)</label><input type="text" class="ritual-input" id="s3-prod-garantia" placeholder="Ex: 7 dias de garantia incondicional"></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Casos de sucesso ou depoimentos</label><textarea class="ritual-textarea" id="s3-prod-casos" placeholder="Descreva 1 ou 2 hist\u00f3rias — o antes, o processo e o depois"></textarea></div>';
+
+  if (tipo === 'curso' || tipo === 'ebook') {
+    campos += '<div style="margin-top:1.5rem"><label class="f-label">' + (tipo === 'ebook' ? 'Cap\u00edtulos' : 'M\u00f3dulos e Aulas') + '</label>' +
+      '<span class="s2-field-hint" style="display:block;margin-bottom:8px">Adicione os ' + (tipo === 'ebook' ? 'cap\u00edtulos' : 'm\u00f3dulos') + '</span>' +
       '<div id="s3-modulos-container"></div>' +
-      '<button class="btn-add-passo" id="btnS3AddModulo" style="margin-top:8px">+ Adicionar m\u00f3dulo</button></div>';
-
-  } else if (tipo === 'mentoria') {
-    var individual = subtipo === 'individual';
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres.\n\nDiante de tudo que j\\u00e1 conversamos sobre meu m\\u00e9todo, pode me ajudar a construir a estrutura de uma mentoria ' + (individual ? 'individual' : 'em grupo') + '.\n\nNome: [PREENCHA]\nDescri\u00e7\u00e3o: [PREENCHA]\nP\u00fablico: [PREENCHA]\nQuantidade de encontros: [PREENCHA]\n\nPor favor:\n1. Sugira uma estrutura para cada encontro\n2. Quais entreg\u00e1veis fazem sentido\n3. Sugira um b\u00f4nus diferencial\n4. Como precificar';
-    campos = comuns +
-      '<div class="form-2col" style="margin-top:1rem">' +
-      '<div class="f-group"><label class="f-label">Quantos encontros</label><input type="text" class="f-input" id="s3-prod-encontros" placeholder="Ex: 4 encontros..."></div>' +
-      '<div class="f-group"><label class="f-label">Suporte via WhatsApp</label>' +
-      '<select class="f-input" id="s3-prod-whats"><option value="">Selecione...</option><option>Sim</option><option>N\u00e3o</option></select></div>' +
-      '<div class="f-group form-full"><label class="f-label">Entreg\u00e1veis</label><textarea class="f-textarea" id="s3-prod-entregaveis" placeholder="O que a cliente recebe..."></textarea></div>' +
-      '<div class="f-group form-full"><label class="f-label">B\u00f4nus Diferencial</label><textarea class="f-textarea" id="s3-prod-bonus" placeholder="O que torna sua mentoria \u00fanica..."></textarea></div>' +
-      '</div>';
-
-  } else if (tipo === 'workshop') {
-    var aovivo = subtipo === 'aovivo';
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres.\n\nDiante de tudo que j\\u00e1 conversamos sobre meu m\\u00e9todo, pode me ajudar a construir a estrutura de um workshop ' + (aovivo ? 'ao vivo' : 'online') + '.\n\nNome: [PREENCHA]\nDura\u00e7\u00e3o: [PREENCHA]\n\nPor favor:\n1. Sugira blocos para o workshop\n2. Entreg\u00e1veis ao final\n3. Como tornar inesquec\u00edvel\n4. Sugira b\u00f4nus diferencial';
-    campos = comuns +
-      '<div class="form-2col" style="margin-top:1rem">' +
-      '<div class="f-group"><label class="f-label">Dura\u00e7\u00e3o total</label><input type="text" class="f-input" id="s3-prod-duracao" placeholder="Ex: 4 horas..."></div>' +
-      '<div class="f-group"><label class="f-label">' + (aovivo ? 'Local' : 'Plataforma') + '</label><input type="text" class="f-input" id="s3-prod-local" placeholder="' + (aovivo ? 'Ex: Espa\u00e7o de eventos...' : 'Ex: Zoom, Meet...') + '"></div>' +
-      '<div class="f-group form-full"><label class="f-label">Blocos / Momentos</label><textarea class="f-textarea" id="s3-prod-blocos" placeholder="Descreva cada bloco..."></textarea></div>' +
-      '<div class="f-group form-full"><label class="f-label">Entreg\u00e1veis</label><textarea class="f-textarea" id="s3-prod-entregaveis" placeholder="O que a participante leva..."></textarea></div>' +
-      '<div class="f-group form-full"><label class="f-label">B\u00f4nus Diferencial</label><textarea class="f-textarea" id="s3-prod-bonus" placeholder="O que torna \u00fanico..."></textarea></div>' +
-      '</div>';
-
-  } else if (tipo === 'consultoria') {
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres.\n\nDiante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a construir a estrutura de uma consultoria.\n\nNome: [PREENCHA]\nDescri\u00e7\u00e3o: [PREENCHA]\n\nPor favor:\n1. Entreg\u00e1veis ideais\n2. Prazo de entrega\n3. Como estruturar o processo\n4. Como precificar';
-    campos = comuns +
-      '<div class="form-2col" style="margin-top:1rem">' +
-      '<div class="f-group"><label class="f-label">Formato</label>' +
-      '<select class="f-input" id="s3-prod-formato"><option value="">Selecione...</option><option>Pontual</option><option>Continuada</option></select></div>' +
-      '<div class="f-group"><label class="f-label">Prazo de entrega</label><input type="text" class="f-input" id="s3-prod-prazo" placeholder="Ex: 7 dias..."></div>' +
-      '<div class="f-group form-full"><label class="f-label">Entreg\u00e1veis</label><textarea class="f-textarea" id="s3-prod-entregaveis" placeholder="O que a cliente recebe..."></textarea></div>' +
-      '</div>';
-
-  } else if (tipo === 'ebook') {
-    promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres.\n\nDiante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a construir a estrutura de um e-book.\n\nNome: [PREENCHA]\nP\u00fablico: [PREENCHA]\n\nPor favor:\n1. Sugira de 5 a 8 cap\u00edtulos\n2. T\u00edtulo e resumo de cada cap\u00edtulo\n3. N\u00famero ideal de p\u00e1ginas\n4. Como precificar';
-    campos = comuns +
-      '<div style="margin-top:1.5rem"><label class="f-label">Cap\u00edtulos</label>' +
-      '<span class="s2-field-hint" style="display:block;margin-bottom:8px">Adicione os cap\u00edtulos</span>' +
-      '<div id="s3-modulos-container"></div>' +
-      '<button class="btn-add-passo" id="btnS3AddModulo" style="margin-top:8px">+ Adicionar cap\u00edtulo</button></div>' +
-      '<div class="f-group" style="margin-top:1rem"><label class="f-label">N\u00famero de p\u00e1ginas estimado</label><input type="text" class="f-input" id="s3-prod-paginas" placeholder="Ex: 50 p\u00e1ginas..."></div>';
+      '<button class="btn-add-passo" id="btnS3AddModulo" style="margin-top:8px">+ Adicionar ' + (tipo === 'ebook' ? 'cap\u00edtulo' : 'm\u00f3dulo') + '</button></div>';
   }
 
   campos += '<div class="prompt-box" style="margin-top:1.5rem">' +
-    '<div class="prompt-box-title">\u2726 Prompt IA \u2014 Copie e use para estruturar este produto</div>' +
+    '<div class="prompt-box-title">\u2726 Prompt IA \u2014 Copie e use para estruturar a oferta deste produto</div>' +
     '<div class="prompt-text" id="s3-prompt-ia">' + promptTexto + '</div>' +
     '<button class="btn-copy-prompt" onclick="s3CopiarPrompt()">\u29c9 Copiar Prompt IA</button>' +
     '</div>';
 
   return campos;
+}
+
+function s3CamposProgramaMentoria() {
+  var manifesto = '', objetivo = '', publico = '', transformacao = '', pilares = [], estrutura = [];
+  try {
+    var d1 = JSON.parse(localStorage.getItem('s1_caverna_data') || '{}');
+    manifesto = d1['s1-frase'] || '';
+    publico = d1['s1-publico'] || d1['sp-publico'] || '';
+    transformacao = d1['s1-trans'] || d1['sp-trans-ms3'] || '';
+  } catch(e) {}
+  try {
+    var d2 = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
+    objetivo = d2['s2-objetivo'] || '';
+    pilares = d2['pilares'] || [];
+    estrutura = d2['s2-estrutura'] || [];
+  } catch(e) {}
+
+  var sep = '\n' + '='.repeat(40) + '\n';
+  var prompt = 'Ola! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\n' +
+    'Quero estruturar meu Programa de Mentoria com Acompanhamento. Ele entrega: metodologia gravada, acompanhamento por WhatsApp, encontros em grupo e encontros individuais.\n\n' +
+    'Use as informacoes abaixo, que ja construi nas etapas anteriores — nao invente conteudo novo, baseie-se nelas:' +
+    sep + 'MEU MANIFESTO' + sep + '\n' + (manifesto || 'Nao preenchido') + '\n\n' +
+    sep + 'OBJETIVO DO METODO' + sep + '\n' + (objetivo || 'Nao preenchido') + '\n\n' +
+    sep + 'PUBLICO E TRANSFORMACAO' + sep + '\n' + 'Publico: ' + (publico || 'Nao preenchido') + '\nTransformacao: ' + (transformacao || 'Nao preenchido') + '\n\n' +
+    sep + 'PILARES DO METODO' + sep + '\n';
+  if (pilares.length > 0) { pilares.forEach(function(p,i){ prompt += (i+1)+'. '+p+'\n'; }); } else { prompt += 'Nao preenchido\n'; }
+  prompt += '\n' + sep + 'ESTRUTURA DE MODULOS E AULAS' + sep + '\n';
+  if (estrutura.length > 0) {
+    estrutura.forEach(function(mod,i){ prompt += 'Modulo '+(i+1)+': '+mod.nome+'\n'; (mod.aulas||[]).forEach(function(a,j){ prompt += '  Aula '+(j+1)+': '+a+'\n'; }); });
+  } else { prompt += 'Nao preenchido\n'; }
+  prompt += '\n' + sep + 'O QUE PRECISO QUE VOCE ME AJUDE A DECIDIR' + sep + '\n' +
+    '1. Sugira um nome para este Programa de Mentoria\n' +
+    '2. Sugira uma descricao curta e vendedora\n' +
+    '3. Quantos encontros em grupo e quantos individuais fazem sentido, considerando a profundidade do meu metodo\n' +
+    '4. Estrutura basica de cada tipo de encontro\n' +
+    '5. Quais entregaveis a mentorada recebe alem dos encontros (materiais, templates, gravacoes)\n' +
+    '6. Um bonus diferencial que combine com meu manifesto e minha causa\n' +
+    '7. Uma faixa de preco sugerida, com base no formato e na profundidade da entrega';
+
+  return '<div class="prompt-box" style="margin-top:0.5rem">' +
+    '<div class="prompt-box-title">✦ Prompt do Programa de Mentoria — Copie e leve à sua IA</div>' +
+    '<div class="prompt-text" id="s3-prompt-ia">' + prompt + '</div>' +
+    '<button class="btn-copy-prompt" onclick="s3CopiarPrompt()">⧉ Copiar Prompt IA</button>' +
+    '</div>' +
+    '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1.2rem;text-align:left">' +
+    '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">Como fazer</div>' +
+    '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Leve para sua IA de conversa.<br>3. Revise as sugestões e ajuste o que quiser.<br>4. Quando estiver satisfeita, volte aqui e clique em "Marcar Etapa 5 como concluída".</p>' +
+    '</div>';
 }
 
 function s3CopiarPrompt() {
@@ -4941,20 +5150,16 @@ function getS3HTML() {
     '<div style="text-align:center;padding:1.5rem 0 0.5rem">' +
       '<span class="s-label">\u2726 Sua Plataforma</span>' +
       '<h2 class="s-title" id="s3-titulo-plataforma" style="margin-bottom:0.3rem">Bem-vinda \u00e0 sua<br><em style="color:#b48250;font-style:italic">plataforma</em></h2>' +
-      '<p class="s-desc">Clique em cada produto para construir. Sua plataforma, sua vis\u00e3o, seu imp\u00e9rio.</p>' +
+      '<p class="s-desc">Clique para come\u00e7ar construir seus produtos. Escolha o primeiro que mais faz sentido nesta jornada.</p>' +
     '</div>' +
     '<div id="s3-produtos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:2rem"></div>' +
     '<div style="display:flex;flex-direction:column;gap:12px;margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" id="btnAvancarS3p3" style="width:100%;padding:14px">\u2726 Avan\u00e7ar \u2014 Entrega, Plataforma e Oferta \u2192</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnAvancarS3p3" style="width:100%;padding:14px">\u2726 Avan\u00e7ar \u2014 Entrega e Plataforma \u2192</button>' +
     '</div>' +
   '</div>' +
 
   '<div id="s3p3" style="display:none">' +
     getS4HTML() +
-    getChecklistHTML(5) +
-    getChecklistHTML(6) +
-    getChecklistHTML(7) +
-    getS8OfertaHTML() +
     '<div class="s1-proxima" style="margin-top:1.5rem">' +
       '<button class="btn-download btn-dl-primary" id="btnConcluirEtapa4Real" style="width:100%;padding:14px;margin-bottom:1.2rem">\u2726 Marcar Etapa 5 como conclu\u00edda</button>' +
       '<span class="s1-proxima-label">Pr\u00f3xima Batalha</span>' +
@@ -5017,14 +5222,14 @@ function bindS3Events() {
   if (!modalExistente) {
     var modal = document.createElement('div');
     modal.id = 's3-modal-produto';
-    modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(5,17,43,0.97);z-index:9000;overflow-y:auto;padding:1.5rem';
+    modal.style.cssText = 'display:none;position:fixed;inset:0;background:#f4ede2;z-index:9000;overflow-y:auto;padding:0';
     modal.innerHTML = '<div style="max-width:680px;margin:0 auto;padding-bottom:3rem">' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:rgba(5,17,43,0.97);padding:1rem 0;border-bottom:1px solid rgba(180,130,80,0.2)">' +
-        '<h3 class="s-title" id="s3-modal-titulo" style="margin:0;font-size:1.3rem"></h3>' +
-        '<button onclick="s3FecharModal()" style="background:transparent;border:1px solid rgba(240,235,232,0.2);border-radius:50%;width:36px;height:36px;color:rgba(240,235,232,0.6);font-size:18px;cursor:pointer;flex-shrink:0">×</button>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;position:sticky;top:0;background:#05112b;padding:1rem 1.5rem;border-bottom:1px solid rgba(180,130,80,0.3);z-index:10">' +
+        '<h3 class="s-title" id="s3-modal-titulo" style="margin:0;font-size:1.3rem;color:#f0ebe8"></h3>' +
+        '<button onclick="s3FecharModal()" style="background:transparent;border:1px solid rgba(240,235,232,0.25);border-radius:50%;width:36px;height:36px;color:rgba(240,235,232,0.7);font-size:18px;cursor:pointer;flex-shrink:0">×</button>' +
       '</div>' +
-      '<div id="s3-modal-conteudo" style="padding-top:1rem"></div>' +
-      '<div style="display:flex;gap:12px;margin-top:2rem">' +
+      '<div id="s3-modal-conteudo" style="padding:0 1.5rem"></div>' +
+      '<div style="display:flex;gap:12px;margin-top:2rem;padding:0 1.5rem">' +
         '<button class="btn-imprimir" onclick="s3ImprimirAtual()" style="flex:1">⬇ Imprimir Produto</button>' +
         '<button class="btn-espada" onclick="s3FecharModal()" style="flex:1">✦ Salvar e Voltar</button>' +
       '</div>' +
@@ -5067,11 +5272,11 @@ function s3BuildGrid(c) {
   var grid = c.querySelector('#s3-produtos-grid');
   if (!grid) return;
   var produtos = [
-    { tipo:'metodo', subtipo:'', icone:'\uD83C\uDFAC', titulo:'M\u00e9todo Gravado', desc:'Seu m\u00e9todo principal em v\u00eddeo, com m\u00f3dulos e aulas estruturadas.', cor:'#b48250' },
-    { tipo:'mentoria', subtipo:'individual', icone:'\u2694', titulo:'Mentoria Individual', desc:'Acompanhamento personalizado 1 a 1 com sua cliente.', cor:'#8a9bc4' },
-    { tipo:'mentoria', subtipo:'grupo', icone:'\u2694', titulo:'Mentoria em Grupo', desc:'Transforma\u00e7\u00e3o coletiva com um grupo de mulheres.', cor:'#8a9bc4' },
-    { tipo:'curso', subtipo:'', icone:'\uD83D\uDCDA', titulo:'Curso Gravado', desc:'Conte\u00fado organizado em m\u00f3dulos para acesso livre.', cor:'#7ab48a' },
-    { tipo:'workshop', subtipo:'aovivo', icone:'\u2728', titulo:'Workshop Ao Vivo', desc:'Imers\u00e3o presencial de alto impacto.', cor:'#c47a8a' },
+    { tipo:'metodo', subtipo:'acompanhamento', icone:'\ud83e\udded', titulo:'Programa de Mentoria com Acompanhamento', desc:'Metodologia + acompanhamento por WhatsApp + encontros em grupo e individuais.', cor:'#b48250' },
+    { tipo:'mentoria', subtipo:'individual', icone:'\ud83c\udfaf', titulo:'Mentoria Individual', desc:'Acompanhamento personalizado 1 a 1 com sua cliente.', cor:'#8a9bc4' },
+    { tipo:'comunidade', subtipo:'', icone:'\ud83d\udc65', titulo:'Comunidade', desc:'Espa\u00e7o coletivo de troca, pertencimento e evolu\u00e7\u00e3o entre mulheres.', cor:'#8a9bc4' },
+    { tipo:'curso', subtipo:'', icone:'\ud83c\udfac', titulo:'Curso Gravado', desc:'Conte\u00fado organizado em m\u00f3dulos para acesso livre.', cor:'#7ab48a' },
+    { tipo:'workshop', subtipo:'aovivo', icone:'\ud83c\udfa4', titulo:'Workshop Ao Vivo', desc:'Imers\u00e3o presencial de alto impacto.', cor:'#c47a8a' },
     { tipo:'workshop', subtipo:'online', icone:'\uD83D\uDCBB', titulo:'Workshop Online', desc:'Imers\u00e3o ao vivo pela internet.', cor:'#c47a8a' },
     { tipo:'consultoria', subtipo:'', icone:'\uD83D\uDD0D', titulo:'Consultoria', desc:'Diagn\u00f3stico e solu\u00e7\u00e3o personalizada.', cor:'#b48250' },
     { tipo:'ebook', subtipo:'', icone:'\uD83D\uDCD6', titulo:'E-book', desc:'Conte\u00fado rico em formato digital.', cor:'#9b8ac4' }
@@ -5079,18 +5284,17 @@ function s3BuildGrid(c) {
   grid.innerHTML = '';
   produtos.forEach(function(p) {
     var card = document.createElement('div');
-    card.style.cssText = 'background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s';
+    card.style.cssText = 'background:#f4ede2;border:1px solid rgba(180,130,80,0.3);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.3s;display:flex;flex-direction:column;height:100%';
     card.innerHTML =
-      '<div style="padding:1.5rem 1.5rem 1rem">' +
-        '<div style="font-size:32px;margin-bottom:0.8rem">' + p.icone + '</div>' +
-        '<div style="font-family:Playfair Display,serif;font-size:1.1rem;color:#f0ebe8;margin-bottom:0.4rem">' + p.titulo + '</div>' +
-        '<div style="font-size:12px;color:rgba(240,235,232,0.45);line-height:1.5;margin-bottom:1rem">' + p.desc + '</div>' +
+      '<div style="padding:1.2rem 1.5rem 1.2rem;flex:1">' +
+        '<div style="font-family:Playfair Display,serif;font-size:1.1rem;color:#05112b;margin-bottom:0.4rem"><span style="font-size:1.3rem;margin-right:8px;vertical-align:middle">' + p.icone + '</span>' + p.titulo + '</div>' +
+        '<div style="font-size:12px;color:rgba(5,17,43,0.6);line-height:1.5;margin-bottom:0.5rem">' + p.desc + '</div>' +
       '</div>' +
-      '<div style="padding:0.8rem 1.5rem;border-top:1px solid rgba(180,130,80,0.1);background:rgba(180,130,80,0.04)">' +
-        '<span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:' + p.cor + '">\u2726 Construir produto</span>' +
+      '<div style="padding:0.9rem 1.5rem;background:#05112b">' +
+        '<span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#b48250">\u2726 Construir produto</span>' +
       '</div>';
-    card.addEventListener('mouseenter', function(){ this.style.borderColor='rgba(180,130,80,0.5)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.3)'; });
-    card.addEventListener('mouseleave', function(){ this.style.borderColor='rgba(180,130,80,0.2)'; this.style.transform='none'; this.style.boxShadow='none'; });
+    card.addEventListener('mouseenter', function(){ this.style.borderColor='rgba(180,130,80,0.6)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.18)'; });
+    card.addEventListener('mouseleave', function(){ this.style.borderColor='rgba(180,130,80,0.3)'; this.style.transform='none'; this.style.boxShadow='none'; });
     card.addEventListener('click', function(){ s3AbrirProduto(p.tipo, p.subtipo, p.icone, p.titulo); });
     grid.appendChild(card);
   });
@@ -5101,7 +5305,7 @@ function getS4HTML() {
   var pontos = [
     { id:'p1', icone:'🎬', titulo:'Boas-vindas / Onboarding', exemplo:'Ex: Vídeo gravado enviado via WhatsApp logo após a confirmação do pagamento.' },
     { id:'p2', icone:'💬', titulo:'Grupo Individual no WhatsApp', exemplo:'Ex: Acesso premium direto comigo para dúvidas e suporte durante todo o processo.' },
-    { id:'p3', icone:'🎓', titulo:'Método Gravado', exemplo:'Ex: Meu Projeto Digital — acesso completo à plataforma com todas as etapas gravadas.' },
+    { id:'p3', icone:'🎓', titulo:'Programa de Mentoria', exemplo:'Ex: Metodologia + acompanhamento por WhatsApp + encontros em grupo + encontros individuais.' },
     { id:'p4', icone:'📎', titulo:'Ferramentas Principais', exemplo:'Ex: PDFs, links, materiais de apoio que direcionam cada etapa do método.' },
     { id:'p5', icone:'⚔', titulo:'Encontros em Grupo', exemplo:'Ex: Campos de Batalha — encontros semanais ou quinzenais online para avançar juntas.' },
     { id:'p6', icone:'✨', titulo:'Encontro Individual para Evolução do Processo', exemplo:'Ex: Oficina individual para destravar pontos específicos e acelerar o progresso.' },
@@ -5141,7 +5345,6 @@ function getS4HTML() {
     // PÁGINA 1 — TEXTO
     '<div id="s4p1">' +
       '<div style="padding:2rem 0 0.5rem">' +
-        '<span class="s-label">Etapa 5 · Metodologia</span>' +
         '<h2 class="s-title">Entrega<br><em style="font-style:italic;color:#b48250">Escalável</em></h2>' +
       '</div>' +
       '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
@@ -5173,39 +5376,7 @@ function getS4HTML() {
       '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1;width:100%">⬇ Imprimir Metodologia</button>' +
     '</div>' +
 
-    '<div class="s1-proxima" style="margin-top:1.2rem">' +
-      '<span class="s1-proxima-label">Próxima Batalha</span>' +
-      '<div class="s1-proxima-title">Etapa 5 — Designer de Plataforma</div>' +
-      '<div class="s1-proxima-desc">Guerreira, sua metodologia está mapeada. Agora é hora de dar forma e cor à sua vitrine.</div>' +
-      '<button class="btn-proxima" id="btnIrS5">⚔ Partir para a Etapa 5 →</button>' +
     '</div>' +
-
-    // Modal vitória S4
-    '<div class="modal-vitoria" id="modalVitoriaS4">' +
-      '<div class="modal-vitoria-box">' +
-        '<span class="vitoria-icon">🏆</span>' +
-        '<div class="vitoria-selo">✦ Conquista desbloqueada</div>' +
-        '<h2 class="modal-titulo" style="font-family:Playfair Display,serif;font-size:1.5rem;color:#f0ebe8;margin-bottom:0.3rem">Parabéns, Guerreira!</h2>' +
-        '<div class="vitoria-semana">✦ Etapa 4 — Metodologia · Entrega Escalável · Concluída</div>' +
-        '<div class="vitoria-frase">"Você acaba de construir a sua entrega escalável. Agora sua aluna sabe exatamente o que vai receber; e você sabe exatamente o que vai entregar; sem perder seu tempo, sua energia ou sua vida."</div>' +
-        '<div class="vitoria-colecao">' +
-          '<div class="vitoria-badge conquistada">✦ S1 Manifesto</div>' +
-          '<div class="vitoria-badge conquistada">✦ S2 Método</div>' +
-          '<div class="vitoria-badge conquistada">✦ S3 Produtos</div>' +
-          '<div class="vitoria-badge conquistada">✦ S4 Metodologia</div>' +
-          '<div class="vitoria-badge">○ S5 Plataforma</div>' +
-          '<div class="vitoria-badge">○ S6 Gravação</div>' +
-          '<div class="vitoria-badge">○ S7 Edição</div>' +
-          '<div class="vitoria-badge">○ S8 Validação</div>' +
-          '<div class="vitoria-badge">○ S9 Perfil Bio</div>' +
-          '<div class="vitoria-badge">○ S10 Destaques</div>' +
-          '<div class="vitoria-badge">○ S11 Feed</div>' +
-          '<div class="vitoria-badge">○ S12 No Ar!</div>' +
-        '</div>' +
-        '<button class="vitoria-btn" onclick="document.getElementById(\'modalVitoriaS4\').classList.remove(\'ativo\')">⚔ Seguir para a próxima batalha</button>' +
-      '</div>' +
-    '</div>' +
-
   '</div>';
 }
 
@@ -5247,7 +5418,7 @@ function s4Imprimir() {
   var pontos = [
     { id:'p1', titulo:'Boas-vindas / Onboarding' },
     { id:'p2', titulo:'Grupo Individual no WhatsApp' },
-    { id:'p3', titulo:'Método Gravado' },
+    { id:'p3', titulo:'Programa de Mentoria' },
     { id:'p4', titulo:'Ferramentas Principais' },
     { id:'p5', titulo:'Encontros em Grupo' },
     { id:'p6', titulo:'Encontro Individual para Evolução' },
@@ -5578,6 +5749,16 @@ buildGrid();
     <div class="f-group"><label class="f-label">28. Você já ajudou alguém com esse assunto, mesmo que informalmente? Qual foi o resultado?</label><textarea class="f-textarea" id="lt28" rows="2" style="min-height:60px" placeholder="Pode ser uma amiga, colega, familiar — qualquer resultado conta..."></textarea></div>
     <div class="f-group"><label class="f-label">29. Se você fosse criar um produto hoje para entregar esse conhecimento, como seria o formato? (mentoria, curso, consultoria, grupo...)</label><textarea class="f-textarea" id="lt29" rows="2" style="min-height:60px" placeholder="Como você imagina entregando esse conteúdo..."></textarea></div>
     <div class="f-group"><label class="f-label">30. Em quanto tempo você acredita que consegue gerar uma transformação real em alguém com esse assunto?</label><textarea class="f-textarea" id="lt30" rows="2" style="min-height:60px" placeholder="Ex: 30 dias, 3 meses, 6 meses..."></textarea></div>
+  </div>
+
+  <!-- BLOCO 7 -->
+  <div class="bloco-linha-tempo">
+    <div class="bloco-lt-header">🔹 Bloco 7 — Formação e Direção</div>
+    <div class="bloco-lt-sub">A ponte entre quem você foi e onde quer atuar</div>
+    <div class="f-group"><label class="f-label">31. Conte a linha do tempo da sua formação — no que você se formou, quais cursos e especializações fez ao longo do caminho, e o que isso te ensinou sobre você mesma.</label><textarea class="f-textarea" id="lt31" rows="6" style="min-height:160px" placeholder="Formação acadêmica, cursos, certificações, o que cada um te acrescentou..."></textarea></div>
+    <div class="f-group"><label class="f-label">32. Hoje, qual área você sente que quer levar para o digital, ou já está atuando com ela? E dentro dela, existe um recorte específico, um tipo de pessoa onde você sente que tem mais propriedade que a maioria?</label><textarea class="f-textarea" id="lt32" rows="6" style="min-height:160px" placeholder="A área maior, e depois o recorte mais específico dentro dela..."></textarea></div>
+    <div class="f-group"><label class="f-label">33. Complete sem pensar muito: eu acredito que toda mulher tem o direito de...</label><textarea class="f-textarea" id="lt33" rows="2" style="min-height:60px" placeholder="A primeira coisa que vier à cabeça..."></textarea></div>
+    <div class="f-group"><label class="f-label">34. Qual método, técnica ou fundamento você mais usa no dia a dia para levar alguém do problema até o resultado que ela busca?</label><textarea class="f-textarea" id="lt34" rows="4" style="min-height:110px" placeholder="A ferramenta, técnica ou processo que você mais recorre..."></textarea></div>
   </div>
 
   <div class="nav-btns" style="margin-top:1.5rem">
