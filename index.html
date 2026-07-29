@@ -2758,6 +2758,34 @@ function baixarMetodoEditor() {
 /* ===== FIM EDITOR ===== */
 
 
+function wppResultadoMetodo() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+
+  var manifesto = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
+  var objetivo = c.querySelector('#s2-objetivo') ? c.querySelector('#s2-objetivo').value.trim() : '';
+  var nome = '';
+  try { var d = JSON.parse(localStorage.getItem(S2_KEY)||'{}'); nome = d['me-nome'] || ''; } catch(e) {}
+
+  var pilares = [];
+  c.querySelectorAll('#mv-pilares-grid .mv-pilar-card').forEach(function(card) {
+    var n = card.querySelector('.mv-pilar-nome'); if (n) pilares.push(n.textContent);
+  });
+
+  var texto = '\u2694 *' + (nome || 'Meu M\u00e9todo Autoral') + '*\n\n';
+  if (manifesto) texto += '_"' + manifesto + '"_\n\n';
+  if (objetivo) texto += '*Objetivo do M\u00e9todo:*\n' + objetivo + '\n\n';
+  if (pilares.length) {
+    texto += '*Pilares:*\n';
+    pilares.forEach(function(p, i) { texto += (i+1) + '. ' + p + '\n'; });
+    texto += '\n';
+  }
+  texto += '_Enviado pelo Portal Meu Projeto Digital_';
+
+  var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
+  window.open(url, '_blank');
+}
+
 function s2ImprimirMetodoT4() {
   var c = document.getElementById('weekContent');
   if (!c) return;
@@ -4215,6 +4243,7 @@ function getS2HTML() {
       '<div id="mv-estrutura-grid" style="display:none"></div>' +
     '</div>' +
     '<div style="margin-top:1.2rem">' +
+      '<button onclick="wppResultadoMetodo()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;font-weight:600;letter-spacing:0.5px">📲 Enviar para a Jade</button>' +
       '<button onclick="s2ImprimirMetodoT4()" style="background:rgba(5,17,43,0.08);border:1px solid rgba(5,17,43,0.2);color:#05112b;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">🖨 Imprimir / Salvar PDF</button>' +
       '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(5)">✦ Avançar — Artefato Inteligente →</button>' +
     '</div>' +
