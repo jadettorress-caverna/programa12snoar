@@ -579,7 +579,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 .desafio-card:hover .marco-cta{background:linear-gradient(135deg,#2de870,#1aab52)}
 
 /* Grid 2 colunas para os novos cards */
-#weeksGrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:0 1rem 2rem}
+#weeksGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;padding:0 1rem 2rem}
 @media(max-width:600px){#weeksGrid{grid-template-columns:1fr}}
 /* ===== FIM MARCO CARDS ===== */
 
@@ -618,7 +618,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
     <div style="display:flex;justify-content:flex-end;margin-bottom:0.8rem">
       <button onclick="irTelaEntrada()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:7px 16px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">← Início</button>
     </div>
-    <span class="section-label">Sua jornada · 12 etapas</span>
+    <span class="section-label">Sua jornada · Organize seu Capital Intelectual Autoral</span>
     <div class="grid" id="weeksGrid"></div>
   </div>
   <div class="footer"><p>Portal Caverna das Guerreiras · Jade Torres · 2025</p></div>
