@@ -844,8 +844,8 @@ var CK_DATA = {
       ]},
       { title: 'Ferramentas', items: [
         { id: 'fer1', text: 'Acessar o <a class="ck-link" href="https://canva.com" target="_blank">Canva</a> e criar pasta do projeto com os templates' },
-        { id: 'fer2', text: 'Decidir: você vai criar os designers ou contratar?', note: 'Se contratar: briefing pronto com paleta, fontes e referências' },
-        { id: 'fer3', text: 'Usar IA de imagem (Gemini, Midjourney ou similar) se precisar de imagens personalizadas' }
+        { id: 'fer1b', text: 'Usar IA de imagem (Gemini, ChatGPT, Midjourney ou similar) pra criar ou melhorar suas capas e seu design', note: 'Já estamos na era da IA — aproveite pra ganhar tempo e elevar a qualidade visual, mesmo sem ser designer' },
+        { id: 'fer2', text: 'Decidir: você vai criar os designers ou contratar?', note: 'Se contratar: briefing pronto com paleta, fontes e referências' }
       ]}
     ],
     conquista: { icon: '🎨', titulo: 'Plataforma Estruturada', texto: 'Design definido, plataforma escolhida e configurada. Seu método já tem casa digital. Próximo passo: gravar, editar e hospedar.' }
@@ -2037,7 +2037,7 @@ function s2Save() {
   try { data = JSON.parse(localStorage.getItem(S2_KEY) || '{}'); } catch(e) {}
   
   // Só atualiza um campo se ele existir E tiver valor OU se já tinha valor antes
-  var fields = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  var fields = ['mhi-frase','s2-ensinar','s2-porque-voce','s2-dores','s2-sonhos','s2-objecoes','s2-analogia'];
   fields.forEach(function(id) {
     var el = c.querySelector('#' + id);
     if (el) {
@@ -2051,7 +2051,7 @@ function s2Save() {
   });
   
   // Salvar tela atual
-  for (var i = 1; i <= 4; i++) {
+  for (var i = 1; i <= 8; i++) {
     var t = c.querySelector('#s2t' + i);
     if (t && t.style.display === 'block') { data['s2-tela'] = i; break; }
   }
@@ -2083,7 +2083,7 @@ function s2Load() {
   var raw; try { raw = localStorage.getItem(S2_KEY); } catch(e) {}
   if (!raw) { s2GoTo(1); return; }
   var data; try { data = JSON.parse(raw); } catch(e) { return; }
-  var fields = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  var fields = ['mhi-frase','s2-ensinar','s2-porque-voce','s2-dores','s2-sonhos','s2-objecoes','s2-analogia'];
   fields.forEach(function(id) {
     if (data[id] !== undefined) {
       var el = c.querySelector('#' + id);
@@ -2116,7 +2116,7 @@ function s2Load() {
     setTimeout(function() {
       var c2 = document.getElementById('weekContent');
       if (!c2) return;
-      var fields2 = ['mhi-frase','s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+      var fields2 = ['mhi-frase','s2-ensinar','s2-porque-voce','s2-dores','s2-sonhos','s2-objecoes','s2-analogia'];
       fields2.forEach(function(id) {
         if (data[id] !== undefined) {
           var el = c2.querySelector('#' + id);
@@ -2148,7 +2148,7 @@ function s2GoTo(n) {
     if (line && i < 8) line.className = 'pline' + (i < n ? ' done' : '');
   }
   // Ao chegar na tela 4 preencher o método
-  if (n === 4) {
+  if (n === 2) {
     // Manifesto Editorial
     var frase = c.querySelector('#mhi-frase') ? c.querySelector('#mhi-frase').value.trim() : '';
     var mvM = c.querySelector('#mv-manifesto');
@@ -2203,14 +2203,14 @@ function s2GoTo(n) {
       } catch(e) {}
     }
   }
-  if (n === 5) { s2GerarPromptArtefato(); }
+  // Passo 3 agora tem prompt fixo, não precisa gerar dinamicamente
   // Salvar tela atual
   try {
     var d = JSON.parse(localStorage.getItem(S2_KEY) || '{}');
     d['s2-tela'] = n;
     localStorage.setItem(S2_KEY, JSON.stringify(d));
   } catch(e) {}
-  if (n === 3 && typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
+  if (n === 1 && typeof atualizarPrompt === 'function') setTimeout(atualizarPrompt, 100);
   window.scrollTo(0, 0);
 }
 
@@ -3064,6 +3064,8 @@ function s1PreencherResultado() {
   var pub = val('s1-publico');
   var trans = val('s1-trans');
   var dons = val('s1-dons');
+  var habilidades = val('s1-habilidades');
+  var experiencias = val('s1-experiencias');
   var crenca = val('s1-crenca');
   var causa = val('s1-causa');
   var legado = val('s1-legado');
@@ -3085,11 +3087,16 @@ function s1PreencherResultado() {
   var pills = c.querySelector('#r-ing');
   if (pills) {
     pills.innerHTML = '';
-    var ings = [];
-    if (dons) ings.push(dons.substring(0,40));
-    if (causa) ings.push(causa.substring(0,40));
-    ings.forEach(function(t) {
-      var p = document.createElement('span'); p.className = 'i-pill'; p.textContent = t; pills.appendChild(p);
+    var ingredientes = [
+      ['Dons', dons], ['Habilidades', habilidades],
+      ['Experiências', experiencias], ['Crença', crenca], ['Causa', causa]
+    ];
+    ingredientes.forEach(function(item) {
+      if (!item[1]) return;
+      var linha = document.createElement('div');
+      linha.style.cssText = 'margin-bottom:14px';
+      linha.innerHTML = '<strong style="color:#6b4423;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-style:normal">' + item[0] + '</strong><div class="cs2c-val" style="margin-top:2px">' + item[1] + '</div>';
+      pills.appendChild(linha);
     });
   }
 }
@@ -3748,7 +3755,7 @@ function s1ImprimirPosicionamentoEmBranco() {
     '<div style="text-align:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid #b48250">' +
     '<div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Caverna das Guerreiras · Posicionamento</div>' +
     '<div style="font-size:1.4rem;font-weight:700;color:#111">Meu Posicionamento — Sprint de Decisões</div>' +
-    '<div style="font-size:12px;color:#555;margin-top:0.4rem">As 4 etapas do Manifesto Editorial, pra responder à mão.</div>' +
+    '<div style="font-size:12px;color:#555;margin-top:0.4rem">As 4 etapas do Manifesto Editorial.</div>' +
     '</div>';
 
   var titulos = {ms1:'1. Ingredientes de Marca Pessoal', ms2:'2. Fatia de Subnicho', ms3:'3. Ingredientes do Produto', ms4:'4. Manifesto Editorial'};
@@ -3763,14 +3770,21 @@ function s1ImprimirPosicionamentoEmBranco() {
       if (!label) return;
       var campo = grupo.querySelector('textarea, input');
       var explicacao = campo ? (campo.getAttribute('placeholder') || '') : '';
-      var linhasHTML = '';
-      for (var i = 0; i < 6; i++) {
-        linhasHTML += '<div style="border-bottom:1px solid #999;height:20px' + (i > 0 ? ';margin-top:14px' : '') + '"></div>';
+      var valor = campo ? campo.value.trim() : '';
+      var corpoHTML;
+      if (valor) {
+        corpoHTML = '<div style="font-size:14px;color:#222;font-style:italic;line-height:1.7;padding:8px 0 4px;border-bottom:1px solid #ccc">' + valor.replace(/\n/g, '<br>') + '</div>';
+      } else {
+        var linhasHTML = '';
+        for (var i = 0; i < 6; i++) {
+          linhasHTML += '<div style="border-bottom:1px solid #999;height:20px' + (i > 0 ? ';margin-top:14px' : '') + '"></div>';
+        }
+        corpoHTML = linhasHTML;
       }
       html += '<div style="margin-bottom:1.3rem;page-break-inside:avoid">' +
         '<div style="font-size:14px;color:#222;margin-bottom:2px">' + label.textContent + '</div>' +
         (explicacao ? '<div style="font-size:11px;color:#888;font-style:italic;margin-bottom:6px">' + explicacao + '</div>' : '') +
-        linhasHTML +
+        corpoHTML +
         '</div>';
     });
   });
@@ -4108,7 +4122,7 @@ function getS2HTML() {
   '</div>' +
 
   // BOLINHAS DE NAVEGAÇÃO
-  '<div class="pbar" style="justify-content:center;margin:1rem auto 1.5rem">' +
+  '<div class="pbar" style="justify-content:center;margin:1rem auto 1.5rem;flex-wrap:wrap">' +
     '<div class="pdot active" id="s2pd1" onclick="s2GoTo(1)" style="cursor:pointer">1</div>' +
     '<div class="pline" id="s2pl1"></div>' +
     '<div class="pdot" id="s2pd2" onclick="s2GoTo(2)" style="cursor:pointer">2</div>' +
@@ -4126,161 +4140,113 @@ function getS2HTML() {
     '<div class="pdot" id="s2pd8" onclick="s2GoTo(8)" style="cursor:pointer">8</div>' +
   '</div>' +
 
-  // TELA 1 — BRAINSTORMING
-  '<div class="step-screen" id="s2t1" style="display:block">' +
-    '<span class="s-label">PASSO 1 DE 8 · BRAINSTORMING</span>' +
-    '<h2 class="s-title">Brainstorming<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
-    '<p class="s-desc">Antes de qualquer estrutura, solte o que está dentro. Sem julgamento, sem ordem perfeita.</p>' +
-    '<hr class="s2-divider">' +
-    '<div class="s2-section">' +
-      '<h3 class="s2-section-title">Qual é o objetivo do seu método?</h3>' +
-      '<span class="s2-field-hint">Qual é a grande transformação que o seu método vai entregar? Escreve do jeito que está pulsando.</span>' +
-      '<textarea class="s2-textarea" id="s2-objetivo" placeholder="O objetivo do meu método é entregar..." rows="4"></textarea>' +
-    '</div>' +
-    '<hr class="s2-divider">' +
-    '<div class="s2-section">' +
-      '<h3 class="s2-section-title">O QUÊ você vai ensinar?</h3>' +
-      '<span class="s2-field-hint">Descarrega tudo. O que você sabe? O que você quer ensinar? Quanto mais jogar para fora, melhor.</span>' +
-      '<textarea class="s2-textarea" id="s2-que" placeholder="1. \n2. \n3. \n4. \n5. " rows="8"></textarea>' +
-    '</div>' +
-    '<div style="margin-top:1.5rem">' +
-      '<button onclick="baixarS2T1()" style="width:100%;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar Brainstorming</button>' +
-    '</div>' +
-    '<div class="nav-btns" style="margin-top:1rem">' +
-      '<button class="btn-nx" style="width:100%" onclick="s2GoTo(2)">Seguir para O Como →</button>' +
-    '</div>' +
-  '</div>' +
+  // TELA 1 — ESTRUTURA DO MÉTODO
+  '<div class="step-screen active" id="s2t1" style="display:block">' +
+    '<span class="s-label">PASSO 1 DE 6 · BRAINSTORMING</span>' +
+    '<h2 class="s-title">O Caminho da<br><em style="color:#b48250;font-style:italic">Transformação</em></h2>' +
+    '<p class="s-desc">Antes de pedir ajuda à IA, coloque no papel o que está na sua cabeça — atualizado, do seu jeito de hoje. Isso vira o prompt que você vai levar pro mesmo projeto do Claude onde já está sua Linha do Tempo e seu Sprint de Decisões.</p>' +
+    '<div class="f-group"><label class="f-label">O que você quer que sua aluna saia sabendo fazer, na prática?</label><textarea class="f-textarea" id="s2-ensinar" placeholder="Ex: Ela sai sabendo estruturar o método dela em módulos e aulas..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Por que você é a pessoa certa pra ensinar isso?</label><textarea class="f-textarea" id="s2-porque-voce" placeholder="Sua experiência, sua vivência com o tema..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Dores — o que sua aluna sofre hoje, antes de te conhecer? (até 5)</label><textarea class="f-textarea" id="s2-dores" placeholder="Uma por linha..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Sonhos — o que ela deseja alcançar, o que é sucesso pra ela? (até 5)</label><textarea class="f-textarea" id="s2-sonhos" placeholder="Uma por linha..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Objeções — por que ela hesitaria em se comprometer com esse método? (até 5)</label><textarea class="f-textarea" id="s2-objecoes" placeholder="Uma por linha..."></textarea></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Se seu método fosse uma imagem ou situação da vida real, o que seria? (semente da analogia — pode deixar em branco)</label><textarea class="f-textarea" id="s2-analogia" placeholder="Pode deixar em branco se ainda não tiver ideia — a IA pode sugerir"></textarea></div>' +
 
-  // TELA 2 — O COMO
-  '<div class="step-screen" id="s2t2" style="display:none">' +
-    '<span class="s-label">PASSO 2 DE 8 · ARQUITETURA</span>' +
-    '<h2 class="s-title">Organização<br><em style="color:#b48250;font-style:italic">do Método</em></h2>' +
-    '<p class="s-desc">Agora dê forma à jornada que você vai conduzir sua aluna — antes, durante e depois.</p>' +
-    '<hr class="s2-divider">' +
-    '<div class="s2-section">' +
-      '<div class="etapa-box">' +
-        '<div class="etapa-box-title">\u2b21 Etapa 1 - Preparação para o Método</div>' +
-        '<div class="etapa-box-hint">O que essa pessoa precisa saber ou fazer antes de entrar no seu método?</div>' +
-        '<textarea class="s2-textarea" id="s2-etapa1" placeholder="Antes de começar o método, minha aluna precisa..." rows="4"></textarea>' +
-      '</div>' +
-      '<div class="etapa-box">' +
-        '<div class="etapa-box-title">\u2b21 Etapa 2 - O Passo a Passo do Método</div>' +
-        '<div class="etapa-box-hint">Esse é o coração do seu método. Quais são os passos que você vai guiar essa pessoa?</div>' +
-        '<div class="passos-container" id="passosContainer"></div>' +
-        '<div class="aviso-menos-mais" id="avisoMenos">✦ Lembra guerreira, menos é mais!</div>' +
-        '<button class="btn-add-passo" id="btnAddPasso">+ adicionar passo</button>' +
-      '</div>' +
-      '<div class="etapa-box">' +
-        '<div class="etapa-box-title">\u2b21 Etapa 3 - Pós Método</div>' +
-        '<div class="etapa-box-hint">O que acontece depois? Como a transformação continua na vida dela?</div>' +
-        '<textarea class="s2-textarea" id="s2-etapa3" placeholder="Depois de concluir o método, minha aluna vai..." rows="4"></textarea>' +
-      '</div>' +
-    '</div>' +
-    '<div style="margin-top:1.5rem">' +
-      '<button onclick="baixarS2T2()" style="width:100%;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar O Como</button>' +
-    '</div>' +
-    '<div class="nav-btns" style="margin-top:1rem">' +
-      '<button class="btn-bk" onclick="s2GoTo(1)">← Voltar</button>' +
-      '<button class="btn-nx" onclick="s2GoTo(3)">Seguir para o Método →</button>' +
-    '</div>' +
-  '</div>' +
-
-  // TELA 3 — PILARES
-  '<div class="step-screen" id="s2t3" style="display:none">' +
-    '<span class="s-label">PASSO 3 DE 8 · ESTRUTURA</span>' +
-    '<h2 class="s-title">Estrutura do<br><em style="color:#b48250;font-style:italic">Método</em></h2>' +
-    '<p class="s-desc">Use o prompt abaixo para pedir à sua IA que organize os pilares e a estrutura completa em módulos e aulas.</p>' +
-    '<div class="prompt-box" style="margin-top:1rem">' +
-      '<div class="prompt-box-title">✦ Prompt — Copie e leve ao seu Chat de IA</div>' +
-      '<div class="prompt-text" id="promptText">Preencha os campos das telas anteriores para gerar o prompt.</div>' +
+    '<div class="prompt-box" style="margin-top:1.5rem">' +
+      '<div class="prompt-box-title">✦ Prompt de Conversa — Copie e leve ao seu projeto no Claude</div>' +
+      '<div class="prompt-text" id="promptText">Preencha as perguntas acima para gerar o prompt.</div>' +
       '<button class="btn-copy-prompt" id="btnCopyPrompt">⧉ Copiar prompt</button>' +
     '</div>' +
-    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.5rem">' +
-      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">✦ Cole a resposta da IA aqui</div>' +
-      '<p style="font-size:13px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Cole o que a IA gerou — os pilares serão criados e preenchidos automaticamente.</p>' +
-      '<textarea id="s2-pilares-cola" class="f-textarea" rows="5" style="min-height:110px" placeholder="Cole aqui a resposta da IA com os pilares..."></textarea>' +
-      '<button onclick="s2DistribuirPilares()" style="background:linear-gradient(135deg,#05112b,#0a1e3d);color:#f0ebe8;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:10px 18px;font-size:12px;cursor:pointer;width:100%;margin-top:0.6rem;letter-spacing:0.5px">✦ Criar e distribuir estrutura</button>' +
-      '<p style="font-size:11px;color:#c0392b;margin-top:0.6rem;line-height:1.6"><strong>⚠ Importante:</strong> Analise e ajuste os pilares gerados antes de continuar.</p>' +
-    '</div>' +
-    '<div class="nav-btns" style="margin-top:1.5rem">' +
-      '<button class="btn-bk" onclick="s2GoTo(2)">← Voltar</button>' +
-    '</div>' +
-  '</div>' +
 
-  // TELA 3B — EDIÇÃO DO MÉTODO
-  '<div class="step-screen" id="s2t3b" style="display:none">' +
-    '<span class="s-label">EDI\u00c7\u00c3O DO M\u00c9TODO</span>' +
-    '<h2 class="s-title">Edição do<br><em style="color:#b48250;font-style:italic">Método</em></h2>' +
-    '<p class="s-desc">Revise e ajuste tudo antes de seguir.</p>' +
-    '<div class="me-section">' +
-      '<div class="me-section-title">Nome do Método</div>' +
-      '<input type="text" class="f-input" id="me-nome" placeholder="Ex: Método Caverna, Método das 3 Fases..." style="width:100%">' +
-    '</div>' +
-    '<div class="me-section">' +
-      '<div class="me-section-title">Pilares (2 a 4)</div>' +
-      '<div id="me-pilares-container"></div>' +
-      '<button class="me-add-btn" onclick="meAddPilar()">+ adicionar pilar</button>' +
-    '</div>' +
-    '<div class="me-section">' +
-      '<div class="me-section-title">Estrutura — M\u00f3dulos e Aulas</div>' +
-      '<div id="me-modulos-container"></div>' +
-      '<button class="me-add-btn" onclick="meAddModulo()">+ adicionar m\u00f3dulo</button>' +
+    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+      '<p style="font-size:12px;color:rgba(5,17,43,0.6);line-height:1.6;margin:0"><strong>⚠ Importante:</strong> Isso é o começo de uma conversa — negocie com a IA até a analogia, os pilares e o passo a passo fazerem sentido pra você. O resultado fica salvo ali mesmo, no seu projeto do Claude.</p>' +
     '</div>' +
     '<div style="margin-top:1.5rem">' +
-      '<button onclick="baixarMetodoEditor()" style="width:100%;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:12px 10px;font-size:12px;cursor:pointer;font-weight:600">\u2913 Baixar M\u00e9todo</button>' +
-    '</div>' +
-    '<div class="nav-btns" style="margin-top:1rem">' +
-      '<button class="btn-bk" onclick="s2GoTo(3)">← Voltar</button>' +
-      '<button class="btn-espada" style="flex:2" onclick="s2GoTo(4)">\u2726 Ver minha ideia de m\u00e9todo pronta!</button>' +
-    '</div>' +
-    '<p style="font-size:11px;color:rgba(5,17,43,0.4);text-align:center;margin-top:0.5rem">Revise, envie para a Jade, baixe e depois veja seu método pronto.</p>' +
-  '</div>' +
-
-  // TELA 4 — MÉTODO PRONTO
-  '<div class="step-screen" id="s2t4" style="display:none">' +
-    '<span class="s-label">PASSO 4 DE 8 · RESULTADO</span>' +
-    '<h2 class="s-title">Minha ideia de<br><em style="color:#b48250;font-style:italic">método pronta!</em></h2>' +
-    '<p class="s-desc">Aqui está tudo que você construiu. Revise, ajuste o que precisar e siga para gravar seu método.</p>' +
-    '<div class="metodo-visual" id="metodoVisual">' +
-      '<div class="mv-objetivo" style="margin-bottom:1rem">' +
-        '<div class="mv-objetivo-label">✦ Manifesto Editorial</div>' +
-        '<div class="mv-objetivo-text" id="mv-manifesto" style="font-style:italic">—</div>' +
-      '</div>' +
-      '<div class="mv-objetivo" style="margin-bottom:1.2rem">' +
-        '<div class="mv-objetivo-label">✦ Objetivo do Método</div>' +
-        '<div class="mv-objetivo-text" id="mv-objetivo-texto">—</div>' +
-      '</div>' +
-      '<div class="mv-objetivo-label" style="margin-bottom:0.6rem">✦ Pilares do Método</div>' +
-      '<div id="mv-pilares-grid"></div>' +
-      '<div id="mv-estrutura-label" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin:1.2rem 0 0.6rem">✦ Estrutura do Método</div>' +
-      '<div id="mv-estrutura-grid" style="display:none"></div>' +
-    '</div>' +
-    '<div style="margin-top:1.2rem">' +
-      '<button onclick="wppResultadoMetodo()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;font-weight:600;letter-spacing:0.5px">📲 Enviar para a Jade</button>' +
-      '<button onclick="s2ImprimirMetodoT4()" style="background:rgba(5,17,43,0.08);border:1px solid rgba(5,17,43,0.2);color:#05112b;border-radius:10px;padding:12px 20px;font-size:13px;cursor:pointer;width:100%;margin-bottom:0.8rem;letter-spacing:0.5px">🖨 Imprimir / Salvar PDF</button>' +
-      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(5)">✦ Avançar — Artefato Inteligente →</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(2)">✦ Avançar — Gerar o Artefato →</button>' +
     '</div>' +
   '</div>' +
 
-  '<div class="step-screen" id="s2t5" style="display:none">' +
-    '<span class="s-label">PASSO 5 DE 8 · ARTEFATO INTELIGENTE</span>' +
-    '<h2 class="s-title">Transforme seu método<br><em style="color:#b48250;font-style:italic">numa ferramenta viva</em></h2>' +
-    '<p class="s-desc">Seu método já está organizado e revisado. Agora você vai levar essa estrutura para o Claude e pedir que ele construa um artefato interativo — uma ferramenta onde qualquer pessoa consegue visualizar e percorrer o seu método, passo a passo.</p>' +
+  '<div class="step-screen" id="s2t2" style="display:none">' +
+    '<span class="s-label">PASSO 2 DE 8 · MÓDULOS</span>' +
+    '<h2 class="s-title">Formalizando<br><em style="color:#b48250;font-style:italic">os Módulos</em></h2>' +
+    '<p class="s-desc">Com a analogia, os pilares e o passo a passo já decididos na conversa, agora é hora de formalizar os módulos — ainda sem aulas. Continue na mesma conversa — a IA já tem o contexto todo.</p>' +
     '<div class="prompt-box" style="margin-top:1rem">' +
-      '<div class="prompt-box-title">✦ Prompt do Artefato Inteligente — Copie e leve ao Claude</div>' +
-      '<div class="prompt-text" id="promptArtefatoInteligente">Preencha e revise seu método no Passo 4 para gerar este prompt automaticamente.</div>' +
+      '<div class="prompt-box-title">✦ Prompt — Copie e leve ao seu projeto no Claude</div>' +
+      '<div class="prompt-text" id="promptTextAulas">Olá! Já decidimos juntos, nesta conversa, a analogia, os pilares e o passo a passo conceitual do meu Método Autoral.\n\nAgora, formalize isso em módulos: transforme o passo a passo em módulos — do primeiro módulo de preparação até o último de encerramento. Para cada módulo, dê um nome e uma frase de contexto conectada com a analogia que já escolhemos. Ainda NÃO detalhe as aulas de cada módulo — só o nome e o contexto de cada um. Ainda não pense em ferramentas aqui, isso vem depois.\n\nEntregue tudo isso em formato de um documento HTML — um protótipo visual do método, com capa (nome do método + analogia explicada) e os módulos organizados de forma clara, pensado tanto pra eu revisar na tela quanto pra imprimir.\n\nSobre o visual: quero que tenha cara de documento/atividade, não de aplicativo — um fundo de papel envelhecido (tipo papel manteiga, levemente amarelado), pra dar a sensação de que estou realmente preenchendo algo, fazendo uma atividade. No topo, mantenha \"CAVERNA DAS GUERREIRAS · MEU PROJETO DIGITAL\" como identidade — essa ferramenta é minha, da mentora, então pode usar essa marca sem problema.\n\nSobre a navegação: quero uma barra com um botão por módulo, no topo. Ao clicar num módulo, quero que abra um MODAL (não uma âncora de rolagem) mostrando o conteúdo daquele módulo — nome, contexto, e (quando eu pedir as aulas depois) a lista de aulas em formato de acordeão: cada aula fechada por padrão, mostrando só o nome, com um botão \"i\" redondo que expande um painel editável com campos de nome e contexto (o campo de contexto deve ser um textarea que cresce sozinho conforme eu digito, não uma linha única). Preciso poder editar, adicionar e remover aulas dentro do modal, e ao clicar em \"Salvar e Fechar\", a página principal deve refletir a edição na hora.\n\nComo ainda não tem aulas nessa etapa, o modal de cada módulo pode vir vazio, pronto pra receber as aulas que vou pedir depois — mas já construa a estrutura de dados e a interface do jeito descrito acima, não deixe pra fazer depois.\n\nSe eu quiser ajustar algo depois de ver o resultado, vou te pedir — continue editando o mesmo documento, não crie um novo.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyAulas" onclick="s2CopiarPromptAulas()">⧉ Copiar prompt</button>' +
+    '</div>' +
+    '<div style="margin-top:1.5rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(1)" style="margin-right:10px">← Voltar</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:auto;padding:14px 24px" onclick="s2GoTo(3)">✦ Avançar — Ideias de Ferramentas →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t3" style="display:none">' +
+    '<span class="s-label">PASSO 3 DE 8 · IDEIAS DE FERRAMENTAS</span>' +
+    '<h2 class="s-title">Quais ferramentas<br><em style="color:#b48250;font-style:italic">seu método pede?</em></h2>' +
+    '<p class="s-desc">Seus módulos já estão definidos. Antes de detalhar as aulas, peça ideias de ferramentas que podem apoiar a entrega — assim, quando as aulas forem criadas, elas já sabem que essas ferramentas existem.</p>' +
+    '<div class="prompt-box" style="margin-top:1rem">' +
+      '<div class="prompt-box-title">✦ Prompt — Copie e leve ao seu projeto no Claude</div>' +
+      '<div class="prompt-text" id="promptArtefatoInteligente">Olá! Com base em tudo que já estruturamos do meu método aqui nesta conversa — incluindo os módulos já definidos — quero ideias de ferramentas que podem apoiar a entrega dele para minhas alunas.\n\nMe dê sugestões em dois formatos:\n\n1. FERRAMENTAS EM PDF — materiais de apoio para baixar e usar offline (workbook, checklist, planner, folha de exercício, etc). Para cada sugestão, diga qual módulo ou momento do método ela apoia e o que a aluna faz com ela.\n\n2. FERRAMENTAS EM ARTEFATO INTELIGENTE (HTML) — ferramentas interativas que a aluna usa dentro de uma conversa comigo ou sozinha (calculadora, gerador de algo, quiz, rastreador, etc). Para cada sugestão, diga o que ela faz e por que faz sentido ser interativa em vez de estática.\n\nQuero pelo menos 3 ideias de cada formato — nome de cada ferramenta e o contexto/ideia dela.\n\nIMPORTANTE: preciso só de IDEIAS aqui — não construa nenhuma ferramenta agora, só nomeie e explique o que cada uma faria. A construção de cada uma vem depois, no meu ritmo, uma de cada vez.\n\nImportante sobre identidade visual: quando eu for construir cada ferramenta (mais adiante), elas são produtos meus, que vou entregar à minha própria aluna com a minha marca — não use a identidade da Caverna das Guerreiras nelas. Isso é só pra você já ter em mente, não precisa aplicar agora.</div>' +
       '<button class="btn-copy-prompt" id="btnCopyArtefato" onclick="s2CopiarPromptArtefato()">⧉ Copiar prompt</button>' +
     '</div>' +
     '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1.2rem;text-align:left">' +
       '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">Como fazer</div>' +
-      '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Abra um chat novo no Claude (claude.ai).<br>3. Cole o prompt e envie.<br>4. Peça ajustes de conteúdo e visual até o artefato representar seu método do jeito que você imaginou.<br>5. Salve o link do artefato — ele vai ser a ferramenta que você usa com suas mentoradas.</p>' +
+      '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Cole na mesma conversa do Claude onde já está seu método.<br>3. Veja as ideias — sem construir nada ainda.<br>4. Avance pro próximo passo pra pedir as aulas, que já vão nascer sabendo dessas ferramentas.<br>5. Só depois, no Passo 5, você constrói cada ferramenta escolhida, uma de cada vez.</p>' +
     '</div>' +
     '<div style="margin-top:1.2rem">' +
-      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(6)">✦ Avançar — Método na Plataforma →</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:100%;padding:14px" onclick="s2GoTo(4)">✦ Avançar — Construir Ferramentas →</button>' +
     '</div>' +
   '</div>' +
 
-  '<div class="step-screen" id="s2t6" style="display:none">' +
+  '<div class="step-screen" id="s2t4" style="display:none">' +
+    '<span class="s-label">PASSO 4 DE 8 · CONSTRUIR FERRAMENTAS</span>' +
+    '<h2 class="s-title">Transforme as ideias<br><em style="color:#b48250;font-style:italic">em ferramentas de verdade</em></h2>' +
+    '<p class="s-desc">Escolha uma ferramenta por vez das ideias que já discutimos, e use o prompt certo pro formato dela. Sem pressa — uma ferramenta de cada vez, no seu ritmo. Sua ferramenta principal vai te ajudar a conduzir o desenvolvimento das aulas no próximo passo.</p>' +
+
+    '<div style="margin-top:1rem;padding-top:1rem;border-top:2px dashed rgba(180,130,80,0.3)">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.5rem">Prompt 1 — Ferramenta em PDF</div>' +
+    '</div>' +
+    '<div class="prompt-box" style="margin-top:0.5rem">' +
+      '<div class="prompt-box-title">✦ Copie, adapte o nome da ferramenta, e leve ao Claude</div>' +
+      '<div class="prompt-text" id="promptFerramentaPDF">Olá! Das ideias de ferramentas que já discutimos, quero construir agora a ferramenta em PDF chamada [escreva aqui o nome da ferramenta que você escolheu].\n\nCrie um documento em PDF completo, pronto pra eu usar com minhas alunas, com o conteúdo que fizer sentido pra essa ferramenta (workbook, checklist, planner, ou o formato que combinar com a ideia).\n\nImportante: use minha própria identidade visual — cores, tipografia, estilo — não a identidade da Caverna das Guerreiras. Isso é um produto meu, que vou entregar às minhas alunas com a minha marca.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyFerramentaPDF" onclick="s2CopiarPromptFerramentaPDF()">⧉ Copiar prompt</button>' +
+    '</div>' +
+
+    '<div style="margin-top:1.6rem;padding-top:1rem;border-top:2px dashed rgba(180,130,80,0.3)">' +
+      '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.5rem">Prompt 2 — Ferramenta em Artefato (HTML)</div>' +
+    '</div>' +
+    '<div class="prompt-box" style="margin-top:0.5rem">' +
+      '<div class="prompt-box-title">✦ Copie, adapte o nome da ferramenta, e leve ao Claude</div>' +
+      '<div class="prompt-text" id="promptFerramentaHTML">Olá! Das ideias de ferramentas que já discutimos, quero construir agora a ferramenta em artefato interativo (HTML) chamada [escreva aqui o nome da ferramenta que você escolheu].\n\nCrie um artefato interativo, com cara de ferramenta profissional (não um documento de texto parado), que faça o que descrevemos na ideia original dela.\n\nImportante: use minha própria identidade visual — cores, tipografia, estilo — não a identidade da Caverna das Guerreiras. Isso é um produto meu, que vou entregar às minhas alunas com a minha marca. Se você não souber minha paleta ainda, me pergunte antes de construir.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyFerramentaHTML" onclick="s2CopiarPromptFerramentaHTML()">⧉ Copiar prompt</button>' +
+    '</div>' +
+
+    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">' +
+      '<p style="font-size:12px;color:rgba(5,17,43,0.6);line-height:1.6;margin:0"><strong>⚠ Importante:</strong> repita esse processo pra cada ferramenta que você quiser construir — uma conversa focada por vez. Salve o link de cada uma.</p>' +
+    '</div>' +
+    '<div style="margin-top:1.5rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(3)" style="margin-right:10px">← Voltar</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:auto;padding:14px 24px" onclick="s2GoTo(5)">✦ Avançar — Detalhar Aulas →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t5" style="display:none">' +
+    '<span class="s-label">PASSO 5 DE 8 · AULAS</span>' +
+    '<h2 class="s-title">Detalhando<br><em style="color:#b48250;font-style:italic">cada módulo</em></h2>' +
+    '<p class="s-desc">Com os módulos definidos e as ferramentas já construídas, agora é hora de detalhar as aulas de cada módulo — usando sua ferramenta principal pra revisar, e já sabendo quais ferramentas existem.</p>' +
+    '<div class="prompt-box" style="margin-top:1rem">' +
+      '<div class="prompt-box-title">✦ Prompt — Copie e leve ao seu projeto no Claude</div>' +
+      '<div class="prompt-text" id="promptTextAulasDetalhe">Olá! Já temos os módulos do meu Método Autoral definidos, e já também construímos as ferramentas que vamos usar pra apoiar a entrega.\n\nAgora, dentro de cada módulo já existente no nosso documento, adicione as aulas: nome da aula, um pouco de contexto do que ela ensina, e o tipo de material de apoio que a aula usa (vídeo, texto de referência, ou prática/exercício).\n\nIMPORTANTE: garanta que cada ferramenta que já construímos tenha pelo menos uma aula própria, dedicada a apresentar e ensinar a usar aquela ferramenta — não deixe nenhuma ferramenta sem uma aula que a entregue.\n\nMantenha a analogia conectada em cada aula, não só nos títulos dos módulos. Se fizer sentido, inclua também uma pequena recapitulação no início de cada módulo, e uma mensagem de encerramento com próximo passo no final de cada um.\n\nLembre-se de manter a interatividade que já construímos — clique no módulo abre o modal, aulas em acordeão editável, campos que crescem sozinhos, salvar reflete na hora.\n\nAtualize o mesmo documento HTML que você já criou — não crie um documento novo.</div>' +
+      '<button class="btn-copy-prompt" id="btnCopyAulasDetalhe" onclick="s2CopiarPromptAulasDetalhe()">⧉ Copiar prompt</button>' +
+    '</div>' +
+    '<div style="margin-top:1.5rem">' +
+      '<button class="btn-bk" onclick="s2GoTo(4)" style="margin-right:10px">← Voltar</button>' +
+      '<button class="btn-download btn-dl-primary" style="width:auto;padding:14px 24px" onclick="s2GoTo(6)">✦ Avançar — Método na Plataforma →</button>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="step-screen" id="s2t6" style="display:none">' + +
     '<span class="s-label">PASSO 6 DE 8 · MÉTODO NA PLATAFORMA</span>' +
     '<div id="s2t5-checklists" style="text-align:left">' +
     getChecklistHTML(5) +
@@ -4393,9 +4359,57 @@ function s2GerarPromptArtefato() {
   el.textContent = prompt;
 }
 
+function s2CopiarPromptAulas() {
+  var el = document.getElementById('promptTextAulas');
+  var btn = document.getElementById('btnCopyAulas');
+  if (!el) return;
+  var ta = document.createElement('textarea');
+  ta.value = el.textContent;
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); if (btn) btn.textContent = '✓ Copiado!'; } catch(e) { if (btn) btn.textContent = '✗ Tente manualmente'; }
+  document.body.removeChild(ta);
+  setTimeout(function() { if (btn) btn.textContent = '⧉ Copiar prompt'; }, 2000);
+}
+
 function s2CopiarPromptArtefato() {
   var el = document.getElementById('promptArtefatoInteligente');
   var btn = document.getElementById('btnCopyArtefato');
+  if (!el) return;
+  var ta = document.createElement('textarea');
+  ta.value = el.textContent;
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); if (btn) btn.textContent = '✓ Copiado!'; } catch(e) { if (btn) btn.textContent = '✗ Tente manualmente'; }
+  document.body.removeChild(ta);
+  setTimeout(function() { if (btn) btn.textContent = '⧉ Copiar prompt'; }, 2000);
+}
+
+function s2CopiarPromptAulasDetalhe() {
+  var el = document.getElementById('promptTextAulasDetalhe');
+  var btn = document.getElementById('btnCopyAulasDetalhe');
+  if (!el) return;
+  var ta = document.createElement('textarea');
+  ta.value = el.textContent;
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); if (btn) btn.textContent = '✓ Copiado!'; } catch(e) { if (btn) btn.textContent = '✗ Tente manualmente'; }
+  document.body.removeChild(ta);
+  setTimeout(function() { if (btn) btn.textContent = '⧉ Copiar prompt'; }, 2000);
+}
+
+function s2CopiarPromptFerramentaPDF() {
+  var el = document.getElementById('promptFerramentaPDF');
+  var btn = document.getElementById('btnCopyFerramentaPDF');
+  if (!el) return;
+  var ta = document.createElement('textarea');
+  ta.value = el.textContent;
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); if (btn) btn.textContent = '✓ Copiado!'; } catch(e) { if (btn) btn.textContent = '✗ Tente manualmente'; }
+  document.body.removeChild(ta);
+  setTimeout(function() { if (btn) btn.textContent = '⧉ Copiar prompt'; }, 2000);
+}
+
+function s2CopiarPromptFerramentaHTML() {
+  var el = document.getElementById('promptFerramentaHTML');
+  var btn = document.getElementById('btnCopyFerramentaHTML');
   if (!el) return;
   var ta = document.createElement('textarea');
   ta.value = el.textContent;
@@ -4438,132 +4452,60 @@ function bindS2Events() {
   var fraseEl = c.querySelector('#mhi-frase');
   if (fraseEl) fraseEl.addEventListener('input', function(){ atualizarPrompt(); s2Save(); });
 
-  // Auto-save em todos os campos da S2
-  var s2fields = ['s2-objetivo','s2-que','s2-etapa1','s2-etapa3'];
+  // Auto-save e atualização do prompt em todos os campos do Passo 1
+  var s2fields = ['s2-ensinar','s2-porque-voce','s2-dores','s2-sonhos','s2-objecoes','s2-analogia'];
   s2fields.forEach(function(id) {
     var el = c.querySelector('#' + id);
-    if (el) el.addEventListener('input', function(){ s2Save(); });
-  });
-
-  // Passos dinâmicos
-  var passosContainer = c.querySelector('#passosContainer');
-  var btnAdd = c.querySelector('#btnAddPasso');
-  var aviso = c.querySelector('#avisoMenos');
-
-  function addPasso(val) {
-    var total = passosContainer.querySelectorAll('.passo-row').length;
-    if (total >= 12) return;
-    var num = total + 1;
-    var row = document.createElement('div');
-    row.className = 'passo-row';
-    row.innerHTML = '<div class="passo-num">' + num + '</div>' +
-      '<input class="passo-input" placeholder="Passo ' + num + ' - descreva o que sua aluna vai fazer..." value="' + (val||'') + '">' +
-      '<button class="passo-del" title="Remover">×</button>';
-    row.querySelector('.passo-del').addEventListener('click', function() {
-      row.remove();
-      renumerar();
-      verificarPassos();
-      s2Save();
-    });
-    row.querySelector('.passo-input').addEventListener('input', function(){ atualizarPrompt(); s2Save(); });
-    passosContainer.appendChild(row);
-    verificarPassos();
-    atualizarPrompt();
-  }
-
-  function renumerar() {
-    var rows = passosContainer.querySelectorAll('.passo-row');
-    rows.forEach(function(r, i) { r.querySelector('.passo-num').textContent = i + 1; });
-  }
-
-  function verificarPassos() {
-    var total = passosContainer.querySelectorAll('.passo-row').length;
-    aviso.style.display = total >= 8 ? 'block' : 'none';
-    btnAdd.style.display = total >= 12 ? 'none' : 'flex';
-  }
-
-  // Iniciar com 3 passos
-  addPasso(''); addPasso(''); addPasso('');
-
-  btnAdd.addEventListener('click', function() { addPasso(''); });
-
-  // Atualizar prompt quando campos mudam
-  ['s2-objetivo','s2-que','s2-etapa1','s2-etapa3'].forEach(function(id) {
-    var el = c.querySelector('#'+id);
-    if (el) el.addEventListener('input', atualizarPrompt);
-  });
-  ['mhi-nome','mhi-fatia','mhi-publico','mhi-trans','mhi-causa'].forEach(function(id) {
-    var el = c.querySelector('#'+id);
-    if (el) el.addEventListener('input', atualizarPrompt);
+    if (el) el.addEventListener('input', function(){ s2Save(); atualizarPrompt(); });
   });
 
   function getPassos() {
-    var passos = [];
-    passosContainer.querySelectorAll('.passo-input').forEach(function(inp, i) {
-      var v = inp.value.trim();
-      if (v) passos.push('- ' + v);
-    });
-    return passos.join('\n') || '- (preencha os passos acima)';
+    return '';
   }
 
   function atualizarPrompt() {
-    var frase = (c.querySelector('#mhi-frase') && c.querySelector('#mhi-frase').value.trim()) || 'escreva aqui sua frase de manifesto';
-    var objetivo = (c.querySelector('#s2-objetivo') && c.querySelector('#s2-objetivo').value.trim()) || 'escreva aqui o objetivo do seu método';
-    var passos = getPassos();
+    var ensinar = (c.querySelector('#s2-ensinar') && c.querySelector('#s2-ensinar').value.trim()) || 'não preenchido';
+    var porqueVoce = (c.querySelector('#s2-porque-voce') && c.querySelector('#s2-porque-voce').value.trim()) || 'não preenchido';
+    var dores = (c.querySelector('#s2-dores') && c.querySelector('#s2-dores').value.trim()) || 'não preenchido';
+    var sonhos = (c.querySelector('#s2-sonhos') && c.querySelector('#s2-sonhos').value.trim()) || 'não preenchido';
+    var objecoes = (c.querySelector('#s2-objecoes') && c.querySelector('#s2-objecoes').value.trim()) || 'não preenchido';
+    var analogia = (c.querySelector('#s2-analogia') && c.querySelector('#s2-analogia').value.trim()) || '';
 
-    var etapa1 = (c.querySelector('#s2-etapa1') && c.querySelector('#s2-etapa1').value.trim()) || '';
-    var etapa3 = (c.querySelector('#s2-etapa3') && c.querySelector('#s2-etapa3').value.trim()) || '';
+    var transformacao = '';
+    try {
+      var d1 = JSON.parse(localStorage.getItem('s1_caverna_data') || '{}');
+      transformacao = d1['s1-trans'] || d1['sp-trans-ms3'] || '';
+    } catch(e) {}
 
-    var prompt = 'Olá! Estou sendo mentorada pela Jade Torres, especialista em comunicação autoral, e estou desenvolvendo meu Método Autoral.\n\n' +
-      'Preciso da sua ajuda para organizar duas coisas: os Pilares do meu método e a Estrutura completa em módulos e aulas.\n\n' +
+    var prompt1 = 'Olá! Continuando nossa conversa neste mesmo projeto — já temos minha Linha do Tempo e meu Sprint de Decisões aqui.\n\n' +
+      'Antes de formalizar qualquer coisa, quero conversar com você pra decidir três pontos do meu Método Autoral. Não construa nada em HTML ainda — isso é só o começo de uma conversa.\n\n' +
       '---\n' +
-      'MEUS DADOS:\n' +
+      'MEUS DADOS\n' +
       '---\n\n' +
-      'Manifesto Editorial: "' + frase + '"\n\n' +
-      'Objetivo do método: ' + objetivo + '\n\n' +
-      'Brainstorming — o que vou ensinar:\n' + passos + '\n\n' +
-      'Preparação (antes do método): ' + (etapa1 || 'não preenchido') + '\n\n' +
-      'Pós Método (depois do método): ' + (etapa3 || 'não preenchido') + '\n\n' +
+      (transformacao ? 'Transformação que já defini no meu Posicionamento: ' + transformacao + '\n\n' : '') +
+      'O que quero que minha aluna saia sabendo fazer: ' + ensinar + '\n\n' +
+      'Por que eu sou a pessoa certa pra ensinar isso: ' + porqueVoce + '\n\n' +
+      'Dores da minha aluna, antes de me conhecer:\n' + dores + '\n\n' +
+      'Sonhos da minha aluna, o que é sucesso pra ela:\n' + sonhos + '\n\n' +
+      'Objeções — por que ela hesitaria:\n' + objecoes + '\n\n' +
+      (analogia ? 'Uma ideia de analogia que já tenho: ' + analogia + '\n\n' : '') +
       '---\n' +
-      'O QUE PRECISO QUE VOCÊ ENTREGUE:\n' +
+      'O QUE PRECISO QUE VOCÊ ME AJUDE A DECIDIR (só conversa, por enquanto)\n' +
       '---\n\n' +
-      '**PARTE 1 — PILARES DO MÉTODO**\n' +
-      'Pilares são os fundamentos conceituais que sustentam o método — como colunas de um edifício. São entre 2 e 4 pilares no máximo. Cada pilar representa um princípio central que permeia todo o método. Exemplo: Posicionamento, Metodologia, Marketing.\n\n' +
-      'Entregue no formato exato abaixo:\n' +
-      'PILAR1: (nome do pilar — máximo 3 palavras)\n' +
-      'PILAR2: (nome do pilar — máximo 3 palavras)\n' +
-      'PILAR3: (nome do pilar — máximo 3 palavras, se necessário)\n' +
-      'PILAR4: (nome do pilar — máximo 3 palavras, se necessário)\n\n' +
-      '**PARTE 2 — ESTRUTURA DO MÉTODO EM MÓDULOS E AULAS**\n' +
-      'Módulos são agrupamentos de aulas por tema. Aulas são as unidades de conteúdo dentro de cada módulo.\n\n' +
-      'A estrutura deve seguir as 3 etapas abaixo:\n\n' +
-      'Etapa 1 — Preparação (Módulo 01)\n' +
-      'São as aulas iniciais que preparam a aluna para receber o método. Exemplos: Conheça a mentora, Seja bem-vinda ao método, Conheça a técnica principal.\n\n' +
-      'Etapa 2 — O Passo a Passo do Método (Módulos 02 em diante)\n' +
-      'São os módulos que entregam o método propriamente dito, baseados no brainstorming e nos pilares.\n\n' +
-      'Etapa 3 — Pós Método (Último módulo)\n' +
-      'São as aulas de encerramento. Exemplos: Como continuar usando o método, Receba seu certificado, Próximos passos.\n\n' +
-      'Entregue no formato exato abaixo (sem texto adicional fora do formato):\n\n' +
-      'MODULO1: Preparação para o Método\n' +
-      'AULA1.1: Conheça a mentora\n' +
-      'AULA1.2: Seja bem-vinda ao [nome do método]\n' +
-      'AULA1.3: [aula preparatória]\n' +
-      'MODULO2: [nome do módulo]\n' +
-      'AULA2.1: [nome da aula]\n' +
-      'AULA2.2: [nome da aula]\n' +
-      '(continue para todos os módulos da Etapa 2)\n' +
-      'MODULO[N]: Pós Método\n' +
-      'AULA[N].1: Como continuar usando o método\n' +
-      'AULA[N].2: Receba seu certificado\n\n' +
-      'IMPORTANTE: Responda APENAS com os dados nos formatos acima. Não adicione introduções, explicações ou conclusões fora dos formatos solicitados.';
+      '1. ANALOGIA: que tipo de imagem ou situação da vida real poderia dar vida ao meu método, conectando com a jornada da minha aluna? Não precisa fechar nome de módulo ainda — só explorar o que combina com a ideia do meu método. Sugira mais de uma opção se fizer sentido, e me pergunte o que eu acho.\n\n' +
+      '2. PILARES: entre 2 e 4 pilares. Importante — pilares NÃO são nomes bonitos nem frases poéticas ligadas à analogia. São os eixos racionais e temáticos que sustentam TODO o conteúdo do método, do início ao fim. Pergunte-se: que áreas de conhecimento ou competência atravessam o método inteiro, aparecendo em vários momentos ao mesmo tempo? Pilar é sobre O QUE sustenta o conteúdo — não é etapa, não se organiza por módulo.\n\n' +
+      '3. O PASSO A PASSO CONCEITUAL: quais são as grandes etapas que a minha aluna precisa percorrer, do início ao fim, pra alcançar a transformação? Ainda não é preciso dar nome formal de módulo — só o raciocínio das etapas, pra eu sentir se faz sentido.\n\n' +
+      'Se, ao longo da conversa, você perceber que estou com dúvida ou insegura sobre a analogia ou o passo a passo — não decidindo com facilidade — me pergunte nesse momento se eu tenho acesso ao suporte SOS Guerreira (WhatsApp com a Jade). Se eu tiver, me lembre que posso mandar pra ela as ideias que estamos construindo aqui pra pegar a opinião dela. Se eu não tiver acesso, me oriente a entrar em contato com o suporte da Caverna, ou a ir direto no produto dentro da plataforma. Não precisa mencionar isso o tempo todo — só quando eu estiver mesmo em dúvida.\n\n' +
+      'Vamos conversando e ajustando até esses três pontos fazerem sentido pra mim. Só depois eu volto com um segundo pedido, pra formalizar tudo isso em módulos.';
 
-    var el = c.querySelector('#promptText');
-    if (el) el.textContent = prompt;
+
+    var el1 = c.querySelector('#promptText');
+    if (el1) el1.textContent = prompt1;
   }
 
   atualizarPrompt();
 
-  // Copiar prompt
+  // Copiar prompt 1
   c.querySelector('#btnCopyPrompt').addEventListener('click', function() {
     var txt = c.querySelector('#promptText').textContent;
     var btn = c.querySelector('#btnCopyPrompt');
@@ -4571,7 +4513,7 @@ function bindS2Events() {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(txt).then(function() {
         btn.textContent = '✓ Copiado!';
-        setTimeout(function(){ btn.textContent = '⧉ Copiar prompt'; }, 2000);
+        setTimeout(function(){ btn.textContent = '⧉ Copiar prompt 1'; }, 2000);
       }).catch(function() { copiarFallback(txt, btn); });
     } else {
       copiarFallback(txt, btn);
@@ -4588,6 +4530,7 @@ function bindS2Events() {
     document.body.appendChild(ta);
     ta.focus();
     ta.select();
+    var textoOriginal = btn.textContent;
     try {
       document.execCommand('copy');
       btn.textContent = '✓ Copiado!';
@@ -4595,7 +4538,7 @@ function bindS2Events() {
       btn.textContent = '✗ Selecione manualmente';
     }
     document.body.removeChild(ta);
-    setTimeout(function(){ btn.textContent = '⧉ Copiar prompt'; }, 2000);
+    setTimeout(function(){ btn.textContent = textoOriginal; }, 2000);
   }
 
   // Pilares dinâmicos — container removido da T3, mantido apenas para compatibilidade
@@ -5409,9 +5352,6 @@ buildGrid();
 <div id="caminhoA" style="display:none">
 <div style="max-width:960px;margin:0 auto">
 <div class="pbar"><div class="pdot active" id="pd1" onclick="mGoTo(1)" style="cursor:pointer">1</div><div class="pline" id="pl1"></div><div class="pdot" id="pd2" onclick="mGoTo(2)" style="cursor:pointer">2</div><div class="pline" id="pl2"></div><div class="pdot" id="pd3" onclick="mGoTo(3)" style="cursor:pointer">3</div><div class="pline" id="pl3"></div><div class="pdot" id="pd4" onclick="mGoTo(4)" style="cursor:pointer">4</div></div>
-<div style="text-align:center;margin:1rem 0 1.2rem">
-  <button onclick="s1ImprimirPosicionamentoEmBranco()" style="background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:8px;padding:9px 18px;color:#8a5f35;font-size:12px;letter-spacing:0.5px;cursor:pointer;font-family:'DM Sans',sans-serif">🖨 Imprimir as 4 etapas do Posicionamento em branco</button>
-</div>
 <div class="step-screen active" id="ms1">
 <span class="s-label">ETAPA 1 DE 4 · MARCA PESSOAL</span>
 <h2 class="s-title">Ingredientes de<br><em style="color:#b48250;font-style:italic">Marca Pessoal</em></h2>
@@ -5497,7 +5437,13 @@ buildGrid();
 <div class="f-group"><label class="f-label">Como quer ser lembrada daqui a 10 anos?</label><textarea class="f-textarea" id="s1-legado" placeholder="O que as pessoas vão falar sobre seu trabalho?"></textarea></div>
 <div class="f-group"><label class="f-label">Escreva a frase que vai representar o seu Manifesto Editorial</label><input type="text" class="f-input" id="s1-frase" placeholder="Escreva como se fosse um título de revista..."></div>
 
-<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Gerar meu Canvas ✦</button></div>
+<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin:1.5rem 0;text-align:center">
+  <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">Próxima ação</div>
+  <p style="font-size:12px;color:rgba(5,17,43,0.6);line-height:1.6;margin-bottom:0.8rem">Baixe o documento das 4 etapas do Posicionamento, para você usar na inteligência artificial que organiza o seu projeto (Claude, ChatGPT, Gemini).</p>
+  <button onclick="s1ImprimirPosicionamentoEmBranco()" style="background:transparent;border:1px solid rgba(180,130,80,0.4);border-radius:8px;padding:9px 18px;color:#8a5f35;font-size:12px;letter-spacing:0.5px;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%">🖨 Baixar / Imprimir as 4 etapas do Posicionamento</button>
+</div>
+
+<div class="nav-btns"><button class="btn-bk" id="ms4back" onclick="s1Ms4back()">← Voltar</button><button class="btn-nx" id="ms4next" onclick="s1Ms4next()">Seguir para o Manifesto →</button></div>
 </div>
 </div>
 </div>
@@ -5683,7 +5629,7 @@ buildGrid();
 <div class="cs2c"><div class="cs2c-lbl">Como eu faço</div><div class="cs2c-ttl">Método e Produtos</div><div class="cs2c-val" id="r-met"></div></div>
 <div class="cs2c"><div class="cs2c-lbl">Para quê eu faço</div><div class="cs2c-ttl">Causa de Manifesto</div><div class="cs2c-val" id="r-cau"></div></div>
 <div class="cs2c"><div class="cs2c-lbl">Por que eu faço</div><div class="cs2c-ttl">Legado do Manifesto</div><div class="cs2c-val" id="r-leg"></div></div>
-<div class="cs2c full"><div class="cs2c-lbl">Ingredientes de marca</div><div class="i-pills" id="r-ing"></div></div>
+<div class="cs2c full"><div class="cs2c-lbl">Ingredientes de marca</div><div id="r-ing" style="display:block"></div></div>
 </div>
 <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>
 </div>
@@ -5692,7 +5638,7 @@ buildGrid();
 <button onclick="imprimirPosicionamento()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">🖨 Baixar / Imprimir<br><span style="font-size:10px;font-weight:400;opacity:0.9">guardar ou imprimir</span></button>
 </div>
 <div class="nav-btns" style="justify-content:center;margin-top:1rem">
-<button class="btn-nx" onclick="s1GoTo('s2Checkpoint'); s1Save();">Continuar →</button>
+<button class="btn-nx" onclick="s1GoTo('s2Checkpoint'); s1Save();">Seguir para o Checkpoint →</button>
 </div>
 </div>
 </div>
@@ -5787,9 +5733,6 @@ buildGrid();
 
 
 <!-- MODAL CUSTOMIZADO -->
-
-<!-- BOTÃO SALVAR FIXO -->
-<button class="btn-salvar" id="btnSalvarFixo" onclick="s1BtnSalvar()">⚔ Salvar progresso</button>
 
 <!-- MODAL VITÓRIA -->
 <div class="modal-vitoria" id="modalVitoria">
