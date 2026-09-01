@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meu Projeto Digital — Portal Caverna Azul</title>
+<title>MAR — Portal Caverna Azul</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -24,7 +24,7 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 /* GRID */
 .weeks-section{padding:2rem 1.5rem 3rem;max-width:1200px;margin:0 auto}
-.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:1.5rem;display:block}
+.section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:1.5rem;display:block;text-align:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
 
 /* CARD */
@@ -542,7 +542,6 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 
 /* ===== TELA DE ENTRADA ===== */
-#telaEntrada{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(160deg,#05112b,#0a1e3d);padding:2rem;text-align:center}
 .entrada-foto{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center;border:3px solid rgba(180,130,80,0.5);box-shadow:0 0 0 8px rgba(180,130,80,0.1);margin-bottom:1.5rem}
 .entrada-foto-placeholder{width:110px;height:110px;border-radius:50%;background:rgba(180,130,80,0.1);border:2px solid rgba(180,130,80,0.3);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 1.5rem}
 .entrada-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem;display:block}
@@ -589,35 +588,20 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 </head>
 <body>
 
-<div id="telaEntrada">
-  <div class="entrada-foto-placeholder" id="entrada-avatar">
-    <img src="fotos/jade.jpg" alt="Jade Torres" style="width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center" onerror="this.style.display='none';this.parentElement.innerHTML='⚔'">
-  </div>
-  <span class="entrada-label">Caverna das Guerreiras · Jade Torres</span>
-  <h1 class="entrada-titulo">Programa <em>Meu Projeto</em> Digital</h1>
-  <p class="entrada-subtitulo">Bem-vinda, guerreira. Por onde você quer começar hoje?</p>
-  <div class="entrada-btns">
-    <button class="entrada-btn-primary" onclick="entradaIrEtapas()">🗺 Seguir para minhas Etapas</button>
-  </div>
-</div>
-
-<div id="portalHome" style="display:none">
+<div id="portalHome">
   <div class="header">
     <div class="logo-badge">
-      <div class="logo-icon">PDA</div>
+      <div class="logo-icon">MAR</div>
       <span class="logo-text">Portal Caverna Azul</span>
     </div>
-    <h1 class="header-title">Programa <em>Meu Projeto</em> Digital</h1>
-    <p class="header-sub">Sua metodologia, etapa por etapa — sem enrolação, sem teoria solta.</p>
+    <h1 class="header-title">Programa <em>MAR</em></h1>
+    <p class="header-sub">METODOLOGIA AUTORAL REPLICÁVEL</p>
     <div class="progress-summary">
       <div class="progress-dot"></div>
       Sua jornada começa aqui, guerreira
     </div>
   </div>
   <div class="weeks-section">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:0.8rem">
-      <button onclick="irTelaEntrada()" style="background:transparent;border:1px solid rgba(180,130,80,0.3);border-radius:8px;padding:7px 16px;color:#b48250;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s" onmouseover="this.style.background='rgba(180,130,80,0.1)'" onmouseout="this.style.background='transparent'">← Início</button>
-    </div>
     <span class="section-label">Sua jornada · Organize seu Capital Intelectual Autoral</span>
     <div class="grid" id="weeksGrid"></div>
   </div>
@@ -640,13 +624,13 @@ html,body{font-family:'DM Sans',sans-serif;background:#05112b;color:#f0ebe8;min-
 
 <script>
 var weeks = [
+  {n:7,title:"Desafio",sub:"12 Semanas no Ar",desc:"O ritmo de execução. Acompanhe semana a semana o que precisa fazer e marque o que concluiu.",tag:"Paralelo",locked:false,semanas:"Paralelo",entregavel:"Checklist de execução semanal",isDesafio:true},
   {n:1,title:"Armadura da Guerreira",sub:"Espada e Juramento",desc:"Antes de falar, se tornar. Seu nome, sua espada e sua foto — o começo de tudo.",tag:"Cadastro",locked:false,semanas:"Cadastro",entregavel:"Perfil de guerreira ativado"},
   {n:2,title:"Lugar de Fala",sub:"Linha do Tempo",desc:"Antes de falar, saber de onde se fala. Sua história de vida como dado estratégico.",tag:"Semanas 1 e 2",locked:false,semanas:"1 e 2",entregavel:"Manifesto Editorial + Canvas"},
   {n:3,title:"Sprint de Decisões",sub:"Posicionamento",desc:"Sem posicionamento definido, qualquer público serve — e nenhum compra.",tag:"Semanas 3 e 4",locked:false,semanas:"3 e 4",entregavel:"Sprint de Decisões completo"},
   {n:4,title:"Método",sub:"Autoral",desc:"O que você faz precisa ter nome, sequência e lógica replicável.",tag:"Semanas 5 e 6",locked:false,semanas:"5 e 6",entregavel:"Metodologia com pilares, módulos e aulas"},
   {n:5,title:"Produtos",sub:"Do Método",desc:"A partir do método, ela cria produtos. Cada produto tem formato, entrega e oferta.",tag:"Semanas 7 a 10",locked:false,semanas:"7, 8, 9 e 10",entregavel:"Produto gravado, hospedado, validado e com oferta"},
-  {n:6,title:"Linha",sub:"Editorial",desc:"Comunicação não é postar — é sustentar narrativa de autoridade ao longo do tempo.",tag:"Semanas 11 e 12",locked:false,semanas:"11 e 12",entregavel:"Perfil no ar + Cubo Mágico configurado"},
-  {n:7,title:"Desafio",sub:"12 Semanas no Ar",desc:"O ritmo de execução. Acompanhe semana a semana o que precisa fazer e marque o que concluiu.",tag:"Paralelo",locked:false,semanas:"Paralelo",entregavel:"Checklist de execução semanal",isDesafio:true}
+  {n:6,title:"Linha",sub:"Editorial",desc:"Comunicação não é postar — é sustentar narrativa de autoridade ao longo do tempo.",tag:"Semanas 11 e 12",locked:false,semanas:"11 e 12",entregavel:"Perfil no ar + Cubo Mágico configurado"}
 ];
 
 
@@ -690,7 +674,7 @@ function buildGrid() {
 function openWeek(n) {
   document.getElementById('portalHome').style.display = 'none';
   document.getElementById('weekDetail').style.display = 'block';
-  var w = weeks[n-1];
+  var w = weeks.filter(function(wk) { return wk.n === n; })[0] || weeks[n-1];
   document.getElementById('detailWeekNum').textContent = w.isDesafio ? 'Desafio' : ('Etapa ' + n);
   document.getElementById('detailWeekTitle').textContent = w.title + ' ' + w.sub;
   var content = document.getElementById('weekContent');
@@ -770,11 +754,9 @@ function openWeek(n) {
     bindCkEvents();
     setTimeout(function(){ s3Load(); s4Load(); }, 150);
   } else if (n === 6) {
-    content.innerHTML = '<div style="max-width:520px;margin:4rem auto;text-align:center">' +
-      '<span style="font-size:40px;display:block;margin-bottom:1rem">✦</span>' +
-      '<h2 class="s-title" style="margin-bottom:0.8rem">Linha Editorial</h2>' +
-      '<p class="s-desc">Essa etapa ainda está sendo construída. Em breve: Bio, Destaques Narrativos e Feed.</p>' +
-      '</div>';
+    content.innerHTML = getS6HTML();
+    bindS6Events();
+    setTimeout(function(){ s6Load(); }, 150);
   } else if (n === 7) {
     content.innerHTML = '<div style="max-width:520px;margin:4rem auto;text-align:center">' +
       '<span style="font-size:40px;display:block;margin-bottom:1rem">✦</span>' +
@@ -996,7 +978,6 @@ function getChecklistHTML(n) {
 
 function getS5HTML() { return getChecklistHTML(5); }
 function getCkHTML(n) { return getChecklistHTML(n); }
-function getS6HTML() { return getChecklistHTML(6); }
 function getS7HTML() { return getChecklistHTML(7); }
 function getS8HTML() { return getChecklistHTML(8); }
 function bindCkEvents(n) {
@@ -1530,7 +1511,7 @@ function getS12HTML() {
   return '<div style="max-width:620px;margin:0 auto;padding:3rem 1.5rem;text-align:center">' +
     '<div style="font-size:52px;margin-bottom:1.5rem">⚔</div>' +
     '<span style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;display:block;margin-bottom:0.8rem">Etapa 12 · Conclusão</span>' +
-    '<h2 style="font-family:\'Playfair Display\',serif;font-size:2rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1.2rem">Meu Projeto<br><em style="font-style:italic;color:#b48250">Digital</em></h2>' +
+    '<h2 style="font-family:\'Playfair Display\',serif;font-size:2rem;font-weight:700;color:#f0ebe8;line-height:1.2;margin-bottom:1.2rem">Programa<br><em style="font-style:italic;color:#b48250">MAR</em></h2>' +
 
     '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.1),rgba(180,130,80,0.04));border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:2rem;margin-bottom:2rem;text-align:left">' +
       '<p style="font-size:15px;color:#f0ebe8;line-height:1.9;margin-bottom:0">' +
@@ -1547,7 +1528,7 @@ function getS12HTML() {
       '<a href="https://wa.me/5598999012270?text=Oi%20Jade!%20Conclui%20o%20Programa%20Meu%20Projeto%20Digital%20e%20quero%20agendar%20minha%20Coletiva%20de%20Conclusão%20🎉" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;text-decoration:none;border-radius:10px;padding:14px 32px;font-size:14px;letter-spacing:1px;font-family:\'DM Sans\',sans-serif">⚔ Agendar minha Coletiva de Conclusão</a>' +
     '</div>' +
 
-    '<p style="font-size:12px;color:rgba(240,235,232,0.25);line-height:1.6">Caverna das Guerreiras · Jade Torres<br>Programa Meu Projeto Digital</p>' +
+    '<p style="font-size:12px;color:rgba(240,235,232,0.25);line-height:1.6">Caverna das Guerreiras · Jade Torres<br>Programa MAR</p>' +
   '</div>';
 }
 /* ===================== FIM ETAPAS 8 E 12 ===================== */
@@ -1597,16 +1578,15 @@ function s1BtnVoltarTela() {
 
 // Inicializar tela ao carregar
 document.addEventListener('DOMContentLoaded', function() {
-  // Show entrance screen on load
-  document.getElementById('telaEntrada').style.display = 'flex';
-  document.getElementById('portalHome').style.display = 'none';
+  // Portal Home é a tela inicial
+  document.getElementById('portalHome').style.display = 'block';
 });
 
 /* ===== WHATSAPP RESUMO ===== */
 var WPP_NUM = '5598999012270';
 
 function wppEnviarResumo(etapa, dados) {
-  var texto = '\u2694 *Caverna Azul \u2014 Resumo Etapa ' + etapa + '*\n\n' + dados + '\n\n_Enviado pelo Portal Meu Projeto Digital_';
+  var texto = '\u2694 *Caverna Azul \u2014 Resumo Etapa ' + etapa + '*\n\n' + dados + '\n\n_Enviado pelo Portal MAR_';
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
   window.open(url, '_blank');
 }
@@ -1700,7 +1680,7 @@ function spDistribuir(etapa) {
   var mapa = {
     1: { 'DONS': 's1-dons', 'HABILIDADES': 's1-habilidades', 'EXPERIENCIAS': 's1-experiencias', 'CRENCA': 's1-crenca', 'CAUSA': 's1-causa' },
     2: { 'AREA': 's1-area', 'NICHO': 's1-nicho', 'FATIA': 's1-fatia', 'PUBLICO': 's1-publico', 'TRANSFORMACAO': 's1-trans' },
-    3: { 'PROBLEMA': 'sp-problema', 'PROVA': 'sp-prova', 'FERRAMENTA': 'sp-ferramenta', 'PUBLICOALVO': 'sp-publico', 'TRANSFORMACAOPRINCIPAL': 'sp-trans-ms3', 'PRODUTO': 'sp-produto', 'TEMPO': 'sp-tempo' },
+    3: { 'PROBLEMA': 'sp-problema', 'FERRAMENTA': 'sp-ferramenta', 'PUBLICOALVO': 'sp-publico', 'TRANSFORMACAOPRINCIPAL': 'sp-trans-ms3', 'PRODUTO': 'sp-produto' },
     4: { 'FRASE': 's1-frase', 'GRITAR': 's1-gritar', 'LEGADO': 's1-legado' }
   };
   
@@ -1784,12 +1764,10 @@ function imprimirPosicionamento() {
     linha('Transformação', get('s1-trans')) +
     secao('Ingredientes do Produto') +
     linha('Problema principal', get('sp-problema')) +
-    linha('Prova social', get('sp-prova')) +
     linha('Ferramenta principal', get('sp-ferramenta')) +
     linha('Público alvo', get('sp-publico')) +
     linha('Transformação principal', get('sp-trans-ms3')) +
     linha('Produto principal', get('sp-produto')) +
-    linha('Tempo de validação', get('sp-tempo')) +
     secao('Manifesto') +
     linha('O que quer gritar para o mundo', get('s1-gritar')) +
     linha('Como quer ser lembrada', get('s1-legado')) +
@@ -1846,17 +1824,15 @@ function wppEnviarCanvas() {
     '*Transforma\u00e7\u00e3o:* ' + get('s1-trans') + '\n\n' +
     '\ud83d\udccd *Ingredientes do Produto*\n' +
     '*Problema principal:* ' + get('sp-problema') + '\n' +
-    '*Prova social:* ' + get('sp-prova') + '\n' +
     '*Ferramenta principal:* ' + get('sp-ferramenta') + '\n' +
     '*P\u00fablico alvo:* ' + get('sp-publico') + '\n' +
     '*Transforma\u00e7\u00e3o principal:* ' + get('sp-trans-ms3') + '\n' +
     '*Produto principal:* ' + get('sp-produto') + '\n' +
-    '*Tempo de valida\u00e7\u00e3o:* ' + get('sp-tempo') + '\n\n' +
     '\ud83d\udccd *Manifesto*\n' +
     '*Frase de manifesto:* ' + get('s1-frase') + '\n' +
     '*O que quer gritar para o mundo:* ' + get('s1-gritar') + '\n' +
     '*Como quer ser lembrada:* ' + get('s1-legado') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
 
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
   window.open(url, '_blank');
@@ -1898,7 +1874,7 @@ function wppEnviarLT() {
       linhas += '*' + i + '. ' + (LT_PERGUNTAS['lt'+i] || 'Pergunta ' + i) + '*\n' + val + '\n\n';
     }
   }
-  linhas += '_Enviado pelo Portal Meu Projeto Digital_';
+  linhas += '_Enviado pelo Portal MAR_';
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(linhas);
   window.open(url, '_blank');
 }
@@ -1946,7 +1922,7 @@ function baixarLT() {
   html += '.resposta{font-size:15px;color:#1a1a2e;font-style:italic}';
   html += '.vazio{color:#ccc;font-style:italic}</style></head><body>';
   html += '<h1>\u2694 Minha Linha do Tempo</h1>';
-  html += '<p style="color:#8a5f35;margin-bottom:30px">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</p>';
+  html += '<p style="color:#8a5f35;margin-bottom:30px">Programa MAR \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</p>';
 
   for (var i = 1; i <= 34; i++) {
     var el = c.querySelector('#lt' + i);
@@ -1978,7 +1954,7 @@ function wppSprintE1() {
     '*Experi\u00eancias marcantes:* ' + g('s1-experiencias') + '\n' +
     '*Cren\u00e7a principal:* ' + g('s1-crenca') + '\n' +
     '*Causa:* ' + g('s1-causa') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -1992,7 +1968,7 @@ function wppSprintE2() {
     '*Fatia:* ' + g('s1-fatia') + '\n' +
     '*Para quem:* ' + g('s1-publico') + '\n' +
     '*Transforma\u00e7\u00e3o:* ' + g('s1-trans') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2002,13 +1978,11 @@ function wppSprintE3() {
   var g = function(id) { var el = c.querySelector('#'+id); return el ? el.value.trim() : '-'; };
   var texto = '\u2694 *Sprint \u2014 Etapa 3: Ingredientes do Produto*\n\n' +
     '*Problema principal:* ' + g('sp-problema') + '\n' +
-    '*Prova social:* ' + g('sp-prova') + '\n' +
     '*Ferramenta principal:* ' + g('sp-ferramenta') + '\n' +
     '*P\u00fablico alvo:* ' + g('sp-publico') + '\n' +
     '*Transforma\u00e7\u00e3o principal:* ' + g('sp-trans-ms3') + '\n' +
     '*Produto principal:* ' + g('sp-produto') + '\n' +
-    '*Tempo de valida\u00e7\u00e3o:* ' + g('sp-tempo') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2020,7 +1994,7 @@ function wppSprintE4() {
     '*Frase de manifesto:* ' + g('s1-frase') + '\n' +
     '*O que quer gritar para o mundo:* ' + g('s1-gritar') + '\n' +
     '*Como quer ser lembrada:* ' + g('s1-legado') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 /* ===== FIM SPRINT WHATSAPP ===== */
@@ -2221,7 +2195,7 @@ function wppS2T1() {
   var texto = '\u2694 *Etapa 2 \u2014 Brainstorming do M\u00e9todo*\n\n' +
     '*Objetivo do m\u00e9todo:*\n' + g('s2-objetivo') + '\n\n' +
     '*O QU\u00ca vou ensinar:*\n' + g('s2-que') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2232,7 +2206,7 @@ function wppS2T2() {
   var texto = '\u2694 *Etapa 2 \u2014 O Como do M\u00e9todo*\n\n' +
     '*Prepara\u00e7\u00e3o:*\n' + g('s2-etapa1') + '\n\n' +
     '*P\u00f3s M\u00e9todo:*\n' + g('s2-etapa3') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2243,7 +2217,7 @@ function wppS2T3() {
   c.querySelectorAll('#pilaresContainer .passo-input').forEach(function(p){ if(p.value.trim()) pilares.push(p.value.trim()); });
   var texto = '\u2694 *Etapa 2 \u2014 Pilares do M\u00e9todo*\n\n' +
     pilares.map(function(p, i){ return '*Pilar ' + (i+1) + ':* ' + p; }).join('\n') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2259,7 +2233,7 @@ function wppS2Metodo() {
     '*T\u00edtulo:* ' + (titulo ? titulo.textContent : '-') + '\n' +
     '*Manifesto:* ' + (manifesto ? manifesto.textContent : '-') + '\n\n' +
     '*Pilares:*\n' + pilares.map(function(p,i){ return (i+1)+'. '+p; }).join('\n') + '\n\n' +
-    '_Enviado pelo Portal Meu Projeto Digital_';
+    '_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2274,7 +2248,7 @@ function baixarS2T1() {
     '.titulo{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:6px}' +
     '.conteudo{font-size:15px;color:#1a1a2e;white-space:pre-wrap}</style></head><body>' +
     '<h1>\u2694 Brainstorming do M\u00e9todo</h1>' +
-    '<p style="color:#8a5f35">Etapa 2 \u00b7 Programa Meu Projeto Digital</p>' +
+    '<p style="color:#8a5f35">Etapa 2 \u00b7 Programa MAR</p>' +
     '<div class="bloco"><div class="titulo">Objetivo do m\u00e9todo</div><div class="conteudo">' + (g('s2-objetivo')||'N\u00e3o preenchido') + '</div></div>' +
     '<div class="bloco"><div class="titulo">O QU\u00ca vou ensinar</div><div class="conteudo">' + (g('s2-que')||'N\u00e3o preenchido') + '</div></div>' +
     '</body></html>';
@@ -2509,7 +2483,7 @@ function s2AbrirMetodoNovaAba() {
       (etapa3 ? '<div><div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8a5f35;margin-bottom:4px">⬡ Pós Método</div><div class="secao-conteudo">'+etapa3+'</div></div>' : '') +
     '</div>' +
     (pilares.length ? '<div class="secao"><div class="secao-titulo">Pilares do método</div><div class="pilares-grid">'+pilaresHTML+'</div></div>' : '') +
-    '<div class="rodape">Programa Meu Projeto Digital · Caverna das Guerreiras · Jade Torres</div>' +
+    '<div class="rodape">Programa MAR · Caverna das Guerreiras · Jade Torres</div>' +
     '</body></html>';
 
   var blob = new Blob([html], {type: 'text/html;charset=utf-8'});
@@ -2551,7 +2525,7 @@ function baixarS2Metodo() {
     '</div>' +
     (objetivo ? '<div class="secao"><div class="label">Objetivo do m\u00e9todo</div><div class="texto">'+objetivo+'</div></div>' : '') +
     (itens.length ? '<div class="secao"><div class="label">Pilares do m\u00e9todo</div>'+pilaresHTML+'</div>' : '') +
-    '<div class="rodape">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
+    '<div class="rodape">Programa MAR \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
     '</body></html>';
 
   var blob = new Blob([html], {type:'text/html;charset=utf-8'});
@@ -2727,7 +2701,7 @@ function wppMetodoEditor() {
     '*Pilares:*\n' + pilares.map(function(p,i){ return (i+1)+'. '+p; }).join('\n') + '\n\n' +
     '*M\u00f3dulos:*\n' + estrutura.map(function(m,i){
       return 'M\u00f3dulo '+(i+1)+': '+m.nome+'\n'+m.aulas.map(function(a,j){ return '  Aula '+(j+1)+': '+a; }).join('\n');
-    }).join('\n\n') + '\n\n_Enviado pelo Portal Meu Projeto Digital_';
+    }).join('\n\n') + '\n\n_Enviado pelo Portal MAR_';
   window.open('https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto), '_blank');
 }
 
@@ -2760,7 +2734,7 @@ function baixarMetodoEditor() {
       return '<div class="modulo"><div class="modulo-nome">M\u00f3dulo '+(i+1)+': '+m.nome+'</div>' +
         m.aulas.map(function(a,j){ return '<div class="aula">Aula '+(j+1)+': '+a+'</div>'; }).join('') + '</div>';
     }).join('') + '</div>' +
-    '<div style="text-align:center;margin-top:3rem;font-size:11px;color:#aaa">Programa Meu Projeto Digital \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
+    '<div style="text-align:center;margin-top:3rem;font-size:11px;color:#aaa">Programa MAR \u00b7 Caverna das Guerreiras \u00b7 Jade Torres</div>' +
     '</body></html>';
 
   var blob = new Blob([html], {type:'text/html;charset=utf-8'});
@@ -2793,7 +2767,7 @@ function wppResultadoMetodo() {
     pilares.forEach(function(p, i) { texto += (i+1) + '. ' + p + '\n'; });
     texto += '\n';
   }
-  texto += '_Enviado pelo Portal Meu Projeto Digital_';
+  texto += '_Enviado pelo Portal MAR_';
 
   var url = 'https://wa.me/' + WPP_NUM + '?text=' + encodeURIComponent(texto);
   window.open(url, '_blank');
@@ -2831,7 +2805,7 @@ function s2ImprimirMetodoT4() {
       (pilares.length ? '<div style="margin-bottom:1.5rem"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:10px">Pilares</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">' +
         pilares.map(function(p,i){ return '<div style="background:#e8dfc0;border-radius:8px;padding:10px;text-align:center"><div style="font-size:10px;color:#6b4423;margin-bottom:3px">Pilar '+(i+1)+'</div><div style="font-size:13px;font-style:italic;color:#2a1200">'+p+'</div></div>'; }).join('') +
       '</div></div>' : '') +
-      '<div style="margin-top:2rem;font-size:10px;color:#aaa;text-align:center;border-top:1px solid #ddd;padding-top:1rem">Programa Meu Projeto Digital · Caverna das Guerreiras · Jade Torres</div>' +
+      '<div style="margin-top:2rem;font-size:10px;color:#aaa;text-align:center;border-top:1px solid #ddd;padding-top:1rem">Programa MAR · Caverna das Guerreiras · Jade Torres</div>' +
     '</div>';
 
   window.print();
@@ -2841,15 +2815,8 @@ function s2ImprimirMetodoT4() {
 
 
 /* ===== TELA DE ENTRADA ===== */
-function entradaIrEtapas() {
-  document.getElementById('telaEntrada').style.display = 'none';
-  document.getElementById('portalHome').style.display = 'block';
-  window.scrollTo(0,0);
-}
-
 function irTelaEntrada() {
-  document.getElementById('telaEntrada').style.display = 'flex';
-  document.getElementById('portalHome').style.display = 'none';
+  document.getElementById('portalHome').style.display = 'block';
   var detail = document.getElementById('weekDetail');
   if (detail) detail.style.display = 'none';
   window.scrollTo(0,0);
@@ -2894,8 +2861,8 @@ function s1Save() {
   var ids = ['s1-nome','s1-momento','s1-espada','s1-area','s1-nicho','s1-fatia',
     's1-publico','s1-trans','s1-dons','s1-habilidades','s1-experiencias',
     's1-crenca','s1-causa','s1-frase','s1-gritar','s1-legado',
-    'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
-    'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
+    'sp-problema','sp-ferramenta','sp-publico','sp-trans',
+    'sp-produto','b-sabe','b-experiencias','b-ajudar',
     'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
   for (var ltIdx = 1; ltIdx <= 34; ltIdx++) { ids.push('lt' + ltIdx); }
   ids.forEach(function(id) {
@@ -2941,8 +2908,8 @@ function s1Load() {
   var ids = ['s1-nome','s1-momento','s1-espada','s1-area','s1-nicho','s1-fatia',
     's1-publico','s1-trans','s1-dons','s1-habilidades','s1-experiencias',
     's1-crenca','s1-causa','s1-frase','s1-gritar','s1-legado',
-    'sp-problema','sp-prova','sp-ferramenta','sp-publico','sp-trans',
-    'sp-produto','sp-tempo','b-sabe','b-experiencias','b-ajudar',
+    'sp-problema','sp-ferramenta','sp-publico','sp-trans',
+    'sp-produto','b-sabe','b-experiencias','b-ajudar',
     'b-resultado','b-entrega','b-dons','b-habilidades','b-causa','b-impacto','b-resumo'];
   for (var ltIdx = 1; ltIdx <= 34; ltIdx++) { ids.push('lt' + ltIdx); }
   ids.forEach(function(id) {
@@ -4715,7 +4682,7 @@ function s3GetCamposProduto(tipo, subtipo) {
   var chave = tipo === 'mentoria' ? 'mentoria_' + subtipo : (tipo === 'workshop' ? 'workshop_' + subtipo : tipo);
   var descricaoTipo = descricoes[chave] || 'este produto';
 
-  var promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\n' +
+  var promptTexto = 'Ol\u00e1 IA! Sou uma expert sendo mentorada pela Jade Torres no programa MAR.\n\n' +
     'Diante de tudo que j\u00e1 conversamos sobre meu m\u00e9todo, pode me ajudar a estruturar a oferta de ' + descricaoTipo + '.\n\n' +
     'Nome: [PREENCHA]\nPara quem \u00e9: [PREENCHA]\nProblema principal que resolve: [PREENCHA]\nO que entrego: [PREENCHA]\nResultados que a aluna alcan\u00e7a: [PREENCHA]\nB\u00f4nus: [PREENCHA]\nPre\u00e7o: [PREENCHA]\n\n' +
     'Por favor:\n1. Revise e refine essas informa\u00e7\u00f5es, deixando a oferta mais clara e persuasiva\n2. Sugira uma estrutura de entrega adequada a ' + descricaoTipo + '\n3. Sugira uma faixa de pre\u00e7o coerente com o formato e a profundidade da entrega\n4. Me ajude a escrever uma chamada de vendas curta para essa oferta';
@@ -4742,9 +4709,81 @@ function s3GetCamposProduto(tipo, subtipo) {
     '<div class="prompt-box-title">\u2726 Prompt IA \u2014 Copie e use para estruturar a oferta deste produto</div>' +
     '<div class="prompt-text" id="s3-prompt-ia">' + promptTexto + '</div>' +
     '<button class="btn-copy-prompt" onclick="s3CopiarPrompt()">\u29c9 Copiar Prompt IA</button>' +
-    '</div>';
+    '</div>' +
+    s3GetEntregaveisHTML();
 
   return campos;
+}
+
+function s3GetEntregaveisHTML() {
+  var entregaveis = [
+    { id:'boasvindas', icone:'🎬', label:'Boas-vindas / Onboarding' },
+    { id:'whatsapp', icone:'💬', label:'Acompanhamento Individual no WhatsApp' },
+    { id:'metodologia', icone:'🎓', label:'Metodologia Gravada' },
+    { id:'ferramentas', icone:'📎', label:'Ferramentas Principais' },
+    { id:'grupo', icone:'⚔', label:'Encontros em Grupo (Campos de Batalha)' },
+    { id:'individual', icone:'✨', label:'Encontro Individual (Destrave)' },
+    { id:'avisos', icone:'📣', label:'Grupo de Avisos Fechado' },
+    { id:'conclusao', icone:'🏆', label:'Encontro de Conclusão do Método' }
+  ];
+  var html = '<div style="margin-top:1.5rem">' +
+    '<label class="f-label" style="display:block;margin-bottom:0.6rem">Entregáveis do Produto</label>' +
+    '<div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:0.4rem 1rem">';
+  entregaveis.forEach(function(e) {
+    html += '<div style="border-bottom:1px solid rgba(180,130,80,0.15);padding:10px 0">' +
+      '<label style="display:flex;align-items:center;gap:10px;cursor:pointer">' +
+      '<input type="checkbox" id="ent-' + e.id + '" onchange="s3ToggleEntregavel(\'' + e.id + '\')" style="width:16px;height:16px;accent-color:#b48250">' +
+      '<span style="font-size:16px">' + e.icone + '</span>' +
+      '<span style="font-size:13px;color:#1a1a2e">' + e.label + '</span>' +
+      '</label>' +
+      '<div id="ent-' + e.id + '-detalhe" style="display:none;margin-top:10px;padding-left:26px">' +
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">' +
+      '<input type="text" class="ritual-input" id="ent-' + e.id + '-periodo" placeholder="Período de acesso" style="font-size:12px;padding:8px 10px">' +
+      '<input type="text" class="ritual-input" id="ent-' + e.id + '-canal" placeholder="Canal" style="font-size:12px;padding:8px 10px">' +
+      '</div>' +
+      '<textarea class="ritual-textarea" id="ent-' + e.id + '-obs" placeholder="Detalhes deste entregável..." style="font-size:12px;min-height:60px"></textarea>' +
+      '</div>' +
+      '</div>';
+  });
+  html += '</div>' +
+    '<div id="ent-extras-container" style="margin-top:0.6rem"></div>' +
+    '<button type="button" onclick="s3AdicionarEntregavelExtra()" style="width:100%;margin-top:0.6rem;background:transparent;border:1px dashed rgba(180,130,80,0.5);color:#8a5f35;font-family:\'DM Sans\',sans-serif;font-size:12px;padding:10px;border-radius:8px;cursor:pointer">+ Adicionar entregável personalizado</button>' +
+    '</div>';
+  return html;
+}
+
+function s3ToggleEntregavel(id) {
+  var checkbox = document.getElementById('ent-' + id);
+  var detalhe = document.getElementById('ent-' + id + '-detalhe');
+  if (checkbox && detalhe) detalhe.style.display = checkbox.checked ? 'block' : 'none';
+}
+
+var s3ExtraContador = 0;
+
+function s3AdicionarEntregavelExtra() {
+  var container = document.getElementById('ent-extras-container');
+  if (!container) return;
+  s3ExtraContador++;
+  var n = s3ExtraContador;
+  var bloco = document.createElement('div');
+  bloco.id = 'ent-extra-' + n;
+  bloco.style.cssText = 'border-bottom:1px solid rgba(180,130,80,0.15);padding:10px 0';
+  bloco.innerHTML =
+    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
+    '<input type="text" class="ritual-input" id="ent-extra-' + n + '-nome" placeholder="Nome do entregável personalizado" style="flex:1;font-size:13px;font-weight:600">' +
+    '<button type="button" onclick="s3RemoverEntregavelExtra(' + n + ')" style="background:transparent;border:none;color:#a85c4a;font-size:18px;cursor:pointer;padding:4px 8px">×</button>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">' +
+    '<input type="text" class="ritual-input" id="ent-extra-' + n + '-periodo" placeholder="Período de acesso" style="font-size:12px;padding:8px 10px">' +
+    '<input type="text" class="ritual-input" id="ent-extra-' + n + '-canal" placeholder="Canal" style="font-size:12px;padding:8px 10px">' +
+    '</div>' +
+    '<textarea class="ritual-textarea" id="ent-extra-' + n + '-obs" placeholder="Detalhes deste entregável..." style="font-size:12px;min-height:60px"></textarea>';
+  container.appendChild(bloco);
+}
+
+function s3RemoverEntregavelExtra(n) {
+  var bloco = document.getElementById('ent-extra-' + n);
+  if (bloco) bloco.remove();
 }
 
 function s3CamposProgramaMentoria() {
@@ -4763,7 +4802,7 @@ function s3CamposProgramaMentoria() {
   } catch(e) {}
 
   var sep = '\n' + '='.repeat(40) + '\n';
-  var prompt = 'Ola! Sou uma expert sendo mentorada pela Jade Torres no programa Meu Projeto Digital.\n\n' +
+  var prompt = 'Ola! Sou uma expert sendo mentorada pela Jade Torres no programa MAR.\n\n' +
     'Quero estruturar meu Programa de Mentoria com Acompanhamento. Ele entrega: metodologia gravada, acompanhamento por WhatsApp, encontros em grupo e encontros individuais.\n\n' +
     'Use as informacoes abaixo, que ja construi nas etapas anteriores — nao invente conteudo novo, baseie-se nelas:' +
     sep + 'MEU MANIFESTO' + sep + '\n' + (manifesto || 'Nao preenchido') + '\n\n' +
@@ -4785,14 +4824,17 @@ function s3CamposProgramaMentoria() {
     '7. Uma faixa de preco sugerida, com base no formato e na profundidade da entrega';
 
   return '<div class="prompt-box" style="margin-top:0.5rem">' +
-    '<div class="prompt-box-title">✦ Prompt do Programa de Mentoria — Copie e leve à sua IA</div>' +
+    '<div class="prompt-box-title">✦ Prompt para ideias do Programa de Mentoria — Copie e leve à sua IA</div>' +
     '<div class="prompt-text" id="s3-prompt-ia">' + prompt + '</div>' +
     '<button class="btn-copy-prompt" onclick="s3CopiarPrompt()">⧉ Copiar Prompt IA</button>' +
     '</div>' +
     '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.2rem 1.4rem;margin-top:1.2rem;text-align:left">' +
     '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.6rem">Como fazer</div>' +
-    '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Leve para sua IA de conversa.<br>3. Revise as sugestões e ajuste o que quiser.<br>4. Quando estiver satisfeita, volte aqui e clique em "Marcar Etapa 5 como concluída".</p>' +
-    '</div>';
+    '<p style="font-size:13px;color:#3a2a1a;line-height:1.7;margin:0">1. Copie o prompt acima.<br>2. Converse com sua IA — sem pressa, sem precisar trazer nada de volta.<br>3. Com as ideias decididas na conversa, preencha os campos abaixo pra montar sua entrega.</p>' +
+    '</div>' +
+    '<div class="f-group" style="margin-top:1.5rem"><label class="f-label">Nome do Programa</label><input type="text" class="ritual-input" id="s3-acomp-nome" placeholder="Ex: Método Renascer, Jornada Autoral..."></div>' +
+    '<div class="f-group" style="margin-top:1rem"><label class="f-label">Promessa</label><textarea class="ritual-textarea" id="s3-acomp-promessa" placeholder="A transformação que sua mentorada recebe, em uma frase vendedora"></textarea></div>' +
+    s3GetEntregaveisHTML();
 }
 
 function s3CopiarPrompt() {
@@ -4865,17 +4907,51 @@ function s3RenumModulos() {
 }
 
 function s3ImprimirAtual() {
-  var nomeEl = document.getElementById('s3-prod-nome');
+  var nomeEl = document.getElementById('s3-prod-nome') || document.getElementById('s3-acomp-nome');
   var nome = nomeEl ? nomeEl.value : '\u2014';
   var conteudo = document.getElementById('s3-modal-conteudo');
   if (!conteudo || !s3ProdutoAtual) return;
   var html = '<div style="padding:1rem">';
   conteudo.querySelectorAll('input,textarea,select').forEach(function(el) {
+    if (el.type === 'checkbox') return; // entregáveis, tratados separadamente abaixo
+    if (el.id && el.id.indexOf('ent-') === 0) return; // período/canal/obs de entregável, tratados abaixo
     if (el.id && el.value && el.id !== 's3-prompt-ia') {
       var grp = el.closest('.f-group');
       var lbl = grp ? grp.querySelector('.f-label') : null;
       html += '<p style="margin-bottom:0.8rem"><strong>' + (lbl ? lbl.textContent : el.id) + ':</strong><br>' + el.value.replace(/\n/g,'<br>') + '</p>';
     }
+  });
+  // Entregáveis marcados, com período/canal/detalhes agrupados
+  var entregaveisHTML = '';
+  conteudo.querySelectorAll('input[type="checkbox"]:checked').forEach(function(cb) {
+    var lbl = cb.closest('label');
+    var span = lbl ? lbl.querySelector('span:last-child') : null;
+    var nomeEnt = span ? span.textContent : cb.id;
+    var baseId = cb.id.replace('ent-', '');
+    var periodo = document.getElementById('ent-' + baseId + '-periodo');
+    var canal = document.getElementById('ent-' + baseId + '-canal');
+    var obs = document.getElementById('ent-' + baseId + '-obs');
+    entregaveisHTML += '<div style="margin-bottom:0.7rem"><strong>' + nomeEnt + '</strong>';
+    if (periodo && periodo.value) entregaveisHTML += '<br><em>Período de acesso:</em> ' + periodo.value;
+    if (canal && canal.value) entregaveisHTML += '<br><em>Canal:</em> ' + canal.value;
+    if (obs && obs.value) entregaveisHTML += '<br>' + obs.value.replace(/\n/g,'<br>');
+    entregaveisHTML += '</div>';
+  });
+  if (entregaveisHTML) {
+    html += '<p style="margin-bottom:0.4rem"><strong>Entregáveis:</strong></p>' + entregaveisHTML;
+  }
+  // Entregáveis personalizados (extras)
+  conteudo.querySelectorAll('[id^="ent-extra-"][id$="-nome"]').forEach(function(nomeEl) {
+    if (!nomeEl.value) return;
+    var baseId = nomeEl.id.replace('-nome', '');
+    var periodo = document.getElementById(baseId + '-periodo');
+    var canal = document.getElementById(baseId + '-canal');
+    var obs = document.getElementById(baseId + '-obs');
+    html += '<div style="margin-bottom:0.7rem"><strong>' + nomeEl.value + '</strong>';
+    if (periodo && periodo.value) html += '<br><em>Período de acesso:</em> ' + periodo.value;
+    if (canal && canal.value) html += '<br><em>Canal:</em> ' + canal.value;
+    if (obs && obs.value) html += '<br>' + obs.value.replace(/\n/g,'<br>');
+    html += '</div>';
   });
   // Módulos
   document.querySelectorAll('.s3-modulo-row').forEach(function(r, i) {
@@ -4887,6 +4963,111 @@ function s3ImprimirAtual() {
   });
   html += '</div>';
   s3ImprimirProduto({ tipo: s3ProdutoAtual.tipo, nome: nome, conteudo: html });
+}
+
+function getS6HTML() {
+  var itens = [
+    { id: 'bio', icone: '\u270d', titulo: 'Bio', dica: 'Clara, dizendo quem voc\u00ea ajuda e como.' },
+    { id: 'destaques', icone: '\ud83d\udcd6', titulo: 'Destaques', dica: 'Organizados, contam sua hist\u00f3ria em ordem.' },
+    { id: 'fixados', icone: '\ud83d\udccc', titulo: 'Fixados', dica: 'Os 3 melhores conte\u00fados \u2014 prova social ou oferta.' }
+  ];
+  var itensHTML = '';
+  itens.forEach(function(it) {
+    itensHTML += '<label style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(180,130,80,0.15);cursor:pointer">' +
+      '<input type="checkbox" id="s6-check-' + it.id + '" onchange="s6AtualizarStatus()" style="width:18px;height:18px;accent-color:#b48250;flex-shrink:0">' +
+      '<span style="font-size:18px">' + it.icone + '</span>' +
+      '<span><strong style="font-size:14px;color:#1a1a2e">' + it.titulo + '</strong><br><span style="font-size:12px;color:#5c4c33">' + it.dica + '</span></span>' +
+      '</label>';
+  });
+
+  return '<div style="max-width:680px;margin:0 auto">' +
+    '<div style="text-align:center;padding:2rem 0 0;margin-bottom:1.2rem">' +
+      '<span class="s-label">Etapa 6</span>' +
+      '<h2 class="s-title" style="margin-bottom:0.8rem">Linha<br><em style="color:#b48250;font-style:italic">Editorial</em></h2>' +
+      '<p class="s-desc">Dois momentos na rede social: deixar o perfil pronto pra receber visita, e manter uma linha editorial inteligente rodando no feed.</p>' +
+    '</div>' +
+
+    '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;text-align:left">' +
+      '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.3rem">Momento 1</div>' +
+      '<h3 style="font-family:\'Playfair Display\',serif;color:#241b0d;font-size:1.3rem;margin-bottom:0.6rem">Perfil Pronto</h3>' +
+      '<p style="font-size:13px;color:#5c4c33;line-height:1.6;margin-bottom:1rem">Isso aqui n\u00e3o precisa de linha editorial \u2014 \u00e9 vitrine, feita uma vez, ajustada de vez em quando.</p>' +
+      itensHTML +
+      '<div id="s6-status" style="margin-top:1rem;text-align:center;font-size:13px;color:#8a5f35;font-weight:600"></div>' +
+    '</div>' +
+
+    '<div style="background:linear-gradient(135deg,#05112b,#0a1e3d);border:1px solid rgba(180,130,80,0.3);border-radius:16px;padding:1.8rem;text-align:center">' +
+      '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:0.5rem">Momento 2 \u2014 Sua Ferramenta</div>' +
+      '<h3 style="font-family:\'Playfair Display\',serif;color:#f0ebe8;font-size:1.4rem;margin-bottom:0.6rem">Cubo M\u00e1gico<br><em style="color:#b48250;font-style:italic">de Conte\u00fado</em></h3>' +
+      '<p style="font-size:13px;color:rgba(240,235,232,0.7);line-height:1.7;margin-bottom:1.4rem">Pra manter o feed em movimento \u2014 atraindo, envolvendo, comunicando opini\u00e3o, ofertando e conectando. Como usar cada parte est\u00e1 nas aulas da plataforma.</p>' +
+      '<a href="https://jadettorress-caverna.github.io/cuboappmagico/" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:14px;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">\u2726 Abrir o Cubo M\u00e1gico \u2192</a>' +
+    '</div>' +
+
+    '<button class="btn-download btn-dl-primary" id="btnConcluirEtapa6" onclick="s6MarcarConcluida()" style="width:100%;padding:14px;margin-top:1.5rem">\u2726 Marcar Etapa 6 como conclu\u00edda</button>' +
+    '<button class="btn-bk" onclick="goHome()" style="width:100%;padding:13px;text-align:center;margin-top:0.8rem">\u2190 Voltar para o In\u00edcio</button>' +
+  '</div>';
+}
+
+function bindS6Events() {
+  // s6Load() (chamado logo em seguida por openWeek) já cuida de restaurar o estado e atualizar o status.
+  // Não chamar s6AtualizarStatus() aqui, pra não sobrescrever o localStorage antes da restauração.
+}
+
+function s6AtualizarStatus() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var ids = ['bio', 'destaques', 'fixados'];
+  var marcados = ids.filter(function(id) {
+    var el = c.querySelector('#s6-check-' + id);
+    return el && el.checked;
+  });
+  var status = c.querySelector('#s6-status');
+  if (status) {
+    status.textContent = marcados.length === ids.length ? '\u2713 Perfil pronto!' : marcados.length + ' de ' + ids.length + ' concluído' + (marcados.length === 1 ? '' : 's');
+  }
+  var data = {};
+  ids.forEach(function(id) { data[id] = marcados.indexOf(id) > -1; });
+  localStorage.setItem('s6_data', JSON.stringify(data));
+}
+
+function s6Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  try {
+    var data = JSON.parse(localStorage.getItem('s6_data') || '{}');
+    ['bio', 'destaques', 'fixados'].forEach(function(id) {
+      var el = c.querySelector('#s6-check-' + id);
+      if (el && data[id]) el.checked = true;
+    });
+  } catch(e) {}
+  s6AtualizarStatus();
+}
+
+function s6MarcarConcluida() {
+  var c = document.getElementById('weekContent');
+  var nome = 'Guerreira';
+  try {
+    var s1data = JSON.parse(localStorage.getItem('s1_caverna_data') || '{}');
+    if (s1data['s1-nome']) nome = s1data['s1-nome'];
+  } catch(e) {}
+
+  var conquistas = {};
+  try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
+  conquistas['etapa6'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
+  try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '\u2726 Etapa 6 \u2014 Linha Editorial \u00b7 Concluída';
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Você não apenas iniciou — você completou. E guerreiras que completam batalhas são as que mudam o mundo."';
+  s_renderBadges(conquistas);
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
+
+  if (typeof s1AtualizarCardPortal === 'function') s1AtualizarCardPortal();
 }
 
 function getS3HTML() {
@@ -4922,19 +5103,35 @@ function getS3HTML() {
     '</div>' +
     '<div id="s3-produtos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:2rem"></div>' +
     '<div style="display:flex;flex-direction:column;gap:12px;margin-top:1rem">' +
-      '<button class="btn-download btn-dl-primary" id="btnAvancarS3p3" style="width:100%;padding:14px">\u2726 Avan\u00e7ar \u2014 Entrega e Plataforma \u2192</button>' +
+      '<button class="btn-download btn-dl-primary" id="btnAvancarS3p3" style="width:100%;padding:14px">\u2726 Avan\u00e7ar \u2014 Concluir Etapa \u2192</button>' +
     '</div>' +
   '</div>' +
 
   '<div id="s3p3" style="display:none">' +
-    getS4HTML() +
-    '<div class="s1-proxima" style="margin-top:1.5rem">' +
-      '<button class="btn-download btn-dl-primary" id="btnConcluirEtapa4Real" style="width:100%;padding:14px;margin-bottom:1.2rem">\u2726 Marcar Etapa 5 como conclu\u00edda</button>' +
+    '<div style="text-align:center;padding:2rem 0 0">' +
+      '<span style="font-size:48px;display:block;margin-bottom:1.2rem">\u2726</span>' +
+      '<span class="s-label">Checkpoint</span>' +
+      '<h2 class="s-title" style="margin-bottom:1rem">Seus Produtos<br><em style="color:#b48250;font-style:italic">estão prontos!</em></h2>' +
+      '<p style="font-size:15px;color:#3a2a1a;line-height:1.8;margin-bottom:2rem">Você acabou de transformar seu método em produtos vend\u00e1veis \u2014 com entregas claras, e prontos pra sair da cabe\u00e7a e virar oferta de verdade.<br><br>Antes de avan\u00e7ar, certifique-se de que voc\u00ea revisou os entreg\u00e1veis de cada produto que pretende vender.</p>' +
+    '</div>' +
+    '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;text-align:left">' +
+      '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem">O que vem a seguir \u2014 fluxo do Cubo M\u00e1gico</div>' +
+      '<div style="display:flex;flex-direction:column;gap:0.8rem">' +
+        '<div style="display:flex;align-items:flex-start;gap:12px"><span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</span><p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai mapear sua <strong style="color:#05112b">identidade</strong> \u2014 quem \u00e9, o que faz, para quem, sua causa, seu porqu\u00ea</p></div>' +
+        '<div style="display:flex;align-items:flex-start;gap:12px"><span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</span><p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai estruturar seus <strong style="color:#05112b">36 t\u00f3picos</strong> \u2014 em 3 conjuntos de 12</p></div>' +
+        '<div style="display:flex;align-items:flex-start;gap:12px"><span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</span><p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai gerar seus <strong style="color:#05112b">temas</strong> \u2014 12 por estoque, cruzando t\u00f3pico e objetivo editorial</p></div>' +
+        '<div style="display:flex;align-items:flex-start;gap:12px"><span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">4</span><p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai colocar em <strong style="color:#05112b">produ\u00e7\u00e3o</strong> \u2014 cada tema vira uma pe\u00e7a: carrossel, reels, legenda</p></div>' +
+        '<div style="display:flex;align-items:flex-start;gap:12px"><span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">5</span><p style="font-size:14px;color:#3a2a1a;line-height:1.6;margin:0">Vai <strong style="color:#05112b">distribuir</strong> \u2014 sequ\u00eancia embaralhada, publicada nos meses</p></div>' +
+      '</div>' +
+    '</div>' +
+    '<button class="btn-download btn-dl-primary" id="btnConcluirEtapa4Real" style="width:100%;padding:14px;margin-bottom:1.5rem">\u2726 Marcar Etapa 5 como conclu\u00edda</button>' +
+    '<div class="s1-proxima">' +
       '<span class="s1-proxima-label">Pr\u00f3xima Batalha</span>' +
       '<div class="s1-proxima-title">Etapa 6 \u2014 Linha Editorial</div>' +
-      '<div class="s1-proxima-desc">Guerreira, seu produto existe e est\u00e1 pronto pra vender. Agora \u00e9 hora de dar vida ao seu perfil.</div>' +
-      '<button class="btn-proxima" id="btnIrEtapa5Real">\u2694 Voltar para a Jornada \u2192</button>' +
+      '<div class="s1-proxima-desc">Guerreira, seu produto existe e est\u00e1 pronto pra vender. Agora \u00e9 hora de dar vida ao seu perfil, com o Cubo M\u00e1gico de Conte\u00fado.</div>' +
+      '<button class="btn-proxima" id="btnIrEtapa5Real">\u2694 Partir para a Linha Editorial \u2192</button>' +
     '</div>' +
+  '</div>' +
   '</div>' +
 
   '<div class="modal-vitoria" id="modalVitoriaS3">' +
@@ -4982,7 +5179,7 @@ function bindS3Events() {
       return;
     }
     if (id === 'btnConcluirEtapa4Real') { s3ConcluirEtapa4Real(); return; }
-    if (id === 'btnIrEtapa5Real') { goHome(); return; }
+    if (id === 'btnIrEtapa5Real') { goHome(); setTimeout(function(){ openWeek(6); }, 300); return; }
   });
 
   // Criar modal fora do weekContent para evitar conflitos
@@ -5069,84 +5266,6 @@ function s3BuildGrid(c) {
 }
 
 
-function getS4HTML() {
-  var pontos = [
-    { id:'p1', icone:'🎬', titulo:'Boas-vindas / Onboarding', exemplo:'Ex: Vídeo gravado enviado via WhatsApp logo após a confirmação do pagamento.' },
-    { id:'p2', icone:'💬', titulo:'Grupo Individual no WhatsApp', exemplo:'Ex: Acesso premium direto comigo para dúvidas e suporte durante todo o processo.' },
-    { id:'p3', icone:'🎓', titulo:'Programa de Mentoria', exemplo:'Ex: Metodologia + acompanhamento por WhatsApp + encontros em grupo + encontros individuais.' },
-    { id:'p4', icone:'📎', titulo:'Ferramentas Principais', exemplo:'Ex: PDFs, links, materiais de apoio que direcionam cada etapa do método.' },
-    { id:'p5', icone:'⚔', titulo:'Encontros em Grupo', exemplo:'Ex: Campos de Batalha — encontros semanais ou quinzenais online para avançar juntas.' },
-    { id:'p6', icone:'✨', titulo:'Encontro Individual para Evolução do Processo', exemplo:'Ex: Oficina individual para destravar pontos específicos e acelerar o progresso.' },
-    { id:'p7', icone:'📣', titulo:'Grupo de Avisos Fechado', exemplo:'Ex: Links dos encontros, novidades e materiais surpresa para alunas ativas.' },
-    { id:'p8', icone:'🏆', titulo:'Encontro de Conclusão do Método', exemplo:'Ex: Oficina final para celebrar a conclusão e direcionar os próximos passos.' }
-  ];
-
-  var pontosHTML = '';
-  pontos.forEach(function(p, i) {
-    pontosHTML +=
-      '<div style="background:linear-gradient(160deg,#2c4269,#233658);border:1px solid rgba(180,130,80,0.2);border-radius:16px;padding:1.5rem;margin-bottom:1rem">' +
-        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:1.2rem">' +
-          '<span style="font-size:28px">' + p.icone + '</span>' +
-          '<div>' +
-            '<div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#b48250;margin-bottom:2px">Ponto ' + (i+1) + ' de entrega</div>' +
-            '<div style="font-family:Playfair Display,serif;font-size:1.05rem;color:#f0ebe8">' + p.titulo + '</div>' +
-          '</div>' +
-        '</div>' +
-        '<div class="f-group">' +
-          '<label class="f-label">Nome do ponto de entrega</label>' +
-          '<input type="text" class="f-input s4-nome" id="s4-' + p.id + '-nome" placeholder="' + p.titulo + '">' +
-        '</div>' +
-        '<div class="f-group" style="margin-top:0.8rem">' +
-          '<label class="f-label">Período de acesso</label>' +
-          '<input type="text" class="f-input" id="s4-' + p.id + '-periodo" placeholder="Ex: Durante os 3 meses de mentoria, Vitalício, 12 meses...">' +
-        '</div>' +
-        '<div class="f-group" style="margin-top:0.8rem">' +
-          '<label class="f-label">Orientação para sua aluna</label>' +
-          '<span class="s2-field-hint" style="display:block;margin-bottom:6px">' + p.exemplo + '</span>' +
-          '<textarea class="f-textarea" id="s4-' + p.id + '-desc" placeholder="Descreva como sua aluna vai receber e usar este ponto de entrega..." rows="3"></textarea>' +
-        '</div>' +
-      '</div>';
-  });
-
-  return '<div class="s2-page" id="s4wrap">' +
-
-    // PÁGINA 1 — TEXTO
-    '<div id="s4p1">' +
-      '<div style="padding:2rem 0 0.5rem">' +
-        '<h2 class="s-title">Entrega<br><em style="font-style:italic;color:#b48250">Escalável</em></h2>' +
-      '</div>' +
-      '<div style="background:linear-gradient(135deg,rgba(180,130,80,0.08),rgba(180,130,80,0.02));border:1px solid rgba(180,130,80,0.25);border-radius:16px;padding:1.8rem;margin-bottom:2rem">' +
-        '<p style="font-family:Playfair Display,serif;font-size:1rem;color:#6b4423;line-height:1.9;font-style:italic">' +
-          '"Guerreira, você já tem seu método e seus produtos. Agora é hora de definir como você vai entregar tudo isso sem abrir mão do seu tempo e da sua vida.' +
-          '<br><br>' +
-          'A maioria das experts começa vendendo sessão por sessão, hora por hora; e logo percebe que o tempo acaba antes do mês. Eu quero te mostrar um caminho diferente.' +
-          '<br><br>' +
-          'Aqui você vai mapear os pontos de entrega da sua mentoria; cada momento em que sua aluna recebe sua transformação, seu método e sua presença. Alguns desses pontos são automáticos, outros são ao vivo, outros são bônus. Juntos, eles formam uma experiência completa sem te prender 24 horas por dia.' +
-          '<br><br>' +
-          'Personalize cada ponto com o seu nome, seu período de acesso e a orientação que sua aluna vai receber. Essa é a sua metodologia de entrega; e ela só poderia ser sua."' +
-        '</p>' +
-      '</div>' +
-      '<div style="text-align:center;margin-top:1rem">' +
-        '<button class="btn-espada" id="btnS4Avancar">Avante — Quero mapear minha entrega →</button>' +
-      '</div>' +
-    '</div>' +
-
-    // PÁGINA 2 — PONTOS DE ENTREGA
-    '<div id="s4p2" style="display:none">' +
-      '<div style="padding:1.5rem 0 0.5rem">' +
-        '<span class="s-label">✦ Seus Pontos de Entrega</span>' +
-        '<h2 class="s-title" style="margin-bottom:0.3rem">Sua metodologia<br><em style="color:#b48250;font-style:italic">de entrega</em></h2>' +
-        '<p class="s-desc">Personalize cada ponto com o seu nome, período de acesso e orientação para sua aluna.</p>' +
-      '</div>' +
-      '<div id="s4-pontos">' + pontosHTML + '</div>' +
-
-    '<div style="display:flex;gap:12px;margin-top:2rem">' +
-      '<button class="btn-imprimir" id="btnImprimirS4" style="flex:1;width:100%">⬇ Imprimir Metodologia</button>' +
-    '</div>' +
-
-    '</div>' +
-  '</div>';
-}
 
 function bindS4Events() {
   var c = document.getElementById('weekContent');
@@ -5411,17 +5530,15 @@ buildGrid();
 </div>
 <div class="form-2col">
 <div class="f-group"><label class="f-label">Problema principal que resolve</label><textarea class="f-textarea" id="sp-problema" placeholder="Qual a principal dor que você resolve?"></textarea></div>
-<div class="f-group"><label class="f-label">Prova social</label><textarea class="f-textarea" id="sp-prova" placeholder="Alguém já foi transformado por essa solução?"></textarea></div>
 <div class="f-group form-full"><label class="f-label">Ferramenta principal</label><textarea class="f-textarea" id="sp-ferramenta" placeholder="Que material ou fundamento você usa?"></textarea></div>
 <div class="f-group"><label class="f-label">Público alvo principal</label><textarea class="f-textarea" id="sp-publico" placeholder="Qual o perfil das pessoas que você ajuda?"></textarea></div>
 <div class="f-group"><label class="f-label">Transformação principal</label><textarea class="f-textarea" id="sp-trans-ms3" placeholder="Qual a principal transformação que ela alcança?"></textarea></div>
-<div class="f-group"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" placeholder="Como você entrega e em quais produtos?"></textarea></div>
-<div class="f-group form-full"><label class="f-label">Tempo de validação</label><input type="text" class="f-input" id="sp-tempo" placeholder="Em quanto tempo a pessoa alcança o resultado?"></div>
+<div class="f-group form-full"><label class="f-label">Produto principal</label><textarea class="f-textarea" id="sp-produto" placeholder="Como você entrega e em quais produtos?"></textarea></div>
 </div>
 <div class="nav-btns"><button class="btn-bk" id="ms3back" onclick="s1Ms3back()">← Voltar</button><button class="btn-nx" id="ms3next" onclick="s1Ms3next()">Seguir →</button></div>
 </div>
 <div class="step-screen" id="ms4">
-<span class="s-label">Etapa 4 de 4 · Manifesto</span>
+<span class="s-label">Etapa 4 de 4 · Sua Causa</span>
 <h2 class="s-title">Manifesto<br><em style="color:#b48250;font-style:italic">Editorial</em></h2>
 <p class="s-desc"><span style="color:#b48250;font-weight:600">📌 Tarefa:</span> Copie o prompt abaixo e cole no chat onde você inseriu as informações da Linha do Tempo. Traga a resposta e cole no campo vazio para que os campos sejam preenchidos automaticamente.</p>
 <div style="background:rgba(180,130,80,0.06);border:1px solid rgba(180,130,80,0.2);border-radius:12px;padding:1.2rem;margin-top:1.2rem">
@@ -5614,7 +5731,7 @@ buildGrid();
 
 <div id="s1Resultado" style="display:none">
 <div class="s1-resultado">
-<span class="s-label" style="text-align:center;display:block;margin-bottom:1rem">✦ Seu Manifesto Editorial</span>
+<span class="s-label" style="text-align:center;display:block;margin-bottom:1rem">✦ Seu Canvas de Manifesto</span>
 <div class="s1-res-header">
 <div class="s1-res-card"><span class="s1-res-card-icon">⚔</span><span class="s1-res-card-label">Sua espada</span><div class="s1-res-card-value" id="res-espada">—</div></div>
 <div class="s1-res-card"><span class="s1-res-card-icon">✦</span><span class="s1-res-card-label">Guerreira</span><div class="s1-res-card-value" id="res-nome">—</div></div>
@@ -5633,8 +5750,7 @@ buildGrid();
 </div>
 <div style="text-align:center;padding:1rem 0 0.5rem"><div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,130,80,0.5);margin-bottom:4px">Portal Caverna das Guerreiras · Jade Torres</div><div style="font-size:11px;color:rgba(240,235,232,0.25)">2025</div></div>
 </div>
-<div class="s1-actions" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-<button class="btn-wpp" id="btnEnviarCanvas" onclick="wppEnviarCanvas()" style="background:linear-gradient(135deg,#25d366,#1aab52);color:#fff;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(37,211,102,0.3)">📲 Enviar para a Jade<br><span style="font-size:10px;font-weight:400;opacity:0.9">acompanhar seu processo</span></button>
+<div class="s1-actions" style="display:grid;grid-template-columns:1fr;gap:10px">
 <button onclick="imprimirPosicionamento()" style="background:linear-gradient(135deg,#b48250,#8a5f35);color:#f0ebe8;border:none;border-radius:10px;padding:14px 10px;font-size:13px;cursor:pointer;font-weight:600;letter-spacing:0.5px;box-shadow:0 4px 12px rgba(180,130,80,0.3)">🖨 Baixar / Imprimir<br><span style="font-size:10px;font-weight:400;opacity:0.9">guardar ou imprimir</span></button>
 </div>
 <div class="nav-btns" style="justify-content:center;margin-top:1rem">
@@ -5648,7 +5764,7 @@ buildGrid();
   <div style="text-align:center;padding:2rem 0">
     <span style="font-size:48px;display:block;margin-bottom:1.2rem">⚔</span>
     <span class="s-label">Checkpoint</span>
-    <h2 class="s-title" style="margin-bottom:1rem">Seu Manifesto Editorial<br><em style="color:#b48250;font-style:italic">Seu Posicionamento está completo!</em></h2>
+    <h2 class="s-title" style="margin-bottom:1rem">Sprint de Decisões<br><em style="color:#b48250;font-style:italic">Seu Posicionamento está completo!</em></h2>
     <p style="font-size:15px;color:#3a2a1a;line-height:1.8;margin-bottom:2rem">Você acabou de mapear seus ingredientes de marca, sua fatia de subnicho, os ingredientes do seu produto e seu manifesto.<br><br>Antes de avançar, certifique-se de que você terminou todas as etapas do Posicionamento.</p>
     <div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:2rem;text-align:left">
       <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:1rem">O que vem a seguir</div>
