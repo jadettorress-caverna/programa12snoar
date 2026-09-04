@@ -758,11 +758,9 @@ function openWeek(n) {
     bindS6Events();
     setTimeout(function(){ s6Load(); }, 150);
   } else if (n === 7) {
-    content.innerHTML = '<div style="max-width:520px;margin:4rem auto;text-align:center">' +
-      '<span style="font-size:40px;display:block;margin-bottom:1rem">✦</span>' +
-      '<h2 class="s-title" style="margin-bottom:0.8rem">Desafio 12 Semanas no Ar</h2>' +
-      '<p class="s-desc">Essa etapa ainda está sendo construída. Em breve: checklist de execução semanal.</p>' +
-      '</div>';
+    content.innerHTML = getS7HTML();
+    bindS7Events();
+    setTimeout(function(){ s7Load(); }, 150);
   } else if (n === 8) {
     content.innerHTML = getS8OfertaHTML();
     bindS8OfertaEvents();
@@ -978,7 +976,6 @@ function getChecklistHTML(n) {
 
 function getS5HTML() { return getChecklistHTML(5); }
 function getCkHTML(n) { return getChecklistHTML(n); }
-function getS7HTML() { return getChecklistHTML(7); }
 function getS8HTML() { return getChecklistHTML(8); }
 function bindCkEvents(n) {
   var content = document.getElementById('weekContent');
@@ -4109,7 +4106,7 @@ function getS2HTML() {
 
   // TELA 1 — ESTRUTURA DO MÉTODO
   '<div class="step-screen active" id="s2t1" style="display:block">' +
-    '<span class="s-label">PASSO 1 DE 6 · BRAINSTORMING</span>' +
+    '<span class="s-label">PASSO 1 DE 8 · BRAINSTORMING</span>' +
     '<h2 class="s-title">O Caminho da<br><em style="color:#b48250;font-style:italic">Transformação</em></h2>' +
     '<p class="s-desc">Antes de pedir ajuda à IA, coloque no papel o que está na sua cabeça — atualizado, do seu jeito de hoje. Isso vira o prompt que você vai levar pro mesmo projeto do Claude onde já está sua Linha do Tempo e seu Sprint de Decisões.</p>' +
     '<div class="f-group"><label class="f-label">O que você quer que sua aluna saia sabendo fazer, na prática?</label><textarea class="f-textarea" id="s2-ensinar" placeholder="Ex: Ela sai sabendo estruturar o método dela em módulos e aulas..."></textarea></div>' +
@@ -4213,7 +4210,7 @@ function getS2HTML() {
     '</div>' +
   '</div>' +
 
-  '<div class="step-screen" id="s2t6" style="display:none">' + +
+  '<div class="step-screen" id="s2t6" style="display:none">' +
     '<span class="s-label">PASSO 6 DE 8 · MÉTODO NA PLATAFORMA</span>' +
     '<div id="s2t5-checklists" style="text-align:left">' +
     getChecklistHTML(5) +
@@ -4644,12 +4641,30 @@ function s3ConcluirSemana() {
 function s3IrS4() { goHome(); }
 
 function s3ConcluirEtapa4Real() {
+  var nome = 'Guerreira';
+  try {
+    var s1data = JSON.parse(localStorage.getItem('s1_caverna_data') || '{}');
+    if (s1data['s1-nome']) nome = s1data['s1-nome'];
+  } catch(e) {}
+
   var conquistas = {};
   try { conquistas = JSON.parse(localStorage.getItem('caverna_conquistas') || '{}'); } catch(e) {}
-  conquistas['etapa5'] = { data: new Date().toLocaleDateString('pt-BR') };
+  conquistas['etapa5'] = { data: new Date().toLocaleDateString('pt-BR'), nome: nome };
   try { localStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
-  alert('✦ Etapa 5 concluída — produto, entrega, plataforma e oferta prontos. Guerreira, sua próxima batalha é a Etapa 6 — Linha Editorial.');
-  goHome();
+  try { sessionStorage.setItem('caverna_conquistas', JSON.stringify(conquistas)); } catch(e) {}
+
+  var nomeEl = document.getElementById('vitoria-nome');
+  if (nomeEl) nomeEl.textContent = nome;
+  var semanaEl = document.getElementById('vitoria-semana');
+  if (semanaEl) semanaEl.textContent = '\u2726 Etapa 5 \u2014 Produtos \u00b7 Concluída';
+  var fraseEl = document.getElementById('vitoria-frase');
+  if (fraseEl) fraseEl.textContent = '"Produto, entrega, plataforma e oferta prontos. Sua próxima batalha é a Etapa 6 — Linha Editorial."';
+  s_renderBadges(conquistas);
+
+  var modal = document.getElementById('modalVitoria');
+  if (modal) modal.classList.add('ativo');
+
+  if (typeof s1AtualizarCardPortal === 'function') s1AtualizarCardPortal();
 }
 
 function s3ImprimirProduto(dados) {
@@ -5068,6 +5083,120 @@ function s6MarcarConcluida() {
   if (modal) modal.classList.add('ativo');
 
   if (typeof s1AtualizarCardPortal === 'function') s1AtualizarCardPortal();
+}
+
+var SEMANAS_12 = [
+  { n: 1, titulo: 'Armadura da Guerreira + início do Lugar de Fala', desc: 'Vista sua armadura e comece a resgatar sua história.' },
+  { n: 2, titulo: 'Finalizar Lugar de Fala + Sprint de Decisões', desc: 'Termine sua Linha do Tempo e defina seu posicionamento.' },
+  { n: 3, titulo: 'Método Autoral, Passo 1 — Brainstorming', desc: 'Coloque no papel dores, sonhos, objeções e a semente da sua analogia.' },
+  { n: 4, titulo: 'Método Autoral, Passo 2 — Módulos', desc: 'Formalize o caminho da transformação do seu método.' },
+  { n: 5, titulo: 'Método Autoral, Passos 3 e 4 — Ideias e Construção de Ferramentas', desc: 'Descubra e construa as ferramentas que apoiam seu método.' },
+  { n: 6, titulo: 'Método Autoral, Passo 5 — Aulas', desc: 'Detalhe as aulas de cada módulo.' },
+  { n: 7, titulo: 'Método Autoral, Passo 6 — Plataforma', desc: 'Estruture seu método na plataforma escolhida.' },
+  { n: 8, titulo: 'Método Autoral, Passo 7 — Gravação', desc: 'Grave suas aulas.' },
+  { n: 9, titulo: 'Método Autoral, Passo 7 — Edição, Hospedagem', desc: 'Edite e hospede seu método gravado.' },
+  { n: 10, titulo: 'Método Autoral, Passo 8 — Validação', desc: 'Valide seu método com as primeiras alunas.' },
+  { n: 11, titulo: 'Produto', desc: 'Transforme seu método em produto vendável.' },
+  { n: 12, titulo: 'Linha Editorial', desc: 'Deixe seu perfil pronto e configure seu Cubo Mágico.' }
+];
+
+function getS7HTML() {
+  var itensHTML = '';
+  SEMANAS_12.forEach(function(s) {
+    itensHTML += '<label style="display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid rgba(180,130,80,0.15);cursor:pointer">' +
+      '<input type="checkbox" id="s7-check-' + s.n + '" onchange="s7AtualizarStatus()" style="width:18px;height:18px;accent-color:#b48250;flex-shrink:0;margin-top:2px">' +
+      '<span style="background:#b48250;color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">' + s.n + '</span>' +
+      '<span><strong style="font-size:14px;color:#1a1a2e">' + s.titulo + '</strong><br><span style="font-size:12px;color:#5c4c33">' + s.desc + '</span></span>' +
+      '</label>';
+  });
+
+  return '<div style="max-width:680px;margin:0 auto">' +
+    '<div style="text-align:center;padding:2rem 0 0;margin-bottom:1.2rem">' +
+      '<span class="s-label">Desafio</span>' +
+      '<h2 class="s-title" style="margin-bottom:0.8rem">12 Semanas<br><em style="color:#b48250;font-style:italic">no Ar</em></h2>' +
+      '<p class="s-desc">O checklist 12 semanas no Ar é um cronograma de tempo validado para uma execução contínua, mas não significa que você tenha que funcionar neste ritmo. Vá no seu ritmo de acordo com seu cenário. Marque cada semana conforme avança.</p>' +
+    '</div>' +
+
+    '<button class="btn-download btn-dl-primary" onclick="s7ImprimirEbook()" style="width:100%;padding:14px;margin-bottom:1.5rem">\u2726 Baixar Guia das 12 Semanas em PDF</button>' +
+
+    '<div style="background:#f4ede2;border:1px solid rgba(180,130,80,0.35);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;text-align:left">' +
+      '<div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a5f35;margin-bottom:0.3rem">Checklist Semanal</div>' +
+      '<div id="s7-status" style="margin-bottom:1rem;text-align:center;font-size:13px;color:#8a5f35;font-weight:600"></div>' +
+      itensHTML +
+    '</div>' +
+
+    '<p style="font-size:12px;color:#8a5f35;font-style:italic;text-align:center;margin-top:0.5rem">\u2191 Volte às etapas para iniciar o programa</p>' +
+  '</div>';
+}
+
+function bindS7Events() {
+  // s7Load() (chamado logo em seguida por openWeek) já cuida de restaurar o estado e atualizar o status.
+}
+
+function s7AtualizarStatus() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  var marcadas = SEMANAS_12.filter(function(s) {
+    var el = c.querySelector('#s7-check-' + s.n);
+    return el && el.checked;
+  });
+  var status = c.querySelector('#s7-status');
+  if (status) {
+    status.textContent = marcadas.length === 12 ? '\u2713 Desafio completo!' : marcadas.length + ' de 12 semanas concluídas';
+  }
+  var data = {};
+  SEMANAS_12.forEach(function(s) { data[s.n] = marcadas.indexOf(s) > -1; });
+  localStorage.setItem('s7_data', JSON.stringify(data));
+}
+
+function s7Load() {
+  var c = document.getElementById('weekContent');
+  if (!c) return;
+  try {
+    var data = JSON.parse(localStorage.getItem('s7_data') || '{}');
+    SEMANAS_12.forEach(function(s) {
+      var el = c.querySelector('#s7-check-' + s.n);
+      if (el && data[s.n]) el.checked = true;
+    });
+  } catch(e) {}
+  s7AtualizarStatus();
+}
+
+function s7ImprimirEbook() {
+  function semanaBloco(s) {
+    return '<div style="margin-bottom:1.6rem;page-break-inside:avoid">' +
+      '<div style="display:flex;align-items:center;gap:12px;margin-bottom:0.5rem">' +
+      '<span style="background:#b48250;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">' + s.n + '</span>' +
+      '<div style="font-size:15px;font-weight:700;color:#111">' + s.titulo + '</div>' +
+      '</div>' +
+      '<div style="font-size:13px;color:#444;padding-left:44px;margin-bottom:6px">' + s.desc + '</div>' +
+      '<div style="padding-left:44px;font-size:12px;color:#8a5f35">☐ Concluída em: ____/____/____</div>' +
+      '</div>';
+  }
+
+  var semanasHTML = SEMANAS_12.map(semanaBloco).join('');
+
+  var html = '<div style="font-family:Georgia,serif;max-width:850px;margin:0 auto;padding:1rem">' +
+    '<div style="text-align:center;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:2px solid #b48250">' +
+    '<div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#b48250;margin-bottom:0.8rem">Caverna Azul</div>' +
+    '<div style="font-size:2rem;font-weight:700;color:#111;font-family:\'Playfair Display\',Georgia,serif">12 Semanas no Ar</div>' +
+    '<div style="font-size:13px;color:#666;margin-top:0.6rem;font-style:italic">Seu guia de execução, semana a semana</div>' +
+    '</div>' +
+    semanasHTML +
+    '<div style="text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #ddd;font-size:11px;letter-spacing:1px;color:#999">CAVERNA DAS GUERREIRAS · JADE TORRES</div>' +
+    '</div>';
+
+  var printArea = document.getElementById('printArea');
+  if (!printArea) {
+    printArea = document.createElement('div');
+    printArea.id = 'printArea';
+    printArea.style.display = 'none';
+    document.body.appendChild(printArea);
+  }
+  printArea.innerHTML = html;
+  printArea.style.display = 'block';
+  window.print();
+  printArea.style.display = 'none';
 }
 
 function getS3HTML() {
